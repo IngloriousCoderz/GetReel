@@ -7,19 +7,21 @@ Meteor.startup(function() {
   // console.log('Jobs.remove({})');
   // Jobs.remove({});
   var jobCount = Jobs.find().count();
-  if (jobCount === 0) {
-    console.log('job count === ', jobCount, 'inserting jobs');
-    Jobs.insert([
-      {title: 'Select a job position...'},
-      {title: 'Haiti Village Photographer'},
-      {title: 'Rapallo On The Beach'}
-    ]);
-  } else {
+
+  if (jobCount > 0) {
     console.log(
       'server/getreel.js:',
       'job count > 0 (', jobCount, '): no insert needed'
     );
+    return;
   }
+
+  console.log('job count === ', jobCount, 'inserting jobs');
+  Jobs.insert([
+    {title: 'Select a job position...'},
+    {title: 'Haiti Village Photographer'},
+    {title: 'Rapallo On The Beach'}
+  ]);
 });
 
 Meteor.methods({
