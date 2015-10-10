@@ -15,7 +15,10 @@ Meteor.startup(function() {
       {title: 'Rapallo On The Beach'}
     ]);
   } else {
-    console.log('server/getreel.js:', 'job count > 0 (', jobCount, '): no insert needed');
+    console.log(
+      'server/getreel.js:',
+      'job count > 0 (', jobCount, '): no insert needed'
+    );
   }
 });
 
