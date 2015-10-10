@@ -6,7 +6,7 @@ Applications = new Mongo.Collection('applications');
 Meteor.startup(function() {
   // console.log('Jobs.remove({})');
   // Jobs.remove({});
-  var jobCount = Jobs.find({}).count();
+  var jobCount = Jobs.find().count();
   if (jobCount === 0) {
     console.log('job count === ', jobCount, 'inserting jobs');
     Jobs.insert({_id: '0', title: 'Select a job position...'});
