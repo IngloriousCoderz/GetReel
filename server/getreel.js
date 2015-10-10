@@ -18,15 +18,22 @@ Meteor.startup(function() {
 
 
 Meteor.methods({
-  apply: function() {
-        if (!Meteor.userId()) {
-          throw new Meteor.Error("not-authorized");
-        }
+  apply: function(args) {
+    if (!Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
 
-        Applications.insert({
-          firstname: '',
-          lastname: ''
-        });
-    },
+    console.log(args);
 
+    Applications.insert({
+      createdAt: new Date(),
+      applicant: Meteor.userId(),
+      firstname: args.firstname,
+      lastname: args.lastname,
+      job: args.job,
+      resume: args.resume,
+      videofile: args.videofile,
+      videolink: args.videolink
+    });
+  }
 });
