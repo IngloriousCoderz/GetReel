@@ -6,13 +6,14 @@ Applications = new Mongo.Collection('applications');
 Meteor.startup(function() {
   // console.log('Jobs.remove({})');
   // Jobs.remove({});
-  if (Jobs.find({}).count() === 0) {
-    console.log('job count === ', Jobs.find({}).count(), 'inserting jobs');
+  var jobCount = Jobs.find({}).count();
+  if (jobCount === 0) {
+    console.log('job count === ', jobCount, 'inserting jobs');
     Jobs.insert({_id: '0', title: 'Select a job position...'});
     Jobs.insert({_id: '1', title: 'Haiti Village Photographer'});
     Jobs.insert({_id: '2', title: 'Rapallo On The Beach'});
   } else {
-    console.log('server/getreel.js:', 'job count > 0 (', Jobs.find({}).count(), '): no insert needed');
+    console.log('server/getreel.js:', 'job count > 0 (', jobCount, '): no insert needed');
   }
 });
 
