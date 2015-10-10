@@ -16,7 +16,10 @@ Meteor.startup(function() {
     return;
   }
 
-  console.log('job count === ', jobCount, 'inserting jobs');
+  console.log(
+    'server/getreel.js:',
+    'job count === ', jobCount, ': inserting jobs'
+  );
   Jobs.insert([
     {title: 'Select a job position...'},
     {title: 'Haiti Village Photographer'},
