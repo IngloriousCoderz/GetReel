@@ -25,3 +25,4 @@ accounts-google
 pauli:accounts-linkedin
 mrt:modernizr-meteor
 mizzao:bootstrap-3
+iron:router
