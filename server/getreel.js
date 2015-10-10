@@ -9,9 +9,9 @@ Meteor.startup(function() {
   var jobCount = Jobs.find().count();
   if (jobCount === 0) {
     console.log('job count === ', jobCount, 'inserting jobs');
-    Jobs.insert({_id: '0', title: 'Select a job position...'});
-    Jobs.insert({_id: '1', title: 'Haiti Village Photographer'});
-    Jobs.insert({_id: '2', title: 'Rapallo On The Beach'});
+    Jobs.insert({title: 'Select a job position...'});
+    Jobs.insert({title: 'Haiti Village Photographer'});
+    Jobs.insert({title: 'Rapallo On The Beach'});
   } else {
     console.log('server/getreel.js:', 'job count > 0 (', jobCount, '): no insert needed');
   }
