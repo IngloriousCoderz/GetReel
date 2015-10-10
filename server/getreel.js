@@ -18,7 +18,7 @@ Meteor.startup(function() {
 
   console.log(
     'server/getreel.js:',
-    'job count === ', jobCount, ': inserting jobs'
+    'job count = 0: inserting jobs'
   );
   Jobs.insert([
     {title: 'Select a job position...'},
