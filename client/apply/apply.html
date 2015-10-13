@@ -1,14 +1,15 @@
 <head>
-  <title>GetReel - Applicant Form</title>
+  <title>GetReel - Application Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body class="container">
-  {{> loginButtons}}
-  <h1>GetReel</h1>
-  <h2>Applicant Form</h2>
+<body class="container"></body>
 
-  <form>
+<template name="Apply">
+  <h2>Application Form</h2>
+  {{> loginButtons}}
+
+  <form action="{{pathFor route='apply'}}" method="POST">
     <div class="form-group">
       <label for="firstname">Firstname</label>
       <input id="firstname" type="text" name="firstname" class="form-control" placeholder="e.g. John" />
@@ -55,4 +56,9 @@
       <button type="submit" class="btn btn-default">Submit</button>
     </div>
   </form>
-</body>
+</template>
+
+<template name="ApplySuccess">
+  <h1>Success!</h1>
+  <p>Your application has been sent, we will contact you as soon as we can.</p>
+</template>
