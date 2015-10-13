@@ -20,11 +20,14 @@ Meteor.startup(function() {
     'server/getreel.js:',
     'job count = 0: inserting jobs'
   );
-  Jobs.insert([
+  var jobs = [
     {title: 'Select a job position...'},
     {title: 'Haiti Village Photographer'},
     {title: 'Rapallo On The Beach'}
-  ]);
+  ];
+  jobs.forEach(function(job) {
+    Jobs.insert(job);
+  });
 });
 
 Meteor.methods({
