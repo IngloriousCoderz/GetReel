@@ -6,7 +6,7 @@ Session.set('showUpload', true);
 Template.Apply.helpers({
   webrtc: Modernizr.getUserMedia,
   jobs: function() {
-    return Jobs.find({});
+    return Jobs.find();
   },
   showUpload: function() {
     return Session.get('showUpload');
@@ -21,7 +21,9 @@ Template.Apply.events({
   'submit form': function(e) {
     e.preventDefault();
     var form = e.target;
-    var args = {
+    var application = {
+      createdAt: new Date(),
+      applicant: Meteor.userId(),
       firstname: form.firstname.value,
       lastname: form.lastname.value,
       job: form.job.value,
@@ -39,7 +41,7 @@ Template.Apply.events({
       }
     };*/
 
-    Meteor.call('apply', args, function(error, result) {
+    Meteor.call('submit', application, function(error, result) {
       if (error) {
         alert('Have you signed in yet? Please do it now');
       } else {
