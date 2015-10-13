@@ -1,6 +1,3 @@
-Router.route('/', function() {
-  this.render('Home');
-});
-
+Router.route('/', {name: 'home'});
 Router.route('/apply');
-Router.route('/apply/success');
+Router.route('/apply/success', {name: 'apply.success'});
