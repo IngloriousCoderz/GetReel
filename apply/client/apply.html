@@ -5,12 +5,12 @@
   <form action="{{pathFor route='apply'}}" method="POST">
     <div class="form-group">
       <label for="firstname">Firstname</label>
-      <input id="firstname" type="text" name="firstname" class="form-control" placeholder="e.g. John" />
+      <input id="firstname" type="text" name="firstname" value="{{application.firstname}}" class="form-control" placeholder="e.g. John" />
     </div>
 
     <div class="form-group">
       <label for="lastname">Lastname</label>
-      <input id="lastname" type="text" name="lastname" class="form-control" placeholder="e.g. Smith" />
+      <input id="lastname" type="text" name="lastname" value="{{application.lastname}}" class="form-control" placeholder="e.g. Smith" />
     </div>
 
     <div class="form-group">
@@ -24,25 +24,12 @@
 
     <div class="form-group">
       <label for="resume">Resume</label>
-      <input id="resume" type="file" name="resume" class="form-control"/>
+      <input type="filepicker-dragdrop" id="resume" />
     </div>
 
     <div class="form-group">
       <label for="showreel">Showreel</label>
-      <script>console.log('Modernizr', Modernizr);</script>
-      {{#if webrtc}}
-      <video autoplay></video>
-      <script>console.log('Yay!')</script>
-      {{else}}
-      <label>
-        <input type="radio" name="video-type" value="file" checked> Upload file
-      </label>
-      <label>
-        <input type="radio" name="video-type" value="link"> Link to video
-      </label>
-      <input id="videofile" type="file" name="videofile" class="form-control {{#unless showUpload}}hidden{{/unless}}" accept="video/*;capture=camcorder" />
-      <input id="videolink" type="url" name="videolink" class="{{#if showUpload}}hidden{{/if}}" placeholder="e.g. https://youtu.be/QH2-TGUlwu4" />
-      {{/if}}
+      <input type="filepicker-dragdrop" id="showreel" />
     </div>
 
     <div class="form-group">
