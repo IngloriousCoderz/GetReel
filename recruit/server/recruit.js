@@ -1,5 +1,3 @@
-Jobs = new Mongo.Collection('jobs');
-
 Meteor.startup(function() {
   if (Jobs.find().count() === 0) {
     var jobs = [

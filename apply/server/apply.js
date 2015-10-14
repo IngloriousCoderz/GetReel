@@ -1,4 +1,6 @@
-Applications = new Mongo.Collection('applications');
+Meteor.publish('availableJobs', function() {
+  return Jobs.find();
+});
 
 Meteor.methods({
   submit: function(application) {

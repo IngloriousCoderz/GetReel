@@ -16,7 +16,7 @@
     <div class="form-group">
       <label for="job">Job position</label>
       <select id="job" name="job" class="form-control">
-        {{#each jobs}}
+        {{#each availableJobs}}
         <option value="{{_id}}">{{title}}</option>
         {{/each}}
       </select>

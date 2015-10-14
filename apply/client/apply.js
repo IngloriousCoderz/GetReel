@@ -1,11 +1,10 @@
-Jobs = new Mongo.Collection('jobs'); //both on client and server
-Applications = new Mongo.Collection('applications');
+Meteor.subscribe('availableJobs');
 
 Session.set('showUpload', true);
 
 Template.Apply.helpers({
   webrtc: Modernizr.getUserMedia,
-  jobs: function() {
+  availableJobs: function() {
     return Jobs.find();
   },
   showUpload: function() {
