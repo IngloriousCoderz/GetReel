@@ -8,9 +8,10 @@ Template.Apply.helpers({
   application: function() {
     return Session.get('application');
   },
+
   availableJobs: function() {
     return Jobs.find();
-  }
+  },
 });
 
 Template.Apply.events({
@@ -25,10 +26,10 @@ Template.Apply.events({
       mimetypes: [
         'application/msword',
         'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'application/pdf'
+        'application/pdf',
       ],
       maxSize: 10 * 1024 * 1024,
-      multiple: false
+      multiple: false,
     }, function(InkBlob) {
       application = Session.get('application');
       application.resume = InkBlob.url;
@@ -43,10 +44,10 @@ Template.Apply.events({
         'video/3gpp',
         'video/quicktime',
         'video/x-msvideo',
-        'video/x-ms-wmv'
+        'video/x-ms-wmv',
       ],
       maxSize: 10 * 1024 * 1024,
-      multiple: false
+      multiple: false,
     }, function(InkBlob) {
       application = Session.get('application');
       application.videofile = InkBlob.url;
@@ -90,5 +91,5 @@ Template.Apply.events({
         Router.go('/apply/success');
       }
     });
-  }
+  },
 });

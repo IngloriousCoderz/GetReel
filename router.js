@@ -1,5 +1,5 @@
 Router.configure({
-  layoutTemplate: 'Layout'
+  layoutTemplate: 'Layout',
 });
 
 Router.route('/', {name: 'home'});

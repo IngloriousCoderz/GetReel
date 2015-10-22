@@ -9,5 +9,5 @@ Meteor.methods({
     }
 
     Applications.insert(application);
-  }
+  },
 });
