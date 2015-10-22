@@ -1,61 +1,60 @@
 <template name="Apply">
-  <h2>Application Form</h2>
   {{> loginButtons}}
-<div class="row">
-  <div class="col-md-10 col-md-offset-1 form">
-    <ul class="nav nav-tabs">
-      <li class="active"><a href="#tab1" data-toggle="tab">dati anagrafici/allegati</a></li>
-      <li><a href="#tab2" data-toggle="tab">formazione</a></li>
-      <li><a href="#tab3" data-toggle="tab">esperienze professionali</a></li>
-      <li><a href="#tab4" data-toggle="tab">altre informazioni</a></li>
-      <li><a href="#tab5" data-toggle="tab">conosciamoci meglio</a></li>
-      <li><a href="#tab6" data-toggle="tab">consenso privacy</a></li>
-    </ul>
-    <div class="tab-content responsive">
-      <div class="tab-pane active" id="tab1">
-        <form id="tab1"  action="{{pathFor route='apply'}}" method="POST">
-          <div class="form-group">
-            <label for="firstname">Firstname</label>
-            <input id="firstname" type="text" name="firstname" value="{{application.firstname}}" class="form-control" placeholder="e.g. John" />
-          </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 form">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">1.Dati anagrafici/allegati</a></li>
+        <li><a href="#tab2" data-toggle="tab">2.Formazione<span class="glyphicon glyphicon-triangle-right"></span></a></li>
+        <li><a href="#tab3" data-toggle="tab">3.Esperienze professionali</a></li>
+        <li><a href="#tab4" data-toggle="tab">4.Altre informazioni</a></li>
+        <li><a href="#tab5" data-toggle="tab">5.Conosciamoci meglio</a></li>
+        <li><a href="#tab6" data-toggle="tab">6.Consenso privacy</a></li>
+      </ul>
+      <div class="tab-content responsive">
+        <div class="tab-pane active" id="tab1">
+          <form id="tab1"  action="{{pathFor route='apply'}}" method="POST">
+            <div class="form-group">
+              <label for="firstname">Firstname</label>
+              <input id="firstname" type="text" name="firstname" value="{{application.firstname}}" class="form-control" placeholder="e.g. John" />
+            </div>
 
-          <div class="form-group">
-            <label for="lastname">Lastname</label>
-            <input id="lastname" type="text" name="lastname" value="{{application.lastname}}" class="form-control" placeholder="e.g. Smith" />
-          </div>
+            <div class="form-group">
+              <label for="lastname">Lastname</label>
+              <input id="lastname" type="text" name="lastname" value="{{application.lastname}}" class="form-control" placeholder="e.g. Smith" />
+            </div>
 
-          <div class="form-group">
-            <label for="job">Job position</label>
-            <select id="job" name="job" class="form-control">
-              {{#each availableJobs}}
-              <option value="{{_id}}">{{title}}</option>
-              {{/each}}
-            </select>
-          </div>
+            <div class="form-group">
+              <label for="job">Job position</label>
+              <select id="job" name="job" class="form-control">
+                {{#each availableJobs}}
+                <option value="{{_id}}">{{title}}</option>
+                {{/each}}
+              </select>
+            </div>
 
-          <div class="form-group">
-            <label for="resume">Resume</label>
-            <input type="filepicker-dragdrop" id="resume" />
-          </div>
+            <div class="form-group">
+              <label for="resume">Resume</label>
+              <input type="filepicker-dragdrop" id="resume" />
+            </div>
 
-          <div class="form-group">
-            <label for="showreel">Showreel</label>
-            <input type="filepicker-dragdrop" id="showreel" />
-          </div>
+            <div class="form-group">
+              <label for="showreel">Showreel</label>
+              <input type="filepicker-dragdrop" id="showreel" />
+            </div>
 
-          <div class="form-group">
-            <button type="submit" class="btn btn-default">Submit</button>
-          </div>
-        </form>
+            <div class="form-group">
+              <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+          </form>
+        </div>
+        <div class="tab-pane" id="tab2">Formazione</div>
+        <div class="tab-pane" id="tab3">esperienze professionali</div>
+        <div class="tab-pane" id="tab4">altre informazioni</div>
+        <div class="tab-pane" id="tab5">conosciamoci meglio</div>
+        <div class="tab-pane" id="tab6">consenso privacy</div>
       </div>
-      <div class="tab-pane" id="tab2">Formazione</div>
-      <div class="tab-pane" id="tab3">esperienze professionali</div>
-      <div class="tab-pane" id="tab4">altre informazioni</div>
-      <div class="tab-pane" id="tab5">conosciamoci meglio</div>
-      <div class="tab-pane" id="tab6">consenso privacy</div>
     </div>
   </div>
-</div>
 </template>
 
 <template name="ApplySuccess">

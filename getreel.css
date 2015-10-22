@@ -1,19 +1,12 @@
+body {
+  padding-top: 150px;
+ }
+
+
 #login-buttons {
   padding: 10px;
 }
 
-fieldset {
-  border-radius: 5px;
-  border: 7px solid #ccc;
-}
-
-legend {
-  padding: 10px;
-}
-
-header{
-  background: url("/img/lavora.jpg") center no-repeat;
-  height: 100px;}
 
 form-group{
   padding: 10px;
