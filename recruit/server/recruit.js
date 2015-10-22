@@ -3,7 +3,7 @@ Meteor.startup(function() {
     var jobs = [
       {title: 'Select a job position...'},
       {title: 'Haiti Village Photographer'},
-      {title: 'Rapallo On The Beach'}
+      {title: 'Rapallo On The Beach'},
     ];
     jobs.forEach(function(job) {
       Jobs.insert(job);
