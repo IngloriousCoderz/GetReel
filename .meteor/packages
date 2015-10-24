@@ -22,6 +22,7 @@ accounts-facebook
 accounts-twitter
 accounts-google
 pauli:accounts-linkedin
-mizzao:bootstrap-3
 iron:router
 natestrauser:filepicker-plus
+rajit:bootstrap3-datepicker
+twbs:bootstrap

@@ -14,6 +14,20 @@ Template.Apply.helpers({
   },
 });
 
+Template.Apply.rendered = function() {
+    var dates = {
+      calendar1: "datePickerDateOfBirth",
+      calendar2: "datePickerPassportValidFrom",
+      calendar3: "datePickerPassportValidTo"
+    };
+    for (var calendar in dates){
+      $("#" + dates[calendar]).datepicker({
+        autoclose: true,
+        format: 'dd/mm/yyyy'
+      });
+    }
+},
+
 Template.Apply.events({
   'change input, change select': function(e) {
     application = Session.get('application');

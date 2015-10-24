@@ -59,7 +59,6 @@ meteor@1.1.9
 meteor-base@1.0.1
 minifiers@1.1.7
 minimongo@1.0.10
-mizzao:bootstrap-3@3.3.1_1
 mobile-experience@1.0.1
 mobile-status-bar@1.0.6
 mongo@1.1.2
@@ -75,6 +74,7 @@ ordered-dict@1.0.4
 pauli:accounts-linkedin@1.1.2
 pauli:linkedin@1.1.2
 promise@0.5.0
+rajit:bootstrap3-datepicker@1.4.1
 random@1.0.4
 rate-limit@1.0.0
 reactive-dict@1.1.2
@@ -92,6 +92,7 @@ standard-minifiers@1.0.1
 templating@1.1.4
 templating-tools@1.0.0
 tracker@1.0.9
+twbs:bootstrap@3.3.5
 twitter@1.1.5
 ui@1.0.8
 underscore@1.0.4
