@@ -3,255 +3,31 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1 form">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab1" data-toggle="tab">1.Dati anagrafici/allegati</a></li>
-        <li><a href="#tab2" data-toggle="tab">2.Formazione<span class="glyphicon glyphicon-triangle-right"></span></a></li>
-        <li><a href="#tab3" data-toggle="tab">3.Esperienze professionali</a></li>
-        <li><a href="#tab4" data-toggle="tab">4.Altre informazioni</a></li>
-        <li><a href="#tab5" data-toggle="tab">5.Conosciamoci meglio</a></li>
-        <li><a href="#tab6" data-toggle="tab">6.Consenso privacy</a></li>
+        <li><a href="#tab1" data-toggle="tab">1.Dati anagrafici/allegati</a></li>
+        <li class="{{#if isTabDisabled 2}}disabled{{/if}}"><a href="#tab2" data-toggle="tab">2.Formazione<span class="glyphicon glyphicon-triangle-right"></span></a></li>
+        <li class="{{#if isTabDisabled 3}}disabled{{/if}}"><a href="#tab3" data-toggle="tab">3.Esperienze professionali</a></li>
+        <li class="{{#if isTabDisabled 4}}disabled{{/if}}"><a href="#tab4" data-toggle="tab">4.Altre informazioni</a></li>
+        <li class="{{#if isTabDisabled 5}}disabled{{/if}}"><a href="#tab5" data-toggle="tab">5.Conosciamoci meglio</a></li>
+        <li class="{{#if isTabDisabled 6}}disabled{{/if}}"><a href="#tab6" data-toggle="tab">6.Consenso privacy</a></li>
       </ul>
+
       <div class="tab-content responsive">
+          {{> applyGeneralInfo}}
+          {{> applyStudies}}
+
+        <!--
 
         <div class="tab-pane active" id="tab1">
           <form id="tab1"  action="{{pathFor route='apply'}}" method="POST">
 
-            <div class="form-group col-lg-6">
-              <label for="firstname">Firstname</label>
-              <input id="firstname" type="text" name="firstname" value="{{application.firstname}}" class="form-control" placeholder="e.g. John" />
-            </div>
 
-            <div class="form-group col-lg-6">
-              <label for="lastname">Lastname</label>
-              <input id="lastname" type="text" name="lastname" value="{{application.lastname}}" class="form-control" placeholder="e.g. Smith" />
-            </div>
-
-            <div class="form-group col-lg-6">
-              <label for="socialSecurityNumber">Social Security Number</label>
-              <input id="socialSecurityNumber" type="text" name="socialSecurityNumber" value="{{application.socialSecurityNumber}}" class="form-control" placeholder="e.g. 5346879" />
-            </div>
-
-            <div class="form-group col-lg-6">
-                <label for="dateOfBirth">Date of birth</label>
-            <input type="text" class="form-control" value="{{application.dateOfBirth}}" id="datePickerDateOfBirth" placeholder="e.g. 31/12/1980">
-            </div>
-
-            <div class="form-group col-lg-6">
-              <label for="nationality">Nationality</label>
-              <select id="nationality" name="nationality" class="form-control">
-                <option value="USA" selected>USA</option>
-                <option value="UK">UK</option>
-                <option value="ITALY">ITALY</option>
-              </select>
-            </div>
-
-            <div class="form-group col-lg-6">
-              <label for="permit">Permit to stay</label>
-            <form action="">
-              <div class="radio-inline">
-                <label><input type="radio" name="Permit">Yes</label>
-              </div>
-              <div class="radio-inline">
-                <label><input type="radio" name="Permit">No</label>
-              </div>
-              <input id="permit" type="text" name="permit" value="{{application.permitKind}}" class="form-control" placeholder="Kind of permit" />
-            </form>
-            </div>
-
-            <!-- Residenza -->
-
-            <div class="form-group col-lg-6">
-              <label for="residentialParish">Residential parish</label>
-              <input id="residentialParish" type="text" name="residentialParish" value="{{application.residentialParish}}" class="form-control" placeholder="e.g. London" />
-            </div>
-
-            <div class="form-group col-lg-6">
-              <label for="residentialProvince">Province</label>
-              <select id="residentialProvince" name="residentialProvince" class="form-control">
-                <option value="Winchestershire" selected>Winchestershrine</option>
-                <option value="Coltshire">Coltshire</option>
-                <option value="Berettashire">Berettashire</option>
-              </select>
-            </div>
-
-            <div class="form-group col-lg-6">
-              <label for="residentialCap">Residential Cap</label>
-              <input id="residentialCap" type="text" name="residentialCap" value="{{application.residentialCap}}" class="form-control" placeholder="e.g. 00100" />
-            </div>
-
-
-            <div class="form-group col-lg-4">
-
-              <label for="residentialAddress">Residential address</label>
-              <input id="residentialAddress" type="text" name="residentialAddress" value="{{application.residentialAddress}}" class="form-control" placeholder="e.g. Huffingthon St." />
-            </div>
-
-            <div class="form-group col-lg-2">
-              <label for="residentialNumber">Number</label>
-              <input id="residentialNumber" type="text" name="residentialNumber" value="{{application.residentialNumber}}" class="form-control" placeholder="e.g. 127" />
-            </div>
-
-            <!-- Domicilio -->
-
-            <div class="form-group col-lg-6">
-              <label for="domicileParish">Domicile parish</label>
-              <input id="domicileParish" type="text" name="domicileParish" value="{{application.domicileParish}}" class="form-control" placeholder="e.g. Cambrige" />
-            </div>
-
-            <div class="form-group col-lg-6">
-              <label for="domicileProvince">Domicile province</label>
-              <select id="domicileProvince" name="domicileProvince" class="form-control">
-                <option value="Winchestershire" selected>Winchestershrine</option>
-                <option value="Coltshire">Coltshire</option>
-                <option value="Berettashire">Berettashire</option>
-              </select>
-            </div>
-
-            <div class="form-group col-lg-6">
-              <label for="DomicileCap">Domicile Cap</label>
-              <input id="DomicileCap" type="text" name="DomicileCap" value="{{application.DomicileCap}}" class="form-control" placeholder="e.g. 00100" />
-            </div>
-
-
-            <div class="form-group col-lg-4">
-
-              <label for="DomicileAddress">Domicile address</label>
-              <input id="DomicileAddress" type="text" name="DomicileAddress" value="{{application.DomicileAddress}}" class="form-control" placeholder="e.g. Huffingthon St." />
-            </div>
-
-            <div class="form-group col-lg-2">
-              <label for="DomicileNumber">Number</label>
-              <input id="DomicileNumber" type="text" name="DomicilNumber" value="{{application.DomicileNumber}}" class="form-control" placeholder="e.g. 127" />
-            </div>
-
-            <div class="form-group col-lg-6">
-              <label for="domicilRegion">Domicile Region</label>
-              <select id="domicilRegion" name="domicilRegion" class="form-control">
-                <option value="NORTH" selected>NORTH</option>
-                <option value="WEST">WEST</option>
-                <option value="SOUTH">SOUTH</option>
-              </select>
-            </div>
-
-            <div class="form-group col-lg-6">
-              <label for="domicileNation">Domicile Nation</label>
-              <select id="domicileNation" name="domicileNation" class="form-control">
-                <option value="USA" selected>USA</option>
-                <option value="UK">UK</option>
-                <option value="ITALY">ITALY</option>
-              </select>
-            </div>
-
-            <!-- Telefono casa, cellulare , Email -->
-
-            <div class="form-group col-lg-3">
-              <label for="telephoneHome">Telephone (home)</label>
-              <input id="telephoneHome" type="text" name="telephoneHome" value="{{application.telephoneHome}}" class="form-control" placeholder="e.g. 555-020304" />
-            </div>
-
-            <div class="form-group col-lg-3">
-              <label for="cellPhone">Mobile phone</label>
-              <input id="cellPhone" type="text" name="cellPhone" value="{{application.cellPhone}}" class="form-control" placeholder="e.g. 356-58662535" />
-            </div>
-
-            <div class="form-group col-lg-6">
-              <label for="email">E-mail</label>
-              <input id="email" type="text" name="email" value="{{application.email}}" class="form-control" placeholder="e.g. whois@that.com" />
-            </div>
-
-              <!-- Stato civile, figli -->
-
-              <div class="form-group col-lg-6">
-                <label for="maritalStatus">Marital status</label>
-                <select id="maritalStatus" name="maritalStatus" class="form-control">
-                  <option value="SINGLE" selected>SINGLE</option>
-                  <option value="WHAT'S FREEDOM?">WHAT'S FREEDOM?</option>
-                  <option value="USED TO ASK WHAT'S FREEDOM">USED TO ASK WHAT'S FREEDOM</option>
-                </select>
-              </div>
-
-              <div class="form-group col-lg-6">
-                <label for="children">Children</label>
-                <input id="children" type="text" name="children" value="{{application.children}}" class="form-control" placeholder="e.g. 3" />
-              </div>
-
-              <!-- Passaporto -->
-
-              <div class="form-group col-lg-6">
-                <label for="Passport">Passport</label>
-              <form action="">
-                <div class="radio-inline">
-                  <label><input type="radio" name="Passport">Yes</label>
-                </div>
-                <div class="radio-inline">
-                  <label><input type="radio" name="Passport">No</label>
-                </div>
-              </form>
-                <input id="passport" type="text" name="Passport" value="{{application.passport}}" class="form-control" placeholder="Passport number" />
-              </div>
-
-              <div class="form-group col-lg-3">
-                  <label for="dateValidFrom">Valid from</label>
-                  <br>
-              <input type="text" class="form-control" value="{{application.dateValidFrom}}" id="datePickerPassportValidFrom" placeholder="e.g. 31/12/2010">
-              </div>
-
-              <div class="form-group col-lg-3">
-                  <label for="dateValidTo">Valid to</label>
-                  <br>
-              <input type="text" class="form-control" value="{{application.dateValidTo}}" id="datePickerPassportValidTo" placeholder="e.g. 31/12/2016">
-              </div>
-
-              <div class="form-group col-lg-6">
-                <label for="job">Job position</label>
-                <select id="job" name="job" class="form-control">
-                  {{#each availableJobs}}
-                  <option value="{{_id}}">{{title}}</option>
-                  {{/each}}
-                </select>
-              </div>
-
-              <!-- Patente -->
-
-              <div class="form-group col-lg-6">
-                <label for="DrivingLicence">Driving licence</label>
-              <form action="">
-                <div class="radio-inline">
-                  <label><input type="radio" name="DrivingLicence">Yes</label>
-                </div>
-                <div class="radio-inline">
-                  <label><input type="radio" name="DrivingLicence">No</label>
-                </div>
-              </form>
-              </div>
-
-              <div class="form-group col-lg-6">
-                <label for="carOwner">car owner</label>
-              <form action="">
-                <div class="radio-inline">
-                  <label><input type="radio" name="carOwner">Yes</label>
-                </div>
-                <div class="radio-inline">
-                  <label><input type="radio" name="carOwner">No</label>
-                </div>
-              </form>
-              </div>
-
-            <div class="form-group col-lg-12">
-              <label for="resume">Resume</label>
-              <input type="filepicker-dragdrop" id="resume" />
-            </div>
-
-            <div class="form-group col-lg-12">
-              <label for="showreel">Showreel</label>
-              <input type="filepicker-dragdrop" id="showreel" />
-            </div>
-
-            <div class="form-group col-lg-12">
-              <button type="submit" class="btn btn-default">Submit</button>
-            </div>
           </form>
         </div>
-        <div class="tab-pane" id="tab2">Formazione</div>
+
+      -->
+
+
+        <!--<div class="tab-pane" id="tab2">Formazione</div>-->
         <div class="tab-pane" id="tab3">esperienze professionali</div>
         <div class="tab-pane" id="tab4">altre informazioni</div>
         <div class="tab-pane" id="tab5">conosciamoci meglio</div>

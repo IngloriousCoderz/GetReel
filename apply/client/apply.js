@@ -2,11 +2,15 @@ loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
 
 Meteor.subscribe('availableJobs');
 
-Session.set('application', {});
+Session.set('application', {step: 1});
 
 Template.Apply.helpers({
   application: function() {
     return Session.get('application');
+  },
+
+  isTabDisabled: function(tabNumber) {
+    return tabNumber > Session.get('application').step;
   },
 
   availableJobs: function() {
@@ -15,20 +19,28 @@ Template.Apply.helpers({
 });
 
 Template.Apply.rendered = function() {
-    var dates = {
-      calendar1: "datePickerDateOfBirth",
-      calendar2: "datePickerPassportValidFrom",
-      calendar3: "datePickerPassportValidTo"
-    };
-    for (var calendar in dates){
-      $("#" + dates[calendar]).datepicker({
-        autoclose: true,
-        format: 'dd/mm/yyyy'
-      });
-    }
+  var dates = {
+    calendar1: 'datePickerDateOfBirth',
+    calendar2: 'datePickerPassportValidFrom',
+    calendar3: 'datePickerPassportValidTo',
+  };
+  for (var calendar in dates) {
+    $('#' + dates[calendar]).datepicker({
+      autoclose: true,
+      format: 'dd/mm/yyyy',
+    });
+  }
 },
 
 Template.Apply.events({
+  'shown.bs.tab a[data-toggle="tab"]': function(e) {
+    var application = Session.get('application');
+    application.step = $(e.target).attr('href').slice(4);
+    Session.set('application', application);
+
+    console.log(Session.get('application'));
+  },
+
   'change input, change select': function(e) {
     application = Session.get('application');
     application[e.target.name] = e.target.value;

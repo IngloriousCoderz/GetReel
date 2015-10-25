@@ -2,6 +2,10 @@ Router.configure({
   layoutTemplate: 'Layout',
 });
 
-Router.route('/', {name: 'home'});
-Router.route('/apply');
-Router.route('/apply/success', {name: 'apply.success'});
+Router.map(function() {
+  this.route('/', {name: 'home'});
+  this.route('/apply');
+  this.route('/apply/general-info');
+  this.route('/apply/studies');
+  this.route('/apply/success', {name: 'apply.success'});
+});
