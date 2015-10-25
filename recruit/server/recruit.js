@@ -9,4 +9,8 @@ Meteor.startup(function() {
       Jobs.insert(job);
     });
   }
+
+  Meteor.publish('applications', function() {
+    return Applications.find();
+  });
 });

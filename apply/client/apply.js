@@ -1,5 +1,3 @@
-loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
-
 Meteor.subscribe('availableJobs');
 
 Session.set('application', {});
@@ -15,6 +13,7 @@ Template.Apply.helpers({
 });
 
 Template.Apply.rendered = function() {
+  loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
     var dates = {
       calendar1: "datePickerDateOfBirth",
       calendar2: "datePickerPassportValidFrom",
