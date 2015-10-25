@@ -1,3 +1,4 @@
+Regions = new Mongo.Collection('regions');
 Jobs = new Mongo.Collection('jobs');
 Applications = new Mongo.Collection('applications');
 

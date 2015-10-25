@@ -1,5 +1,3 @@
-loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
-
 Meteor.subscribe('availableJobs');
 
 Session.set('application', {step: 1});
@@ -19,6 +17,7 @@ Template.Apply.helpers({
 });
 
 Template.Apply.rendered = function() {
+  loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
 
   $('#formtab').validate();
   $('#steps li:eq(' + (Session.get('application').step - 1) + ') a').tab('show');
