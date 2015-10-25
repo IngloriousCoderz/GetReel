@@ -7,5 +7,13 @@ Template.applications.helpers({
 });
 
 Template.applications.rendered = function() {
-  $('#applications').DataTable();
+  $('#applications').dataTable({
+    searching: false,
+    scrollX: true,
+    pagingType: 'full_numbers',
+    language: {
+      decimal: ',',
+      thousands: '.',
+    },
+  });
 };

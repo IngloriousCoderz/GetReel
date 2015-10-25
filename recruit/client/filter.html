@@ -1,0 +1,83 @@
+<template name="filter">
+  <form id="filter" class="col-lg-2">
+    <fieldset>
+      <legend>creation date</legend>
+      <div class="form-group">
+        <div class="checkbox col-xs-2">
+          <label>
+            <input type="checkbox" id="createdAt-not" name="createdAt-not" /> not
+          </label>
+        </div>
+        <div class="col-xs-10">
+          <select id="createdAt-criterion" name="createdAt-criterion" class="form-control">
+            <option value="eq">equals</option>
+            <option value="gt">more than</option>
+            <option value="lt">less than</option>
+            <option value="between">between</option>
+            <option value="empty">empty</option>
+          </select>
+        </div>
+        <input type="date" id="createdAt" name="createdAt" class="form-control" />
+      </div>
+    </fieldset>
+    <div class="form-group">
+      <label for="recruiter">recruiter</label>
+      <select id="recruiter" name="recruiter" class="form-control">
+        <option value="1">Tizio</option>
+        <option value="2">Caio</option>
+        <option value="3">Sempronio</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="firstname">firstname</label>
+      <input id="firstname" name="firstname" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="lastname">lastname</label>
+      <input id="lastname" name="lastname" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="age">age</label>
+      <input type="number" id="age" name="age" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="mobile">mobile phone</label>
+      <input id="mobile" name="mobile" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="status">status</label>
+      <select id="status" name="status" class="form-control">
+        <option>Please choose one</option>
+        <option value="0">Unassigned</option>
+        <option value="1">Pending</option>
+        <option value="2">Rejected</option>
+        <option value="3">Ok</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="region">region</label>
+      <select id="region" name="region" class="form-control">
+        <option value="13">Abruzzo</option>
+        <option value="17">Basilicata</option>
+        <option value="18">Calabria</option>
+        <option value="15">Campania</option>
+        <option value="8">Emilia-Romagna</option>
+        <option value="6">Friuli-Venezia Giulia</option>
+        <option value="12">Lazio</option>
+        <option value="7">Liguria</option>
+        <option value="3">Lombardia</option>
+        <option value="11">Marche</option>
+        <option value="14">Molise</option>
+        <option value="1">Piemonte</option>
+        <option value="16">Puglia</option>
+        <option value="20">Sardegna</option>
+        <option value="19">Sicilia</option>
+        <option value="9">Toscana</option>
+        <option value="4">Trentino-Alto Adige</option>
+        <option value="10">Umbria</option>
+        <option value="2">Valle d'Aosta</option>
+        <option value="5">Veneto</option>
+      </select>
+    </div>
+  </form>
+</template>
