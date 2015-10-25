@@ -7,10 +7,18 @@ Template.applications.helpers({
   },
 
   formatDate: function(date) {
+    if (typeof date === 'undefined') {
+      return null;
+    }
+
     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
   },
 
   regionName: function(id) {
+    if (typeof id === 'undefined') {
+      return null;
+    }
+
     return Regions.findOne({id: id}).name;
   },
 });
