@@ -97,7 +97,7 @@ Template.Apply.events({
         application.videofile = fileObj._id;
       });
     }*/
-
+    console.log("client:submit/application:", JSON.stringify(application, null, '\t'));
     Meteor.call('submit', application, function(error, result) {
       if (error) {
         alert('Have you signed in yet? Please do it now');
