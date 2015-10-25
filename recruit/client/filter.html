@@ -48,10 +48,9 @@
       <label for="status">status</label>
       <select id="status" name="status" class="form-control">
         <option>Please choose one</option>
-        <option value="0">Unassigned</option>
-        <option value="1">Pending</option>
-        <option value="2">Rejected</option>
-        <option value="3">Ok</option>
+        {{#each statuses}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
       </select>
     </div>
     <div class="form-group">
