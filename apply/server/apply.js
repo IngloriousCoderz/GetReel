@@ -8,6 +8,9 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
+    console.log("server:submit/application:", JSON.stringify(application, null, '\t'));
     Applications.insert(application);
   },
 });
+
+

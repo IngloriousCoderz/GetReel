@@ -2,6 +2,9 @@ Router.configure({
   layoutTemplate: 'Layout',
 });
 
-Router.route('/', {name: 'home'});
-Router.route('/apply');
-Router.route('/apply/success', {name: 'apply.success'});
+Router.map(function() {
+  this.route('/', {name: 'home'});
+  this.route('/apply');
+  this.route('/apply/success', {name: 'apply.success'});
+  this.route('/recruit', {name: 'private.area'});
+});
