@@ -1,0 +1,65 @@
+<template name="filter">
+  <form id="filter" class="col-lg-2">
+    <fieldset>
+      <legend>creation date</legend>
+      <div class="form-group">
+        <div class="checkbox col-xs-2">
+          <label>
+            <input type="checkbox" id="createdAt-not" name="createdAt-not" /> not
+          </label>
+        </div>
+        <div class="col-xs-10">
+          <select id="createdAt-criterion" name="createdAt-criterion" class="form-control">
+            <option value="eq">equals</option>
+            <option value="gt">more than</option>
+            <option value="lt">less than</option>
+            <option value="between">between</option>
+            <option value="empty">empty</option>
+          </select>
+        </div>
+        <input type="date" id="createdAt" name="createdAt" class="form-control" />
+      </div>
+    </fieldset>
+    <div class="form-group">
+      <label for="recruiter">recruiter</label>
+      <select id="recruiter" name="recruiter" class="form-control">
+        <option value="1">Tizio</option>
+        <option value="2">Caio</option>
+        <option value="3">Sempronio</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="firstname">firstname</label>
+      <input id="firstname" name="firstname" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="lastname">lastname</label>
+      <input id="lastname" name="lastname" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="age">age</label>
+      <input type="number" id="age" name="age" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="mobile">mobile phone</label>
+      <input id="mobile" name="mobile" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="status">status</label>
+      <select id="status" name="status" class="form-control">
+        <option>Please choose one</option>
+        {{#each statuses}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="region">region</label>
+      <select id="region" name="region" class="form-control">
+        {{#each regions}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </form>
+</template>

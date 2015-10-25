@@ -1,0 +1,48 @@
+<template name="applications">
+  <div class="col-lg-10">
+    <table id="applications">
+      <thead>
+        <tr>
+          <th>edit</th>
+          <th>select</th>
+          <th>activities</th>
+          <th>mail</th>
+          <th>creation date</th>
+          <th>first name</th>
+          <th>last name</th>
+          <th>age</th>
+          <th>city</th>
+          <th>province</th>
+          <th>region</th>
+          <th>mobile</th>
+          <th>experience as photographer</th>
+          <th>experience as other</th>
+          <th>photo</th>
+          <th>recruiter</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each applications}}
+        <tr>
+          <td></td>
+          <td><input type="checkbox" /></td>
+          <td><a href="#">activities</a></td>
+          <td>{{email}}</td>
+          <td>{{formatDate createdAt}}</td>
+          <td>{{firstname}}</td>
+          <td>{{lastname}}</td>
+          <td>{{age}}</td>
+          <td>{{city}}</td>
+          <td>{{province}}</td>
+          <td>{{regionName region}}</td>
+          <td>{{mobile}}</td>
+          <td>{{experienceAsPhotographer}}</td>
+          <td>{{experienceAsOther}}</td>
+          <td>{{photo}}</td>
+          <td>{{status.recruiter}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>

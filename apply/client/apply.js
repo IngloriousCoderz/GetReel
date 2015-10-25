@@ -1,5 +1,3 @@
-loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
-
 Meteor.subscribe('availableJobs');
 
 Session.set('application', {step: 1});
@@ -19,6 +17,11 @@ Template.Apply.helpers({
 });
 
 Template.Apply.rendered = function() {
+  loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
+
+  $('#formtab').validate();
+  $('#steps li:eq(' + (Session.get('application').step - 1) + ') a').tab('show');
+
   var dates = {
     calendar1: 'datePickerDateOfBirth',
     calendar2: 'datePickerPassportValidFrom',
@@ -91,31 +94,9 @@ Template.Apply.events({
   'submit form': function(e) {
     e.preventDefault();
     var form = e.target;
-
     application = Session.get('application');
     application.createdAt = new Date();
     application.applicant = Meteor.userId();
-
-    /* TODO: form validation */
-    /*for (name in application) {
-      var arg = application[name];
-      if (arg === undefined || arg === null || arg === '') {
-        alert('Please fill in all form values');
-        return;
-      }
-    };*/
-
-    /*if (form.resume) {
-      Resumes.insert(form.resume, function(err, fileObj) {
-        application.resume = fileObj._id;
-      });
-    }
-
-    if (form.videofile) {
-      Showreels.insert(form.videofile, function(err, fileObj) {
-        application.videofile = fileObj._id;
-      });
-    }*/
 
     Meteor.call('submit', application, function(error, result) {
       if (error) {
