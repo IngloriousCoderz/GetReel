@@ -27,6 +27,18 @@ Meteor.startup(function() {
     });
   }
 
+  if (Statuses.find().count() === 0) {
+    var statuses = [
+      {id: 0, name: 'unassigned'},
+      {id:1, name: 'pending'},
+      {id: 2, name: 'rejected'},
+      {id: 3, name: 'ok'},
+    ];
+    statuses.forEach(function(status) {
+      Statuses.insert(status);
+    });
+  }
+
   if (Jobs.find().count() === 0) {
     var jobs = [
       {title: 'Select a job position...'},
@@ -110,9 +122,9 @@ Meteor.startup(function() {
       experienceAsPhotographer: 'YES',
       experienceAsOther: 'NO',
     };
-    fakeApplication.status.current = ['unassigned', 'assigned'][Math.floor(Math.random() * 2)];
-    if (fakeApplication.status.current === 'assigned') {
-      fakeApplication.status.to = 'recruiter';
+    fakeApplication.status.current = [0, 1, 2, 3][Math.floor(Math.random() * 2)];
+    if (fakeApplication.status.current > 0) {
+      fakeApplication.status.recruiter = 'recruiter';
     }
 
     fakeApplication.email = fakeApplication.firstname + '.' + fakeApplication.lastname + '@getreel.test';
@@ -126,6 +138,10 @@ Meteor.startup(function() {
   }
 
   //console.log("application", i, ":", fakeApplication);
+});
+
+Meteor.publish('statuses', function() {
+  return Statuses.find();
 });
 
 Meteor.publish('regions', function() {
