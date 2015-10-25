@@ -33,12 +33,19 @@ Template.Apply.rendered = function() {
 },
 
 Template.Apply.events({
-  'shown.bs.tab a[data-toggle="tab"]': function(e) {
+  'click #steps a': function(e) {
+    e.preventDefault();
+
+    var $link = $(e.target);
+    if ($link.parent('li').hasClass('disabled')) {
+      return;
+    }
+
     var application = Session.get('application');
-    application.step = $(e.target).attr('href').slice(4);
+    application.step = $link.attr('href').slice(4);
     Session.set('application', application);
 
-    console.log(Session.get('application'));
+    $link.tab('show');
   },
 
   'change input, change select': function(e) {
