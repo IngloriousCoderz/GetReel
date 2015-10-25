@@ -57,26 +57,9 @@
     <div class="form-group">
       <label for="region">region</label>
       <select id="region" name="region" class="form-control">
-        <option value="13">Abruzzo</option>
-        <option value="17">Basilicata</option>
-        <option value="18">Calabria</option>
-        <option value="15">Campania</option>
-        <option value="8">Emilia-Romagna</option>
-        <option value="6">Friuli-Venezia Giulia</option>
-        <option value="12">Lazio</option>
-        <option value="7">Liguria</option>
-        <option value="3">Lombardia</option>
-        <option value="11">Marche</option>
-        <option value="14">Molise</option>
-        <option value="1">Piemonte</option>
-        <option value="16">Puglia</option>
-        <option value="20">Sardegna</option>
-        <option value="19">Sicilia</option>
-        <option value="9">Toscana</option>
-        <option value="4">Trentino-Alto Adige</option>
-        <option value="10">Umbria</option>
-        <option value="2">Valle d'Aosta</option>
-        <option value="5">Veneto</option>
+        {{#each regions}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
       </select>
     </div>
   </form>
