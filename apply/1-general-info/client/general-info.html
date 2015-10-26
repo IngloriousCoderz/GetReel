@@ -4,22 +4,22 @@
 
       <div class="form-group col-lg-6">
         <label for="firstname">Firstname</label>
-        <input id="firstname" type="text" name="firstname" value="{{application.firstname}}" class="required form-control" placeholder="e.g. John" />
+        <input id="firstname" type="text" name="field" value="{{application.firstname}}" class="form-control" placeholder="e.g. John"  />
       </div>
 
       <div class="form-group col-lg-6">
         <label for="lastname">Lastname</label>
-        <input id="lastname" type="text" name="lastname" value="{{application.lastname}}" class="form-control required" placeholder="e.g. Smith" />
+        <input id="lastname" type="text" name="field" value="{{application.lastname}}" class="form-control" placeholder="e.g. Smith"  />
       </div>
 
       <div class="form-group col-lg-6">
         <label for="socialSecurityNumber">Social Security Number</label>
-        <input id="socialSecurityNumber" type="text"  name="socialSecurityNumber" value="{{application.socialSecurityNumber}}" class="required form-control" placeholder="e.g. 5346879" />
+        <input id="socialSecurityNumber" type="text"  name="field" value="{{application.socialSecurityNumber}}" class="form-control" placeholder="e.g. 5346879"  />
       </div>
 
       <div class="form-group col-lg-6">
           <label for="dateOfBirth">Date of birth</label>
-      <input type="text" class="required form-control"  value="{{application.dateOfBirth}}" id="datePickerDateOfBirth" placeholder="e.g. 31/12/1980">
+      <input type="text" class="form-control"  value="{{application.dateOfBirth}}" id="datePickerDateOfBirth" placeholder="e.g. 31/12/1980" name="field"  />
       </div>
 
       <div class="form-group col-lg-6">
@@ -49,12 +49,12 @@
 
       <div class="form-group col-lg-6">
         <label for="residentialParish">Residential parish</label>
-        <input id="residentialParish"  type="text" name="residentialParish" value="{{application.residentialParish}}" class="form-control" placeholder="e.g. London" />
+        <input id="residentialParish"  type="text" name="field" value="{{application.residentialParish}}" class="form-control" placeholder="e.g. London" />
       </div>
 
       <div class="form-group col-lg-6">
         <label for="residentialProvince">Province</label>
-        <select id="residentialProvince" name="residentialProvince" class="form-control">
+        <select id="residentialProvince" name="field" class="form-control">
           <option value="Winchestershire" selected>Winchestershrine</option>
           <option value="Coltshire">Coltshire</option>
           <option value="Berettashire">Berettashire</option>
@@ -63,26 +63,26 @@
 
       <div class="form-group col-lg-6">
         <label for="residentialCap">Residential Cap</label>
-        <input id="residentialCap"  type="text" name="residentialCap" value="{{application.residentialCap}}" class="form-control" placeholder="e.g. 00100" />
+        <input id="residentialCap"  type="text" name="field" value="{{application.residentialCap}}" class="form-control" placeholder="e.g. 00100" />
       </div>
 
 
       <div class="form-group col-lg-4">
 
         <label for="residentialAddress">Residential address</label>
-        <input id="residentialAddress"  type="text" name="residentialAddress" value="{{application.residentialAddress}}" class="form-control" placeholder="e.g. Huffingthon St." />
+        <input id="residentialAddress"  type="text" name="field" value="{{application.residentialAddress}}" class="form-control" placeholder="e.g. Huffingthon St." />
       </div>
 
       <div class="form-group col-lg-2">
         <label for="residentialNumber">Number</label>
-        <input id="residentialNumber"  type="text" name="residentialNumber" value="{{application.residentialNumber}}" class="form-control" placeholder="e.g. 127" />
+        <input id="residentialNumber"  type="text" name="field" value="{{application.residentialNumber}}" class="form-control" placeholder="e.g. 127" />
       </div>
 
       <!-- Domicilio -->
 
       <div class="form-group col-lg-6">
         <label for="domicileParish">Domicile parish</label>
-        <input id="domicileParish"  type="text" name="domicileParish" value="{{application.domicileParish}}" class="form-control" placeholder="e.g. Cambrige" />
+        <input id="domicileParish"  type="text" name="field" value="{{application.domicileParish}}" class="form-control" placeholder="e.g. Cambrige" />
       </div>
 
       <div class="form-group col-lg-6">
@@ -96,19 +96,19 @@
 
       <div class="form-group col-lg-6">
         <label for="DomicileCap">Domicile Cap</label>
-        <input id="DomicileCap"  type="text" name="DomicileCap" value="{{application.DomicileCap}}" class="form-control" placeholder="e.g. 00100" />
+        <input id="DomicileCap"  type="text" name="field" value="{{application.DomicileCap}}" class="form-control" placeholder="e.g. 00100" />
       </div>
 
 
       <div class="form-group col-lg-4">
 
         <label for="DomicileAddress">Domicile address</label>
-        <input id="DomicileAddress"  type="text" name="DomicileAddress" value="{{application.DomicileAddress}}" class="form-control" placeholder="e.g. Huffingthon St." />
+        <input id="DomicileAddress"  type="text" name="field" value="{{application.DomicileAddress}}" class="form-control" placeholder="e.g. Huffingthon St." />
       </div>
 
       <div class="form-group col-lg-2">
         <label for="DomicileNumber">Number</label>
-        <input id="DomicileNumber"  type="text" name="DomicilNumber" value="{{application.DomicileNumber}}" class="form-control" placeholder="e.g. 127" />
+        <input id="DomicileNumber"  type="text" name="field" value="{{application.DomicileNumber}}" class="form-control" placeholder="e.g. 127" />
       </div>
 
       <div class="form-group col-lg-6">
@@ -133,12 +133,12 @@
 
       <div class="form-group col-lg-3">
         <label for="telephoneHome">Telephone (home)</label>
-        <input id="telephoneHome"  type="text" name="telephoneHome" value="{{application.telephoneHome}}" class="form-control" placeholder="e.g. 555-020304" />
+        <input id="telephoneHome"  type="text" name="field" value="{{application.telephoneHome}}" class="form-control" placeholder="e.g. 555-020304" />
       </div>
 
       <div class="form-group col-lg-3">
         <label for="cellPhone">Mobile phone</label>
-        <input id="cellPhone"  type="text" name="cellPhone" value="{{application.cellPhone}}" class="form-control" placeholder="e.g. 356-58662535" />
+        <input id="cellPhone"  type="text" name="field" value="{{application.cellPhone}}" class="form-control" placeholder="e.g. 356-58662535" />
       </div>
 
       <div class="form-group col-lg-6">
@@ -161,7 +161,7 @@
 
         <div class="form-group col-lg-6">
           <label for="children">Children</label>
-          <input id="children"  type="text" name="children" value="{{application.children}}" class="form-control" placeholder="e.g. 3" />
+          <input id="children"  type="text" name="field" value="{{application.children}}" class="form-control" placeholder="e.g. 3" />
         </div>
 
         <!-- Passaporto -->
@@ -236,6 +236,7 @@
 
       <div class="form-group col-lg-12">
         <button type="submit" class="btn btn-default">Submit</button>
+      <!--  <p><input type="submit" value="Click" id="btnSubmit"></p> -->
       </div>
   </form>
 </div>

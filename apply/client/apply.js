@@ -19,7 +19,6 @@ Template.Apply.helpers({
 Template.Apply.rendered = function() {
   loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
 
-  $('#formtab').validate();
   $('#steps li:eq(' + (Session.get('application').step - 1) + ') a').tab('show');
 
   var dates = {
@@ -35,7 +34,67 @@ Template.Apply.rendered = function() {
   }
 },
 
+//--------------Test
+Template.Apply.onCreated(function(){
+    console.log("The 'login' template was just created.");
+});
+
+$.validator.setDefaults({
+  debug: true,
+  success: "valid",
+  rules: {
+      field: {
+          required: true,
+      },
+      email: {
+          required: true,
+          email: true
+      },
+  },
+  messages: {
+      email: {
+          required: "You must enter an email address."
+      },
+      field: {
+          required: "You must enter something"
+      }
+  }
+});
+
+
+
+
+Template.Apply.onRendered(function(){
+    $('#formtab').validate();
+
+    console.log("The 'login' template was just rendered.");
+
+});
+/*
+$('#formtab').bind('change keyup', function() {
+  if($(this).validate().checkForm()) {
+      $('#btnSubmit').removeClass('button_disabled').attr('disabled', false);
+  } else {
+      $('#btnSubmit').addClass('button_disabled').attr('disabled', true);
+  }
+});*/
+
+
+
+
+Template.Apply.onDestroyed(function(){
+    console.log("The 'login' template was just destroyed.");
+});
+//--------------End Test
+
+
+
+
+
+
+
 Template.Apply.events({
+
   'click #steps a': function(e) {
     e.preventDefault();
 
@@ -93,6 +152,7 @@ Template.Apply.events({
 
   'submit form': function(e) {
     e.preventDefault();
+
     var form = e.target;
     application = Session.get('application');
     application.createdAt = new Date();
@@ -105,5 +165,6 @@ Template.Apply.events({
         Router.go('/apply/success');
       }
     });
+
   },
 });
