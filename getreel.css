@@ -75,17 +75,20 @@ form-group{
 .nav-pills li:first-child a {
 	padding-left: 10px;
 }
-.nav-pills li:nth-child(2) a       { background:        hsla(206,100%,44%,1); }
-.nav-pills li:nth-child(2) a:after { border-left-color: hsla(206,100%,44%,1) }
-.nav-pills li:nth-child(3) a       { background:        hsla(206,100%,59%,1) }
-.nav-pills li:nth-child(3) a:after { border-left-color: hsla(206,100%,59%,1) }
-.nav-pills li:nth-child(4) a       { background:        hsla(206,100%,69%,1) }
-.nav-pills li:nth-child(4) a:after { border-left-color: hsla(206,100%,69%,1) }
+
+/*.nav-pills li:nth-child(n+2) a       { background:        #ddd; }
+.nav-pills li:nth-child(n+2) a:after { border-left-color: #ddd; }
+.nav-pills li:nth-child(n-2) a       { background:        hsla(206,100%,44%,1); }
+.nav-pills li:nth-child(n-2) a:after { border-left-color: hsla(206,100%,44%,1) }
+.nav-pills li:nth-child(n-3) a       { background:        hsla(206,100%,59%,1) }
+.nav-pills li:nth-child(n-3) a:after { border-left-color: hsla(206,100%,59%,1) }
+.nav-pills li:nth-child(n-4) a       { background:        hsla(206,100%,69%,1) }
+.nav-pills li:nth-child(n-4) a:after { border-left-color: hsla(206,100%,69%,1) }
 .nav-pills li:nth-child(5) a       { background:        hsla(206,100%,79%,1) }
 .nav-pills li:nth-child(5) a:after { border-left-color: hsla(206,100%,79%,1) }
 .nav-pills li:nth-child(6) a       { background:        hsla(206,100%,89%,1) }
 .nav-pills li:nth-child(6) a:after { border-left-color: hsla(206,100%,89%,1) }
-/*.nav-pills li:last-child a {
+.nav-pills li:last-child a {
 	background: transparent !important;
 	color: black;
 	pointer-events: none;
@@ -95,8 +98,18 @@ form-group{
 .nav-pills li a:hover { background: hsla(206,100%,29%,1); }
 .nav-pills li a:hover:after { border-left-color: hsla(206,100%,29%,1) !important; }
 
-.nav-pills li.disabled a:hover { background: hsla(206,100%,29%,1) }
-.nav-pills li.disabled a:hover:after { border-left-color: hsla(206,100%,29%,1) !important; }
+.nav-pills > li.disabled { background: #ddd }
+.nav-pills > li.disabled a{ background: #ddd }
+.nav-pills > li.disabled a:hover { background: #ddd }
+.nav-pills > li.disabled a:after { border-left-color: #ddd !important; }
 
-.nav-pills li.active a { background: hsla(206,100%,29%,1); }
-.nav-pills li a:hover:after { border-left-color: hsla(206,100%,29%,1) !important; }
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  color: #fff;
+  background-color: hsla(206,100%,29%,1);
+  border-left-color: hsla(206,100%,29%,1) !important;
+}
+
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover:after { border-left-color: hsla(206,100%,29%,1) !important; }
