@@ -23,13 +23,17 @@ Template.applyGeneralInfo.rendered = function() {
     },
 
     onSuccess: function(formData, formHandle) {
+      /*
       Meteor.call('submit', application, function(error, result) {
         if (error) {
           alert('Have you signed in yet? Please do it now');
         } else {
           Router.go('/apply/success');
         }
-      });
+      });*/
+      var application = Session.get('application');
+      application.step = 2;
+      Session.set('application', application);
 
       Shower.Utils.successCallback(formData, formHandle);
     },
