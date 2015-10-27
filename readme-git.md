@@ -8,4 +8,5 @@
 
 **CLI** : `git checkout {{nome branch}}`
 
+**CLI** : `git merge master`
 
