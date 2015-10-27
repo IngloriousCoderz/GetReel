@@ -19,6 +19,10 @@ Template.Apply.helpers({
 Template.Apply.rendered = function() {
   loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
 
+
+
+
+
   $('#steps li:eq(' + (Session.get('application').step - 1) + ') a').tab('show');
 
   var dates = {
@@ -38,7 +42,7 @@ Template.Apply.rendered = function() {
 Template.Apply.onCreated(function(){
     console.log("The 'login' template was just created.");
 });
-
+/*
 $.validator.setDefaults({
   debug: true,
   success: "valid",
@@ -60,12 +64,40 @@ $.validator.setDefaults({
       }
   }
 });
-
+*/
 
 
 
 Template.Apply.onRendered(function(){
-    $('#formtab').validate();
+  /*  $('#formtab').validate();*/
+  Shower({
+    name: "formValidation",
+    fields: {
+        firstname: {
+            required: true,
+            message: "Hai toppato"
+        },
+        lastname: {
+            required: true,
+            message: "Cognome da inserire"
+        }
+    },
+    onFailure: function(erroredFields, formHandle){
+   //custom code here
+      console.log(erroredFields);
+      console.log(formHandle);
+      console.log("non conforme");
+      Shower.Utils.failureCallback(erroredFields, formHandle);
+    },
+    onSuccess: function(formData, formHandle){
+       //custom code here
+       console.log(formData);
+       console.log(formHandle);
+       console.log("conforme");
+      Shower.Utils.successCallback(formData, formHandle);
+    }
+});
+
 
     console.log("The 'login' template was just rendered.");
 
@@ -151,7 +183,23 @@ Template.Apply.events({
   },
 
   'submit form': function(e) {
+
+ var validationObject = Shower.formValidation.validate(formtab);
+
+//var formData = Shower.Utils.getFormData(Shower.formValidation);
+
+
+ //Shower.formValidation.validate(formtab, function(errors, formData));
+//console.log("rawFormData " + rawFormData);
+console.log("validationObject " + validationObject.errors);
+
+
+
     e.preventDefault();
+
+
+
+
 
     var form = e.target;
     application = Session.get('application');

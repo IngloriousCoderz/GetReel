@@ -1,25 +1,28 @@
 <template name="applyGeneralInfo">
   <div class="tab-pane" id="tab1">
-    <form id="formtab" action="{{pathFor route='apply'}}" method="POST">
+    <form id="formtab" action="{{pathFor route='apply'}}" method="POST" name="formValidation" >
 
       <div class="form-group col-lg-6">
         <label for="firstname">Firstname</label>
-        <input id="firstname" type="text" name="field" value="{{application.firstname}}" class="form-control" placeholder="e.g. John"  />
+        <input id="firstname" type="text" name="firstname" value="{{application.firstname}}"  class="form-control" placeholder="e.g. John" />
       </div>
 
       <div class="form-group col-lg-6">
         <label for="lastname">Lastname</label>
-        <input id="lastname" type="text" name="field" value="{{application.lastname}}" class="form-control" placeholder="e.g. Smith"  />
+        <input id="lastname" type="text" name="lastname" value="{{application.lastname}}" class="form-control" placeholder="e.g. Smith" />
       </div>
+
+
+<!--
 
       <div class="form-group col-lg-6">
         <label for="socialSecurityNumber">Social Security Number</label>
-        <input id="socialSecurityNumber" type="text"  name="field" value="{{application.socialSecurityNumber}}" class="form-control" placeholder="e.g. 5346879"  />
+        <input id="socialSecurityNumber" type="text"  name="field" value="{{application.socialSecurityNumber}}" class="form-control" placeholder="e.g. 5346879" required />
       </div>
 
       <div class="form-group col-lg-6">
           <label for="dateOfBirth">Date of birth</label>
-      <input type="text" class="form-control"  value="{{application.dateOfBirth}}" id="datePickerDateOfBirth" placeholder="e.g. 31/12/1980" name="field"  />
+      <input type="text" class="form-control"  value="{{application.dateOfBirth}}" id="datePickerDateOfBirth" placeholder="e.g. 31/12/1980" name="field" required />
       </div>
 
       <div class="form-group col-lg-6">
@@ -45,7 +48,7 @@
 
       </div>
 
-      <!-- Residenza -->
+
 
       <div class="form-group col-lg-6">
         <label for="residentialParish">Residential parish</label>
@@ -78,7 +81,7 @@
         <input id="residentialNumber"  type="text" name="field" value="{{application.residentialNumber}}" class="form-control" placeholder="e.g. 127" />
       </div>
 
-      <!-- Domicilio -->
+
 
       <div class="form-group col-lg-6">
         <label for="domicileParish">Domicile parish</label>
@@ -129,7 +132,7 @@
         </select>
       </div>
 
-      <!-- Telefono casa, cellulare , Email -->
+
 
       <div class="form-group col-lg-3">
         <label for="telephoneHome">Telephone (home)</label>
@@ -148,7 +151,7 @@
 
 
 
-        <!-- Stato civile, figli -->
+
 
         <div class="form-group col-lg-6">
           <label for="maritalStatus">Marital status</label>
@@ -164,7 +167,7 @@
           <input id="children"  type="text" name="field" value="{{application.children}}" class="form-control" placeholder="e.g. 3" />
         </div>
 
-        <!-- Passaporto -->
+
 
         <div class="form-group col-lg-6">
           <label for="Passport">Passport</label>
@@ -198,7 +201,7 @@
           </select>
         </div>
 
-        <!-- Patente -->
+
 
         <div class="form-group col-lg-6">
           <label for="DrivingLicence">Driving licence</label>
@@ -224,6 +227,9 @@
         </form>
         </div>
 
+      -->
+
+
       <div class="form-group col-lg-12">
         <label for="resume">Resume</label>
         <input type="filepicker-dragdrop" id="resume" />
@@ -236,7 +242,7 @@
 
       <div class="form-group col-lg-12">
         <button type="submit" class="btn btn-default">Submit</button>
-      <!--  <p><input type="submit" value="Click" id="btnSubmit"></p> -->
+
       </div>
   </form>
 </div>
