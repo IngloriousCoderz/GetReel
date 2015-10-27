@@ -64,12 +64,12 @@
     <div class="form-group">
       <label for="region">region</label>
       <select id="region" name="region" class="form-control">
-          <option value="">Please choose one</option>
+        <option value="">Please choose one</option>
         {{#each regions}}
         <option value="{{id}}">{{name}}</option>
         {{/each}}
       </select>
     </div>
-    <input type="submit" name="filter" value="filter">
+    <button type="submit">filter</button>
   </form>
 </template>
