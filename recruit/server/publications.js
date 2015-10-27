@@ -8,7 +8,14 @@ Meteor.startup(function() {
 	});
 
 	Meteor.publish('applications', function() {
+		//
+		// ELIMINARE!
+		//
     	return Applications.find();
+		//
+		// ELIMINARE!
+		//
+		
 
     	if (!Meteor.userId()) {
     		throw new Meteor.Error('not-authorized');
@@ -27,12 +34,8 @@ Meteor.startup(function() {
     			$or: [{
     				'status.current': 'unassigned'
     			}, {
-    				$and: [{
-    					'status.current': 'assigned'
-    				}, {
-    					'status.to': user.username
-    				}, ],
-    			}, ],
+    				$and: [{'status.current': 'assigned'}, {'status.to': user.username},],
+    			}],
     		});
     	}
     });
