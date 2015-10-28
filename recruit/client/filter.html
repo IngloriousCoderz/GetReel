@@ -20,14 +20,22 @@
         <input type="date" id="createdAt" name="createdAt" class="form-control" />
       </div>
     </fieldset>
-    <div class="form-group">
-      <label for="recruiter">recruiter</label>
-      <select id="recruiter" name="recruiter" class="form-control">
-        <option value="1">Tizio</option>
-        <option value="2">Caio</option>
-        <option value="3">Sempronio</option>
-      </select>
-    </div>
+    <fieldset>
+      <legend>recruiter</legend>
+        <div class="form-group">
+          <!-- <label for="recruiter">recruiter</label> -->
+          <select id="recruiter" name="recruiter" class="form-control">
+            <!-- <option value="1">Tizio</option>
+            <option value="2">Caio</option>
+            <option value="3">Sempronio</option>
+            <option value="3">recruiter</option> -->
+            <option value="Tizio">Tizio</option>
+            <option value="Caio">Caio</option>
+            <option value="Sempronio">Sempronio</option>
+            <option value="recruiter">recruiter</option>
+          </select>
+        </div>
+    </fieldset>
     <div class="form-group">
       <label for="firstname">firstname</label>
       <input id="firstname" name="firstname" class="form-control" />
@@ -47,7 +55,7 @@
     <div class="form-group">
       <label for="status">status</label>
       <select id="status" name="status" class="form-control">
-        <option>Please choose one</option>
+        <option value="">Please choose one</option>
         {{#each statuses}}
         <option value="{{id}}">{{name}}</option>
         {{/each}}
@@ -56,10 +64,12 @@
     <div class="form-group">
       <label for="region">region</label>
       <select id="region" name="region" class="form-control">
+        <option value="">Please choose one</option>
         {{#each regions}}
         <option value="{{id}}">{{name}}</option>
         {{/each}}
       </select>
     </div>
+    <button type="submit">filter</button>
   </form>
 </template>
