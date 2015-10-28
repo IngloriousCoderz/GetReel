@@ -74,7 +74,8 @@ Meteor.startup(function() {
     };
     fakeApplication.status.current = [0, 1, 2, 3][Math.floor(Math.random() * 2)];
     if (fakeApplication.status.current > 0) {
-      fakeApplication.status.recruiter = 'recruiter';
+      //fakeApplication.status.recruiter = 'recruiter';
+      fakeApplication.status.recruiter = Meteor.users.findOne({roles:'recruiter'})._id;
     }
 
     fakeApplication.email = fakeApplication.firstname + '.' + fakeApplication.lastname + '@getreel.test';
