@@ -1,5 +1,6 @@
 Meteor.subscribe('statuses');
 Meteor.subscribe('regions');
+Meteor.subscribe('recruiters');
 
 Session.setDefault('mongo-filter', {});
 
@@ -11,6 +12,10 @@ Template.filter.helpers({
   regions: function() {
     return Regions.find();
   },
+
+  recruiters: function() {
+      return Recruiters.find();
+  }
 });
 
 Template.filter.events({

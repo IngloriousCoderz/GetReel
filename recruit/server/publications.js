@@ -7,6 +7,10 @@ Meteor.startup(function() {
     return Regions.find();
   });
 
+  Meteor.publish('recruiters', function() {
+	 return Users.find({roles:'recruiter'}); 
+  });
+
   Meteor.publish('applications', function() {
     //
     // ELIMINARE!
