@@ -13,9 +13,9 @@ Template.filter.helpers({
     return Regions.find();
   },
 
-  /*recruiters: function() {
-    return Users.find();
-  },*/
+  recruiters: function() {
+    return Meteor.users.find();
+  },
 });
 
 Template.filter.events({
