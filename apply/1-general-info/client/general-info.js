@@ -4,7 +4,7 @@ Template.applyGeneralInfo.rendered = function() {
   $('input[type="date"]').each(function(i, elem) {
     $(elem).datepicker({
       autoclose: true,
-      format: 'dd/mm/yyyy',
+      dateFormat: 'dd/mm/yyyy',
     });
   });
 
@@ -13,12 +13,97 @@ Template.applyGeneralInfo.rendered = function() {
     fields: {
       firstname: {
         required: true,
-        requiredMessage: 'Hai toppato',
+        requiredMessage: 'This field should not be empty',
       },
-
       lastname: {
         required: true,
-        requiredMessage: 'Cognome da inserire',
+        requiredMessage: 'This field should not be empty',
+      },
+      socialSecurityNumber: {
+        required: true,
+        requiredMessage: 'This field should not be empty',
+      },
+      dateOfBirth: {
+        required: true,
+        requiredMessage: 'This field should not be empty',
+      },
+      permitKind: {
+        required: {
+          dependsOn: 'permit',
+          value: true,
+        },
+        requiredMessage: 'This field should not be empty',
+      },
+      residentialParish: {
+        required: true,
+        requiredMessage: 'This field should not be empty',
+      },
+      residentialZip: {
+        required: true,
+        requiredMessage: 'This field should not be empty',
+      },
+      residentialAddress: {
+        required: true,
+        requiredMessage: 'This field should not be empty',
+      },
+      residentialNumber: {
+        required: true,
+        requiredMessage: 'This field should not be empty',
+      },
+      domicileParish: {
+        required: true,
+        requiredMessage: 'This field should not be empty',
+      },
+      domicileZip: {
+        required: true,
+        requiredMessage: 'This field should not be empty',
+      },
+      domicileAddress: {
+        required: true,
+        requiredMessage: 'This field should not be empty',
+      },
+      domicileNumber: {
+        required: true,
+        requiredMessage: 'This field should not be empty',
+      },
+      phone: {
+        required: true,
+        requiredMessage: 'This field should not be empty',
+      },
+      mobile: {
+        required: true,
+        requiredMessage: 'This field should not be empty',
+      },
+      email: {
+        required: true,
+        format: 'email',
+        requiredMessage: 'This field should be a valid email address',
+      },
+      children: {
+        required: true,
+        format: 'integer',
+        requiredMessage: 'This field should not be empty',
+      },
+      passportNumber: {
+        required: {
+          dependsOn: 'passport',
+          value: true,
+        },
+        requiredMessage: 'This field should not be empty',
+      },
+      passportValidFrom: {
+        required: {
+          dependsOn: 'passport',
+          value: true,
+        },
+        requiredMessage: 'This field should not be empty',
+      },
+      passportValidTo: {
+        required: {
+          dependsOn: 'passport',
+          value: true,
+        },
+        requiredMessage: 'This field should not be empty',
       },
     },
 
