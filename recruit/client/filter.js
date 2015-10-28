@@ -85,7 +85,7 @@ Template.filter.events({
       if (criteria.hasOwnProperty(criterion)) {
         if (criteria[criterion] && typeof criteria[criterion] != 'object') {
           if (criterion === 'recruiter') {
-            mongo['status.recruiter'] = criteria[criterion];
+            mongo['status.recruiter._id'] = criteria[criterion];
           } else {
             mongo[criterion] = criteria[criterion];
           }
