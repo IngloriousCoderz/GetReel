@@ -1,5 +1,6 @@
 Meteor.startup(function() {
-  Meteor.users.remove({roles:'fake'});
+  Meteor.users.remove({roles: 'fake'});
+
   if (Roles.getUsersInRole('admin').count() === 0) {
     console.log('no admin found, creating fake admin');
     var admin = Accounts.createUser({
@@ -24,7 +25,7 @@ Meteor.startup(function() {
       profile: {
         first_name: 'fake',
         last_name: 'recruiter',
-        company: 'inglorious coderz',
+        company: 'Inglorious Coderz',
       },
     });
     Roles.addUsersToRoles(recruiter, ['recruiter', 'fake']);
@@ -55,7 +56,7 @@ Meteor.startup(function() {
   for (var i = 0; i < maxFakeApplications; i++) {
     var fakeApplication = {
       fake: true,
-      firstname: ['Antony', 'Roby', 'Federica'][Math.floor(Math.random() * 3)],
+      firstname: ['Andersen', 'Antony', 'Roby', 'Federica'][Math.floor(Math.random() * 3)],
       lastname: ['Bianchi', 'Rossi', 'Verdi'][Math.floor(Math.random() * 3)],
       socialSecurityNumber: 'ABCD12345' + i,
       dateOfBirth: new Date(1970 + i % 30, (i % 12) + 1, i),
@@ -68,8 +69,8 @@ Meteor.startup(function() {
       status: {},
       createdAt: new Date(),
       region: [1, 12, 15][Math.floor(Math.random() * 3)],
-      experienceAsPhotographer: 'YES',
-      experienceAsOther: 'NO',
+      experienceAsPhotographer: true,
+      experienceAsOther: false,
     };
     fakeApplication.status.current = [0, 1, 2, 3][Math.floor(Math.random() * 2)];
     if (fakeApplication.status.current > 0) {
@@ -86,4 +87,3 @@ Meteor.startup(function() {
     Applications.insert(fakeApplication);
   }
 });
-

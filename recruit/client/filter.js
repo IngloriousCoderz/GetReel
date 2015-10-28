@@ -13,8 +13,12 @@ Template.filter.helpers({
   },
 });
 
+Template.filter.rendered = function() {
+  $(filterForm).find('.filter').change();
+};
+
 Template.filter.events({
-  'change select.date-filter': function(e) {
+  'change select.filter': function(e) {
     var criterion = e.target.value;
     var $values = $(e.target).parent().siblings('.values');
     switch (criterion) {
@@ -25,13 +29,13 @@ Template.filter.events({
       case 'gt':
       case 'lt':
         $values.show();
-        $values.children('.at').show();
+        $values.children('.value').show();
         $values.children('.from').hide();
         $values.children('.to').hide();
         break;
       case 'between':
         $values.show();
-        $values.children('.at').hide();
+        $values.children('.value').hide();
         $values.children('.from').show();
         $values.children('.to').show();
     }
