@@ -1,154 +1,163 @@
 <template name="applyGeneralInfo">
   <div class="tab-pane" id="tab1">
-    <form id="formtab" action="{{pathFor route='apply'}}" method="POST">
+    <form id="generalInfoForm" action="{{pathFor route='apply'}}" method="POST">
+      <fieldset>
+        <legend>Personal Info</legend>
 
-      <div class="form-group col-lg-6">
-        <label for="firstname">Firstname</label>
-        <input id="firstname" type="text" name="firstname" value="{{application.firstname}}" class="required form-control" placeholder="e.g. John" />
-      </div>
+        <div class="form-group col-lg-6">
+          <label for="firstname">Firstname</label>
+          <input id="firstname" type="text" name="firstname" value="{{application.firstname}}"  class="form-control" placeholder="e.g. John" />
+        </div>
 
-      <div class="form-group col-lg-6">
-        <label for="lastname">Lastname</label>
-        <input id="lastname" type="text" name="lastname" value="{{application.lastname}}" class="form-control required" placeholder="e.g. Smith" />
-      </div>
+        <div class="form-group col-lg-6">
+          <label for="lastname">Lastname</label>
+          <input id="lastname" type="text" name="lastname" value="{{application.lastname}}" class="form-control" placeholder="e.g. Smith" />
+        </div>
 
-      <div class="form-group col-lg-6">
-        <label for="socialSecurityNumber">Social Security Number</label>
-        <input id="socialSecurityNumber" type="text"  name="socialSecurityNumber" value="{{application.socialSecurityNumber}}" class="required form-control" placeholder="e.g. 5346879" />
-      </div>
+        <div class="form-group col-lg-6">
+          <label for="socialSecurityNumber">Social Security Number</label>
+          <input id="socialSecurityNumber" name="socialSecurityNumber" value="{{application.socialSecurityNumber}}" class="form-control" placeholder="e.g. 5346879" />
+        </div>
 
-      <div class="form-group col-lg-6">
+        <div class="form-group col-lg-6">
           <label for="dateOfBirth">Date of birth</label>
-      <input type="text" class="required form-control"  value="{{application.dateOfBirth}}" id="datePickerDateOfBirth" placeholder="e.g. 31/12/1980">
-      </div>
-
-      <div class="form-group col-lg-6">
-        <label for="nationality">Nationality</label>
-        <select id="nationality" name="nationality" class="form-control">
-          <option value="USA" selected>USA</option>
-          <option value="UK">UK</option>
-          <option value="ITALY">ITALY</option>
-        </select>
-      </div>
-
-      <div class="form-group col-lg-6">
-        <label for="permit">Permit to stay</label>
-      <form action="">
-        <div class="radio-inline">
-          <label><input type="radio" name="Permit">Yes</label>
+          <input id="dateOfBirth" type="date" name="dateOfBirth" class="form-control" value="{{application.dateOfBirth}}" placeholder="e.g. 31/12/1980" />
         </div>
-        <div class="radio-inline">
-          <label><input type="radio" name="Permit">No</label>
+
+        <div class="form-group col-lg-6">
+          <label for="nationality">Nationality</label>
+          <select id="nationality" name="nationality" class="form-control">
+            <option value="USA" selected>USA</option>
+            <option value="UK">UK</option>
+            <option value="ITALY">ITALY</option>
+          </select>
         </div>
-        </form>
-        <input id="permit" type="text" name="permit" value="{{application.permitKind}}" class="form-control" placeholder="Kind of permit" />
 
-      </div>
+        <div class="form-group col-lg-6">
+          <div class="checkbox">
+            <label>
+              <input id="permit" type="checkbox" name="permit" checked />
+              permit to stay
+            </label>
+          </div>
+          <input id="permitKind" type="text" name="permitKind" value="{{application.permitKind}}" class="form-control" placeholder="Kind of permit" />
+        </div>
+      </fieldset>
 
-      <!-- Residenza -->
+      <fieldset>
+        <legend>Permanent Address</legend>
 
-      <div class="form-group col-lg-6">
-        <label for="residentialParish">Residential parish</label>
-        <input id="residentialParish"  type="text" name="residentialParish" value="{{application.residentialParish}}" class="form-control" placeholder="e.g. London" />
-      </div>
+        <div class="form-group col-lg-6">
+          <label for="residentialParish">Residential parish</label>
+          <input id="residentialParish" name="residentialParish" value="{{application.residentialParish}}" class="form-control" placeholder="e.g. London" />
+        </div>
 
-      <div class="form-group col-lg-6">
-        <label for="residentialProvince">Province</label>
-        <select id="residentialProvince" name="residentialProvince" class="form-control">
-          <option value="Winchestershire" selected>Winchestershrine</option>
-          <option value="Coltshire">Coltshire</option>
-          <option value="Berettashire">Berettashire</option>
-        </select>
-      </div>
+        <div class="form-group col-lg-6">
+          <label for="residentialProvince">Province</label>
+          <select id="residentialProvince" name="residentialProvince" class="form-control">
+            <option value="Winchestershire" selected>Winchestershrine</option>
+            <option value="Coltshire">Coltshire</option>
+            <option value="Berettashire">Berettashire</option>
+          </select>
+        </div>
 
-      <div class="form-group col-lg-6">
-        <label for="residentialCap">Residential Cap</label>
-        <input id="residentialCap"  type="text" name="residentialCap" value="{{application.residentialCap}}" class="form-control" placeholder="e.g. 00100" />
-      </div>
+        <div class="form-group col-lg-6">
+          <label for="residentialZip">Residential Zip</label>
+          <input id="residentialZip" name="residentialZip" value="{{application.residentialZip}}" class="form-control" placeholder="e.g. 00100" />
+        </div>
 
+        <div class="form-group col-lg-4">
+          <label for="residentialAddress">Residential address</label>
+          <input id="residentialAddress" name="residentialAddress" value="{{application.residentialAddress}}" class="form-control" placeholder="e.g. Huffingthon St." />
+        </div>
 
-      <div class="form-group col-lg-4">
+        <div class="form-group col-lg-2">
+          <label for="residentialNumber">Number</label>
+          <input id="residentialNumber" name="residentialNumber" value="{{application.residentialNumber}}" class="form-control" placeholder="e.g. 127" />
+        </div>
 
-        <label for="residentialAddress">Residential address</label>
-        <input id="residentialAddress"  type="text" name="residentialAddress" value="{{application.residentialAddress}}" class="form-control" placeholder="e.g. Huffingthon St." />
-      </div>
+        <div class="form-group col-lg-12">
+          <div class="checkbox">
+            <label>
+              <input id="sameAddress" type="checkbox" checked />
+              Current address same as permanent
+            </label>
+          </div>
+        </div>
+      </fieldset>
 
-      <div class="form-group col-lg-2">
-        <label for="residentialNumber">Number</label>
-        <input id="residentialNumber"  type="text" name="residentialNumber" value="{{application.residentialNumber}}" class="form-control" placeholder="e.g. 127" />
-      </div>
+      <fieldset id="currentAddressFieldset" class="hidden">
+        <legend>Current Address</legend>
 
-      <!-- Domicilio -->
+        <div class="form-group col-lg-6">
+          <label for="domicileParish">Domicile parish</label>
+          <input id="domicileParish" name="domicileParish" value="{{application.domicileParish}}" class="form-control" placeholder="e.g. Cambrige" />
+        </div>
 
-      <div class="form-group col-lg-6">
-        <label for="domicileParish">Domicile parish</label>
-        <input id="domicileParish"  type="text" name="domicileParish" value="{{application.domicileParish}}" class="form-control" placeholder="e.g. Cambrige" />
-      </div>
+        <div class="form-group col-lg-6">
+          <label for="domicileProvince">Domicile province</label>
+          <select id="domicileProvince" name="domicileProvince" class="form-control">
+            <option value="Winchestershire" selected>Winchestershrine</option>
+            <option value="Coltshire">Coltshire</option>
+            <option value="Berettashire">Berettashire</option>
+          </select>
+        </div>
 
-      <div class="form-group col-lg-6">
-        <label for="domicileProvince">Domicile province</label>
-        <select id="domicileProvince" name="domicileProvince" class="form-control">
-          <option value="Winchestershire" selected>Winchestershrine</option>
-          <option value="Coltshire">Coltshire</option>
-          <option value="Berettashire">Berettashire</option>
-        </select>
-      </div>
+        <div class="form-group col-lg-6">
+          <label for="domicileZip">Domicile Zip</label>
+          <input id="domicileZip" name="domicileZip" value="{{application.domicileZip}}" class="form-control" placeholder="e.g. 00100" />
+        </div>
 
-      <div class="form-group col-lg-6">
-        <label for="DomicileCap">Domicile Cap</label>
-        <input id="DomicileCap"  type="text" name="DomicileCap" value="{{application.DomicileCap}}" class="form-control" placeholder="e.g. 00100" />
-      </div>
+        <div class="form-group col-lg-4">
+          <label for="domicileAddress">Domicile address</label>
+          <input id="domicileAddress" name="domicileAddress" value="{{application.domicileAddress}}" class="form-control" placeholder="e.g. Huffingthon St." />
+        </div>
 
+        <div class="form-group col-lg-2">
+          <label for="domicileNumber">Number</label>
+          <input id="domicileNumber" name="domicileNumber" value="{{application.domicileNumber}}" class="form-control" placeholder="e.g. 127" />
+        </div>
 
-      <div class="form-group col-lg-4">
+        <div class="form-group col-lg-6">
+          <label for="domicileRegion">Domicile Region</label>
+          <select id="domicileRegion" name="domicileRegion" class="form-control">
+            <option value="NORTH" selected>NORTH</option>
+            <option value="WEST">WEST</option>
+            <option value="SOUTH">SOUTH</option>
+          </select>
+        </div>
 
-        <label for="DomicileAddress">Domicile address</label>
-        <input id="DomicileAddress"  type="text" name="DomicileAddress" value="{{application.DomicileAddress}}" class="form-control" placeholder="e.g. Huffingthon St." />
-      </div>
+        <div class="form-group col-lg-6">
+          <label for="domicileNation">Domicile Nation</label>
+          <select id="domicileNation" name="domicileNation" class="form-control">
+            <option value="USA" selected>USA</option>
+            <option value="UK">UK</option>
+            <option value="ITALY">ITALY</option>
+          </select>
+        </div>
+      </fieldset>
 
-      <div class="form-group col-lg-2">
-        <label for="DomicileNumber">Number</label>
-        <input id="DomicileNumber"  type="text" name="DomicilNumber" value="{{application.DomicileNumber}}" class="form-control" placeholder="e.g. 127" />
-      </div>
+      <fieldset>
+        <legend>Contacts</legend>
 
-      <div class="form-group col-lg-6">
-        <label for="domicilRegion">Domicile Region</label>
-        <select id="domicilRegion" name="domicilRegion" class="form-control">
-          <option value="NORTH" selected>NORTH</option>
-          <option value="WEST">WEST</option>
-          <option value="SOUTH">SOUTH</option>
-        </select>
-      </div>
+        <div class="form-group col-lg-3">
+          <label for="phone">Telephone (home)</label>
+          <input id="phone" type="tel" name="phone" value="{{application.phone}}" class="form-control" placeholder="e.g. 555-020304" />
+        </div>
 
-      <div class="form-group col-lg-6">
-        <label for="domicileNation">Domicile Nation</label>
-        <select id="domicileNation" name="domicileNation" class="form-control">
-          <option value="USA" selected>USA</option>
-          <option value="UK">UK</option>
-          <option value="ITALY">ITALY</option>
-        </select>
-      </div>
+        <div class="form-group col-lg-3">
+          <label for="mobile">Mobile phone</label>
+          <input id="mobile" type="tel" name="mobile" value="{{application.mobile}}" class="form-control" placeholder="e.g. 356-58662535" />
+        </div>
 
-      <!-- Telefono casa, cellulare , Email -->
+        <div class="form-group col-lg-6">
+          <label for="email">E-mail</label>
+          <input id="email" type="email" name="email" value="{{application.email}}" class="form-control" placeholder="e.g. whois@that.com" />
+        </div>
+      </fieldset>
 
-      <div class="form-group col-lg-3">
-        <label for="telephoneHome">Telephone (home)</label>
-        <input id="telephoneHome"  type="text" name="telephoneHome" value="{{application.telephoneHome}}" class="form-control" placeholder="e.g. 555-020304" />
-      </div>
-
-      <div class="form-group col-lg-3">
-        <label for="cellPhone">Mobile phone</label>
-        <input id="cellPhone"  type="text" name="cellPhone" value="{{application.cellPhone}}" class="form-control" placeholder="e.g. 356-58662535" />
-      </div>
-
-      <div class="form-group col-lg-6">
-        <label for="email">E-mail</label>
-        <input id="email" type="email" name="email" value="{{application.email}}" class="form-control required email" placeholder="e.g. whois@that.com" />
-      </div>
-
-
-
-        <!-- Stato civile, figli -->
+      <fieldset>
+        <legend>Family</legend>
 
         <div class="form-group col-lg-6">
           <label for="maritalStatus">Marital status</label>
@@ -161,75 +170,74 @@
 
         <div class="form-group col-lg-6">
           <label for="children">Children</label>
-          <input id="children"  type="text" name="children" value="{{application.children}}" class="form-control" placeholder="e.g. 3" />
+          <input id="children" type="number" name="children" value="{{application.children}}" min="0" class="form-control" placeholder="e.g. 3" />
         </div>
+      </fieldset>
 
-        <!-- Passaporto -->
+      <fieldset>
+        <legend>Passport</legend>
 
-        <div class="form-group col-lg-6">
-          <label for="Passport">Passport</label>
-        <form action="">
-          <div class="radio-inline">
-            <label><input type="radio" name="Passport">Yes</label>
+        <div class="form-group col-lg-12">
+          <div class="checkbox col-lg-1">
+            <label>
+              <input id="passport" type="checkbox" name="passport" />
+              Valid
+            </label>
           </div>
-          <div class="radio-inline">
-            <label><input type="radio" name="Passport">No</label>
+
+          <div class="col-lg-5">
+            <input id="passportNumber" name="passportNumber" value="{{application.passportNumber}}" class="form-control" placeholder="Passport number" />
           </div>
-        </form>
-          <input id="passport" type="text" name="Passport" value="{{application.passport}}" class="form-control" placeholder="Passport number" />
-        </div>
 
-        <div class="form-group col-lg-3">
-            <label for="dateValidFrom">Valid from</label>
-            <input type="text" class="form-control" value="{{application.dateValidFrom}}" id="datePickerPassportValidFrom" placeholder="e.g. 31/12/2010">
-        </div>
-
-        <div class="form-group col-lg-3">
-            <label for="dateValidTo">Valid to</label>
-            <input type="text" class="form-control" value="{{application.dateValidTo}}" id="datePickerPassportValidTo" placeholder="e.g. 31/12/2016">
-        </div>
-
-        <div class="form-group col-lg-6">
-          <label for="job">Job position</label>
-          <select id="job" name="job" class="form-control">
-            {{#each availableJobs}}
-            <option value="{{_id}}">{{title}}</option>
-            {{/each}}
-          </select>
-        </div>
-
-        <!-- Patente -->
-
-        <div class="form-group col-lg-6">
-          <label for="DrivingLicence">Driving licence</label>
-        <form action="">
-          <div class="radio-inline">
-            <label><input type="radio" name="DrivingLicence">Yes</label>
+          <div class="col-lg-1 text-right">
+            <label for="passportValidFrom">from</label>
           </div>
-          <div class="radio-inline">
-            <label><input type="radio" name="DrivingLicence">No</label>
-          </div>
-        </form>
-        </div>
 
-        <div class="form-group col-lg-6">
-          <label for="carOwner">car owner</label>
-        <form action="">
-          <div class="radio-inline">
-            <label><input type="radio" name="carOwner">Yes</label>
+          <div class="col-lg-2">
+            <input id="passportValidFrom" type="date" name="passportValidFrom" class="form-control" value="{{application.dateValidFrom}}" placeholder="e.g. 31/12/2010">
           </div>
-          <div class="radio-inline">
-            <label><input type="radio" name="carOwner">No</label>
-          </div>
-        </form>
-        </div>
 
-      <div class="form-group col-lg-12">
+          <div class="col-lg-1 text-right">
+            <label for="passportValidTo">to</label>
+          </div>
+
+          <div class="col-lg-2">
+            <input id="passportValidTo" type="date" name="passportValidTo" class="form-control" value="{{application.dateValidTo}}" placeholder="e.g. 31/12/2016">
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="form-group col-lg-6">
+        <label for="job">Job position</label>
+        <select id="job" name="job" class="form-control">
+          {{#each availableJobs}}
+          <option value="{{_id}}">{{title}}</option>
+          {{/each}}
+        </select>
+      </div>
+
+      <div class="form-group col-lg-6">
+        <label>Car</label>
+        <div class="checkbox">
+          <label>
+            <input id="drivingLicense" type="checkbox" name="drivingLicense" />
+            Driving license
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input id="carOwner" type="checkbox" name="carOwner" />
+            Car owner
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group col-lg-6">
         <label for="resume">Resume</label>
         <input type="filepicker-dragdrop" id="resume" />
       </div>
 
-      <div class="form-group col-lg-12">
+      <div class="form-group col-lg-6">
         <label for="showreel">Showreel</label>
         <input type="filepicker-dragdrop" id="showreel" />
       </div>
