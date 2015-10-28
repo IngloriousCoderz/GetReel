@@ -8,7 +8,7 @@ Meteor.startup(function() {
   });
 
   Meteor.publish('recruiters', function() {
-    return Users.find({roles: 'recruiter'});
+    return Meteor.users.find({roles: 'recruiter'});
   });
 
   Meteor.publish('applications', function() {

@@ -14,7 +14,7 @@ Template.filter.helpers({
   },
 
   recruiters: function() {
-    return Users.find();
+    return Meteor.users.find();
   },
 });
 
