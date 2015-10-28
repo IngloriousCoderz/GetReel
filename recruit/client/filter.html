@@ -32,12 +32,10 @@
       </div>
     </fieldset>
 
-    {{> filterElement label="firstname" name="firstname" type="text"}}
+    {{> filterElement label="firstname" name="firstname" comparable=true string=true}}
 
-    <div class="form-group">
-      <label for="lastname">lastname</label>
-      <input id="lastname" name="lastname" class="form-control" />
-    </div>
+    {{> filterElement label="lastname" name="lastname" comparable=true string=true}}
+
     <div class="form-group">
       <label for="age">age</label>
       <input type="number" id="age" name="age" class="form-control" />

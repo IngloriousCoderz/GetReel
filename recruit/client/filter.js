@@ -14,8 +14,8 @@ Template.filter.helpers({
   },
 
   recruiters: function() {
-      return Recruiters.find();
-  }
+    return Users.find();
+  },
 });
 
 Template.filter.events({

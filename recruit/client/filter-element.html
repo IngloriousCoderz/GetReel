@@ -13,6 +13,11 @@
       <div class="col-xs-9">
         <select id="{{name}}-criterion" name="{{name}}-criterion" class="form-control filter">
           <option value="eq">equals</option>
+          {{#if string}}
+          <option value="contains">contains</option>
+          <option value="startswith">starts with</option>
+          <option value="endswith">ends with</option>
+          {{/if}}
           {{#if comparable}}
           <option value="gt">more than</option>
           <option value="lt">less than</option>
