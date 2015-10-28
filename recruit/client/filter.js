@@ -13,13 +13,17 @@ Template.filter.helpers({
     return Regions.find();
   },
 
-  recruiters: function() {
+  /*recruiters: function() {
     return Users.find();
-  },
+  },*/
 });
 
 Template.filter.events({
-  'submit #filter': function(e) {
+  'change :checkbox#more-options': function(e) {
+    $('.options').toggleClass('hidden', !$(e.target).prop('checked'));
+  },
+
+  'submit #filterForm': function(e) {
     e.preventDefault();
     var criteria = {
       creationDate: {

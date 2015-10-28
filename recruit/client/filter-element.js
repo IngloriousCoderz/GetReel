@@ -1,3 +1,13 @@
+Template.filterElement.helpers({
+  isString: function() {
+    return typeof this.type === 'undefined' || this.type === 'text';
+  },
+
+  comparable: function() {
+    return ['number', 'date'].indexOf(this.type) >= 0;
+  },
+});
+
 Template.filterElement.events({
   'change select.filter': function(e) {
     var criterion = e.target.value;
@@ -7,6 +17,9 @@ Template.filterElement.events({
         $values.hide();
         break;
       case 'eq':
+      case 'contains':
+      case 'startswith':
+      case 'endswith':
       case 'gt':
       case 'lt':
         $values.show();
@@ -24,5 +37,5 @@ Template.filterElement.events({
 });
 
 Template.filter.rendered = function() {
-  this.$('.filter').change();
+  this.$('select.filter').val('eq');
 };

@@ -1,23 +1,31 @@
 <template name="filter">
   <form id="filterForm" class="col-lg-2">
-    {{> filterElement label="creation date" name="createdAt" comparable=true type="date"}}
+    <div class="checkbox">
+      <label>
+        <input id="more-options" type="checkbox" name="more-options" /> more options
+      </label>
+    </div>
+
+    {{> filterElement label="creation date" name="createdAt" type="date"}}
 
     <fieldset>
       <legend>recruiter</legend>
 
       <div class="form-group">
-        <div class="col-xs-3">
-          <div class="checkbox">
-            <label>
-              <input id="recruiter-not" type="checkbox" name="recruiter-not" /> not
-            </label>
+        <div class="options hidden">
+          <div class="col-xs-3">
+            <div class="checkbox">
+              <label>
+                <input id="recruiter-not" type="checkbox" name="recruiter-not" /> not
+              </label>
+            </div>
           </div>
-        </div>
-        <div class="col-xs-9">
-          <select id="recruiter-criterion" name="recruiter-criterion" class="form-control filter">
-            <option value="eq">equals</option>
-            <option value="empty">empty</option>
-          </select>
+          <div class="col-xs-9">
+            <select id="recruiter-criterion" name="recruiter-criterion" class="form-control filter">
+              <option value="eq">equals</option>
+              <option value="empty">empty</option>
+            </select>
+          </div>
         </div>
         <div class="values">
           <div class="col-xs-12 value">
@@ -32,36 +40,77 @@
       </div>
     </fieldset>
 
-    {{> filterElement label="firstname" name="firstname" comparable=true string=true}}
+    {{> filterElement label="firstname" name="firstname"}}
 
-    {{> filterElement label="lastname" name="lastname" comparable=true string=true}}
+    {{> filterElement label="lastname" name="lastname"}}
 
-    <div class="form-group">
-      <label for="age">age</label>
-      <input type="number" id="age" name="age" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label for="mobile">mobile phone</label>
-      <input id="mobile" name="mobile" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label for="status">status</label>
-      <select id="status" name="status" class="form-control">
-        <option value="">Please choose one</option>
-        {{#each statuses}}
-        <option value="{{id}}">{{name}}</option>
-        {{/each}}
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="region">region</label>
-      <select id="region" name="region" class="form-control">
-        <option value="">Please choose one</option>
-        {{#each regions}}
-        <option value="{{id}}">{{name}}</option>
-        {{/each}}
-      </select>
-    </div>
+    {{> filterElement label="age" name="age" type="number" min=0}}
+
+    {{> filterElement label="mobile phone" name="mobile"}}
+
+    <fieldset>
+      <legend>status</legend>
+
+      <div class="form-group">
+        <div class="options hidden">
+          <div class="col-xs-3">
+            <div class="checkbox">
+              <label>
+                <input id="status-not" type="checkbox" name="status-not" /> not
+              </label>
+            </div>
+          </div>
+          <div class="col-xs-9">
+            <select id="status-criterion" name="status-criterion" class="form-control filter">
+              <option value="eq">equals</option>
+              <option value="empty">empty</option>
+            </select>
+          </div>
+        </div>
+        <div class="values">
+          <div class="col-xs-12 value">
+            <select id="status" name="status" class="form-control">
+              <option value="">Please choose one...</option>
+              {{#each statuses}}
+              <option value="{{id}}">{{name}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>region</legend>
+
+      <div class="form-group">
+        <div class="options hidden">
+          <div class="col-xs-3">
+            <div class="checkbox">
+              <label>
+                <input id="region-not" type="checkbox" name="region-not" /> not
+              </label>
+            </div>
+          </div>
+          <div class="col-xs-9">
+            <select id="region-criterion" name="region-criterion" class="form-control filter">
+              <option value="eq">equals</option>
+              <option value="empty">empty</option>
+            </select>
+          </div>
+        </div>
+        <div class="values">
+          <div class="col-xs-12 value">
+            <select id="region" name="status" class="form-control">
+              <option value="">Please choose one...</option>
+              {{#each regions}}
+              <option value="{{id}}">{{name}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+      </div>
+    </fieldset>
     <button type="submit">filter</button>
   </form>
 </template>
