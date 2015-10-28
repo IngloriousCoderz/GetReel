@@ -2,6 +2,8 @@ Regions = new Mongo.Collection('regions');
 Statuses = new Mongo.Collection('statuses');
 Jobs = new Mongo.Collection('jobs');
 Applications = new Mongo.Collection('applications');
+Recruiters = new Mongo.Collection('recruiters');
+//Users = new Mongo.Collection('users');
 
 /*
 var profilePicStore = new FS.Store.GridFS('profilePics');
