@@ -3,13 +3,15 @@
     <fieldset>
       <legend>creation date</legend>
       <div class="form-group">
-        <div class="checkbox col-xs-2">
-          <label>
-            <input type="checkbox" id="createdAt-not" name="createdAt-not" /> not
-          </label>
+        <div class="col-xs-3">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" id="createdAt-not" name="createdAt-not" /> not
+            </label>
+          </div>
         </div>
-        <div class="col-xs-10">
-          <select id="createdAt-criterion" name="createdAt-criterion" class="form-control">
+        <div class="col-xs-9">
+          <select id="createdAt-criterion" name="createdAt-criterion" class="form-control date-filter">
             <option value="eq">equals</option>
             <option value="gt">more than</option>
             <option value="lt">less than</option>
@@ -17,9 +19,23 @@
             <option value="empty">empty</option>
           </select>
         </div>
-        <input type="date" id="createdAt" name="createdAt" class="form-control" />
+        <div class="values">
+          <div class="col-xs-12 at">
+            <label for="createdAt">at</label>
+            <input type="date" id="createdAt" name="createdAt" class="form-control" />
+          </div>
+          <div class="col-xs-12 from">
+            <label for="createAt-from">from</label>
+            <input type="date" id="createdAt-from" name="createAt-from" class="form-control" />
+          </div>
+          <div class="col-xs-12 to">
+            <label for="createdAt-to">to</label>
+            <input type="date" id="createdAt-to" name="createAt-to" class="form-control" />
+          </div>
+        </div>
       </div>
     </fieldset>
+
     <fieldset>
       <legend>recruiter</legend>
         <div class="form-group">

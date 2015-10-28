@@ -1,42 +1,47 @@
 Meteor.startup(function() {
-	Meteor.publish('statuses', function() {
-		return Statuses.find();
-	});
+  Meteor.publish('statuses', function() {
+    return Statuses.find();
+  });
 
-	Meteor.publish('regions', function() {
-		return Regions.find();
-	});
+  Meteor.publish('regions', function() {
+    return Regions.find();
+  });
 
-	Meteor.publish('applications', function() {
-		//
-		// ELIMINARE!
-		//
-    	return Applications.find();
-		//
-		// ELIMINARE!
-		//
-		
+  Meteor.publish('applications', function() {
+    //
+    // ELIMINARE!
+    //
+    return Applications.find();
 
-    	if (!Meteor.userId()) {
-    		throw new Meteor.Error('not-authorized');
-    	}
+    //
+    // ELIMINARE!
+    //
 
-    	var user = Meteor.users.find({
-    		_id: this.userId
-    	});
+    if (!Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
 
-    	if (Roles.userIsInRole(this.userId, ['admin'])) {
-    		return Applications.find();
-    	}
-
-    	if (Roles.userIsInRole(this.userId, ['recruiter'])) {
-    		return Applications.find({
-    			$or: [{
-    				'status.current': 'unassigned'
-    			}, {
-    				$and: [{'status.current': 'assigned'}, {'status.to': user.username},],
-    			}],
-    		});
-    	}
+    var user = Meteor.users.find({
+      _id: this.userId,
     });
+
+    if (Roles.userIsInRole(this.userId, ['admin'])) {
+      return Applications.find();
+    }
+
+    if (Roles.userIsInRole(this.userId, ['recruiter'])) {
+      return Applications.find({
+        $or: [
+          {
+            'status.current': 'unassigned',
+          }, {
+            $and: [
+              {'status.current': 'assigned'},
+              {'status.to': user.username},
+            ],
+          },
+        ],
+      });
+    }
+  });
 });

@@ -14,6 +14,29 @@ Template.filter.helpers({
 });
 
 Template.filter.events({
+  'change select.date-filter': function(e) {
+    var criterion = e.target.value;
+    var $values = $(e.target).parent().siblings('.values');
+    switch (criterion) {
+      case 'empty':
+        $values.hide();
+        break;
+      case 'eq':
+      case 'gt':
+      case 'lt':
+        $values.show();
+        $values.children('.at').show();
+        $values.children('.from').hide();
+        $values.children('.to').hide();
+        break;
+      case 'between':
+        $values.show();
+        $values.children('.at').hide();
+        $values.children('.from').show();
+        $values.children('.to').show();
+    }
+  },
+
   'submit #filter': function(e) {
     e.preventDefault();
     var criteria = {
@@ -44,21 +67,21 @@ Template.filter.events({
           var dayAfter = new Date(cd.at);
           dayAfter.setDate(cd.at.getDate() + 1);
           condition = { $gte: cd.at, $lt: dayAfter };
-        break;
+          break;
         case 'gt':
           condition = {$gt: cd.at};
-        break;
+          break;
         case 'lt':
           condition = {$lt: cd.at};
-        break;
+          break;
         case 'between':
 
           // todo
-        break;
+          break;
         case 'empty':
 
           //condition = {""}; // empty?
-        break;
+          break;
       }
       if (cd.not) {
         mongo.createdAt.$not = condition;
