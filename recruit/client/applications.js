@@ -3,7 +3,9 @@ Meteor.subscribe('applications');
 
 Template.applications.helpers({
   applications: function() {
-    return Applications.find({}, {limit: 10});
+     var mongoFilter = Session.get('mongo-filter');
+    console.log("Template.applications.helpers:applications:filter", JSON.stringify(mongoFilter));
+    return Applications.find( mongoFilter, {limit: 10});
   },
 
   formatDate: function(date) {
