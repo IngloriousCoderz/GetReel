@@ -1,17 +1,18 @@
 <template name="filter">
-  <form id="filter" class="col-lg-2">
+  <form id="filterForm" class="col-lg-2">
     <fieldset>
       <legend>creation date</legend>
+
       <div class="form-group">
         <div class="col-xs-3">
           <div class="checkbox">
             <label>
-              <input type="checkbox" id="createdAt-not" name="createdAt-not" /> not
+              <input id="createdAt-not" type="checkbox" name="createdAt-not" /> not
             </label>
           </div>
         </div>
         <div class="col-xs-9">
-          <select id="createdAt-criterion" name="createdAt-criterion" class="form-control date-filter">
+          <select id="createdAt-criterion" name="createdAt-criterion" class="form-control filter">
             <option value="eq">equals</option>
             <option value="gt">more than</option>
             <option value="lt">less than</option>
@@ -20,7 +21,7 @@
           </select>
         </div>
         <div class="values">
-          <div class="col-xs-12 at">
+          <div class="col-xs-12 value">
             <label for="createdAt">at</label>
             <input type="date" id="createdAt" name="createdAt" class="form-control" />
           </div>
@@ -38,24 +39,42 @@
 
     <fieldset>
       <legend>recruiter</legend>
-        <div class="form-group">
-          <!-- <label for="recruiter">recruiter</label> -->
-          <select id="recruiter" name="recruiter" class="form-control">
-            <!-- <option value="1">Tizio</option>
-            <option value="2">Caio</option>
-            <option value="3">Sempronio</option>
-            <option value="3">recruiter</option> -->
-            <option value="Tizio">Tizio</option>
-            <option value="Caio">Caio</option>
-            <option value="Sempronio">Sempronio</option>
-            <option value="recruiter">recruiter</option>
+
+      <div class="form-group">
+        <div class="col-xs-3">
+          <div class="checkbox">
+            <label>
+              <input id="recruiter-not" type="checkbox" name="recruiter-not" /> not
+            </label>
+          </div>
+        </div>
+        <div class="col-xs-9">
+          <select id="recruiter-criterion" name="recruiter-criterion" class="form-control filter">
+            <option value="eq">equals</option>
+            <option value="empty">empty</option>
           </select>
         </div>
+        <div class="values">
+          <div class="col-xs-12 value">
+            <select id="recruiter" name="recruiter" class="form-control">
+              <option value="">Please choose one...</option>
+              {{#each recruiters}}
+              <option value="{{_id}}">{{username}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+      </div>
     </fieldset>
-    <div class="form-group">
-      <label for="firstname">firstname</label>
-      <input id="firstname" name="firstname" class="form-control" />
-    </div>
+
+    <fieldset>
+      <legend>firstname</legend>
+
+      <div class="form-group">
+        <label for="firstname">firstname</label>
+        <input id="firstname" name="firstname" class="form-control" />
+      </div>
+    </fieldset>
     <div class="form-group">
       <label for="lastname">lastname</label>
       <input id="lastname" name="lastname" class="form-control" />
