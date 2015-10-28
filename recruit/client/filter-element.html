@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="col-xs-9">
-          <select id="{{name}}-criterion" name="{{name}}-criterion" class="form-control filter">
+          <select id="{{name}}-criterion" name="{{name}}-criterion" class="form-control input-sm filter">
             <option value="eq">equals</option>
             {{#if isString}}
             <option value="contains">contains</option>
@@ -30,14 +30,14 @@
       </div>
       <div class="values">
         <div class="col-xs-12 value">
-          <input type="{{type}}" id="{{name}}" name="{{name}}" class="form-control" min="{{min}}" max="{{max}}" />
+          <input type="{{type}}" id="{{name}}" name="{{name}}" class="form-control input-sm" min="{{min}}" max="{{max}}" />
         </div>
         <div class="col-xs-12 from">
-          <input type="{{type}}" id="{{name}}-from" name="{{name}}-from" class="form-control" min="{{min}}" max="{{max}}" />
+          <input type="{{type}}" id="{{name}}-from" name="{{name}}-from" class="form-control input-sm" min="{{min}}" max="{{max}}" />
         </div>
         <div class="col-xs-12 to">
           <label for="{{name}}-to">and</label>
-          <input type="{{type}}" id="{{name}}-to" name="{{name}}-to" class="form-control" min="{{min}}" max="{{max}}" />
+          <input type="{{type}}" id="{{name}}-to" name="{{name}}-to" class="form-control input-sm" min="{{min}}" max="{{max}}" />
         </div>
       </div>
     </div>
