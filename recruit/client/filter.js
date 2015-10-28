@@ -20,7 +20,11 @@ Template.filter.helpers({
 
 Template.filter.events({
   'change :checkbox#more-options': function(e) {
-    $('.options').toggleClass('hidden', !$(e.target).prop('checked'));
+    var moreOptions = $(e.target).prop('checked');
+    $('.options').toggleClass('hidden', !moreOptions);
+    if (!moreOptions) {
+      $('select.filter').val('eq').change();
+    }
   },
 
   'submit #filterForm': function(e) {
