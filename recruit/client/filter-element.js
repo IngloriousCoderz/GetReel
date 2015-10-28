@@ -11,7 +11,7 @@ Template.filterElement.helpers({
 Template.filterElement.events({
   'change select.filter': function(e) {
     var criterion = e.target.value;
-    var $values = $(e.target).parent().siblings('.values');
+    var $values = $(e.target).parents('.options').siblings('.values');
     switch (criterion) {
       case 'empty':
         $values.hide();
@@ -37,5 +37,5 @@ Template.filterElement.events({
 });
 
 Template.filter.rendered = function() {
-  this.$('select.filter').val('eq');
+  this.$('select.filter').change();
 };
