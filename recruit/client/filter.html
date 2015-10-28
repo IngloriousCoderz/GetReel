@@ -1,41 +1,6 @@
 <template name="filter">
   <form id="filterForm" class="col-lg-2">
-    <fieldset>
-      <legend>creation date</legend>
-
-      <div class="form-group">
-        <div class="col-xs-3">
-          <div class="checkbox">
-            <label>
-              <input id="createdAt-not" type="checkbox" name="createdAt-not" /> not
-            </label>
-          </div>
-        </div>
-        <div class="col-xs-9">
-          <select id="createdAt-criterion" name="createdAt-criterion" class="form-control filter">
-            <option value="eq">equals</option>
-            <option value="gt">more than</option>
-            <option value="lt">less than</option>
-            <option value="between">between</option>
-            <option value="empty">empty</option>
-          </select>
-        </div>
-        <div class="values">
-          <div class="col-xs-12 value">
-            <label for="createdAt">at</label>
-            <input type="date" id="createdAt" name="createdAt" class="form-control" />
-          </div>
-          <div class="col-xs-12 from">
-            <label for="createAt-from">from</label>
-            <input type="date" id="createdAt-from" name="createAt-from" class="form-control" />
-          </div>
-          <div class="col-xs-12 to">
-            <label for="createdAt-to">to</label>
-            <input type="date" id="createdAt-to" name="createAt-to" class="form-control" />
-          </div>
-        </div>
-      </div>
-    </fieldset>
+    {{> filterElement label="creation date" name="createdAt" comparable=true type="date"}}
 
     <fieldset>
       <legend>recruiter</legend>
@@ -67,14 +32,8 @@
       </div>
     </fieldset>
 
-    <fieldset>
-      <legend>firstname</legend>
+    {{> filterElement label="firstname" name="firstname" type="text"}}
 
-      <div class="form-group">
-        <label for="firstname">firstname</label>
-        <input id="firstname" name="firstname" class="form-control" />
-      </div>
-    </fieldset>
     <div class="form-group">
       <label for="lastname">lastname</label>
       <input id="lastname" name="lastname" class="form-control" />
