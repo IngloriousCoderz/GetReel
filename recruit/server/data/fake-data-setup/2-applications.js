@@ -3,7 +3,12 @@ Meteor.startup(function() {
   Applications.remove({fake:true});
   var maxFakeApplications = 50;
   console.log('generating', maxFakeApplications, 'fake applications');
+
   for (var i = 0; i < maxFakeApplications; i++) {
+    var createdAt = new Date();
+    console.log("createdAt", createdAt);
+    createdAt.setDate(createdAt.getDate() + Math.random() * maxFakeApplications);
+    console.log("createdAt", createdAt);
     var fakeApplication = {
       fake: true,
       firstname: ['Andersen', 'Antony', 'Roby', 'Federica'][Math.floor(Math.random() * 3)],
@@ -17,7 +22,7 @@ Meteor.startup(function() {
       phone: '11223344' + i,
       mobile: '33344455' + i,
       status: {},
-      createdAt: new Date(),
+      createdAt: createdAt,
       region: [1, 12, 15][Math.floor(Math.random() * 3)],
       experienceAsPhotographer: true,
       experienceAsOther: false,
