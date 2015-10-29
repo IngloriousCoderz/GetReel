@@ -1,0 +1,45 @@
+<template name="filterElement">
+  <fieldset>
+    <legend>{{label}}</legend>
+
+    <div class="form-group">
+      <div class="options hidden">
+        <div class="col-xs-3">
+          <div class="checkbox">
+            <label>
+              <input id="{{name}}-not" type="checkbox" name="{{name}}-not" /> not
+            </label>
+          </div>
+        </div>
+        <div class="col-xs-9">
+          <select id="{{name}}-criterion" name="{{name}}-criterion" class="form-control input-sm filter">
+            <option value="eq">equals</option>
+            {{#if isString}}
+            <option value="contains">contains</option>
+            <option value="startswith">starts with</option>
+            <option value="endswith">ends with</option>
+            {{/if}}
+            {{#if comparable}}
+            <option value="gt">more than</option>
+            <option value="lt">less than</option>
+            <option value="between">between</option>
+            {{/if}}
+            <option value="empty">empty</option>
+          </select>
+        </div>
+      </div>
+      <div class="values">
+        <div class="col-xs-12 value">
+          <input type="{{type}}" id="{{name}}" name="{{name}}" class="form-control input-sm" min="{{min}}" max="{{max}}" />
+        </div>
+        <div class="col-xs-12 from">
+          <input type="{{type}}" id="{{name}}-from" name="{{name}}-from" class="form-control input-sm" min="{{min}}" max="{{max}}" />
+        </div>
+        <div class="col-xs-12 to">
+          <label for="{{name}}-to">and</label>
+          <input type="{{type}}" id="{{name}}-to" name="{{name}}-to" class="form-control input-sm" min="{{min}}" max="{{max}}" />
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</template>
