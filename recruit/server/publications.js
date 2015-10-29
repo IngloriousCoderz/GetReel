@@ -11,6 +11,8 @@ Meteor.startup(function() {
     return Meteor.users.find({roles: 'recruiter'});
   });
 
+  //ReactiveTable.publish('applications', Applications);
+
   Meteor.publish('applications', function() {
     //
     // ELIMINARE!
