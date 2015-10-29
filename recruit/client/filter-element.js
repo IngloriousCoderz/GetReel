@@ -15,6 +15,7 @@ Template.filterElement.events({
     switch (criterion) {
       case 'empty':
         $values.hide();
+
         // $values.toggleClass('hidden');
         break;
       case 'eq':
@@ -25,18 +26,19 @@ Template.filterElement.events({
       case 'lt':
         $values.show();
         $values.children('.value').show();
-        console.log($values.children('.from'));
-        $values.children('.from').hide();
-        $values.children('.to').hide();
+        $values.children('.from').hide().children('input').val('');
+        $values.children('.to').hide().children('input').val('');
+
         // $values.children('.value').toggleClass('hidden');
         // $values.children('.from').toggleClass('hidden');
         // $values.children('.to').toggleClass('hidden');
         break;
       case 'between':
         $values.show();
-        $values.children('.value').hide();
+        $values.children('.value').hide().children('input').val('');
         $values.children('.from').show();
         $values.children('.to').show();
+
         // $values.children('.value').toggleClass('hidden');
         // $values.children('.from').toggleClass('hidden');
         // $values.children('.to').toggleClass('hidden');
