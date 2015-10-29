@@ -6,9 +6,9 @@ Meteor.startup(function() {
 
   for (var i = 0; i < maxFakeApplications; i++) {
     var createdAt = new Date();
-    console.log("createdAt", createdAt);
+    // console.log("createdAt", createdAt);
     createdAt.setDate(createdAt.getDate() + Math.random() * maxFakeApplications);
-    console.log("createdAt", createdAt);
+    // console.log("createdAt", createdAt);
     var fakeApplication = {
       fake: true,
       firstname: ['Andersen', 'Antony', 'Roby', 'Federica'][Math.floor(Math.random() * 3)],
