@@ -37,13 +37,49 @@ Template.filter.events({
         from: e.target['createdAt-from'].value,
         to: e.target['createdAt-to'].value,
       },
-      recruiter: e.target.recruiter.value,
-      firstname: e.target.firstname.value,
-      lastname: e.target.lastname.value,
-      age: e.target.age.value,
-      mobile: e.target.mobile.value,
-      status: e.target.status.value,
-      region: e.target.region.value,
+      recruiter: {
+          not: e.target['recruiter-not'].checked,
+          criterion: e.target['recruiter-criterion'].value,
+          value: e.target['recruiter-id'].value,
+      },
+      firstname: {
+          not: e.target['firstname-not'].checked,
+          criterion: e.target['firstname-criterion'].value,
+          value: e.target.firstname.value,
+          from: e.target['firstname-from'].value,
+          to: e.target['firstname-to'].value,
+      },
+      lastname: {
+          not: e.target['lastname-not'].checked,
+          criterion: e.target['lastname-criterion'].value,
+          value: e.target.lastname.value,
+          from: e.target['lastname-from'].value,
+          to: e.target['lastname-to'].value,
+      },
+      age: {
+          not: e.target['age-not'].checked,
+          criterion: e.target['age-criterion'].value,
+          value: e.target.age.value,
+          from: e.target['age-from'].value,
+          to: e.target['age-to'].value,
+      },
+      mobile: {
+          not: e.target['mobile-not'].checked,
+          criterion: e.target['mobile-criterion'].value,
+          value: e.target.mobile.value,
+          from: e.target['mobile-from'].value,
+          to: e.target['mobile-to'].value,
+      },
+      status: {
+          not: e.target['status-not'].checked,
+          criterion: e.target['status-criterion'].value,
+          value: e.target.status.value,
+      },
+      region: {
+          not: e.target['region-not'].checked,
+          criterion: e.target['region-criterion'].value,
+          value: e.target.region.value,
+      },
     };
     console.log('criteria:', JSON.stringify(criteria));
 
@@ -109,13 +145,21 @@ var getMongoQuery = function (criteria) {
 
     for (var criterion in criteria) {
       if (criteria.hasOwnProperty(criterion)) {
-        if (criteria[criterion] && typeof criteria[criterion] != 'object') {
+          console.log('criterion', criterion);
+        if (criteria[criterion].value /*&& typeof criteria[criterion] != 'object'*/) {
           if (criterion === 'recruiter') {
-            mongo['status.recruiter._id'] = criteria[criterion];
+            mongo['status.recruiter._id'] = criteria[criterion].value;
           } else {
-            mongo[criterion] = criteria[criterion];
+            mongo[criterion] = criteria[criterion].value;
           }
         }
+        if (criteria[criterion].from &&  criteria[criterion].to) {
+            mongo[criterion] = {
+                $gte: criteria[criterion].from,
+                $lte: criteria[criterion].from,
+            }
+        }
+
       }
     }
 

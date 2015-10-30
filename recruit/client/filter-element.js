@@ -12,8 +12,7 @@ Template.filterElement.events({
   'change select.filter': function(e) {
     var criterion = e.target.value;
     var $values = $(e.target).parents('.options').siblings('.values');
-
-    console.log('inputs',  $values.children('input'));
+    console.log('switch criterion', criterion);
     switch (criterion) {
       case 'empty':
         $values.hide();
