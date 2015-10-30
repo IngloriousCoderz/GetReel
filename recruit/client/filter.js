@@ -49,12 +49,11 @@ Template.filter.events({
 
     var mongo = {};
     var cd = criteria.creationDate;
-    if (cd.at || cd.from || cd.to) {
+    if (cd.criterion === "empty" || cd.at || cd.from || cd.to) {
       cd.at = new Date(cd.at);
       mongo.createdAt = {};
 
       var condition = '';
-      console.log('cd.criterion', cd.criterion);
       switch (cd.criterion) {
         case 'eq':
           var dayAfter = new Date(cd.at);
@@ -76,14 +75,17 @@ Template.filter.events({
           break;
         case 'between':
           console.log('between');
+          dateTo = new Date(cd.to);
+          dateTo.setDate(dateTo.getDate() + 1);
           condition = {
             $gte: new Date(cd.from),
-            $lt: new Date(cd.to),
+            $lt: dateTo,
           };
           break;
         case 'empty':
-
-          //condition = {""}; // empty?
+            condition = {
+                $exists : false
+            };
           break;
       }
       if (cd.not) {
