@@ -32,6 +32,7 @@
         <div class="col-xs-12 value">
           <input type="{{type}}" id="{{name}}" name="{{name}}" class="form-control input-sm" min="{{min}}" max="{{max}}" />
         </div>
+        {{#if comparable}}
         <div class="col-xs-12 from">
           <input type="{{type}}" id="{{name}}-from" name="{{name}}-from" class="form-control input-sm" min="{{min}}" max="{{max}}" />
         </div>
@@ -39,6 +40,7 @@
           <label for="{{name}}-to">and</label>
           <input type="{{type}}" id="{{name}}-to" name="{{name}}-to" class="form-control input-sm" min="{{min}}" max="{{max}}" />
         </div>
+      {{/if}}
       </div>
     </div>
   </fieldset>

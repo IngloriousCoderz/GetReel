@@ -33,7 +33,7 @@ Template.filter.events({
       creationDate: {
         not: e.target['createdAt-not'].checked,
         criterion: e.target['createdAt-criterion'].value,
-        at: e.target.createdAt.value,
+        value: e.target.createdAt.value,
         from: e.target['createdAt-from'].value,
         to: e.target['createdAt-to'].value,
       },
@@ -46,29 +46,21 @@ Template.filter.events({
           not: e.target['firstname-not'].checked,
           criterion: e.target['firstname-criterion'].value,
           value: e.target.firstname.value,
-          from: e.target['firstname-from'].value,
-          to: e.target['firstname-to'].value,
       },
       lastname: {
           not: e.target['lastname-not'].checked,
           criterion: e.target['lastname-criterion'].value,
           value: e.target.lastname.value,
-          from: e.target['lastname-from'].value,
-          to: e.target['lastname-to'].value,
       },
       age: {
           not: e.target['age-not'].checked,
           criterion: e.target['age-criterion'].value,
           value: e.target.age.value,
-          from: e.target['age-from'].value,
-          to: e.target['age-to'].value,
       },
       mobile: {
           not: e.target['mobile-not'].checked,
           criterion: e.target['mobile-criterion'].value,
           value: e.target.mobile.value,
-          from: e.target['mobile-from'].value,
-          to: e.target['mobile-to'].value,
       },
       status: {
           not: e.target['status-not'].checked,
@@ -96,28 +88,28 @@ var getMongoQuery = function (criteria) {
     var mongo = {};
     var cd = criteria.creationDate;
 
-    if (cd.criterion === "empty" || cd.at || cd.from || cd.to) {
-      cd.at = new Date(cd.at);
+    if (cd.criterion === "empty" || cd.value || cd.from || cd.to) {
+      cd.value = new Date(cd.value);
       mongo.createdAt = {};
 
       var condition = '';
       switch (cd.criterion) {
         case 'eq':
-          var dayAfter = new Date(cd.at);
-          dayAfter.setDate(cd.at.getDate() + 1);
+          var dayAfter = new Date(cd.value);
+          dayAfter.setDate(cd.value.getDate() + 1);
           condition = {
-            $gte: cd.at,
+            $gte: cd.value,
             $lt: dayAfter,
           };
           break;
         case 'gt':
           condition = {
-            $gt: cd.at,
+            $gt: cd.value,
           };
           break;
         case 'lt':
           condition = {
-            $lt: cd.at,
+            $lt: cd.value,
           };
           break;
         case 'between':
