@@ -47,8 +47,19 @@ Template.filter.events({
     };
     console.log('criteria:', JSON.stringify(criteria));
 
+    var mongo = getMongoQuery(criteria);
+
+    console.log('mongo query:', JSON.stringify(mongo));
+    Session.set('mongo-filter', mongo);
+  },
+});
+
+
+
+var getMongoQuery = function (criteria) {
     var mongo = {};
     var cd = criteria.creationDate;
+
     if (cd.criterion === "empty" || cd.at || cd.from || cd.to) {
       cd.at = new Date(cd.at);
       mongo.createdAt = {};
@@ -108,7 +119,5 @@ Template.filter.events({
       }
     }
 
-    console.log('mongo query:', JSON.stringify(mongo));
-    Session.set('mongo-filter', mongo);
-  },
-});
+    return mongo;
+}
