@@ -31,6 +31,7 @@ Template.filter.events({
     e.preventDefault();
     var criteria = {
       createdAt: {
+        isDate: true,
         not: e.target['createdAt-not'].checked,
         op: e.target['createdAt-criterion'].value,
         value: e.target.createdAt.value,
@@ -38,6 +39,7 @@ Template.filter.events({
         to: e.target['createdAt-to'].value,
       },
       recruiter: {
+          field: 'status.recruiter._id',
           not: e.target['recruiter-not'].checked,
           op: e.target['recruiter-criterion'].value,
           value: e.target['recruiter-id'].value,
@@ -91,32 +93,27 @@ var getMongoQuery = function(criteria) {
 		if (criteria.hasOwnProperty(criterionName)) {
             var condition = {};
             var criterion = criteria[criterionName];
+            if(!criterion.field) {
+                criterion.field = criterionName;
+            }
+
 			if (criterion.value) {
-                // console.log('criterionName', criterionName);
-                // console.log('criterion.value', criterion.value);
-                // console.log('criterion.op', criterion.op);
-                mongo[criterionName] = {};
+                if(criterion.isDate) {
+                    criterion.value = new Date(criterion.value);
+                }
+                mongo[criterion.field] = {};
                 switch (criterion.op) {
                     case 'eq':
-                        switch (criterionName) {
-        					case 'recruiter':
-        						// mongo['status.recruiter._id'] = criteria[criterion].value;
-        						condition['status.recruiter._id'] = criterion.value;
-        					break;
-                            case 'createdAt':
-                                var cd = criterion;
-                                cd.value = new Date(cd.value);
-                                var dayAfter = new Date(cd.value);
-                                dayAfter.setDate(cd.value.getDate() + 1);
-                                condition = {
-                                	$gte: cd.value,
-                                	$lt: dayAfter,
-                                };
-                                break;
-        					default:
-        						condition[criterionName] = criterion.value;
-        					break;
-        				}
+                        if(criterion.isDate) {
+                            var dayAfter = new Date(criterion.value);
+                            dayAfter.setDate(criterion.value.getDate() + 1);
+                            condition = {
+                            	$gte: criterion.value,
+                            	$lt: dayAfter,
+                            };
+                        } else {
+                            condition = criterion.value;
+                        }
                     break;
                     case 'gt':
                         condition = { $gt: criterion.value};
@@ -125,44 +122,51 @@ var getMongoQuery = function(criteria) {
                         condition = { $lt: criterion.value};
                     break;
                     default:
-                        //throw('operator not supported ' + criterion.op);
+                        throw('operator not supported: ' + criterion.op);
                     break;
                 }
 			}
+
 			if (criterion.from && criterion.to) {
-                    mongo[criterionName] = {};
+                    if(criterion.isDate) {
+                        criterion.from = new Date(criterion.from);
+                        criterion.to = new Date(criterion.to);
+                    }
+                    mongo[criterion.field] = {};
                     switch (criterion.op) {
                         case 'between':
-                        switch (criterionName) {
-                            case 'createdAt':
-                                var cd = criterion;
-                                cd.from = new Date(cd.from);
-                                cd.to = new Date(cd.to);
-                                cd.to.setDate(cd.to.getDate() + 1);
+                            if(criterion.isDate) {
+                                criterion.to.setDate(criterion.to.getDate() + 1);
                                 condition = {
-                                	$gte: cd.from,
-                                	$lt: cd.to,
+                                	$gte: criterion.from,
+                                	$lt: criterion.to,
                                 };
-                                break;
-        					default:
-        						condition[criterionName] = criterion.value;
-        					break;
-        				}
+                            } else {
+                                condition = criterion.value;
+                            }
                         break;
                         default:
-                            condition = {
-                                $gte: criterion.from,
-                                $lte: criterion.to,
-                            }
+                            // condition = {
+                            //     $gte: criterion.from,
+                            //     $lte: criterion.to,
+                            // }
+                            throw('operator not supported: ' + criterion.op);
                         break;
 				}
 			}
 
-            if (mongo[criterionName]) {
+            if(criterion.op === "empty") {
+                mongo[criterion.field] = {};
+                condition = {
+                    $exists : false,
+                };
+            }
+
+            if (mongo[criterion.field]) {
                 if(criterion.not) {
-                    mongo[criterionName].$not = condition;
+                    mongo[criterion.field].$not = condition;
                 } else {
-                    mongo[criterionName] = condition;
+                    mongo[criterion.field] = condition;
                 }
             }
 		}
