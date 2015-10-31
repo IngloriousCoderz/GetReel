@@ -35,10 +35,11 @@ Template.Apply.events({
 
     $link.tab('show');
   },
-
+/*
   'change input, change select': function(e) {
     application = Session.get('application');
     application[e.target.name] = e.target.value;
     Session.set('application', application);
   },
+*/
 });

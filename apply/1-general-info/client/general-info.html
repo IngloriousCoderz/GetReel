@@ -4,68 +4,66 @@
       <fieldset>
         <legend>Personal Info</legend>
 
-        <div class="form-group col-lg-6">
+        <div class="col-lg-6">
           {{> afQuickField id="firstname" name="firstname" placeholder='e.g. John'}}
         </div>
 
-        <div class="form-group col-lg-6">
+        <div class="col-lg-6">
           {{> afQuickField id="lastname" name="lastname" placeholder='e.g. Smith'}}
         </div>
 
-        <div class="form-group col-lg-6">
+        <div class="col-lg-6">
           {{> afQuickField id="ssn" name="ssn" placeholder='e.g. 5346879'}}
         </div>
 
-        <div class="form-group col-lg-6">
+        <div class="col-lg-6">
           {{> afQuickField id="dateOfBirth" name="dateOfBirth" type="bootstrap-datepicker" buttonClasses="glyphicon glyphicon-calendar"}}
         </div>
 
-        <div class="form-group col-lg-6">
+        <div class="col-lg-6">
           {{> afQuickField id="nationality" name="nationality" firstOption="Please choose a nationality..."}}
         </div>
 
-        <div class="form-group">
-          <div class="col-lg-2">
-            {{> afQuickField id="permit" name="permit" type="bootstrap-switch"}}
-          </div>
-          <div class="col-lg-4">
-            {{> afQuickField id="permitKind" name="permitKind" placeholder="e.g. ID Card"}}
-          </div>
+        <div class="col-lg-2">
+          {{> afQuickField id="permit" name="permit" type="bootstrap-switch"}}
+        </div>
+        <div class="col-lg-4">
+          {{> afQuickField id="permitKind" name="permitKind" placeholder="e.g. ID Card"}}
         </div>
       </fieldset>
 
       <fieldset>
         <legend>Permanent Address</legend>
 
-        <div class="form-group col-lg-2">
+        <div class="col-lg-2">
           {{> afQuickField id="civic" name="civic" placeholder="e.g. 127"}}
         </div>
 
-        <div class="form-group col-lg-4">
+        <div class="col-lg-4">
           {{> afQuickField id="address" name="address" placeholder="e.g. Huffingthon St."}}
         </div>
 
-        <div class="form-group col-lg-1">
+        <div class="col-lg-1">
           {{> afQuickField id="zip" name="zip" placeholder="e.g. 00100"}}
         </div>
 
-        <div class="form-group col-lg-3">
+        <div class="col-lg-3">
           {{> afQuickField id="city" name="city" placeholder="e.g. London"}}
         </div>
 
-        <div class="form-group col-lg-2">
+        <div class="col-lg-2">
           {{> afQuickField id="province" name="province" firstOption="Please choose a province..."}}
         </div>
 
-        <div class="form-group col-lg-6">
+        <div class="col-lg-6">
           {{> afQuickField id="region" name="region"}}
         </div>
 
-        <div class="form-group col-lg-6">
+        <div class="col-lg-6">
           {{> afQuickField id="country" name="country" placeholder="e.g. United Kingdom"}}
         </div>
 
-        <div class="form-group col-lg-12">
+        <div class="col-lg-12">
           {{> afQuickField id="sameAddress" name="sameAddress" type="bootstrap-switch"}}
         </div>
       </fieldset>
@@ -73,31 +71,31 @@
       <fieldset id="currentAddressFieldset" class="hidden">
         <legend>Current Address</legend>
 
-        <div class="form-group col-lg-2">
+        <div class="col-lg-2">
           {{> afQuickField id="currentCivic" name="currentCivic" placeholder="e.g. 127"}}
         </div>
 
-        <div class="form-group col-lg-4">
+        <div class="col-lg-4">
           {{> afQuickField id="currentAddress" name="currentAddress" placeholder="e.g. Huffingthon St."}}
         </div>
 
-        <div class="form-group col-lg-1">
+        <div class="col-lg-1">
           {{> afQuickField id="currentZip" name="currentZip" placeholder="e.g. 00100"}}
         </div>
 
-        <div class="form-group col-lg-3">
+        <div class="col-lg-3">
           {{> afQuickField id="currentCity" name="currentCity" placeholder="e.g. London"}}
         </div>
 
-        <div class="form-group col-lg-2">
+        <div class="col-lg-2">
           {{> afQuickField id="currentProvince" name="currentProvince" firstOption="Please choose a province..."}}
         </div>
 
-        <div class="form-group col-lg-6">
+        <div class="col-lg-6">
           {{> afQuickField id="currentRegion" name="currentRegion"}}
         </div>
 
-        <div class="form-group col-lg-6">
+        <div class="col-lg-6">
           {{> afQuickField id="currentCountry" name="currentCountry" placeholder="e.g. United Kingdom"}}
         </div>
       </fieldset>
@@ -105,15 +103,15 @@
       <fieldset>
         <legend>Contacts</legend>
 
-        <div class="form-group col-lg-3">
+        <div class="col-lg-3">
           {{> afQuickField id="phone" name="phone" placeholder="e.g. 555-020304"}}
         </div>
 
-        <div class="form-group col-lg-3">
+        <div class="col-lg-3">
           {{> afQuickField id="mobile" name="mobile" placeholder="e.g. 356-58662535"}}
         </div>
 
-        <div class="form-group col-lg-6">
+        <div class="col-lg-6">
           {{> afQuickField id="email" name="email" placeholder="e.g. whois@that.com"}}
         </div>
       </fieldset>
@@ -121,7 +119,7 @@
       <fieldset>
         <legend>Family</legend>
 
-        <div class="form-group col-lg-6">
+        <div class="col-lg-6">
           <label for="maritalStatus">Marital status</label>
           <select id="maritalStatus" name="maritalStatus" class="form-control">
             <option value="SINGLE" selected>SINGLE</option>
@@ -130,7 +128,7 @@
           </select>
         </div>
 
-        <div class="form-group col-lg-6">
+        <div class="col-lg-6">
           <label for="children">Children</label>
           <input id="children" type="number" name="children" value="{{application.children}}" min="0" class="form-control" placeholder="e.g. 3" />
         </div>
@@ -139,26 +137,24 @@
       <fieldset>
         <legend>Passport</legend>
 
-        <div class="form-group">
-          <div class="col-lg-2">
-            {{> afQuickField id="passport" name="passport" type="bootstrap-switch"}}
-          </div>
+        <div class="col-lg-2">
+          {{> afQuickField id="passport" name="passport" type="bootstrap-switch"}}
+        </div>
 
-          <div class="col-lg-6">
-            {{> afQuickField id="passportNumber" name="passportNumber" placeholder="Passport number"}}
-          </div>
+        <div class="col-lg-6">
+          {{> afQuickField id="passportNumber" name="passportNumber" placeholder="Passport number"}}
+        </div>
 
-          <div class="col-lg-2">
-            {{> afQuickField id='passportValidFrom' name='passportValidFrom' type="bootstrap-datepicker" buttonClasses="glyphicon glyphicon-calendar"}}
-          </div>
+        <div class="col-lg-2">
+          {{> afQuickField id='passportValidFrom' name='passportValidFrom' type="bootstrap-datepicker" buttonClasses="glyphicon glyphicon-calendar"}}
+        </div>
 
-          <div class="col-lg-2">
-            {{> afQuickField id='passportValidTo' name='passportValidTo' type="bootstrap-datepicker" buttonClasses="glyphicon glyphicon-calendar"}}
-          </div>
+        <div class="col-lg-2">
+          {{> afQuickField id='passportValidTo' name='passportValidTo' type="bootstrap-datepicker" buttonClasses="glyphicon glyphicon-calendar"}}
         </div>
       </fieldset>
 
-      <div class="form-group col-lg-6">
+      <div class="col-lg-6">
         <label for="job">Job position</label>
         <select id="job" name="job" class="form-control">
           {{#each availableJobs}}
@@ -167,7 +163,7 @@
         </select>
       </div>
 
-      <div class="form-group col-lg-3">
+      <div class="col-lg-3">
         {{> afQuickField id="drivingLicense" name="drivingLicense" type="bootstrap-switch"}}
       </div>
 
@@ -175,20 +171,19 @@
         {{> afQuickField id="carOwner" name="carOwner" type="bootstrap-switch"}}
       </div>
 
-      <div class="form-group col-lg-6">
+      <div class="col-lg-6">
         <label for="resume">Resume</label>
         <input type="filepicker-dragdrop" id="resume" />
       </div>
 
-      <div class="form-group col-lg-6">
+      <div class="col-lg-6">
         <label for="showreel">Showreel</label>
         <input type="filepicker-dragdrop" id="showreel" />
       </div>
 
-      <div class="form-group col-lg-12">
+      <div class="col-lg-12">
         <button type="submit" class="btn btn-default">Submit</button>
       </div>
-  <!--</form>-->
   {{/autoForm}}
 </div>
 </template>
