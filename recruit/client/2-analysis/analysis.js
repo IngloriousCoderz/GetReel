@@ -14,5 +14,9 @@ Template.analysis.onRendered(function() {
     height: '100%',
   };
 
-  new Chartist.Line('#chart', data);//, options);
+  new Chartist.Pie('#chart', {
+    series: [10, 2, 4, 3],
+  }, {
+  donut: true,
+});//, options);
 });
