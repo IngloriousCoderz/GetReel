@@ -121,8 +121,17 @@ var getMongoQuery = function(criteria) {
                     case 'lt':
                         condition = { $lt: criterion.value};
                     break;
+                    case 'startswith':
+                        condition = { $regex: '^' + criterion.value, $options: 'i' };
+                    break;
+                    case 'endswith':
+                        condition = { $regex: criterion.value + '$', $options: 'i' };
+                    break;
+                    case 'contains':
+                        condition = { $regex: criterion.value, $options: 'i' };
+                    break;
                     default:
-                        throw('operator not supported: ' + criterion.op);
+                        //throw('operator not supported: ' + criterion.op);
                     break;
                 }
 			}
@@ -146,10 +155,6 @@ var getMongoQuery = function(criteria) {
                             }
                         break;
                         default:
-                            // condition = {
-                            //     $gte: criterion.from,
-                            //     $lte: criterion.to,
-                            // }
                             throw('operator not supported: ' + criterion.op);
                         break;
 				}
