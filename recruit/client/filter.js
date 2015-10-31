@@ -55,9 +55,12 @@ Template.filter.events({
           value: e.target.lastname.value,
       },
       age: {
+          isNumber: true,
           not: e.target['age-not'].checked,
           op: e.target['age-criterion'].value,
           value: e.target.age.value,
+          from: e.target['age-from'].value,
+          to: e.target['age-to'].value,
       },
       mobile: {
           not: e.target['mobile-not'].checked,
@@ -65,11 +68,14 @@ Template.filter.events({
           value: e.target.mobile.value,
       },
       status: {
+          isNumber: true,
+          field: 'status.current',
           not: e.target['status-not'].checked,
           op: e.target['status-criterion'].value,
           value: e.target.status.value,
       },
       region: {
+          isNumber: true,
           not: e.target['region-not'].checked,
           op: e.target['region-criterion'].value,
           value: e.target.region.value,
@@ -100,6 +106,9 @@ var getMongoQuery = function(criteria) {
 			if (criterion.value) {
                 if(criterion.isDate) {
                     criterion.value = new Date(criterion.value);
+                }
+                if(criterion.isNumber) {
+                    criterion.value = parseInt(criterion.value);
                 }
                 mongo[criterion.field] = {};
                 switch (criterion.op) {
@@ -141,6 +150,10 @@ var getMongoQuery = function(criteria) {
                         criterion.from = new Date(criterion.from);
                         criterion.to = new Date(criterion.to);
                     }
+                    if(criterion.isNumber) {
+                        criterion.from = parseInt(criterion.from);
+                        criterion.to = parseInt(criterion.to);
+                    }
                     mongo[criterion.field] = {};
                     switch (criterion.op) {
                         case 'between':
@@ -151,7 +164,10 @@ var getMongoQuery = function(criteria) {
                                 	$lt: criterion.to,
                                 };
                             } else {
-                                condition = criterion.value;
+                                condition = {
+                                    $gte: criterion.from,
+                                	$lte: criterion.to,
+                                };
                             }
                         break;
                         default:
