@@ -1,139 +1,104 @@
 <template name="applyGeneralInfo">
   <div class="tab-pane" id="tab1">
-    <form id="generalInfoForm" action="{{pathFor route='apply'}}" method="POST">
+    {{#autoForm id="generalInfoForm" schema='ApplicationSchema' action="{{pathFor route='apply'}}"}}
       <fieldset>
         <legend>Personal Info</legend>
 
         <div class="form-group col-lg-6">
-          <label for="firstname">Firstname</label>
-          <input id="firstname" type="text" name="firstname" value="{{application.firstname}}"  class="form-control" placeholder="e.g. John" />
+          {{> afQuickField id="firstname" name="firstname" placeholder='e.g. John'}}
         </div>
 
         <div class="form-group col-lg-6">
-          <label for="lastname">Lastname</label>
-          <input id="lastname" type="text" name="lastname" value="{{application.lastname}}" class="form-control" placeholder="e.g. Smith" />
+          {{> afQuickField id="lastname" name="lastname" placeholder='e.g. Smith'}}
         </div>
 
         <div class="form-group col-lg-6">
-          <label for="socialSecurityNumber">Social Security Number</label>
-          <input id="socialSecurityNumber" name="socialSecurityNumber" value="{{application.socialSecurityNumber}}" class="form-control" placeholder="e.g. 5346879" />
+          {{> afQuickField id="ssn" name="ssn" placeholder='e.g. 5346879'}}
         </div>
 
         <div class="form-group col-lg-6">
-          <label for="dateOfBirth">Date of birth</label>
-          <input id="dateOfBirth" type="date" name="dateOfBirth" class="form-control" value="{{application.dateOfBirth}}" placeholder="e.g. 31/12/1980" />
+          {{> afQuickField id="dateOfBirth" name="dateOfBirth" type="bootstrap-datepicker" buttonClasses="glyphicon glyphicon-calendar"}}
         </div>
 
         <div class="form-group col-lg-6">
-          <label for="nationality">Nationality</label>
-          <select id="nationality" name="nationality" class="form-control">
-            <option value="USA" selected>USA</option>
-            <option value="UK">UK</option>
-            <option value="ITALY">ITALY</option>
-          </select>
+          {{> afQuickField id="nationality" name="nationality" firstOption="Please choose a nationality..."}}
         </div>
 
-        <div class="form-group col-lg-6">
-          <div class="checkbox">
-            <label>
-              <input id="permit" type="checkbox" name="permit" checked />
-              permit to stay
-            </label>
+        <div class="form-group">
+          <div class="col-lg-2">
+            {{> afQuickField id="permit" name="permit" type="bootstrap-switch"}}
           </div>
-          <input id="permitKind" type="text" name="permitKind" value="{{application.permitKind}}" class="form-control" placeholder="Kind of permit" />
+          <div class="col-lg-4">
+            {{> afQuickField id="permitKind" name="permitKind" placeholder="e.g. ID Card"}}
+          </div>
         </div>
       </fieldset>
 
       <fieldset>
         <legend>Permanent Address</legend>
 
-        <div class="form-group col-lg-6">
-          <label for="residentialParish">Residential parish</label>
-          <input id="residentialParish" name="residentialParish" value="{{application.residentialParish}}" class="form-control" placeholder="e.g. London" />
-        </div>
-
-        <div class="form-group col-lg-6">
-          <label for="residentialProvince">Province</label>
-          <select id="residentialProvince" name="residentialProvince" class="form-control">
-            <option value="Winchestershire" selected>Winchestershrine</option>
-            <option value="Coltshire">Coltshire</option>
-            <option value="Berettashire">Berettashire</option>
-          </select>
-        </div>
-
-        <div class="form-group col-lg-6">
-          <label for="residentialZip">Residential Zip</label>
-          <input id="residentialZip" name="residentialZip" value="{{application.residentialZip}}" class="form-control" placeholder="e.g. 00100" />
+        <div class="form-group col-lg-2">
+          {{> afQuickField id="civic" name="civic" placeholder="e.g. 127"}}
         </div>
 
         <div class="form-group col-lg-4">
-          <label for="residentialAddress">Residential address</label>
-          <input id="residentialAddress" name="residentialAddress" value="{{application.residentialAddress}}" class="form-control" placeholder="e.g. Huffingthon St." />
+          {{> afQuickField id="address" name="address" placeholder="e.g. Huffingthon St."}}
+        </div>
+
+        <div class="form-group col-lg-1">
+          {{> afQuickField id="zip" name="zip" placeholder="e.g. 00100"}}
+        </div>
+
+        <div class="form-group col-lg-3">
+          {{> afQuickField id="city" name="city" placeholder="e.g. London"}}
         </div>
 
         <div class="form-group col-lg-2">
-          <label for="residentialNumber">Number</label>
-          <input id="residentialNumber" name="residentialNumber" value="{{application.residentialNumber}}" class="form-control" placeholder="e.g. 127" />
+          {{> afQuickField id="province" name="province" firstOption="Please choose a province..."}}
+        </div>
+
+        <div class="form-group col-lg-6">
+          {{> afQuickField id="region" name="region"}}
+        </div>
+
+        <div class="form-group col-lg-6">
+          {{> afQuickField id="country" name="country" placeholder="e.g. United Kingdom"}}
         </div>
 
         <div class="form-group col-lg-12">
-          <div class="checkbox">
-            <label>
-              <input id="sameAddress" type="checkbox" checked />
-              Current address same as permanent
-            </label>
-          </div>
+          {{> afQuickField id="sameAddress" name="sameAddress" type="bootstrap-switch"}}
         </div>
       </fieldset>
 
       <fieldset id="currentAddressFieldset" class="hidden">
         <legend>Current Address</legend>
 
-        <div class="form-group col-lg-6">
-          <label for="domicileParish">Domicile parish</label>
-          <input id="domicileParish" name="domicileParish" value="{{application.domicileParish}}" class="form-control" placeholder="e.g. Cambrige" />
-        </div>
-
-        <div class="form-group col-lg-6">
-          <label for="domicileProvince">Domicile province</label>
-          <select id="domicileProvince" name="domicileProvince" class="form-control">
-            <option value="Winchestershire" selected>Winchestershrine</option>
-            <option value="Coltshire">Coltshire</option>
-            <option value="Berettashire">Berettashire</option>
-          </select>
-        </div>
-
-        <div class="form-group col-lg-6">
-          <label for="domicileZip">Domicile Zip</label>
-          <input id="domicileZip" name="domicileZip" value="{{application.domicileZip}}" class="form-control" placeholder="e.g. 00100" />
+        <div class="form-group col-lg-2">
+          {{> afQuickField id="currentCivic" name="currentCivic" placeholder="e.g. 127"}}
         </div>
 
         <div class="form-group col-lg-4">
-          <label for="domicileAddress">Domicile address</label>
-          <input id="domicileAddress" name="domicileAddress" value="{{application.domicileAddress}}" class="form-control" placeholder="e.g. Huffingthon St." />
+          {{> afQuickField id="currentAddress" name="currentAddress" placeholder="e.g. Huffingthon St."}}
+        </div>
+
+        <div class="form-group col-lg-1">
+          {{> afQuickField id="currentZip" name="currentZip" placeholder="e.g. 00100"}}
+        </div>
+
+        <div class="form-group col-lg-3">
+          {{> afQuickField id="currentCity" name="currentCity" placeholder="e.g. London"}}
         </div>
 
         <div class="form-group col-lg-2">
-          <label for="domicileNumber">Number</label>
-          <input id="domicileNumber" name="domicileNumber" value="{{application.domicileNumber}}" class="form-control" placeholder="e.g. 127" />
+          {{> afQuickField id="currentProvince" name="currentProvince" firstOption="Please choose a province..."}}
         </div>
 
         <div class="form-group col-lg-6">
-          <label for="domicileRegion">Domicile Region</label>
-          <select id="domicileRegion" name="domicileRegion" class="form-control">
-            <option value="NORTH" selected>NORTH</option>
-            <option value="WEST">WEST</option>
-            <option value="SOUTH">SOUTH</option>
-          </select>
+          {{> afQuickField id="currentRegion" name="currentRegion"}}
         </div>
 
         <div class="form-group col-lg-6">
-          <label for="domicileNation">Domicile Nation</label>
-          <select id="domicileNation" name="domicileNation" class="form-control">
-            <option value="USA" selected>USA</option>
-            <option value="UK">UK</option>
-            <option value="ITALY">ITALY</option>
-          </select>
+          {{> afQuickField id="currentCountry" name="currentCountry" placeholder="e.g. United Kingdom"}}
         </div>
       </fieldset>
 
@@ -141,18 +106,15 @@
         <legend>Contacts</legend>
 
         <div class="form-group col-lg-3">
-          <label for="phone">Telephone (home)</label>
-          <input id="phone" type="tel" name="phone" value="{{application.phone}}" class="form-control" placeholder="e.g. 555-020304" />
+          {{> afQuickField id="phone" name="phone" placeholder="e.g. 555-020304"}}
         </div>
 
         <div class="form-group col-lg-3">
-          <label for="mobile">Mobile phone</label>
-          <input id="mobile" type="tel" name="mobile" value="{{application.mobile}}" class="form-control" placeholder="e.g. 356-58662535" />
+          {{> afQuickField id="mobile" name="mobile" placeholder="e.g. 356-58662535"}}
         </div>
 
         <div class="form-group col-lg-6">
-          <label for="email">E-mail</label>
-          <input id="email" type="email" name="email" value="{{application.email}}" class="form-control" placeholder="e.g. whois@that.com" />
+          {{> afQuickField id="email" name="email" placeholder="e.g. whois@that.com"}}
         </div>
       </fieldset>
 
@@ -177,32 +139,21 @@
       <fieldset>
         <legend>Passport</legend>
 
-        <div class="form-group col-lg-12">
-          <div class="checkbox col-lg-1">
-            <label>
-              <input id="passport" type="checkbox" name="passport" />
-              Valid
-            </label>
+        <div class="form-group">
+          <div class="col-lg-2">
+            {{> afQuickField id="passport" name="passport" type="bootstrap-switch"}}
           </div>
 
-          <div class="col-lg-5">
-            <input id="passportNumber" name="passportNumber" value="{{application.passportNumber}}" class="form-control" placeholder="Passport number" />
-          </div>
-
-          <div class="col-lg-1 text-right">
-            <label for="passportValidFrom">from</label>
+          <div class="col-lg-6">
+            {{> afQuickField id="passportNumber" name="passportNumber" placeholder="Passport number"}}
           </div>
 
           <div class="col-lg-2">
-            <input id="passportValidFrom" type="date" name="passportValidFrom" class="form-control" value="{{application.dateValidFrom}}" placeholder="e.g. 31/12/2010">
-          </div>
-
-          <div class="col-lg-1 text-right">
-            <label for="passportValidTo">to</label>
+            {{> afQuickField id='passportValidFrom' name='passportValidFrom' type="bootstrap-datepicker" buttonClasses="glyphicon glyphicon-calendar"}}
           </div>
 
           <div class="col-lg-2">
-            <input id="passportValidTo" type="date" name="passportValidTo" class="form-control" value="{{application.dateValidTo}}" placeholder="e.g. 31/12/2016">
+            {{> afQuickField id='passportValidTo' name='passportValidTo' type="bootstrap-datepicker" buttonClasses="glyphicon glyphicon-calendar"}}
           </div>
         </div>
       </fieldset>
@@ -216,20 +167,12 @@
         </select>
       </div>
 
-      <div class="form-group col-lg-6">
-        <label>Car</label>
-        <div class="checkbox">
-          <label>
-            <input id="drivingLicense" type="checkbox" name="drivingLicense" />
-            Driving license
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input id="carOwner" type="checkbox" name="carOwner" />
-            Car owner
-          </label>
-        </div>
+      <div class="form-group col-lg-3">
+        {{> afQuickField id="drivingLicense" name="drivingLicense" type="bootstrap-switch"}}
+      </div>
+
+      <div class="col-lg-3">
+        {{> afQuickField id="carOwner" name="carOwner" type="bootstrap-switch"}}
       </div>
 
       <div class="form-group col-lg-6">
@@ -245,6 +188,7 @@
       <div class="form-group col-lg-12">
         <button type="submit" class="btn btn-default">Submit</button>
       </div>
-  </form>
+  <!--</form>-->
+  {{/autoForm}}
 </div>
 </template>

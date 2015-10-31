@@ -21,8 +21,12 @@ accounts-password
 alanning:roles
 iron:router
 natestrauser:filepicker-plus
-copleykj:shower
 twbs:bootstrap
 rajit:bootstrap3-datepicker
 aslagle:reactive-table
 mfpierre:chartist-js
+check
+aldeed:autoform
+aldeed:autoform-bs-datepicker
+ctjp:autoform-bootstrap-switch
+jt6562:bootstrap-3-switch

@@ -3,6 +3,9 @@ accounts-password@1.1.4
 accounts-ui@1.1.6
 accounts-ui-unstyled@1.1.8
 alanning:roles@1.2.14
+aldeed:autoform@4.2.2
+aldeed:autoform-bs-datepicker@1.1.1
+aldeed:simple-schema@1.1.0
 anti:i18n@0.4.3
 aslagle:reactive-table@0.8.16
 autoupdate@1.2.4
@@ -18,7 +21,7 @@ caching-compiler@1.0.0
 caching-html-compiler@1.0.2
 callback-hook@1.0.4
 check@1.1.0
-copleykj:shower@0.1.16
+ctjp:autoform-bootstrap-switch@0.1.0
 ddp@1.2.2
 ddp-client@1.2.1
 ddp-common@1.2.2
@@ -48,6 +51,7 @@ iron:middleware-stack@1.0.11
 iron:router@1.0.12
 iron:url@1.0.11
 jquery@1.11.4
+jt6562:bootstrap-3-switch@3.3.2
 launch-screen@1.0.4
 less@2.5.1
 livedata@1.0.15
@@ -60,9 +64,9 @@ minifiers@1.1.7
 minimongo@1.0.10
 mobile-experience@1.0.1
 mobile-status-bar@1.0.6
+momentjs:moment@2.10.6
 mongo@1.1.3
 mongo-id@1.0.1
-mrt:underscore-string-latest@2.3.3
 natestrauser:filepicker-plus@2.0.0
 npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
