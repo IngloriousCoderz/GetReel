@@ -18,13 +18,11 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 accounts-ui
 accounts-password
-accounts-facebook
-accounts-twitter
-accounts-google
-pauli:accounts-linkedin
+alanning:roles
 iron:router
 natestrauser:filepicker-plus
+copleykj:shower
+twbs:bootstrap
 rajit:bootstrap3-datepicker
-themeteorchef:jquery-validation
-j4507:datatables-bootstrap-3
-alanning:roles
+aslagle:reactive-table
+mfpierre:chartist-js

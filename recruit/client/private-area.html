@@ -1,6 +1,46 @@
-<template name="PrivateArea">
-  <div class="row">
-    {{> filter}}
-    {{> applications}}
-  </div>
+<template name="privateArea">
+  <div class="container-fluid">
+    <div class="row">
+      <ul id="steps" class="nav nav-tabs">
+        <li class="active">
+          <a href="#tab1" data-toggle="tab">List</a>
+          <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            List <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#tab1" data-toggle="tab">New</a></li>
+            <li><a href="#tab1" data-toggle="tab">Step 1</a></li>
+            <li><a href="#tab1" data-toggle="tab">Step 2</a></li>
+            <li><a href="#tab1" data-toggle="tab">Step 3</a></li>
+            <li><a href="#tab1" data-toggle="tab">Approved</a></li>
+            <li><a href="#tab1" data-toggle="tab">Rejected</a></li>
+            <li><a href="#tab1" data-toggle="tab">All</a></li>
+          </ul>-->
+        </li>
+        <li><a href="#tab2" data-toggle="tab">Analysis</a></li>
+        <li><a href="#tab3" data-toggle="tab">Settings</a></li>
+        <li><a href="#tab4" data-toggle="tab">Activities</a></li>
+        <li><a href="#tab5" data-toggle="tab">Events</a></li>
+      </ul>
+
+      <div class="tab-content responsive">
+        <div class="tab-pane active" id="tab1">
+          {{> filter}}
+          {{> applications}}
+        </div>
+        <div class="tab-pane" id="tab2">
+          {{> analysis}}
+        </div>
+        <div class="tab-pane" id="tab3">
+          Settings
+        </div>
+        <div class="tab-pane" id="tab4">
+          Activities
+        </div>
+        <div class="tab-pane" id="tab5">
+          Events
+        </div>
+      </div>
+    </div>
+</div>
 </template>

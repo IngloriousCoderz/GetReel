@@ -39,6 +39,6 @@ Template.filterElement.events({
   },
 });
 
-Template.filter.rendered = function() {
+Template.filter.onRendered(function() {
   this.$('select.filter').change();
-};
+});

@@ -1,0 +1,27 @@
+<template name="analysis">
+  <form id="analysisForm" class="col-lg-2">
+    <div class="form-group">
+      <label for="chart-type">chart</label>
+      <select id="chart-type" class="form-control">
+        <option value="0">how do you know us</option>
+        <option value="1">how do you know us - step 2 - positive</option>
+        <option value="2">how do you know us - step 2 - negative</option>
+        <option value="3">age</option>
+        <option value="4">region</option>
+        <option value="5">recruiting by day</option>
+        <option value="6">step - new</option>
+        <option value="7">step - step 1</option>
+        <option value="8">step - step 2</option>
+        <option value="9">step - step 3</option>
+        <option value="10">step - rejected</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="year">year</label>
+      <input id="year" type="number" class="form-control" value="2015" min="2015" max="2105" />
+    </div>
+  </form>
+  <div class="col-lg-10">
+    <div id="chart" class="ct-golden-section"></div>
+  </div>
+</template>
