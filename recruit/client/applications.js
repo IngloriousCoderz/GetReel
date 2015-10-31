@@ -13,33 +13,35 @@ Template.applications.helpers({
       fields: [
         {
           key: 'edit',
+          sortable: false,
           label: function(value) {
             return Spacebars.SafeString('<div class="glyphicon glyphicon-pencil"></div>');
           },
 
-          sortable: false,
           fn: function(value) {
             return Spacebars.SafeString('<a href="#">edit</a>');
           },
         },
         {
           key: 'select',
-          label: function(value) {
-            return Spacebars.SafeString('<input type="checkbox" />');
-          },
-
           sortable: false,
           cellClass: 'text-center',
+
+          label: function(value) {
+            return Spacebars.SafeString('<input id="select-all" type="checkbox" />');
+          },
+
           fn: function(value) {
-            return Spacebars.SafeString('<input type="checkbox" />');
+            return Spacebars.SafeString('<input class="select" type="checkbox" />');
           },
         },
         {
           key: 'activities',
+          sortable: false,
           label: function(value) {
             return Spacebars.SafeString('<div class="glyphicon glyphicon-list-alt"></div>');
           },
-          sortable: false,
+
           fn: function(value) {
             return Spacebars.SafeString('<a href="#">activities</a>');
           },
@@ -81,7 +83,7 @@ Template.applications.helpers({
 
             return Regions.findOne({id: value}).name;
           },
-        },//<td>{{regionName region}}</td>
+        },
         {key: 'mobile', label: 'mobile'},
         {key: 'experienceAsPhotographer', label: 'experience as a photographer'},
         {key: 'experienceAsOther', label: 'experience as other'},
@@ -90,52 +92,13 @@ Template.applications.helpers({
       ],
       showColumnToggles: true,
       noDataTmpl: Template.noDataTemplate,
-      class: 'table table-striped table-bordered table-hover table-condensed col-sm-12',
+      class: 'table table-striped table-hover table-condensed col-sm-12',
     };
-  },
-
-  formatDate: function(date) {
-    if (typeof date === 'undefined') {
-      return null;
-    }
-
-    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
   },
 });
 
-Template.applications.rendered = function() {
-  /*
-  var mongoFilter = Session.get('mongo-filter');
-  console.log('Template.applications.rendered', JSON.stringify(mongoFilter));
-  var applications = Applications.find(mongoFilter, {limit: 10}).fetch();
-  console.log(applications);
-
-  $('#applications').dataTable({
-    searching: false,
-    scrollX: true,
-    pagingType: 'full_numbers',
-    language: {
-      decimal: ',',
-      thousands: '.',
-    },
-    columns: [
-      {data: 'edit'},
-      {data: 'select'},
-      {data: 'activities'},
-      {data: 'mail'},
-      {data: 'creation date'},
-      {data: 'first name'},
-      {data: 'last name'},
-      {data: 'age'},
-      {data: 'city'},
-      {data: 'province'},
-      {data: 'region'},
-      {data: 'mobile'},
-      {data: 'experience as photographer'},
-      {data: 'experience as other'},
-      {data: 'photo'},
-      {data: 'recruiter'},
-    ],
-    data: applications,
-  });*/
-};
+Template.applications.events({
+  'change #select-all': function(e) {
+    $('.select').prop('checked', $(e.target).prop('checked'));
+  },
+});
