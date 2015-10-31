@@ -34,6 +34,8 @@ Template.filter.events({
         not: e.target['createdAt-not'].checked,
         criterion: e.target['createdAt-criterion'].value,
         at: e.target.createdAt.value,
+        from: e.target['createdAt-from'].value,
+        to: e.target['createdAt-to'].value,
       },
       recruiter: e.target.recruiter.value,
       firstname: e.target.firstname.value,
@@ -47,26 +49,37 @@ Template.filter.events({
 
     var mongo = {};
     var cd = criteria.creationDate;
-    if (cd.at) {
+    if (cd.at || cd.from || cd.to) {
       cd.at = new Date(cd.at);
       mongo.createdAt = {};
 
       var condition = '';
+      console.log('cd.criterion', cd.criterion);
       switch (cd.criterion) {
         case 'eq':
           var dayAfter = new Date(cd.at);
           dayAfter.setDate(cd.at.getDate() + 1);
-          condition = { $gte: cd.at, $lt: dayAfter };
+          condition = {
+            $gte: cd.at,
+            $lt: dayAfter,
+          };
           break;
         case 'gt':
-          condition = {$gt: cd.at};
+          condition = {
+            $gt: cd.at,
+          };
           break;
         case 'lt':
-          condition = {$lt: cd.at};
+          condition = {
+            $lt: cd.at,
+          };
           break;
         case 'between':
-
-          // todo
+          console.log('between');
+          condition = {
+            $gte: new Date(cd.from),
+            $lt: new Date(cd.to),
+          };
           break;
         case 'empty':
 
