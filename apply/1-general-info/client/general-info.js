@@ -1,4 +1,4 @@
-Template.applyGeneralInfo.rendered = function() {
+Template.applyGeneralInfo.onRendered(function() {
   loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
 
   $('input[type="date"]').each(function(i, elem) {
@@ -131,7 +131,7 @@ Template.applyGeneralInfo.rendered = function() {
       Shower.Utils.failureCallback(erroredFields, $(generalInfoForm));
     },
   });
-};
+});
 
 Template.applyGeneralInfo.events({
   'change :checkbox#permit': function(e) {

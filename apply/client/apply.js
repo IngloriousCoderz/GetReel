@@ -16,9 +16,9 @@ Template.Apply.helpers({
   },
 });
 
-Template.Apply.rendered = function() {
+Template.Apply.onRendered(function() {
   $('#steps li:eq(' + (Session.get('application').step - 1) + ') a').tab('show');
-};
+});
 
 Template.Apply.events({
   'click #steps a': function(e) {
