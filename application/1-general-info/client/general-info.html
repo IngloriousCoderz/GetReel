@@ -8,11 +8,11 @@
       <legend>Personal Info</legend>
 
       <div class="col-lg-5">
-        {{> afQuickField id="firstname" name="firstname" placeholder='e.g. John'}}
+        {{> afQuickField id="firstname" name="firstname"}}
       </div>
 
       <div class="col-lg-5">
-        {{> afQuickField id="lastname" name="lastname" placeholder='e.g. Smith'}}
+        {{> afQuickField id="lastname" name="lastname"}}
       </div>
 
       <div class="col-lg-2">
@@ -20,18 +20,18 @@
       </div>
 
       <div class="col-lg-4">
-        {{> afQuickField id="ssn" name="ssn" placeholder='e.g. 5346879'}}
+        {{> afQuickField id="ssn" name="ssn"}}
       </div>
 
       <div class="col-lg-4">
-        {{> afQuickField id="nationality" name="nationality" firstOption="Please choose a nationality..."}}
+        {{> afQuickField id="nationality" name="nationality"}}
       </div>
 
       <div class="col-lg-2">
         {{> afQuickField id="permit" name="permit" type="bootstrap-switch"}}
       </div>
       <div class="col-lg-2">
-        {{> afQuickField id="permitKind" name="permitKind" placeholder="e.g. ID Card"}}
+        {{> afQuickField id="permitKind" name="permitKind"}}
       </div>
     </fieldset>
 
@@ -39,23 +39,23 @@
       <legend>Permanent Address</legend>
 
       <div class="col-lg-2">
-        {{> afQuickField id="civic" name="civic" placeholder="e.g. 127"}}
+        {{> afQuickField id="civic" name="civic"}}
       </div>
 
       <div class="col-lg-3">
-        {{> afQuickField id="address" name="address" placeholder="e.g. Huffingthon St."}}
+        {{> afQuickField id="address" name="address"}}
       </div>
 
       <div class="col-lg-2">
-        {{> afQuickField id="zip" name="zip" placeholder="e.g. 00100"}}
+        {{> afQuickField id="zip" name="zip"}}
       </div>
 
       <div class="col-lg-3">
-        {{> afQuickField id="city" name="city" placeholder="e.g. London"}}
+        {{> afQuickField id="city" name="city"}}
       </div>
 
       <div class="col-lg-2">
-        {{> afQuickField id="province" name="province" firstOption="Please choose a province..."}}
+        {{> afQuickField id="province" name="province"}}
       </div>
 
       <div class="col-lg-6">
@@ -63,7 +63,7 @@
       </div>
 
       <div class="col-lg-6">
-        {{> afQuickField id="country" name="country" placeholder="e.g. United Kingdom"}}
+        {{> afQuickField id="country" name="country"}}
       </div>
 
       <div class="col-lg-12">
@@ -75,23 +75,23 @@
       <legend>Current Address</legend>
 
       <div class="col-lg-2">
-        {{> afQuickField id="currentCivic" name="currentCivic" placeholder="e.g. 127"}}
+        {{> afQuickField id="currentCivic" name="currentCivic"}}
       </div>
 
       <div class="col-lg-3">
-        {{> afQuickField id="currentAddress" name="currentAddress" placeholder="e.g. Huffingthon St."}}
+        {{> afQuickField id="currentAddress" name="currentAddress"}}
       </div>
 
       <div class="col-lg-2">
-        {{> afQuickField id="currentZip" name="currentZip" placeholder="e.g. 00100"}}
+        {{> afQuickField id="currentZip" name="currentZip"}}
       </div>
 
       <div class="col-lg-3">
-        {{> afQuickField id="currentCity" name="currentCity" placeholder="e.g. London"}}
+        {{> afQuickField id="currentCity" name="currentCity"}}
       </div>
 
       <div class="col-lg-2">
-        {{> afQuickField id="currentProvince" name="currentProvince" firstOption="Please choose a province..."}}
+        {{> afQuickField id="currentProvince" name="currentProvince"}}
       </div>
 
       <div class="col-lg-6">
@@ -99,7 +99,7 @@
       </div>
 
       <div class="col-lg-6">
-        {{> afQuickField id="currentCountry" name="currentCountry" placeholder="e.g. United Kingdom"}}
+        {{> afQuickField id="currentCountry" name="currentCountry"}}
       </div>
     </fieldset>
 
@@ -107,15 +107,15 @@
       <legend>Contacts</legend>
 
       <div class="col-lg-3">
-        {{> afQuickField id="phone" name="phone" placeholder="e.g. 555-020304"}}
+        {{> afQuickField id="phone" name="phone"}}
       </div>
 
       <div class="col-lg-3">
-        {{> afQuickField id="mobile" name="mobile" placeholder="e.g. 356-58662535"}}
+        {{> afQuickField id="mobile" name="mobile"}}
       </div>
 
       <div class="col-lg-6">
-        {{> afQuickField id="email" name="email" placeholder="e.g. whois@that.com"}}
+        {{> afQuickField id="email" name="email"}}
       </div>
     </fieldset>
 
@@ -133,7 +133,7 @@
 
       <div class="col-lg-6">
         <label for="children">Children</label>
-        <input id="children" type="number" name="children" value="{{application.children}}" min="0" class="form-control" placeholder="e.g. 3" />
+        <input id="children" type="number" name="children" value="{{application.children}}" min="0" class="form-control" />
       </div>
     </fieldset>
 
@@ -145,7 +145,7 @@
       </div>
 
       <div class="col-lg-6">
-        {{> afQuickField id="passportNumber" name="passportNumber" placeholder="Passport number"}}
+        {{> afQuickField id="passportNumber" name="passportNumber"}}
       </div>
 
       <div class="col-lg-2">
