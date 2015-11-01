@@ -18,7 +18,7 @@ Template.application.helpers({
         form: 'studies-form',
         onSubmit: function(data, wizard) {
           console.log('Consolato da Template.application.helpers ' + data);
-        }
+        },
       },
     ];
   },
