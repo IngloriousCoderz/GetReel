@@ -7,7 +7,6 @@ GeneralInfoSchema = new SimpleSchema({
   },
   ssn: {
     type: String,
-    label: 'Social Security Number',
   },
   dateOfBirth: {
     type: Date,
@@ -30,7 +29,6 @@ GeneralInfoSchema = new SimpleSchema({
     type: Boolean,
     optional: true,
     defaultValue: true,
-    label: 'Residency permit',
   },
   permitKind: {
     type: String,
@@ -82,16 +80,13 @@ GeneralInfoSchema = new SimpleSchema({
     type: Boolean,
     optional: true,
     defaultValue: true,
-    label: 'Current address same as permanent',
   },
 
   currentCity: {
     type: String,
-    label: 'City',
   },
   currentProvince: {
     type: String,
-    label: 'Province',
     autoform: {
       options: {
         Winchestershire: 'Winchestershire',
@@ -102,19 +97,15 @@ GeneralInfoSchema = new SimpleSchema({
   },
   currentZip: {
     type: String,
-    label: 'Zip',
   },
   currentAddress: {
     type: String,
-    label: 'Address',
   },
   currentCivic: {
     type: String,
-    label: 'Civic',
   },
   currentRegion: {
     type: String,
-    label: 'Region',
     autoform: {
       options: {
         NORTH: 'NORTH',
@@ -125,26 +116,23 @@ GeneralInfoSchema = new SimpleSchema({
   },
   currentCountry: {
     type: String,
-    label: 'Country',
   },
   phone: {
     type: String,
-    label: 'Telephone (home)',
   },
   mobile: {
     type: String,
-    label: 'Mobile phone',
   },
   email: {
     type: String,
     regEx: SimpleSchema.RegEx.Email,
-    label: 'E-mail',
   },
   maritalStatus: {
     type: String,
   },
   children: {
     type: Number,
+    min: 0,
   },
 
   passport: {
@@ -162,7 +150,6 @@ GeneralInfoSchema = new SimpleSchema({
   passportValidFrom: {
     type: Date,
     optional: true,
-    label: 'from',
     custom: function() {
       if (this.field('passport').value) {
         return 'required';
@@ -172,7 +159,6 @@ GeneralInfoSchema = new SimpleSchema({
   passportValidTo: {
     type: Date,
     optional: true,
-    label: 'to',
     custom: function() {
       if (this.field('passport').value) {
         return 'required';
@@ -189,11 +175,11 @@ GeneralInfoSchema = new SimpleSchema({
 
   resume: {
     type: String,
-    // URL
+    regEx: SimpleSchema.RegEx.Url,
   },
   showreel: {
     type: String,
-    //URL
+    regEx: SimpleSchema.RegEx.Url,
   },
 });
 

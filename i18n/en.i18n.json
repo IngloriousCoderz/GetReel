@@ -3,6 +3,10 @@
 
   "Personal Info": "Personal Info",
   "Permanent Address": "Permanent Address",
+  "Current Address": "Current Address",
+  "Contacts": "Contacts",
+  "Family": "Family",
+  "Passport": "Passport",
 
   "schemas": {
     "general-info": {

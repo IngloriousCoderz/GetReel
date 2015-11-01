@@ -3,6 +3,10 @@
 
   "Personal Info": "Informazioni personali",
   "Permanent Address": "Residenza",
+  "Current Address": "Domicilio",
+  "Contacts": "Contatti",
+  "Family": "Stato coniugale",
+  "Passport": "Passaporto",
 
   "schemas": {
     "general-info": {
