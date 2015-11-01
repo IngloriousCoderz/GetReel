@@ -5,7 +5,7 @@
 
   {{#autoForm id="general-info-form" doc=step.data schema=step.schema}}
     <fieldset>
-      <legend>Personal Info</legend>
+      <legend>{{_ "Personal Info"}}</legend>
 
       <div class="col-lg-5">
         {{> afQuickField id="firstname" name="firstname"}}
@@ -36,7 +36,7 @@
     </fieldset>
 
     <fieldset>
-      <legend>Permanent Address</legend>
+      <legend>{{_ "Permanent Address"}}</legend>
 
       <div class="col-lg-2">
         {{> afQuickField id="civic" name="civic"}}

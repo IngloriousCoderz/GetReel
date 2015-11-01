@@ -1,4 +1,7 @@
 {
+  "Personal Info": "Personal Info",
+  "Permanent Address": "Permanent Address",
+
   "schemas": {
     "general-info": {
       "firstname": {
