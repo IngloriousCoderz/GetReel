@@ -9,7 +9,8 @@ Template.application.helpers({
         schema: GeneralInfoSchema,
         template: 'generalInfoStep',
         form: 'general-info-form',
-      }, {
+      },
+      {
         id: 'studies',
         title: 'Studies',
         schema: StudiesSchema,
@@ -17,7 +18,7 @@ Template.application.helpers({
         form: 'studies-form',
         onSubmit: function(data, wizard) {
           console.log('Consolato da Template.application.helpers ' + data);
-        },
+        }
       },
     ];
   },

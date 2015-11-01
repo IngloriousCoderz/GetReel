@@ -1,3 +1,5 @@
 <template name="studiesStep">
-  {{> quickform id="studies-form" doc=step.data schema=step.schema}}
+  {{#autoForm id="general-info-form" doc=step.data schema=step.schema}}
+    <fieldset>Studies</fieldset>
+  {{/autoForm}}
 </template>
