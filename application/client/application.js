@@ -6,15 +6,17 @@ Template.application.helpers({
       {
         id: 'general-info',
         title: 'General Info',
+        schema: GeneralInfoSchema,
         template: 'generalInfoStep',
         form: 'general-info-form',
       }, {
         id: 'studies',
         title: 'Studies',
+        schema: StudiesSchema,
         template: 'studiesStep',
         form: 'studies-form',
         onSubmit: function(data, wizard) {
-          console.log(data);
+          console.log('Consolato da Template.application.helpers ' + data);
         },
       },
     ];

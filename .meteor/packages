@@ -24,10 +24,10 @@ natestrauser:filepicker-plus
 twbs:bootstrap
 jt6562:bootstrap-3-switch
 rajit:bootstrap3-datepicker
+aldeed:autoform
+forwarder:autoform-wizard
+aldeed:autoform-bs-datepicker
 check
 ejson
 aslagle:reactive-table
 mfpierre:chartist-js
-aldeed:autoform@5.7.1
-forwarder:autoform-wizard
-aldeed:autoform-bs-datepicker
