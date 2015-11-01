@@ -23,6 +23,18 @@ Template.application.helpers({
     ];
   },
 
+  nextButtonLabel: function() {
+    return TAPi18n.__('next-button');
+  },
+
+  backButtonLabel: function() {
+    return TAPi18n.__('back-button');
+  },
+
+  confirmButtonLabel: function() {
+    TAPi18n.__('confirm-button');
+  },
+
   availableJobs: function() {
     return Jobs.find();
   },
