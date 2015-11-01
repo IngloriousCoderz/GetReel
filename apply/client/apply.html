@@ -1,75 +1,41 @@
 <template name="Apply">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 col-xs-12">
-        <img  src="/img/lavora.png" class="img-responsive center-block">
-        <div class="well">
-          <p>Benvenuto/a nella prima fase del Recruiting del Il Gruppo Digitale,
-             Le ricordiamo che accettiamo candidature di età compresa  tra i  17 e i  35 anni,
-             oltre ai  35 anni saranno  prese in considerazione solo esclusivamente
-             candidature con esperienza nella fotografia in villaggi turistici oppure
-             con esperienza sempre in villaggi ma in altro settore.</p>
-        </div>
+      <div class="col-xs-12">
+        <img src="/img/lavora.png" class="img-responsive center-block">
+        <p class="well">
+          Benvenuto/a nella prima fase del Recruiting del Il Gruppo Digitale,
+          Le ricordiamo che accettiamo candidature di età compresa  tra i  17 e i  35 anni,
+          oltre ai  35 anni saranno  prese in considerazione solo esclusivamente
+          candidature con esperienza nella fotografia in villaggi turistici oppure
+          con esperienza sempre in villaggi ma in altro settore.
+        </p>
       </div>
     </div>
-<<<<<<< HEAD
+
     <div class="row">
-      <div class="col-md-12 col-xs-12 form">
+      <div class="col-xs-12 application">
         <ul id="steps" class="nav nav-pills nav-justified">
-          <li><a href="#tab1" data-toggle="tab">Anagrafica</a></li>
-          <li class="{{#if isTabDisabled 2}}disabled{{/if}} "><a href="#tab2">Formazione</a></li>
-          <li class="{{#if isTabDisabled 3}}disabled{{/if}}"><a href="#tab3">Esperienze</a></li>
-          <li class="{{#if isTabDisabled 4}}disabled{{/if}}"><a href="#tab4">Altre info</a></li>
-          <li class="{{#if isTabDisabled 5}}disabled{{/if}}"><a href="#tab5">Autovalutazione</a></li>
-          <li class="{{#if isTabDisabled 6}}disabled{{/if}}"><a href="#tab6">Privacy</a></li>
+          <li><a href="#tab1" data-toggle="tab">Personal Info</a></li>
+          <li><a href="#tab2">Education/Skills</a></li>
+          <li><a href="#tab3">Work experience</a></li>
+          <li><a href="#tab4">Other info</a></li>
+          <li><a href="#tab5">Self-assessment</a></li>
+          <li><a href="#tab6">Privacy</a></li><!--<li class="{{#if isTabDisabled 2}}disabled{{/if}}"><a href="#tab2">Education/Skills</a></li>
+          <li class="{{#if isTabDisabled 3}}disabled{{/if}}"><a href="#tab3">Work experience</a></li>
+          <li class="{{#if isTabDisabled 4}}disabled{{/if}}"><a href="#tab4">Other info</a></li>
+          <li class="{{#if isTabDisabled 5}}disabled{{/if}}"><a href="#tab5">Self-assessment</a></li>
+          <li class="{{#if isTabDisabled 6}}disabled{{/if}}"><a href="#tab6">Privacy</a></li>-->
         </ul>
 
         <div class="tab-content responsive">
-            {{> applyGeneralInfo}}
-            {{> applyStudies}}
-
-          <!--
-
-          <div class="tab-pane active" id="tab1">
-            <form id="tab1"  action="{{pathFor route='apply'}}" method="POST">
-
-
-            </form>
-          </div>
-
-        -->
-
-
-          <!--<div class="tab-pane" id="tab2">Formazione</div>
-          <div class="tab-pane" id="tab3">esperienze professionali</div>
-          <div class="tab-pane" id="tab4">altre informazioni</div>
-          <div class="tab-pane" id="tab5">conosciamoci meglio</div>
-          <div class="tab-pane" id="tab6">consenso privacy</div>-->
-        </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 col-xs-12 form">
-      <ul id="steps" class="nav nav-pills nav-justified">
-        <li><a href="#tab1" data-toggle="tab">Personal Info</a></li>
-        <li><a href="#tab2">Education/Skills</a></li>
-        <li><a href="#tab3">Work experience</a></li>
-        <li><a href="#tab4">Other info</a></li>
-        <li><a href="#tab5">Self-assessment</a></li>
-        <li><a href="#tab6">Privacy</a></li><!--<li class="{{#if isTabDisabled 2}}disabled{{/if}}"><a href="#tab2">Education/Skills</a></li>
-        <li class="{{#if isTabDisabled 3}}disabled{{/if}}"><a href="#tab3">Work experience</a></li>
-        <li class="{{#if isTabDisabled 4}}disabled{{/if}}"><a href="#tab4">Other info</a></li>
-        <li class="{{#if isTabDisabled 5}}disabled{{/if}}"><a href="#tab5">Self-assessment</a></li>
-        <li class="{{#if isTabDisabled 6}}disabled{{/if}}"><a href="#tab6">Privacy</a></li>-->
-      </ul>
-
-      <div class="tab-content responsive">
           {{> applyGeneralInfo}}
           {{> applyStudies}}
           {{> applyWork}}
           {{> applyOtherInfo}}
           {{> applySelfAssessment}}
           {{> applyPrivacy}}
->>>>>>> tabs
+        </div>
       </div>
     </div>
   </div>

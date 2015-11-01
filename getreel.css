@@ -2,17 +2,11 @@ body {
   padding-top: 80px;
  }
 
-
 #login-buttons {
   padding: 18px;
 }
 
-
-form-group{
-  padding: 10px;
-}
-
-.form {
+.application {
   background: url("/img/grid.png");
   border-radius: 5px;
   border: 7px solid #F28700;
