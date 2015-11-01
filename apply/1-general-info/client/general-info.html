@@ -4,30 +4,30 @@
       <fieldset>
         <legend>Personal Info</legend>
 
-        <div class="col-lg-6">
+        <div class="col-lg-5">
           {{> afQuickField id="firstname" name="firstname" placeholder='e.g. John'}}
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-5">
           {{> afQuickField id="lastname" name="lastname" placeholder='e.g. Smith'}}
         </div>
 
-        <div class="col-lg-6">
-          {{> afQuickField id="ssn" name="ssn" placeholder='e.g. 5346879'}}
-        </div>
-
-        <div class="col-lg-6">
+        <div class="col-lg-2">
           {{> afQuickField id="dateOfBirth" name="dateOfBirth" type="bootstrap-datepicker" buttonClasses="glyphicon glyphicon-calendar"}}
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-4">
+          {{> afQuickField id="ssn" name="ssn" placeholder='e.g. 5346879'}}
+        </div>
+
+        <div class="col-lg-4">
           {{> afQuickField id="nationality" name="nationality" firstOption="Please choose a nationality..."}}
         </div>
 
         <div class="col-lg-2">
           {{> afQuickField id="permit" name="permit" type="bootstrap-switch"}}
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-2">
           {{> afQuickField id="permitKind" name="permitKind" placeholder="e.g. ID Card"}}
         </div>
       </fieldset>
@@ -154,7 +154,7 @@
         </div>
       </fieldset>
 
-      <div class="col-lg-6">
+      <div class="col-lg-8">
         <label for="job">Job position</label>
         <select id="job" name="job" class="form-control">
           {{#each availableJobs}}
@@ -163,11 +163,11 @@
         </select>
       </div>
 
-      <div class="col-lg-3">
+      <div class="col-lg-2">
         {{> afQuickField id="drivingLicense" name="drivingLicense" type="bootstrap-switch"}}
       </div>
 
-      <div class="col-lg-3">
+      <div class="col-lg-2">
         {{> afQuickField id="carOwner" name="carOwner" type="bootstrap-switch"}}
       </div>
 

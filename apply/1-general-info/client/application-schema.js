@@ -34,6 +34,7 @@ ApplicationSchema = new SimpleSchema({
     type: Boolean,
     optional: true,
     defaultValue: true,
+    label: 'Residency permit',
   },
   permitKind: {
     type: String,
