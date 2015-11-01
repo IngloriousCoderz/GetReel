@@ -1,8 +1,8 @@
-Template.applyGeneralInfo.onRendered(function() {
+Template.generalInfoStep.onRendered(function() {
   loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
 });
 
-Template.applyGeneralInfo.events({
+Template.generalInfoStep.events({
   'switchChange.bootstrapSwitch :checkbox#permit': function(e) {
     var hasPermit = $(e.target).prop('checked');
     $(permitKind).val('').attr('disabled', !hasPermit);

@@ -3,7 +3,7 @@ accounts-password@1.1.4
 accounts-ui@1.1.6
 accounts-ui-unstyled@1.1.8
 alanning:roles@1.2.14
-aldeed:autoform@4.2.2
+aldeed:autoform@5.7.1
 aldeed:autoform-bs-datepicker@1.1.1
 aldeed:simple-schema@1.1.0
 anti:i18n@0.4.3
@@ -21,7 +21,6 @@ caching-compiler@1.0.0
 caching-html-compiler@1.0.2
 callback-hook@1.0.4
 check@1.1.0
-ctjp:autoform-bootstrap-switch@0.1.0
 ddp@1.2.2
 ddp-client@1.2.1
 ddp-common@1.2.2
@@ -35,6 +34,7 @@ ejson@1.0.7
 email@1.0.8
 es5-shim@4.1.14
 fastclick@1.0.7
+forwarder:autoform-wizard@0.9.0
 geojson-utils@1.0.4
 handlebars@1.0.4
 hot-code-push@1.0.0

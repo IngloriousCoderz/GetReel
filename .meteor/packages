@@ -26,8 +26,8 @@ jt6562:bootstrap-3-switch
 rajit:bootstrap3-datepicker
 check
 ejson
-aldeed:autoform
-ctjp:autoform-bootstrap-switch
-aldeed:autoform-bs-datepicker
 aslagle:reactive-table
 mfpierre:chartist-js
+aldeed:autoform@5.7.1
+forwarder:autoform-wizard
+aldeed:autoform-bs-datepicker

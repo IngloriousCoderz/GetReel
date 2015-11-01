@@ -4,7 +4,7 @@ Router.configure({
 
 Router.map(function() {
   this.route('/', {name: 'home'});
-  this.route('/apply');
-  this.route('/apply/success', {name: 'apply.success'});
+  this.route('/application');
+  this.route('/application/success', {name: 'application.success'});
   this.route('/recruit', {template: 'privateArea' });
 });

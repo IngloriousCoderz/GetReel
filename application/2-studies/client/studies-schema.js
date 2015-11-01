@@ -1,0 +1,3 @@
+StudiesSchema = new SimpleSchema({
+
+});

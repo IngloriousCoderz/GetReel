@@ -1,11 +1,4 @@
-ApplicationSchema = new SimpleSchema({
-  step: {
-    type: Number,
-  },
-  createdAt: {
-    type: Date,
-  },
-
+GeneralInfoSchema = new SimpleSchema({
   firstname: {
     type: String,
   },
@@ -18,6 +11,9 @@ ApplicationSchema = new SimpleSchema({
   },
   dateOfBirth: {
     type: Date,
+    autoform: {
+      type: 'bootstrap-datepicker',
+    },
   },
   nationality: {
     type: String,
