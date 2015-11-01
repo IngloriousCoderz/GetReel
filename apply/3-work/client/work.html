@@ -1,0 +1,52 @@
+<template name="applyWork">
+  <div class="tab-pane" id="tab3">
+    <form id="workForm" action="{{pathFor route='apply'}}" method="POST">
+      <fieldset>
+        <legend>Work experience</legend>
+
+        <div class="form-group col-lg-6">
+          <label for="tourismWork">Photographer in tourism: experiences</label>
+          <label class="radio-inline"><input type="radio" name="optradio">No</label>
+          <label class="radio-inline"><input type="radio" name="optradio">Si</label>
+        </div>
+
+        <div class="form-group col-lg-6">
+          <label for="otherWork">Other works in tourism: experiences</label>
+          <label class="radio-inline"><input type="radio" name="optradio">No</label>
+          <label class="radio-inline"><input type="radio" name="optradio">Si</label>
+        </div>
+
+        <div class="form-group col-lg-12">
+          <label for="subjectsStudy">ESPERIENZE PROFESSIONALI –
+            ( Inserire solo le esperienze eseguite nel settore FOTOGRAFICO & TURISTICO" )</label>
+        </div>
+
+        <div class="form-group col-lg-3">
+          <label for="otherStudy">Azienda</label>
+          <input id="otherStudy" name="otherStudy" value="{{application.otherStudy}}"
+          class="form-control" placeholder="e.g. Qualification" />
+        </div>
+
+        <div class="form-group col-lg-3">
+          <label for="otherStudy">Periodo</label>
+          <input id="otherStudy" name="otherStudy" value="{{application.otherStudy}}"
+          class="form-control" placeholder="e.g. Qualification" />
+        </div>
+
+        <div class="form-group col-lg-3">
+          <label for="otherStudy">Mansioni svolte</label>
+          <input id="otherStudy" name="otherStudy" value="{{application.otherStudy}}"
+          class="form-control" placeholder="e.g. Qualification" />
+        </div>
+
+        <div class="form-group col-lg-3">
+          <label for="otherStudy">Motivo fine rapporto</label>
+          <input id="otherStudy" name="otherStudy" value="{{application.otherStudy}}"
+          class="form-control" placeholder="e.g. Qualification" />
+        </div>
+
+      </fieldset>
+
+    </form>
+  </div>
+</template>

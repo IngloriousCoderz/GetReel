@@ -20,6 +20,7 @@ form-group{
 
 .nav-pills {
   margin-top:20px;
+  margin-bottom:20px;
 	list-style: none;
 	overflow: hidden;
 	font: 18px Helvetica, Arial, Sans-Serif;
@@ -33,8 +34,8 @@ form-group{
   color: white;
 	text-decoration: none;
 	padding: 10px 0 10px 45px;
-	background: #005494;                   /* fallback color */
-	background: hsla(206,100%,29%,1);
+	background: hsla(206,100%,79%,1);                   /* fallback color */
+	background: hsla(206,100%,79%,1);
 	position: relative;
 	display: block;
 	float: left;
@@ -48,7 +49,7 @@ form-group{
   	height: 0;
   	border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
   	border-bottom: 50px solid transparent;
-  	border-left: 30px solid hsla(206,100%,29%,1);
+  	border-left: 30px solid hsla(206,100%,79%,1);
   	position: absolute;
   	top: 50%;
   	margin-top: -50px;
@@ -104,12 +105,12 @@ form-group{
 .nav-pills > li.disabled a:after { border-left-color: #ddd !important; }
 
 .nav-pills > li.active > a,
-.nav-pills > li.active > a:hover,
-.nav-pills > li.active > a:focus {
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover {
   color: #fff;
   background-color: hsla(206,100%,29%,1);
-  border-left-color: hsla(206,100%,29%,1) !important;
 }
 
-.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:after,
+.nav-pills > li.active > a:focus:after,
 .nav-pills > li.active > a:hover:after { border-left-color: hsla(206,100%,29%,1) !important; }
