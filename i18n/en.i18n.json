@@ -1,0 +1,150 @@
+{
+  "schemas": {
+    "general-info": {
+      "firstname": {
+        "label": "Firstname",
+        "placeholder": "e.g. John"
+      },
+      "lastname": {
+        "label": "Lastname",
+        "placeholder": "e.g. Smith"
+      },
+      "ssn": {
+        "label": "Social Security Number",
+        "placeholder": "e.g. 5346879"
+      },
+      "dateOfBirth": {
+        "label": "Date of birth",
+        "placeholder": "dd/MM/yyyy"
+      },
+      "nationality": {
+        "label": "Nationality"
+      },
+
+      "permit": {
+        "label": "Residency permit"
+      },
+      "permitKind": {
+        "label": "Permit kind",
+        "placeholder": "e.g. Working holiday visa"
+      },
+
+      "civic": {
+        "label": "Civic number",
+        "placeholder": "e.g. 127"
+      },
+      "address": {
+        "label": "Address",
+        "placeholder": "e.g. Abbey Road"
+      },
+      "zip": {
+        "label": "Zip Code",
+        "placeholder": "e.g. 00100"
+      },
+      "city": {
+        "label": "City",
+        "placeholder": "e.g. London"
+      },
+      "province": {
+        "label": "Province",
+        "firstOption": "Choose a province..."
+      },
+      "region": {
+        "label": "Region",
+        "placeholder": "Choose a region..."
+      },
+      "country": {
+        "label": "Country",
+        "placeholder": "e.g. United Kingdom"
+      },
+
+      "sameAddress": {
+        "label": "Current address same as permanent"
+      },
+
+      "currentCivic": {
+        "label": "Civic number",
+        "placeholder": "e.g. 127"
+      },
+      "currentAddress": {
+        "label": "Address",
+        "placeholder": "e.g. Abbey Road"
+      },
+      "currentZip": {
+        "label": "Zip Code",
+        "placeholder": "e.g. 00100"
+      },
+      "currentCity": {
+        "label": "City",
+        "placeholder": "e.g. London"
+      },
+      "currentProvince": {
+        "label": "Province",
+        "firstOption": "Choose a province..."
+      },
+      "currentRegion": {
+        "label": "Region",
+        "firstOption": "Choose a region..."
+      },
+      "currentCountry": {
+        "label": "Country",
+        "placeholder": "e.g. United Kingdom"
+      },
+
+      "phone": {
+        "label": "Telephone (home)",
+        "placeholder": "e.g. 555-020304"
+      },
+      "mobile": {
+        "label": "Mobile phone",
+        "placeholder": "e.g. 356-58662535"
+      },
+      "email": {
+        "label": "Email address",
+        "placeholder": "e.g. whois@that.com"
+      },
+      "maritalStatus": {
+        "label": "Marital status",
+        "placeholder": "Choose a marital status..."
+      },
+      "children": {
+        "label": "Children",
+        "placeholder": "e.g. 2"
+      },
+
+      "passport": {
+        "label": "Passport"
+      },
+      "passportNumber": {
+        "label": "Passport number",
+        "placeholder": "e.g. 793748292"
+      },
+      "passportValidFrom": {
+        "label": "from",
+        "placeholder": "dd/MM/yyyy"
+      },
+      "passportValidTo": {
+        "label": "to",
+        "placeholder": "dd/MM/yyyy"
+      },
+
+      "drivingLicense": {
+        "label": "Driving license"
+      },
+      "carOwner": {
+        "label": "Car owner"
+      },
+
+      "resume": {
+        "label": "Resume"
+      },
+      "showreel": {
+        "label": "Showreel"
+      }
+    },
+
+    "studies": {
+
+    }
+  }
+}

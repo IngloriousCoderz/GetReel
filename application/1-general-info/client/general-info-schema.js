@@ -196,3 +196,7 @@ GeneralInfoSchema = new SimpleSchema({
     //URL
   },
 });
+
+Meteor.startup(function() {
+  GeneralInfoSchema.i18n('schemas.general-info');
+});

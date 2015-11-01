@@ -1,0 +1,151 @@
+{
+  "schemas": {
+    "general-info": {
+      "firstname": {
+        "label": "Nome",
+        "placeholder": "es. Mario"
+      },
+      "lastname": {
+        "label": "Cognome",
+        "placeholder": "es. Rossi"
+      },
+      "ssn": {
+        "label": "Codice fiscale",
+        "placeholder": "es: MSTMTN82R17H501A"
+      },
+      "dateOfBirth": {
+        "label": "Data di nascita",
+        "placeholder": "dd/MM/yyyy"
+      },
+      "nationality": {
+        "label": "Nazionalità",
+        "firstOption": "Scegli la nazionalità..."
+      },
+
+      "permit": {
+        "label": "Permesso di soggiorno"
+      },
+      "permitKind": {
+        "label": "Tipo di permesso",
+        "placeholder": "es. Visto per vacanza-lavoro"
+      },
+
+      "civic": {
+        "label": "Numero civico",
+        "placeholder": "es. 127"
+      },
+      "address": {
+        "label": "Indirizzo",
+        "placeholder": "es. Via Roma"
+      },
+      "zip": {
+        "label": "CAP",
+        "placeholder": "es. 00100"
+      },
+      "city": {
+        "label": "Città",
+        "placeholder": "es. Torino"
+      },
+      "province": {
+        "label": "Provincia",
+        "firstOption": "Scegli una provincia..."
+      },
+      "region": {
+        "label": "Regione",
+        "firstOption": "Scegli una regione..."
+      },
+      "country": {
+        "label": "Stato",
+        "placeholder": "es. Italia"
+      },
+
+      "sameAddress": {
+        "label": "Indirizzo di domicilio uguale a quello di residenza"
+      },
+
+      "currentCivic": {
+        "label": "Numero civico",
+        "placeholder": "es. 127"
+      },
+      "currentAddress": {
+        "label": "Indirizzo",
+        "placeholder": "es. Via Roma"
+      },
+      "currentZip": {
+        "label": "CAP",
+        "placeholder": "es. 00100"
+      },
+      "currentCity": {
+        "label": "Città",
+        "placeholder": "es. Torino"
+      },
+      "currentProvince": {
+        "label": "Provincia",
+        "firstOption": "Scegli una provincia..."
+      },
+      "currentRegion": {
+        "label": "Regione",
+        "firstOption": "Scegli una regione..."
+      },
+      "currentCountry": {
+        "label": "Stato",
+        "placeholder": "es. Italia"
+      },
+
+      "phone": {
+        "label": "Telefono fisso",
+        "placeholder": "es. 011 55890213"
+      },
+      "mobile": {
+        "label": "Telefono cellulare",
+        "placeholder": "es. 356 58662535"
+      },
+      "email": {
+        "label": "Indirizzo email",
+        "placeholder": "es. whois@that.com"
+      },
+      "maritalStatus": {
+        "label": "Stato coniugale",
+        "placeholder": "Scegli uno stato coniugale..."
+      },
+      "children": {
+        "label": "Figli",
+        "placeholder": "es. 2"
+      },
+
+      "passport": {
+        "label": "Passaporto"
+      },
+      "passportNumber": {
+        "label": "Numero di passaporto",
+        "placeholder": "es. 793748292"
+      },
+      "passportValidFrom": {
+        "label": "da",
+        "placeholder": "dd/MM/yyyy"
+      },
+      "passportValidTo": {
+        "label": "a",
+        "placeholder": "dd/MM/yyyy"
+      },
+
+      "drivingLicense": {
+        "label": "Patente"
+      },
+      "carOwner": {
+        "label": "Automunito/a"
+      },
+
+      "resume": {
+        "label": "Curriculum"
+      },
+      "showreel": {
+        "label": "Showreel"
+      }
+    },
+
+    "studies": {
+
+    }
+  }
+}
