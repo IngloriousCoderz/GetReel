@@ -1,5 +1,59 @@
 <template name="studiesStep">
-  {{#autoForm id="general-info-form" doc=step.data schema=step.schema}}
-    <fieldset>Studies</fieldset>
+  {{#autoForm id="studies-form" doc=step.data schema=step.schema}}
+    <fieldset>
+      <legend>Qualification</legend>
+
+      <div class="col-lg-5">
+        {{> afQuickField id="degree" name="degree" placeholder='e.g. Bachelor'}}
+      </div>
+
+      <div class="col-lg-2">
+        {{> afQuickField id="year" name="year" placeholder='e.g. 2005'}}
+      </div>
+
+      <div class="col-lg-5">
+        {{> afQuickField id="subjectsOfStudy" name="subjectsOfStudy" placeholder="e.g. Science in Sociology and Psychology"}}
+      </div>
+
+      <div class="col-lg-5">
+        {{> afQuickField id="otherStudy" name="otherStudy" placeholder='e.g. Qualification'}}
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Language Skills</legend>
+
+      <div class="col-lg-6">
+        {{> afQuickField id="motherTongue" name="motherTongue" placeholder="e.g. English"}}
+      </div>
+
+      <div class="col-lg-6">
+        {{> afQuickField id="otherLanguages" name="otherLanguages" placeholder="e.g. Deutsch"}}
+      </div>
+
+      <div class="col-lg-4">
+        {{> afQuickField id="english" name="english" firstOption="Please choose your level..." }}
+      </div>
+
+      <div class="col-lg-4">
+        {{> afQuickField id="french" name="french" firstOption="Please your level..." }}
+      </div>
+
+      <div class="col-lg-4">
+        {{> afQuickField id="spanish" name="spanish" firstOption="Please choose your level..." }}
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Other Skills</legend>
+
+      <div class="col-lg-12">
+        {{> afQuickField id="computerSkills" name="computerSkills" placeholder="e.g. Basic"}}
+      </div>
+    </fieldset>
+
+    <div class="col-lg-12">
+      {{> wizardButtons}}
+    </div>
   {{/autoForm}}
 </template>
