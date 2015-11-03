@@ -1,5 +1,3 @@
-Meteor.subscribe('availableJobs');
-
 Template.application.helpers({
   steps: function() {
     return [
@@ -43,10 +41,6 @@ Template.application.helpers({
 
   confirmButtonLabel: function() {
     TAPi18n.__('confirm-button');
-  },
-
-  availableJobs: function() {
-    return Jobs.find();
   },
 });
 

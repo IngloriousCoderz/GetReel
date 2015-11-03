@@ -1,3 +1,5 @@
+Meteor.subscribe('availableJobs');
+
 Template.generalInfoStep.onRendered(function() {
   loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
   var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
@@ -6,8 +8,13 @@ Template.generalInfoStep.onRendered(function() {
   });
 });
 
-Template.generalInfoStep.events({
+Template.generalInfoStep.helpers({
+  availableJobs: function() {
+    return Jobs.find();
+  },
+});
 
+Template.generalInfoStep.events({
   'click :checkbox#permit': function(e) {
     var hasPermit = $(e.target).prop('checked');
     $(permitKind).val('').attr('disabled', !hasPermit);
