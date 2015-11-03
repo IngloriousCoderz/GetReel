@@ -168,7 +168,7 @@ GeneralInfoSchema = new SimpleSchema({
   carOwner: {
     type: Boolean,
   },
-
+  /*
   resume: {
     type: String,
     regEx: SimpleSchema.RegEx.Url,
@@ -176,7 +176,7 @@ GeneralInfoSchema = new SimpleSchema({
   showreel: {
     type: String,
     regEx: SimpleSchema.RegEx.Url,
-  },
+  },*/
 });
 
 Meteor.startup(function() {
