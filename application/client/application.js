@@ -8,7 +8,7 @@ Template.application.helpers({
         template: 'generalInfoStep',
         form: 'general-info-form',
         onSubmit: function(data, wizard) {
-          console.log('subit ok');
+          console.log('submit ok');
         },
       },
       {
@@ -27,6 +27,15 @@ Template.application.helpers({
         schema: WorkSchema,
         template: 'workStep',
         form: 'work-form',
+      },
+      {
+        id: 'the-final-step',
+        title: 'fake step holding final submit logic',
+        onSubmit: function(data, wizard) {
+          data.createdAt = new Date();
+          data.reusme = Session.get('resume');
+          data.videofile = Session.get('videofile');
+        },
       },
     ];
   },

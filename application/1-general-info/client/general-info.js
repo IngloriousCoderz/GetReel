@@ -40,9 +40,7 @@ Template.generalInfoStep.events({
       maxSize: 10 * 1024 * 1024,
       multiple: false,
     }, function(InkBlob) {
-      application = Session.get('application');
-      application.resume = InkBlob.url;
-      Session.set('application', application);
+      Session.set('resume', InkBlob.url);
     });
   },
 
@@ -58,22 +56,7 @@ Template.generalInfoStep.events({
       maxSize: 10 * 1024 * 1024,
       multiple: false,
     }, function(InkBlob) {
-      application = Session.get('application');
-      application.videofile = InkBlob.url;
-      Session.set('application', application);
+      Session.set('videofile', InkBlob.url);
     });
-  },
-
-  'submit #generalInfoForm': function(e) {
-    e.preventDefault();
-
-    application = Session.get('application');
-    application.createdAt = new Date();
-
-    check(ApplicationSchema.clean(application), ApplicationSchema);
-
-    application.step = 2;
-    Session.set('application', application);
-    $('#steps li:eq(' + (application.step - 1) + ') a').tab('show');
   },
 });
