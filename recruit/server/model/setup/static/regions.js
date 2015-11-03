@@ -26,27 +26,4 @@ Meteor.startup(function() {
       Regions.insert(region);
     });
   }
-
-  if (Statuses.find().count() === 0) {
-    var statuses = [
-      {id: 0, name: 'unassigned'},
-      {id: 1, name: 'pending'},
-      {id: 2, name: 'rejected'},
-      {id: 3, name: 'ok'},
-    ];
-    statuses.forEach(function(status) {
-      Statuses.insert(status);
-    });
-  }
-
-  if (Jobs.find().count() === 0) {
-    var jobs = [
-      {title: 'Select a job position...'},
-      {title: 'Haiti Village Photographer'},
-      {title: 'Rapallo On The Beach'},
-    ];
-    jobs.forEach(function(job) {
-      Jobs.insert(job);
-    });
-  }
 });
