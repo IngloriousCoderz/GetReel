@@ -28,19 +28,17 @@ GeneralInfoSchema = new SimpleSchema({
   permit: {
     type: Boolean,
     optional: true,
-    /*defaultValue: true,*/
+    defaultValue: true,
     autoform: {
-      afFieldInput: {
-        /*type: 'boolean-checkbox',*/
-        type: 'toggle-checkbox',
-      },
+      type: 'boolean-checkbox',
     },
   },
+
   permitKind: {
     type: String,
     optional: true,
     custom: function() {
-      if (this.field('permit').value) {
+      if (this.field('permit').value && !this.isSet && (!this.operator || (this.value === null || this.value === ''))) {
         return 'required';
       };
     },
@@ -143,12 +141,14 @@ GeneralInfoSchema = new SimpleSchema({
 
   passport: {
     type: Boolean,
+    optional: true,
+    defaultValue: true,
   },
   passportNumber: {
     type: String,
     optional: true,
     custom: function() {
-      if (this.field('passport').value) {
+      if (this.field('passport').value && !this.isSet && (!this.operator || (this.value === null || this.value === ''))) {
         return 'required';
       };
     },
@@ -157,7 +157,7 @@ GeneralInfoSchema = new SimpleSchema({
     type: Date,
     optional: true,
     custom: function() {
-      if (this.field('passport').value) {
+      if (this.field('passport').value && !this.isSet && (!this.operator || (this.value === null || this.value === ''))) {
         return 'required';
       };
     },
@@ -166,7 +166,7 @@ GeneralInfoSchema = new SimpleSchema({
     type: Date,
     optional: true,
     custom: function() {
-      if (this.field('passport').value) {
+      if (this.field('passport').value && !this.isSet && (!this.operator || (this.value === null || this.value === ''))) {
         return 'required';
       };
     },
