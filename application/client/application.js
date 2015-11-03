@@ -9,9 +9,6 @@ Template.application.helpers({
         schema: GeneralInfoSchema,
         template: 'generalInfoStep',
         form: 'general-info-form',
-        onSubmit: function(data, wizard) {
-          console.log('subit ok');
-        },
       },
       {
         id: 'studies',
@@ -19,9 +16,6 @@ Template.application.helpers({
         schema: StudiesSchema,
         template: 'studiesStep',
         form: 'studies-form',
-        onSubmit: function(data, wizard) {
-          console.log('Consolato da Template.application.helpers ' + data);
-        },
       },
       {
         id: 'work',
@@ -34,6 +28,7 @@ Template.application.helpers({
   },
 
   nextButtonLabel: function() {
+    console.log('test nextButtonLabel');
     return TAPi18n.__('next-button');
   },
 
