@@ -1,18 +1,5 @@
 Meteor.startup(function() {
-  Meteor.publish('statuses', function() {
-    return Statuses.find();
-  });
-
-  Meteor.publish('regions', function() {
-    return Regions.find();
-  });
-
-  Meteor.publish('recruiters', function() {
-    return Meteor.users.find({roles: 'recruiter'});
-  });
-
   //ReactiveTable.publish('applications', Applications);
-
   Meteor.publish('applications', function() {
     //
     // ELIMINARE!

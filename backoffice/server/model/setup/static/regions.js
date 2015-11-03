@@ -1,4 +1,6 @@
 Meteor.startup(function() {
+  Regions.remove({});
+
   if (Regions.find().count() === 0) {
     var regions = [
       {id: 13, name: 'Abruzzo'},
@@ -22,31 +24,11 @@ Meteor.startup(function() {
       {id: 2, name: 'Valle d\'Aosta'},
       {id: 5, name: 'Veneto'},
     ];
+
     regions.forEach(function(region) {
       Regions.insert(region);
     });
-  }
 
-  if (Statuses.find().count() === 0) {
-    var statuses = [
-      {id: 0, name: 'unassigned'},
-      {id: 1, name: 'pending'},
-      {id: 2, name: 'rejected'},
-      {id: 3, name: 'ok'},
-    ];
-    statuses.forEach(function(status) {
-      Statuses.insert(status);
-    });
-  }
-
-  if (Jobs.find().count() === 0) {
-    var jobs = [
-      {title: 'Select a job position...'},
-      {title: 'Haiti Village Photographer'},
-      {title: 'Rapallo On The Beach'},
-    ];
-    jobs.forEach(function(job) {
-      Jobs.insert(job);
-    });
+    console.log('added', Regions.find().count(), 'regions.');
   }
 });
