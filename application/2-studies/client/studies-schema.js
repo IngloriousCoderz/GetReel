@@ -1,7 +1,6 @@
 StudiesSchema = new SimpleSchema({
   degree: {
     type: String,
-    label: 'Course of Study/Degree'
   },
   year: {
     type: Number,
@@ -56,4 +55,8 @@ StudiesSchema = new SimpleSchema({
   computerSkills: {
     type: String,
   },
+});
+
+Meteor.startup(function() {
+  StudiesSchema.i18n('schemas.studies');
 });

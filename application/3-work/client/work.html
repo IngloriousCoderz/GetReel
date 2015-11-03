@@ -1,8 +1,7 @@
 <template name="applyWork">
-  <div class="tab-pane" id="tab3">
-    <form id="workForm" action="{{pathFor route='apply'}}" method="POST">
+  {{#autoForm id="work-form" doc=step.data schema=step.schema}}
       <fieldset>
-        <legend>Work experience</legend>
+        <legend>{{_ "Work experience"}}</legend>
 
         <div class="form-group col-lg-6">
           <label for="tourismWork">Photographer in tourism: experiences</label>
@@ -47,6 +46,5 @@
 
       </fieldset>
 
-    </form>
-  </div>
+  {{/autoForm}}
 </template>

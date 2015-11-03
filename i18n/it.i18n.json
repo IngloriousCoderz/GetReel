@@ -12,6 +12,12 @@
   "Family": "Stato coniugale",
   "Passport": "Passaporto",
 
+  "Qualification": "Formazione",
+  "Language Skills": "Conoscenze linguistiche",
+  "Other Skills":"Altre conoscenze",
+
+  "Work experience": "Esperienze lavorative",
+
   "schemas": {
     "general-info": {
       "firstname": {
@@ -158,7 +164,48 @@
     },
 
     "studies": {
+      "degree": {
+        "label": "Titolo di studio",
+        "placeholder": "es. Laurea"
+      },
+      "year": {
+        "label": "Anno",
+        "placeholder": "es. 2005"
+      },
+      "subjectsOfStudy": {
+        "label": "Argomento",
+        "placeholder": "es. Psicologia"
+      },
+      "otherStudy": {
+        "label": "Altri studi",
+        "placeholder":"es. Qualifica"
+      },
 
+      "motherTongue": {
+        "label": "Lingua madre",
+        "placeholder": "es. Italiano"
+      },
+      "otherLanguages": {
+        "label": "Altre Lingue",
+        "placeholder": "es. Inglese"
+      },
+      "english": {
+        "label": "Inglese",
+        "firstOption":"Scegli il tuo livello..."
+      },
+      "french": {
+        "label": "Francese",
+        "firstOption":"Scegli il tuo livello..."
+      },
+      "spanish": {
+         "label": "Spagnolo",
+         "firstOption":"Scegli il tuo livello..."
+       },
+
+      "computerSkills": {
+        "label": "Conoscenze informatiche",
+        "placeholder": "es. Base"
+      }
     }
   }
 }

@@ -12,6 +12,12 @@
   "Family": "Family",
   "Passport": "Passport",
 
+  "Qualification": "Qualification",
+  "Language Skills": "Language Skills",
+  "Other Skills": "Other Skills",
+
+  "Work experience": "Work experience",
+
   "schemas": {
     "general-info": {
       "firstname": {
@@ -157,7 +163,48 @@
     },
 
     "studies": {
+      "degree": {
+        "label": "Course of Study/Degree",
+        "placeholder": "e.g. Bachelor"
+      },
+      "year": {
+        "label": "Year",
+        "placeholder": "e.g. 2005"
+      },
+      "subjectsOfStudy": {
+        "label": "Subjects Of Study",
+        "placeholder": "e.g. Science in Sociology and Psychology"
+      },
+      "otherStudy": {
+        "label": "Other Study",
+        "placeholder":"e.g. Qualification"
+      },
 
+      "motherTongue": {
+        "label": "Mother Tongue",
+        "placeholder": "e.g. English"
+      },
+      "otherLanguages": {
+        "label": "Other Languages",
+        "placeholder": "e.g. Deutsch"
+      },
+      "english": {
+        "label": "English",
+        "firstOption":"Please choose your level..."
+      },
+      "french": {
+        "label": "French",
+        "firstOption":"Please choose your level..."
+      },
+      "spanish": {
+         "label": "Spanish",
+         "firstOption":"Please choose your level..."
+       },
+
+      "computerSkills": {
+        "label": "Computer Skills",
+        "placeholder": "e.g. Basic"
+      }
     }
   }
 }

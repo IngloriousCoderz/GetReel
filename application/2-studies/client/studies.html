@@ -1,54 +1,54 @@
 <template name="studiesStep">
   {{#autoForm id="studies-form" doc=step.data schema=step.schema}}
     <fieldset>
-      <legend>Qualification</legend>
+      <legend>{{_ "Qualification"}}</legend>
 
       <div class="col-lg-5">
-        {{> afQuickField id="degree" name="degree" placeholder='e.g. Bachelor'}}
+        {{> afQuickField id="degree" name="degree"}}
       </div>
 
       <div class="col-lg-2">
-        {{> afQuickField id="year" name="year" placeholder='e.g. 2005'}}
+        {{> afQuickField id="year" name="year"}}
       </div>
 
       <div class="col-lg-5">
-        {{> afQuickField id="subjectsOfStudy" name="subjectsOfStudy" placeholder="e.g. Science in Sociology and Psychology"}}
+        {{> afQuickField id="subjectsOfStudy" name="subjectsOfStudy"}}
       </div>
 
       <div class="col-lg-5">
-        {{> afQuickField id="otherStudy" name="otherStudy" placeholder='e.g. Qualification'}}
+        {{> afQuickField id="otherStudy" name="otherStudy"}}
       </div>
     </fieldset>
 
     <fieldset>
-      <legend>Language Skills</legend>
+      <legend>{{_ "Language Skills"}}</legend>
 
       <div class="col-lg-6">
-        {{> afQuickField id="motherTongue" name="motherTongue" placeholder="e.g. English"}}
+        {{> afQuickField id="motherTongue" name="motherTongue"}}
       </div>
 
       <div class="col-lg-6">
-        {{> afQuickField id="otherLanguages" name="otherLanguages" placeholder="e.g. Deutsch"}}
+        {{> afQuickField id="otherLanguages" name="otherLanguages"}}
       </div>
 
       <div class="col-lg-4">
-        {{> afQuickField id="english" name="english" firstOption="Please choose your level..." }}
+        {{> afQuickField id="english" name="english"}}
       </div>
 
       <div class="col-lg-4">
-        {{> afQuickField id="french" name="french" firstOption="Please your level..." }}
+        {{> afQuickField id="french" name="french"}}
       </div>
 
       <div class="col-lg-4">
-        {{> afQuickField id="spanish" name="spanish" firstOption="Please choose your level..." }}
+        {{> afQuickField id="spanish" name="spanish"}}
       </div>
     </fieldset>
 
     <fieldset>
-      <legend>Other Skills</legend>
+      <legend>{{_ "Other Skills"}}</legend>
 
       <div class="col-lg-12">
-        {{> afQuickField id="computerSkills" name="computerSkills" placeholder="e.g. Basic"}}
+        {{> afQuickField id="computerSkills" name="computerSkills"}}
       </div>
     </fieldset>
 
