@@ -20,6 +20,13 @@ Template.application.helpers({
           console.log('Consolato da Template.application.helpers ' + data);
         },
       },
+      {
+        id: 'work',
+        title: 'Work',
+        schema: WorkSchema,
+        template: 'workStep',
+        form: 'work-form',
+      },
     ];
   },
 

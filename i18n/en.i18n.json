@@ -5,6 +5,8 @@
   "back-button": "back",
   "confirm-button": "confirm",
 
+
+
   "Personal Info": "Personal Info",
   "Permanent Address": "Permanent Address",
   "Current Address": "Current Address",
@@ -17,9 +19,14 @@
   "Other Skills": "Other Skills",
 
   "Work experience": "Work experience",
+  "Experience": "PROFESSIONAL EXPERIENCE - (Insert only the experiences made in the field PHOTO & TOURISM)",
+
 
   "schemas": {
     "general-info": {
+      "GeneralInfo": {
+        "label": "General Info"
+      },
       "firstname": {
         "label": "Firstname",
         "placeholder": "e.g. John"
@@ -204,6 +211,28 @@
       "computerSkills": {
         "label": "Computer Skills",
         "placeholder": "e.g. Basic"
+      }
+    },
+
+    "work": {
+      "tourismWork": {
+        "label": "Experience as a photografer"
+      },
+      "otherWork": {
+        "label": "Experience as other"
+      },
+
+      "company": {
+        "label": "Company"
+      },
+      "period": {
+        "label": "Period"
+      },
+      "typeOfWork": {
+        "label": "Type of work"
+      },
+      "reasonTerminationEmployment": {
+        "label": "Reason Termination of Employment"
       }
     }
   }

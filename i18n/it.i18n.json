@@ -5,6 +5,10 @@
   "back-button": "indietro",
   "confirm-button": "conferma",
 
+
+
+  "General Info": "Anagrafica",
+
   "Personal Info": "Informazioni personali",
   "Permanent Address": "Residenza",
   "Current Address": "Domicilio",
@@ -17,6 +21,7 @@
   "Other Skills":"Altre conoscenze",
 
   "Work experience": "Esperienze lavorative",
+  "Experience": "ESPERIENZE PROFESSIONALI – (Inserire solo le esperienze svolte nel settore FOTOGRAFICO & TURISTICO)",
 
   "schemas": {
     "general-info": {
@@ -205,6 +210,28 @@
       "computerSkills": {
         "label": "Conoscenze informatiche",
         "placeholder": "es. Base"
+      }
+    },
+
+    "work": {
+      "tourismWork": {
+        "label": "Esperienze precedenti come fotografo in villaggio"
+      },
+      "otherWork": {
+        "label": "Esperienze precedenti di altri lavori in villaggio"
+      },
+      
+      "company": {
+        "label": "Azienda"
+      },
+      "period": {
+        "label": "Periodo"
+      },
+      "typeOfWork": {
+        "label": "Mansioni svolte"
+      },
+      "reasonTerminationEmployment": {
+        "label": "Motivo fine rapporto"
       }
     }
   }
