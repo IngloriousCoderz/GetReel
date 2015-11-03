@@ -24,7 +24,6 @@ GeneralInfoSchema = new SimpleSchema({
       },
     },
   },
-
   permit: {
     type: Boolean,
     optional: true,
@@ -34,12 +33,11 @@ GeneralInfoSchema = new SimpleSchema({
     type: String,
     optional: true,
     custom: function() {
-      if (this.field('permit').value) {
+      if (this.field('permit').value && !this.isSet && (!this.operator || (this.value === null || this.value === ''))) {
         return 'required';
       };
     },
   },
-
   city: {
     type: String,
   },
@@ -75,13 +73,11 @@ GeneralInfoSchema = new SimpleSchema({
   country: {
     type: String,
   },
-
   sameAddress: {
     type: Boolean,
     optional: true,
     defaultValue: true,
   },
-
   currentCity: {
     type: String,
   },
@@ -134,15 +130,16 @@ GeneralInfoSchema = new SimpleSchema({
     type: Number,
     min: 0,
   },
-
   passport: {
     type: Boolean,
+    optional: true,
+    defaultValue: true,
   },
   passportNumber: {
     type: String,
     optional: true,
     custom: function() {
-      if (this.field('passport').value) {
+      if (this.field('passport').value && !this.isSet && (!this.operator || (this.value === null || this.value === ''))) {
         return 'required';
       };
     },
@@ -151,7 +148,7 @@ GeneralInfoSchema = new SimpleSchema({
     type: Date,
     optional: true,
     custom: function() {
-      if (this.field('passport').value) {
+      if (this.field('passport').value && !this.isSet && (!this.operator || (this.value === null || this.value === ''))) {
         return 'required';
       };
     },
@@ -160,19 +157,18 @@ GeneralInfoSchema = new SimpleSchema({
     type: Date,
     optional: true,
     custom: function() {
-      if (this.field('passport').value) {
+      if (this.field('passport').value && !this.isSet && (!this.operator || (this.value === null || this.value === ''))) {
         return 'required';
       };
     },
   },
-
   drivingLicense: {
     type: Boolean,
   },
   carOwner: {
     type: Boolean,
   },
-
+  /*
   resume: {
     type: String,
     regEx: SimpleSchema.RegEx.Url,
@@ -180,7 +176,7 @@ GeneralInfoSchema = new SimpleSchema({
   showreel: {
     type: String,
     regEx: SimpleSchema.RegEx.Url,
-  },
+  },*/
 });
 
 Meteor.startup(function() {

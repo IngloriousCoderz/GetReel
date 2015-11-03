@@ -1,16 +1,26 @@
 Template.generalInfoStep.onRendered(function() {
   loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
+  var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+  elems.forEach(function(html) {
+    var switchery = new Switchery(html, {size: 'small', color: '#337ab7'});
+  });
 });
 
 Template.generalInfoStep.events({
-  'switchChange.bootstrapSwitch :checkbox#permit': function(e) {
+
+  'click :checkbox#permit': function(e) {
     var hasPermit = $(e.target).prop('checked');
     $(permitKind).val('').attr('disabled', !hasPermit);
   },
 
-  'switchChange.bootstrapSwitch :checkbox#sameAddress': function(e) {
+  'click :checkbox#sameAddress': function(e) {
     var sameAddress = $(e.target).prop('checked');
     $(currentAddressFieldset).toggleClass('hidden', sameAddress);
+  },
+
+  'click :checkbox#passport': function(e) {
+    var hasPassport = $(e.target).prop('checked');
+    $(passportFieldset).toggleClass('hidden', !hasPassport);
   },
 
   'click #resume': function(e) {

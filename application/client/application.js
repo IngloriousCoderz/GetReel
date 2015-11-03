@@ -9,6 +9,9 @@ Template.application.helpers({
         schema: GeneralInfoSchema,
         template: 'generalInfoStep',
         form: 'general-info-form',
+        onSubmit: function(data, wizard) {
+          console.log('subit ok');
+        },
       },
       {
         id: 'studies',
