@@ -14,7 +14,6 @@ Meteor.startup(function() {
             {id:  9, name: 'POCA DISPONIBILITA\''},
             {id: 10, name: 'BLACK LIST'},
         ];
-        console.log("adding ", reasons.length, "outcome reasons...");
 		reasons.forEach(function(reason) {
 			OutcomeReasons.insert(reason);
 		});
