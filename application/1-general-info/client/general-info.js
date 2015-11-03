@@ -2,8 +2,8 @@ Meteor.subscribe('availableJobs');
 
 Template.generalInfoStep.onRendered(function() {
   loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
-  var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
-  elems.forEach(function(html) {
+
+  this.$('.js-switch').each(function(i, html) {
     var switchery = new Switchery(html, {size: 'small', color: '#337ab7'});
   });
 });
