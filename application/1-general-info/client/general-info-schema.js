@@ -24,16 +24,11 @@ GeneralInfoSchema = new SimpleSchema({
       },
     },
   },
-
   permit: {
     type: Boolean,
     optional: true,
     defaultValue: true,
-    autoform: {
-      type: 'boolean-checkbox',
-    },
   },
-
   permitKind: {
     type: String,
     optional: true,
@@ -43,7 +38,6 @@ GeneralInfoSchema = new SimpleSchema({
       };
     },
   },
-
   city: {
     type: String,
   },
@@ -79,13 +73,11 @@ GeneralInfoSchema = new SimpleSchema({
   country: {
     type: String,
   },
-
   sameAddress: {
     type: Boolean,
     optional: true,
     defaultValue: true,
   },
-
   currentCity: {
     type: String,
   },
@@ -138,7 +130,6 @@ GeneralInfoSchema = new SimpleSchema({
     type: Number,
     min: 0,
   },
-
   passport: {
     type: Boolean,
     optional: true,
@@ -171,7 +162,6 @@ GeneralInfoSchema = new SimpleSchema({
       };
     },
   },
-
   drivingLicense: {
     type: Boolean,
   },

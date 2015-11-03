@@ -1,8 +1,5 @@
 Template.generalInfoStep.onRendered(function() {
   loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
-  /*  var elem = document.querySelector('.js-switch');
-  var init = new Switchery(elem, {size: 'small', color: '#337ab7'});
-*/
   var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
   elems.forEach(function(html) {
     var switchery = new Switchery(html, {size: 'small', color: '#337ab7'});
@@ -13,7 +10,6 @@ Template.generalInfoStep.events({
 
   'click :checkbox#permit': function(e) {
     var hasPermit = $(e.target).prop('checked');
-    $(permit).val(hasPermit);
     $(permitKind).val('').attr('disabled', !hasPermit);
   },
 
