@@ -2,9 +2,10 @@ Meteor.startup(function() {
   Selectors.remove({});
   if (Selectors.find().count() === 0) {
     var selectors = [
-      {title: 'Select a job position...'},
-      {title: 'Haiti Village Photographer'},
-      {title: 'Rapallo On The Beach'},
+      {name: 'MARCO M.'},
+      {name: 'STEFANIA C.'},
+      {name: 'MICHELA M.'},
+      {name: 'Federica Gualtieri'},
     ];
     selectors.forEach(function(selector) {
       Selectors.insert(selector);
