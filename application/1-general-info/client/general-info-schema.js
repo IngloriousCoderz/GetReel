@@ -28,7 +28,13 @@ GeneralInfoSchema = new SimpleSchema({
   permit: {
     type: Boolean,
     optional: true,
-    defaultValue: true,
+    /*defaultValue: true,*/
+    autoform: {
+      afFieldInput: {
+        /*type: 'boolean-checkbox',*/
+        type: 'toggle-checkbox',
+      },
+    },
   },
   permitKind: {
     type: String,
