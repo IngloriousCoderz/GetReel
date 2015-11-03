@@ -8,7 +8,6 @@ Meteor.startup(function() {
             {id:  4, name: 'POSITIVO RINUNCIA'},
             {id:  4, name: 'BLACKLIST'},
         ];
-        console.log("adding ", reasons.length, "outcome reasons3...");
 		reasons.forEach(function(reason) {
 			OutcomeReasons3.insert(reason);
 		});

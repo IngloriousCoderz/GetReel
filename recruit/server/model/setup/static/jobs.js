@@ -1,4 +1,5 @@
 Meteor.startup(function() {
+  Jobs.remove({});
   if (Jobs.find().count() === 0) {
     var jobs = [
       {title: 'Select a job position...'},
@@ -8,5 +9,6 @@ Meteor.startup(function() {
     jobs.forEach(function(job) {
       Jobs.insert(job);
     });
+    console.log("added ", Jobs.find().count(), "jobs.");
   }
 });

@@ -1,4 +1,5 @@
 Meteor.startup(function() {
+    Statuses.remove({});
   if (Statuses.find().count() === 0) {
     var statuses = [
       {id: 0, name: 'unassigned'},
@@ -9,5 +10,6 @@ Meteor.startup(function() {
     statuses.forEach(function(status) {
       Statuses.insert(status);
     });
+    console.log("added ", Statuses.find().count(), "statuses.");
   }
 });

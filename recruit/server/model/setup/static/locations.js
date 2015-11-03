@@ -1,4 +1,5 @@
 Meteor.startup(function() {
+	Locations.remove({});
 	if (Locations.find().count() === 0) {
 		var locations = [
             {
@@ -96,5 +97,6 @@ Meteor.startup(function() {
 		locations.forEach(function(location) {
 			Locations.insert(location);
 		});
+		console.log("added ", Locations.find().count(), "locations.");
 	}
 });

@@ -1,4 +1,5 @@
 Meteor.startup(function() {
+    Regions.remove({});
   if (Regions.find().count() === 0) {
     var regions = [
       {id: 13, name: 'Abruzzo'},
@@ -25,5 +26,6 @@ Meteor.startup(function() {
     regions.forEach(function(region) {
       Regions.insert(region);
     });
+    console.log("added ", Regions.find().count(), "regions.");
   }
 });

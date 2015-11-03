@@ -9,7 +9,6 @@ Meteor.startup(function() {
             {id: 4, name: 'MOLTO INTERESSATO'},
             {id: 5, name: 'RICHIAMA LUI'},
         ];
-        console.log("adding ", outcomes.length, "activity outcome...");
 		outcomes.forEach(function(outcome) {
 			ActivityOutcomes.insert(outcome);
 		});

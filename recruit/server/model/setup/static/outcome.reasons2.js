@@ -10,7 +10,6 @@ Meteor.startup(function() {
             {id:  5, name: 'INTERESSE SUFFIC.'},
             {id:  6, name: 'BLACK LIST'},
         ];
-        console.log("adding ", reasons.length, "outcome reasons2...");
 		reasons.forEach(function(reason) {
 			OutcomeReasons2.insert(reason);
 		});
