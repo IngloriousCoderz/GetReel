@@ -1,21 +1,23 @@
 Meteor.startup(function() {
-  SentEmails.remove({});
+  OpticalArchive.remove({});
 
-  if (SentEmails.find().count() === 0) {
-    var mails = [
+  if (OpticalArchive.find().count() === 0) {
+    var docs = [
       {
-        createdAt: new Date(),
-        createdBy: 'test user',
-        sender: 'sender test',
-        subject: 'subject test',
-        message: 'message test',
+        docType: 'reference to document.types',
+        attachment1: 'allegato (blob)',
+        description: 'descrizione',
+        acquisitionDate: new Date(),
+        user: 'reference to users',
       },
     ];
 
-    mails.forEach(function(mail) {
-      SentEmails.insert(mail);
+    docs.forEach(function(doc) {
+      OpticalArchive.insert(doc);
     });
 
-    console.log('added', Locations.find().count(), 'sent emails.');
+    console.log('added', OpticalArchive.find().count(), 'Optical docs.');
   }
 });
+
+
