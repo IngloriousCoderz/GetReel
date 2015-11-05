@@ -10,9 +10,7 @@ GeneralInfoSchema = new SimpleSchema({
   },
   dateOfBirth: {
     type: Date,
-    autoform: {
-      type: 'bootstrap-datepicker',
-    },
+    optional: true,
   },
   nationality: {
     type: String,
