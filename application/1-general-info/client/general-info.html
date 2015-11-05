@@ -138,7 +138,10 @@
 
     <fieldset>
       <legend>{{_ "Family"}}</legend>
-
+        <div class="col-lg-6">
+          {{> afQuickField id="maritalStatus" name="maritalStatus"}}
+        </div>
+<!--
       <div class="col-lg-6">
         <label for="maritalStatus">Marital status</label>
         <select id="maritalStatus" name="maritalStatus" class="form-control">
@@ -147,7 +150,7 @@
           <option value="USED TO ASK WHAT'S FREEDOM">USED TO ASK WHAT'S FREEDOM</option>
         </select>
       </div>
-
+-->
       <div class="col-lg-6">
         {{> afQuickField id="children" name="children"}}
       </div>

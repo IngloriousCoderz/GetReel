@@ -154,7 +154,7 @@ GeneralInfoSchema = new SimpleSchema({
         return 'required';
       };
     },
-  },/*
+  },
   phone: {
     type: String,
   },
@@ -167,6 +167,13 @@ GeneralInfoSchema = new SimpleSchema({
   },
   maritalStatus: {
     type: String,
+    autoform: {
+      options: {
+        Single: 'Single',
+        Married: 'Married',
+        Divorced: 'Divorced',
+      },
+    },
   },
   children: {
     type: Number,

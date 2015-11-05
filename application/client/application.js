@@ -28,7 +28,6 @@ Template.application.helpers({
   },
 
   nextButtonLabel: function() {
-    console.log('test nextButtonLabel');
     return TAPi18n.__('next-button');
   },
 
