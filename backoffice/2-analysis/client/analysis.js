@@ -1,3 +1,5 @@
+
+
 Template.analysis.helpers({});
 
 Template.analysis.onRendered(function() {
@@ -17,6 +19,6 @@ Template.analysis.onRendered(function() {
   new Chartist.Pie('#chart', {
     series: [10, 2, 4, 3],
   }, {
-  donut: true,
-});//, options);
+    donut: true,
+  });//, options);
 });

@@ -5,8 +5,8 @@ Meteor.startup(function() {
   if (Activities.find().count() === 0) {
     var events = [
       {
-        name: "import",
-        description: "import",
+        name: 'import',
+        description: 'import',
         startsAtDay: new Date(),
         endsAtDay: new Date(),
         startsAtTime: new Date(),

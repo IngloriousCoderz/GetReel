@@ -5,8 +5,8 @@ Meteor.startup(function() {
   if (Activities.find().count() === 0) {
     var activities = [
       {
-        surname: "import",
-        name: "import",
+        surname: 'import',
+        name: 'import',
         createdBy: 'reference to users',
         taxCode: 'import',
         phase: 'reference to phases?', // 1,2,3, assunto

@@ -11,6 +11,7 @@ Meteor.startup(function() {
     types.forEach(function(type) {
       DocumentTypes.insert(type);
     });
+
     console.log('added', DocumentTypes.find().count(), 'document types.');
   }
 });

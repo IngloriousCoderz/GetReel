@@ -12,6 +12,7 @@ Meteor.startup(function() {
     types.forEach(function(type) {
       ContactTypes.insert(type);
     });
+
     console.log('added', ContactTypes.find().count(), 'contact types.');
   }
 });

@@ -20,5 +20,3 @@ Meteor.startup(function() {
     console.log('added', OpticalArchive.find().count(), 'Optical docs.');
   }
 });
-
-

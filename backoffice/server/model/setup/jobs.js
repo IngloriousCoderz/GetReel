@@ -8,6 +8,7 @@ Meteor.startup(function() {
       {title: 'Haiti Village Photographer'},
       {title: 'Rapallo On The Beach'},
     ];
+
     jobs.forEach(function(job) {
       Jobs.insert(job);
     });

@@ -5,8 +5,8 @@ Meteor.startup(function() {
   if (CareerPaths.find().count() === 0) {
     var paths = [
       {
-        surname: "import",
-        name: "import",
+        surname: 'import',
+        name: 'import',
         createdAt: new Date(),
         role: 'reference to application.roles',
         season: 'reference to seasons',
