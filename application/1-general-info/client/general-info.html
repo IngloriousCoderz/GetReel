@@ -67,7 +67,7 @@
       </div>
     </fieldset>
 
-    <fieldset id="currentAddressFieldset" class="hidden">
+    <fieldset id="currentAddressFieldset">
       <legend>{{_ "Current Address"}}</legend>
 
       <div class="col-lg-2">
@@ -140,12 +140,7 @@
       <legend>{{_ "Family"}}</legend>
 
       <div class="col-lg-6">
-        <label for="maritalStatus">Marital status</label>
-        <select id="maritalStatus" name="maritalStatus" class="form-control">
-          <option value="SINGLE" selected>SINGLE</option>
-          <option value="WHAT'S FREEDOM?">WHAT'S FREEDOM?</option>
-          <option value="USED TO ASK WHAT'S FREEDOM">USED TO ASK WHAT'S FREEDOM</option>
-        </select>
+        {{> afQuickField id="maritalStatus" name="maritalStatus"}}
       </div>
 
       <div class="col-lg-6">

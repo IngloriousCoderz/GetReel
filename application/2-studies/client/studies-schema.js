@@ -25,7 +25,7 @@ StudiesSchema = new SimpleSchema({
         No: 'No',
         Basic: 'Basic',
         Independent: 'Independent',
-        Proficient: 'Proficient'
+        Proficient: 'Proficient',
       },
     },
   },
@@ -36,7 +36,7 @@ StudiesSchema = new SimpleSchema({
         No: 'No',
         Basic: 'Basic',
         Independent: 'Independent',
-        Proficient: 'Proficient'
+        Proficient: 'Proficient',
       },
     },
   },
@@ -47,7 +47,7 @@ StudiesSchema = new SimpleSchema({
         No: 'No',
         Basic: 'Basic',
         Independent: 'Independent',
-        Proficient: 'Proficient'
+        Proficient: 'Proficient',
       },
     },
   },

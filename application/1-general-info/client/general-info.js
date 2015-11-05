@@ -5,6 +5,9 @@ Template.generalInfoStep.onRendered(function() {
 
   this.$('.js-switch').each(function(i, html) {
     var switchery = new Switchery(html, {size: 'small', color: '#337ab7'});
+    $(permit).prop('checked', true);
+    $(sameAddress).prop('checked', false);
+    $(passport).prop('checked', true);
   });
 });
 

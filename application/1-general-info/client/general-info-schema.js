@@ -10,9 +10,7 @@ GeneralInfoSchema = new SimpleSchema({
   },
   dateOfBirth: {
     type: Date,
-    autoform: {
-      type: 'bootstrap-datepicker',
-    },
+    optional: true,
   },
   nationality: {
     type: String,
@@ -76,13 +74,20 @@ GeneralInfoSchema = new SimpleSchema({
   sameAddress: {
     type: Boolean,
     optional: true,
-    defaultValue: true,
+    defaultValue: false,
   },
   currentCity: {
     type: String,
+    optional: true,
+    custom: function() {
+      if (!(this.field('sameAddress').value) && !this.isSet && ((typeof (this.value) == 'undefined') || (this.value === null || this.value === ''))) {
+        return 'required';
+      };
+    },
   },
   currentProvince: {
     type: String,
+    optional: true,
     autoform: {
       options: {
         Winchestershire: 'Winchestershire',
@@ -90,18 +95,42 @@ GeneralInfoSchema = new SimpleSchema({
         Berettashire: 'Berettashire',
       },
     },
+    custom: function() {
+      if (!(this.field('sameAddress').value) && !this.isSet && ((typeof (this.value) == 'undefined') || (this.value === null || this.value === ''))) {
+        return 'required';
+      };
+    },
   },
   currentZip: {
     type: String,
+    optional: true,
+    custom: function() {
+      if (!(this.field('sameAddress').value) && !this.isSet && ((typeof (this.value) == 'undefined') || (this.value === null || this.value === ''))) {
+        return 'required';
+      };
+    },
   },
   currentAddress: {
     type: String,
+    optional: true,
+    custom: function() {
+      if (!(this.field('sameAddress').value) && !this.isSet && ((typeof (this.value) == 'undefined') || (this.value === null || this.value === ''))) {
+        return 'required';
+      };
+    },
   },
   currentCivic: {
     type: String,
+    optional: true,
+    custom: function() {
+      if (!(this.field('sameAddress').value) && !this.isSet && ((typeof (this.value) == 'undefined') || (this.value === null || this.value === ''))) {
+        return 'required';
+      };
+    },
   },
   currentRegion: {
     type: String,
+    optional: true,
     autoform: {
       options: {
         NORTH: 'NORTH',
@@ -109,9 +138,20 @@ GeneralInfoSchema = new SimpleSchema({
         SOUTH: 'SOUTH',
       },
     },
+    custom: function() {
+      if (!(this.field('sameAddress').value) && !this.isSet && ((typeof (this.value) == 'undefined') || (this.value === null || this.value === ''))) {
+        return 'required';
+      };
+    },
   },
   currentCountry: {
     type: String,
+    optional: true,
+    custom: function() {
+      if (!(this.field('sameAddress').value) && !this.isSet && ((typeof (this.value) == 'undefined') || (this.value === null || this.value === ''))) {
+        return 'required';
+      };
+    },
   },
   phone: {
     type: String,
@@ -125,6 +165,13 @@ GeneralInfoSchema = new SimpleSchema({
   },
   maritalStatus: {
     type: String,
+    autoform: {
+      options: {
+        Single: 'Single',
+        Married: 'Married',
+        Divorced: 'Divorced',
+      },
+    },
   },
   children: {
     type: Number,
