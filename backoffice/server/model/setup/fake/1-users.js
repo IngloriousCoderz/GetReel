@@ -1,6 +1,8 @@
 Meteor.startup(function() {
-  Meteor.users.remove({roles: 'fake'});
 
+  Meteor.users.remove({roles: 'fake'});
+  var test = Meteor.settings.test;
+  console.log(test);
   if (Roles.getUsersInRole('admin').count() === 0) {
     console.log('regenerating fake admin');
     var admin = Accounts.createUser({

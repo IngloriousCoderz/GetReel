@@ -1,5 +1,5 @@
 Meteor.startup(function() {
-  Meteor.publish('nations', function() {
+  Meteor.publish('roleEvaluations', function() {
     return RoleEvaluations.find();
   });
 });
