@@ -1,3 +1,4 @@
+//TODO: move "select"  choice to interface
 Meteor.startup(function() {
   Jobs.remove({});
 

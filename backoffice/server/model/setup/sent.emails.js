@@ -1,23 +1,22 @@
+//TODO: consider mass import from existing data
 Meteor.startup(function() {
-  OpticalArchive.remove({});
+  SentEmails.remove({});
 
-  if (OpticalArchive.find().count() === 0) {
-    var docs = [
+  if (SentEmails.find().count() === 0) {
+    var mails = [
       {
-        docType: 'reference to document.types',
-        attachment1: 'allegato (blob)',
-        description: 'descrizione',
-        acquisitionDate: new Date(),
-        user: 'reference to users',
+        createdAt: new Date(),
+        createdBy: 'test user',
+        sender: 'sender test',
+        subject: 'subject test',
+        message: 'message test',
       },
     ];
 
-    docs.forEach(function(doc) {
-      OpticalArchive.insert(doc);
+    mails.forEach(function(mail) {
+      SentEmails.insert(mail);
     });
 
-    console.log('added', OpticalArchive.find().count(), 'Optical docs.');
+    console.log('added', SentEmails.find().count(), 'sent emails.');
   }
 });
-
-
