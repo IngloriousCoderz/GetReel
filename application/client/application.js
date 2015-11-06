@@ -21,6 +21,17 @@ Template.application.helpers({
         schema: WorkSchema,
         template: 'workStep',
         form: 'work-form',
+        // onSubmit: function(data, wizard) {
+        //   console.log('subit ok');
+      },
+      {
+        id: 'other-info',
+        title: 'Other Info',
+        schema: OtherInfoSchema,
+        template: 'otherInfoStep',
+        form: 'other-info-form',
+        // onSubmit: function(data, wizard) {
+        //   console.log('subit ok');
       },
       {
         id: 'final-step',

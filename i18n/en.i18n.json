@@ -21,6 +21,9 @@
   "Work experience": "Work experience",
   "Experience": "PROFESSIONAL EXPERIENCE - (Insert only the experiences made in the field PHOTO & TOURISM)",
 
+  "Current Employment": "Current Employment",
+  "Hobbies and other": "Hobbies and other",
+  "How you know us": "How you know us",
 
   "schemas": {
     "general-info": {
@@ -233,6 +236,43 @@
       },
       "reasonTerminationEmployment": {
         "label": "Reason Termination of Employment"
+      }
+    },
+
+    "other-info": {
+      "currentEmployment": {
+        "label": "Current employment status"
+      },
+      "availabilityFrom": {
+        "label": "Availability from",
+        "placeholder": "dd/MM/yyyy"
+      },
+      "availabilityDepartureAbroad": {
+        "label": "Availability of departure abroad"
+      },
+      "hobbies": {
+        "label": "Hobbies"
+      },
+      "tattoos": {
+        "label": "Tattoos"
+      },
+      "whereTattoo": {
+        "label": "Where"
+      },
+      "skiDownhill": {
+        "label": "Ski Downhill"
+      },
+      "snowboard": {
+        "label": "Snowboard"
+      },
+      "SLRcameras": {
+        "label": "Knowledge of SLR cameras"
+      },
+      "howDidRecruitment": {
+        "label": "How did you learn of our recruitment"
+      },
+      "miscellaneous": {
+        "label": "Miscellaneous notes"
       }
     }
   }

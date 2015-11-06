@@ -23,6 +23,10 @@
   "Work experience": "Esperienze lavorative",
   "Experience": "ESPERIENZE PROFESSIONALI – (Inserire solo le esperienze svolte nel settore FOTOGRAFICO & TURISTICO)",
 
+  "Current Employment": "Lavoro attuale",
+  "Hobbies and other": "Hobby e altro",
+  "How you know us": "Come ci conosci",
+
   "schemas": {
     "general-info": {
       "firstname": {
@@ -220,7 +224,7 @@
       "otherWork": {
         "label": "Esperienze precedenti di altri lavori in villaggio"
       },
-      
+
       "company": {
         "label": "Azienda"
       },
@@ -232,6 +236,43 @@
       },
       "reasonTerminationEmployment": {
         "label": "Motivo fine rapporto"
+      }
+    },
+
+    "other-info": {
+      "currentEmployment": {
+        "label": "Posizione lavorativa attuale"
+      },
+      "availabilityFrom": {
+        "label": "Disponibilità a partire da",
+        "placeholder": "gg/MM/aaaa"
+      },
+      "availabilityDepartureAbroad": {
+        "label": "Disponibilità partenza estero"
+      },
+      "hobbies": {
+        "label": "Hobby"
+      },
+      "tattoos": {
+        "label": "Tatuaggi"
+      },
+      "whereTattoo": {
+        "label": "Dove"
+      },
+      "skiDownhill": {
+        "label": "Sci"
+      },
+      "snowboard": {
+        "label": "Snowboard"
+      },
+      "SLRcameras": {
+        "label": "Conoscenza macchina Reflex"
+      },
+      "howDidRecruitment": {
+        "label": "Come sei venuto a conoscenza della nostra ricerca del personale"
+      },
+      "miscellaneous": {
+        "label": "Note varie"
       }
     }
   }
