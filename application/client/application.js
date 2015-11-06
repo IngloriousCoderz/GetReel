@@ -4,6 +4,15 @@ Template.application.helpers({
   steps: function() {
     return [
       {
+        id: 'other-info',
+        title: 'Other Info',
+        schema: OtherInfoSchema,
+        template: 'otherInfoStep',
+        form: 'other-info-form',
+        // onSubmit: function(data, wizard) {
+        //   console.log('subit ok');
+      },
+      {
         id: 'general-info',
         title: 'General Info',
         schema: GeneralInfoSchema,
@@ -29,7 +38,10 @@ Template.application.helpers({
         schema: WorkSchema,
         template: 'workStep',
         form: 'work-form',
+        // onSubmit: function(data, wizard) {
+        //   console.log('subit ok');
       },
+
     ];
   },
 

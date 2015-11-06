@@ -1,0 +1,65 @@
+<template name="otherInfoStep">
+  {{#autoForm id="other-info-form" name="OtherInfo" doc=step.data schema=step.schema}}
+    <fieldset>
+      <legend>{{_ "Current Employment"}}</legend>
+
+      <div class="col-lg-6">
+        {{> afQuickField id="currentEmployment" name="currentEmployment"}}
+      </div>
+
+      <div class="col-lg-3">
+        {{> afQuickField id="availabilityFrom" name="availabilityFrom" type="bootstrap-datepicker" buttonClasses="glyphicon glyphicon-calendar"}}
+      </div>
+
+      <div class="col-lg-3">
+      {{> afQuickField id="availabilityDepartureAbroad" name="availabilityDepartureAbroad" class="js-switch"}}
+      </div>
+
+    </fieldset>
+
+    <fieldset>
+      <legend>{{_ "Hobby and other"}}</legend>
+
+      <div class="col-lg-6">
+        {{> afQuickField id="hobbies" name="hobbies"}}
+      </div>
+
+      <div class="col-lg-3">
+        {{> afQuickField id="tattoos" name="tattoos"}}
+      </div>
+
+      <div class="col-lg-3">
+      {{> afQuickField id="whereTattoo" name="whereTattoo" class="js-switch"}}
+      </div>
+
+      <div class="col-lg-4">
+        {{> afQuickField id="skiDownhill" name="skiDownhill"}}
+      </div>
+
+      <div class="col-lg-4">
+        {{> afQuickField id="snowboard" name="snowboard"}}
+      </div>
+
+      <div class="col-lg-4">
+        {{> afQuickField id="SLRcameras" name="SLRcameras"}}
+      </div>
+
+    </fieldset>
+
+    <fieldset>
+      <legend>{{_ "How you know us"}}</legend>
+
+      <div class="col-lg-6">
+        {{> afQuickField id="howDidRecruitment" name="howDidRecruitment"}}
+      </div>
+
+      <div class="col-lg-6">
+        {{> afQuickField id="miscellaneous" name="miscellaneous"}}
+      </div>
+    </fieldset>
+
+    <div class="col-lg-12">
+      {{> wizardButtons}}
+    </div>
+{{/autoForm}}
+</template>
