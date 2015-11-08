@@ -7,9 +7,14 @@ Template.applications.helpers({
     console.log('Template.applications.helpers:applications:filter', JSON.stringify(mongoFilter));
 
     return {
-      collection: Applications.find(mongoFilter),
+      collection: 'filterableApplications',//Applications.find(mongoFilter),
       rowsPerPage: 20,
+      showFilter: false,
       showRowCount: true,
+      showNavigationRowsPerPage: true,
+      showColumnToggles: false,
+      noDataTmpl: Template.noDataTemplate,
+      class: 'table table-striped table-hover table-condensed col-sm-12',
       fields: [
         {
           key: 'edit',
@@ -90,9 +95,6 @@ Template.applications.helpers({
         {key: 'photo', label: 'photo'},
         {key: 'status.recruiter.username', label: 'recruiter'},
       ],
-      showColumnToggles: true,
-      noDataTmpl: Template.noDataTemplate,
-      class: 'table table-striped table-hover table-condensed col-sm-12',
     };
   },
 });

@@ -1,5 +1,3 @@
-Meteor.startup(function() {
-  Meteor.publish('documentTypes', function() {
-    return DocumentTypes.find();
-  });
+Meteor.publish('documentTypes', function() {
+  return DocumentTypes.find();
 });
