@@ -38,8 +38,10 @@ Template.application.helpers({
         title: 'Final Step',
         onSubmit: function(data, wizard) {
           data.createdAt = new Date();
-          data.reusme = Session.get('resume');
+          data.resume = Session.get('resume');
           data.videofile = Session.get('videofile');
+          //alla fine del salvataggio ripulire il localStorage
+          localStorage.clear();
         },
       },
     ];

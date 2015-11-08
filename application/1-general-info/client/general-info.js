@@ -3,12 +3,22 @@ Meteor.subscribe('availableJobs');
 Template.generalInfoStep.onRendered(function() {
   loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
 
+  var data = this.data.step.data();
+  var hasPermit, hasSameAddress, hasPassport;
+  if (typeof data !== 'undefined') {
+    hasPermit = data.permit;
+    hasSameAddress = data.sameAddress;
+    hasPassport = data.passport;
+  }
+  $(permit).prop('checked', typeof hasPermit !== 'undefined' ? hasPermit : true);
+  $(sameAddress).prop('checked', typeof hasSameAddress !== 'undefined' ? hasSameAddress : true);
+  $(passport).prop('checked', typeof hasPassport !== 'undefined' ? hasPassport : true);
+
   this.$('.js-switch').each(function(i, html) {
     var switchery = new Switchery(html, {size: 'small', color: '#337ab7'});
-    $(permit).prop('checked', true);
-    $(sameAddress).prop('checked', false);
-    $(passport).prop('checked', true);
   });
+
+  $(':checkbox').change();
 });
 
 Template.generalInfoStep.helpers({
@@ -18,17 +28,22 @@ Template.generalInfoStep.helpers({
 });
 
 Template.generalInfoStep.events({
-  'click :checkbox#permit': function(e) {
+  'change :checkbox#permit': function(e) {
     var hasPermit = $(e.target).prop('checked');
-    $(permitKind).val('').attr('disabled', !hasPermit);
+    if (hasPermit === false) {
+      $(permitKind).val('').attr('disabled', !hasPermit);
+    }
+    else {
+      $(permitKind).attr('disabled', !hasPermit);
+    }
   },
 
-  'click :checkbox#sameAddress': function(e) {
+  'change :checkbox#sameAddress': function(e) {
     var sameAddress = $(e.target).prop('checked');
     $(currentAddressFieldset).toggleClass('hidden', sameAddress);
   },
 
-  'click :checkbox#passport': function(e) {
+  'change :checkbox#passport': function(e) {
     var hasPassport = $(e.target).prop('checked');
     $(passportFieldset).toggleClass('hidden', !hasPassport);
   },
