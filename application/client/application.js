@@ -1,4 +1,14 @@
 Template.application.helpers({
+  buttonClasses: 'btn btn-default',
+  backButton: function() {
+    return TAPi18n.__('back-button');
+  },
+  nextButton: function() {
+    return TAPi18n.__('next-button');
+  },
+  confirmButton: function() {
+    return TAPi18n.__('confirm-button');
+  },
   steps: function() {
     return [
       {
@@ -47,10 +57,13 @@ Template.application.helpers({
         form: 'self-assessment-form',
       },
       {
-        id: 'final-step',
+        id: 'privacy',
         title: function() {
           return TAPi18n.__('Privacy');
         },
+        schema: PrivacySchema,
+        template: 'privacyStep',
+        form: 'privacy-form',
         onSubmit: function(data, wizard) {
           data.createdAt = new Date();
           data.reusme = Session.get('resume');
@@ -58,18 +71,6 @@ Template.application.helpers({
         },
       },
     ];
-  },
-
-  nextButtonLabel: function() {
-    return TAPi18n.__('next-button');
-  },
-
-  backButtonLabel: function() {
-    return TAPi18n.__('back-button');
-  },
-
-  confirmButtonLabel: function() {
-    return TAPi18n.__('confirm-button');
   },
 });
 

@@ -3,7 +3,7 @@ StudiesSchema = new SimpleSchema({
     type: String,
   },
   year: {
-    type: Number,
+    type: String,
   },
   subjectsOfStudy: {
     type: String,
