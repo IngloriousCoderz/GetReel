@@ -1,6 +1,6 @@
 Meteor.startup(function() {
-
   Meteor.users.remove({roles: 'fake'});
+
   var test = Meteor.settings.test;
   console.log(test);
   if (Roles.getUsersInRole('admin').count() === 0) {

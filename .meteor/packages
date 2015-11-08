@@ -30,8 +30,9 @@ aldeed:autoform-bs-datepicker
 check
 ejson
 aslagle:reactive-table
-mfpierre:chartist-js
 gwendall:autoform-i18n
 tap:i18n-ui
 aldeed:template-extension
 abpetkov:switchery
+chart:chart
+rcy:chromajs

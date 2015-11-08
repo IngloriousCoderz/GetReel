@@ -4,6 +4,8 @@ Meteor.startup(function() {
   var maxFakeApplications = 50;
   console.log('regenerating', maxFakeApplications, 'fake applications...');
 
+  var referrers = Referrers.find().fetch();
+
   for (var i = 0; i < maxFakeApplications; i++) {
     var createdAt = new Date();
 
@@ -28,6 +30,7 @@ Meteor.startup(function() {
       region: [1, 12, 15][Math.floor(Math.random() * 3)],
       experienceAsPhotographer: true,
       experienceAsOther: false,
+      referrer: referrers[Math.floor(Math.random() * referrers.length)].name,
     };
     fakeApplication.status.current = [0, 1, 2, 3][Math.floor(Math.random() * 4)];
     if (fakeApplication.status.current > 0) {

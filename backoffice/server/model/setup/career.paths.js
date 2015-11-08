@@ -12,7 +12,7 @@ Meteor.startup(function() {
         season: 'reference to seasons',
         village: 'import',
         company: 'reference to companies',
-        nation: 'reference to  nations ',
+        nation: 'reference to countries',
         roleEvaluation: 'reference to role.evaluations',
         periodFrom: 'import',
         description: 'import',
