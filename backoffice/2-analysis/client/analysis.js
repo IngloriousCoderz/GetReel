@@ -34,23 +34,27 @@ Template.analysis.events({
         });
         break;
       case  3:
-        chartType = 'Doughnut';//Bar
+        chartType = 'Bar';
         var minAge = Applications.findOne({}, {sort: {age: 1}}).age;
         var maxAge = Applications.findOne({}, {sort: {age: -1}}).age;
         var ages = [];
-        for (var i = minAge; i < maxAge; i++) {
+        for (var i = minAge; i <= maxAge; i++) {
           ages.push(i);
         }
-        colors = chroma.scale('Spectral').colors(ages.length);
+        //colors = chroma.scale('Spectral').colors(ages.length);
+        var data = {
+          labels: ages,
+          datasets: [{
+            fillColor: 'rgba(151,187,205,0.5)',
+            strokeColor: 'rgba(151,187,205,0.8)',
+            highlightFill: 'rgba(151,187,205,0.75)',
+            highlightStroke: 'rgba(151,187,205,1)',
+            data: [],
+          }],
+        };
+
         for (var i = 0; i < ages.length; i++) {
-          var age = ages[i];
-          var color = chroma(colors[i]);
-          data.push({
-            value: Applications.find({age: age}).count(),
-            label: age + ' anni',
-            color: color,
-            highlight: color.brighten(),
-          });
+          data.datasets[0].data.push(Applications.find({age: ages[i]}).count());
         }
         break;
       case 4:
