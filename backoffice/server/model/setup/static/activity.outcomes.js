@@ -7,8 +7,8 @@ Meteor.startup(function() {
       {id: 2, name: 'DA RICHIAMARE'},
       {id: 3, name: 'NEGATIVO'},
       {id: 4, name: 'NON RISPONDE'},
-      {id: 4, name: 'MOLTO INTERESSATO'},
-      {id: 5, name: 'RICHIAMA LUI'},
+      {id: 5, name: 'MOLTO INTERESSATO'},
+      {id: 6, name: 'RICHIAMA LUI'},
     ];
 
     outcomes.forEach(function(outcome) {

@@ -3,17 +3,17 @@ Meteor.startup(function() {
 
   if (OutcomeReasons.find().count() === 0) {
     var reasons = [
-      {id:  1, name: 'CV NEGATIVO'},
-      {id:  2, name: 'FOTO NEGATIVA'},
-      {id:  3, name: 'TELEFONATA NEGATIVA'},
-      {id:  4, name: 'INTROVABILE'},
-      {id:  4, name: 'INTERESSE ALTO'},
-      {id:  5, name: 'INTERESSE SUFFIC.'},
-      {id:  6, name: 'FUORI ETA\' NO ESP.'},
-      {id:  7, name: 'CV POSITIVO DA TEL'},
-      {id:  8, name: 'RICHIAMA LUI SE INT.'},
-      {id:  9, name: 'POCA DISPONIBILITA\''},
-      {id: 10, name: 'BLACK LIST'},
+      {id: 1, name: 'CV NEGATIVO'},
+      {id: 2, name: 'FOTO NEGATIVA'},
+      {id: 3, name: 'TELEFONATA NEGATIVA'},
+      {id: 4, name: 'INTROVABILE'},
+      {id: 5, name: 'INTERESSE ALTO'},
+      {id: 6, name: 'INTERESSE SUFFIC.'},
+      {id: 7, name: 'FUORI ETA\' NO ESP.'},
+      {id: 8, name: 'CV POSITIVO DA TEL'},
+      {id: 9, name: 'RICHIAMA LUI SE INT.'},
+      {id: 10, name: 'POCA DISPONIBILITA\''},
+      {id: 11, name: 'BLACK LIST'},
     ];
 
     reasons.forEach(function(reason) {

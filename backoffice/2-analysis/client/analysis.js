@@ -4,6 +4,25 @@ Meteor.subscribe('regions');
 
 var currentChart;
 
+function howDoYouKnowUs(query) {
+  var data = [];
+  var cursor = Referrers.find();
+  var colors = chroma.scale('Spectral').colors(cursor.count());
+  var i = 0;
+  cursor.forEach(function(referrer) {
+    var color = chroma(colors[i]);
+    query.referrer = referrer.name;
+    data.push({
+      value: Applications.find(query).count(),
+      label: referrer.name,
+      color: color,
+      highlight: color.brighten(),
+    });
+    i++;
+  });
+  currentChart = new Chart(chart.getContext('2d')).Pie(data);
+}
+
 Template.analysis.onRendered(function() {
   currentChart = new Chart(chart.getContext('2d')).Pie();
 });
@@ -16,23 +35,29 @@ Template.analysis.events({
 
     switch (parseInt(e.target.value)) {
       case 0:
-      case 1:
-      case 2:
-        chartType = 'Pie';
-        cursor = Referrers.find();
-        colors = chroma.scale('Spectral').colors(cursor.count());
-        var i = 0;
-        cursor.forEach(function(referrer) {
-          var color = chroma(colors[i]);
-          data.push({
-            value: Applications.find({referrer: referrer.name}).count(),
-            label: referrer.name,
-            color: color,
-            highlight: color.brighten(),
-          });
-          i++;
-        });
+        howDoYouKnowUs({});
         break;
+      case 1:
+        howDoYouKnowUs({'status.current': {$gt: 0}, 'status.outcome': 1});
+        break;
+      case 2:
+        howDoYouKnowUs({'status.current': {$gt: 0}, 'status.outcome': 2});
+        break;
+        // chartType = 'Pie';
+        // cursor = Referrers.find();
+        // colors = chroma.scale('Spectral').colors(cursor.count());
+        // var i = 0;
+        // cursor.forEach(function(referrer) {
+        //   var color = chroma(colors[i]);
+        //   data.push({
+        //     value: Applications.find({referrer: referrer.name}).count(),
+        //     label: referrer.name,
+        //     color: color,
+        //     highlight: color.brighten(),
+        //   });
+        //   i++;
+        // });
+        //break;
       case  3:
         chartType = 'Bar';
         var minAge = Applications.findOne({}, {sort: {age: 1}}).age;
@@ -56,6 +81,7 @@ Template.analysis.events({
         for (var i = 0; i < ages.length; i++) {
           data.datasets[0].data.push(Applications.find({age: ages[i]}).count());
         }
+        currentChart = new Chart(chart.getContext('2d'))[chartType](data);
         break;
       case 4:
         chartType = 'Doughnut';
@@ -73,6 +99,7 @@ Template.analysis.events({
           });
           i++;
         });
+        currentChart = new Chart(chart.getContext('2d'))[chartType](data);
         break;
       case 5:
         chartType = 'Line';
@@ -86,6 +113,5 @@ Template.analysis.events({
         break;
     }
 
-    currentChart = new Chart(chart.getContext('2d'))[chartType](data);
   },
 });
