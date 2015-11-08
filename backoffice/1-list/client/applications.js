@@ -88,7 +88,7 @@ Template.applications.helpers({
         {key: 'experienceAsPhotographer', label: 'experience as a photographer'},
         {key: 'experienceAsOther', label: 'experience as other'},
         {key: 'photo', label: 'photo'},
-        {key: 'status.recruiter.username', label: 'recruiter'},
+        {key: 'phases.recruiter.username', label: 'recruiter'},
       ],
       showColumnToggles: true,
       noDataTmpl: Template.noDataTemplate,

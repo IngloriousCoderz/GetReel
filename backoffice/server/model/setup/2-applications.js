@@ -26,17 +26,17 @@ Meteor.startup(function() {
       residentialCap: 10100,
       phone: '11223344' + i,
       mobile: '33344455' + i,
-      status: {},
+      phases: {},
       createdAt: createdAt,
       region: [1, 12, 15][Math.floor(Math.random() * 3)],
       experienceAsPhotographer: true,
       experienceAsOther: false,
       referrer: referrers[Math.floor(Math.random() * referrers.length)].name,
     };
-    fakeApplication.status.current = [0, 1, 2, 3][Math.floor(Math.random() * 4)];
-    if (fakeApplication.status.current > 0) {
+    fakeApplication.phases.current = [0, 1, 2, 3][Math.floor(Math.random() * 4)];
+    if (fakeApplication.phases.current > 0) {
       //fakeApplication.status.recruiter = 'recruiter';
-      fakeApplication.status.recruiter = Meteor.users.findOne({
+      fakeApplication.phases.recruiter = Meteor.users.findOne({
         roles: 'recruiter',
       }, {
         fields: {
