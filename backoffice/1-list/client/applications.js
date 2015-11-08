@@ -15,6 +15,16 @@ Template.applications.helpers({
       showColumnToggles: false,
       noDataTmpl: Template.noDataTemplate,
       class: 'table table-striped table-hover table-condensed col-sm-12',
+      filters: [
+        'createdAt',
+        'status.recruiter',
+        'firstname',
+        'lastname',
+        'age',
+        'mobile',
+        'status.current',
+        'region.name',
+      ],
       fields: [
         {
           key: 'edit',

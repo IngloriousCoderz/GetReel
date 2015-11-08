@@ -39,46 +39,46 @@ Template.filter.events({
         to: e.target['createdAt-to'].value,
       },
       recruiter: {
-          field: 'status.recruiter._id',
-          not: e.target['recruiter-not'].checked,
-          op: e.target['recruiter-criterion'].value,
-          value: e.target['recruiter-id'].value,
+        field: 'status.recruiter._id',
+        not: e.target['recruiter-not'].checked,
+        op: e.target['recruiter-criterion'].value,
+        value: e.target['recruiter-id'].value,
       },
       firstname: {
-          not: e.target['firstname-not'].checked,
-          op: e.target['firstname-criterion'].value,
-          value: e.target.firstname.value,
+        not: e.target['firstname-not'].checked,
+        op: e.target['firstname-criterion'].value,
+        value: e.target.firstname.value,
       },
       lastname: {
-          not: e.target['lastname-not'].checked,
-          op: e.target['lastname-criterion'].value,
-          value: e.target.lastname.value,
+        not: e.target['lastname-not'].checked,
+        op: e.target['lastname-criterion'].value,
+        value: e.target.lastname.value,
       },
       age: {
-          isNumber: true,
-          not: e.target['age-not'].checked,
-          op: e.target['age-criterion'].value,
-          value: e.target.age.value,
-          from: e.target['age-from'].value,
-          to: e.target['age-to'].value,
+        isNumber: true,
+        not: e.target['age-not'].checked,
+        op: e.target['age-criterion'].value,
+        value: e.target.age.value,
+        from: e.target['age-from'].value,
+        to: e.target['age-to'].value,
       },
       mobile: {
-          not: e.target['mobile-not'].checked,
-          op: e.target['mobile-criterion'].value,
-          value: e.target.mobile.value,
+        not: e.target['mobile-not'].checked,
+        op: e.target['mobile-criterion'].value,
+        value: e.target.mobile.value,
       },
       status: {
-          isNumber: true,
-          field: 'status.current',
-          not: e.target['status-not'].checked,
-          op: e.target['status-criterion'].value,
-          value: e.target.status.value,
+        isNumber: true,
+        field: 'status.current',
+        not: e.target['status-not'].checked,
+        op: e.target['status-criterion'].value,
+        value: e.target.status.value,
       },
       region: {
-          isNumber: true,
-          not: e.target['region-not'].checked,
-          op: e.target['region-criterion'].value,
-          value: e.target.region.value,
+        isNumber: true,
+        not: e.target['region-not'].checked,
+        op: e.target['region-criterion'].value,
+        value: e.target.region.value,
       },
     };
     console.log('criteria:', JSON.stringify(criteria));
@@ -90,107 +90,113 @@ Template.filter.events({
   },
 });
 
-
-
 var getMongoQuery = function(criteria) {
-	var mongo = {};
+  var mongo = {};
 
-	for (var criterionName in criteria) {
-		if (criteria.hasOwnProperty(criterionName)) {
-            var condition = {};
-            var criterion = criteria[criterionName];
-            if(!criterion.field) {
-                criterion.field = criterionName;
+  for (var criterionName in criteria) {
+    if (criteria.hasOwnProperty(criterionName)) {
+      var condition = {};
+      var criterion = criteria[criterionName];
+      if (!criterion.field) {
+        criterion.field = criterionName;
+      }
+
+      if (criterion.value) {
+        if (criterion.isDate) {
+          criterion.value = new Date(criterion.value);
+        }
+
+        if (criterion.isNumber) {
+          criterion.value = parseInt(criterion.value);
+        }
+
+        mongo[criterion.field] = {};
+        switch (criterion.op) {
+          case 'eq':
+            if (criterion.isDate) {
+              var dayAfter = new Date(criterion.value);
+              dayAfter.setDate(criterion.value.getDate() + 1);
+              condition = {
+                $gte: criterion.value,
+                $lt: dayAfter,
+              };
+            } else {
+              condition = criterion.value;
             }
 
-			if (criterion.value) {
-                if(criterion.isDate) {
-                    criterion.value = new Date(criterion.value);
-                }
-                if(criterion.isNumber) {
-                    criterion.value = parseInt(criterion.value);
-                }
-                mongo[criterion.field] = {};
-                switch (criterion.op) {
-                    case 'eq':
-                        if(criterion.isDate) {
-                            var dayAfter = new Date(criterion.value);
-                            dayAfter.setDate(criterion.value.getDate() + 1);
-                            condition = {
-                            	$gte: criterion.value,
-                            	$lt: dayAfter,
-                            };
-                        } else {
-                            condition = criterion.value;
-                        }
-                    break;
-                    case 'gt':
-                        condition = { $gt: criterion.value};
-                    break;
-                    case 'lt':
-                        condition = { $lt: criterion.value};
-                    break;
-                    case 'startswith':
-                        condition = { $regex: '^' + criterion.value, $options: 'i' };
-                    break;
-                    case 'endswith':
-                        condition = { $regex: criterion.value + '$', $options: 'i' };
-                    break;
-                    case 'contains':
-                        condition = { $regex: criterion.value, $options: 'i' };
-                    break;
-                    default:
-                        //throw('operator not supported: ' + criterion.op);
-                    break;
-                }
-			}
+          break;
+          case 'gt':
+            condition = { $gt: criterion.value};
+          break;
+          case 'lt':
+            condition = { $lt: criterion.value};
+          break;
+          case 'startswith':
+            condition = { $regex: '^' + criterion.value, $options: 'i' };
+          break;
+          case 'endswith':
+            condition = { $regex: criterion.value + '$', $options: 'i' };
+          break;
+          case 'contains':
+            condition = { $regex: criterion.value, $options: 'i' };
+          break;
+          default:
 
-			if (criterion.from && criterion.to) {
-                    if(criterion.isDate) {
-                        criterion.from = new Date(criterion.from);
-                        criterion.to = new Date(criterion.to);
-                    }
-                    if(criterion.isNumber) {
-                        criterion.from = parseInt(criterion.from);
-                        criterion.to = parseInt(criterion.to);
-                    }
-                    mongo[criterion.field] = {};
-                    switch (criterion.op) {
-                        case 'between':
-                            if(criterion.isDate) {
-                                criterion.to.setDate(criterion.to.getDate() + 1);
-                                condition = {
-                                	$gte: criterion.from,
-                                	$lt: criterion.to,
-                                };
-                            } else {
-                                condition = {
-                                    $gte: criterion.from,
-                                	$lte: criterion.to,
-                                };
-                            }
-                        break;
-                        default:
-                            throw('operator not supported: ' + criterion.op);
-                        break;
-				}
-			}
+            //throw('operator not supported: ' + criterion.op);
+          break;
+        }
+      }
 
-            if(criterion.op === "empty") {
-                mongo[criterion.field] = {};
-                condition = {
-                    $exists : false,
-                };
+      if (criterion.from && criterion.to) {
+        if (criterion.isDate) {
+          criterion.from = new Date(criterion.from);
+          criterion.to = new Date(criterion.to);
+        }
+
+        if (criterion.isNumber) {
+          criterion.from = parseInt(criterion.from);
+          criterion.to = parseInt(criterion.to);
+        }
+
+        mongo[criterion.field] = {};
+        switch (criterion.op) {
+          case 'between':
+            if (criterion.isDate) {
+              criterion.to.setDate(criterion.to.getDate() + 1);
+              condition = {
+                $gte: criterion.from,
+                $lt: criterion.to,
+              };
+            } else {
+              condition = {
+                $gte: criterion.from,
+                $lte: criterion.to,
+              };
             }
 
-            if (mongo[criterion.field]) {
-                if(criterion.not) {
-                    mongo[criterion.field].$not = condition;
-                } else {
-                    mongo[criterion.field] = condition;
-                }
-            }
-		}
-	}
-	return mongo;
-}
+          break;
+          default:
+            throw('operator not supported: ' + criterion.op);
+          break;
+        }
+      }
+
+      if (criterion.op === 'empty') {
+        mongo[criterion.field] = {};
+        condition = {
+          $exists: false,
+        };
+      }
+
+      if (mongo[criterion.field]) {
+        if (criterion.not) {
+          mongo[criterion.field].$not = condition;
+        } else {
+          mongo[criterion.field] = condition;
+        }
+      }
+    }
+  }
+
+  return mongo;
+};

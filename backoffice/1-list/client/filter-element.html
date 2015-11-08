@@ -19,7 +19,7 @@
             <option value="startswith">starts with</option>
             <option value="endswith">ends with</option>
             {{/if}}
-            {{#if comparable}}
+            {{#if isComparable}}
             <option value="gt">more than</option>
             <option value="lt">less than</option>
             <option value="between">between</option>
@@ -32,7 +32,7 @@
         <div class="col-xs-12 value">
           <input type="{{type}}" id="{{name}}" name="{{name}}" class="form-control input-sm" min="{{min}}" max="{{max}}" />
         </div>
-        {{#if comparable}}
+        {{#if isComparable}}
         <div class="col-xs-12 from">
           <input type="{{type}}" id="{{name}}-from" name="{{name}}-from" class="form-control input-sm" min="{{min}}" max="{{max}}" />
         </div>
