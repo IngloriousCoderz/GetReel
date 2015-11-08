@@ -1,7 +1,7 @@
 Meteor.startup(function() {
   Applications.remove({fake: true});
 
-  var maxFakeApplications = 50;
+  var maxFakeApplications = 1000;
   console.log('regenerating', maxFakeApplications, 'fake applications...');
 
   var referrers = Referrers.find().fetch();
@@ -18,7 +18,8 @@ Meteor.startup(function() {
       firstname: ['Palmer', 'Andersen', 'Antony', 'Roby', 'Federica'][Math.floor(Math.random() * 4)],
       lastname: ['Eldritch', 'Bianchi', 'Rossi', 'Verdi'][Math.floor(Math.random() * 3)],
       socialSecurityNumber: 'ABCD12345' + i,
-      dateOfBirth: new Date(1970 + i % 30, (i % 12) + 1, i),
+      // gaussian random date from epoch to 30 years later
+      dateOfBirth: new Date(Math.floor(gaussianRandom() * new Date(2000, 11, 31, 23, 59, 59).getTime())),
       permitKind: 'kinda',
       city: 'comune',
       province: 'prov',
