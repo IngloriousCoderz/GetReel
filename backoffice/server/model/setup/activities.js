@@ -1,6 +1,8 @@
 //TODO: consider mass import from existing data
 Meteor.startup(function() {
 
+
+
     var locations = Locations.find().fetch();
 
 	Events.remove({});
