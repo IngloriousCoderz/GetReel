@@ -1,32 +1,4 @@
 SelfAssessmentSchema = new SimpleSchema({
-  salesSkills: {
-    type: String,
-  },
-  publicRelations: {
-    type: String,
-  },
-  dynamism: {
-    type: String,
-  },
-  workOrganization: {
-    type: String,
-  },
-  inventive: {
-    type: String,
-  },
-  adaption: {
-    type: String,
-  },
-  ambition: {
-    type: String,
-  },
-  will: {
-    type: String,
-  },
-  selfControl: {
-    type: String,
-  },
-
   professionalExpectations: {
     type: String,
   },

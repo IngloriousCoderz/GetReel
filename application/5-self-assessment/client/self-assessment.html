@@ -1,42 +1,78 @@
-<template name="self-assessmentStep">
+<template name="selfAssessmentStep">
   {{#autoForm id="self-assessment-form" name="Self-assessment" doc=step.data schema=step.schema}}
     <fieldset>
       <legend>{{_ "Self-assessment"}}</legend>
 
-      <div class="col-lg-6">
-        {{> afQuickField id="salesSkills" name="salesSkills"}}
-      </div>
-
-      <div class="col-lg-3">
-        {{> afQuickField id="publicRelations" name="publicRelations"}}
-      </div>
-
-      <div class="col-lg-3">
-      {{> afQuickField id="dynamism" name="dynamism"}}
-      </div>
-
-      <div class="col-lg-6">
-        {{> afQuickField id="workOrganization" name="workOrganization"}}
-      </div>
-
-      <div class="col-lg-3">
-        {{> afQuickField id="inventive" name="inventive"}}
-      </div>
-
-      <div class="col-lg-3">
-      {{> afQuickField id="adaption" name="adaption"}}
+      <div class="col-lg-4">
+        <h4>{{_ "salesSkills"}}</h4>
+        <input type="range"  min="0" max="5" value="0" step="1" id="salesSkills">
+        <div class="rateit bigstars" data-rateit-starwidth="32" data-rateit-starheight="32" data-rateit-backingfld="#salesSkills" data-rateit-resetable="false"
+          data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
+        </div>
       </div>
 
       <div class="col-lg-4">
-        {{> afQuickField id="ambition" name="ambition"}}
+        <h4>{{_ "publicRelations"}}</h4>
+        <input type="range"  min="0" max="5" value="0" step="1"  id="publicRelations">
+        <div class="rateit bigstars" data-rateit-starwidth="32" data-rateit-starheight="32" data-rateit-backingfld="#publicRelations" data-rateit-resetable="false"
+           data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
+        </div>
       </div>
 
       <div class="col-lg-4">
-        {{> afQuickField id="will" name="will"}}
+        <h4>{{_ "dynamism"}}</h4>
+        <input type="range"  min="0" max="5" value="0" step="0.5"  id="dynamism">
+        <div class="rateit bigstars" data-rateit-starwidth="32" data-rateit-starheight="32" data-rateit-backingfld="#dynamism" data-rateit-resetable="false"
+           data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
+        </div>
       </div>
 
       <div class="col-lg-4">
-        {{> afQuickField id="self-control" name="self-control"}}
+        <h4>{{_ "workOrganization"}}</h4>
+        <input type="range"  min="0" max="5" value="0" step="0.5"  id="workOrganization">
+        <div class="rateit bigstars" data-rateit-starwidth="32" data-rateit-starheight="32" data-rateit-backingfld="#workOrganization" data-rateit-resetable="false"
+           data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <h4>{{_ "inventive"}}</h4>
+        <input type="range"  min="0" max="5" value="0" step="0.5"  id="inventive">
+        <div class="rateit bigstars" data-rateit-starwidth="32" data-rateit-starheight="32" data-rateit-backingfld="#inventive" data-rateit-resetable="false"
+           data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <h4>{{_ "adaption"}}</h4>
+        <input type="range"  min="0" max="5" value="0" step="0.5"  id="adaption">
+        <div class="rateit bigstars" data-rateit-starwidth="32" data-rateit-starheight="32" data-rateit-backingfld="#adaption" data-rateit-resetable="false"
+           data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <h4>{{_ "ambition"}}</h4>
+        <input type="range"  min="0" max="5" value="0" step="0.5"  id="ambition">
+        <div class="rateit bigstars" data-rateit-starwidth="32" data-rateit-starheight="32" data-rateit-backingfld="#ambition" data-rateit-resetable="false"
+           data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <h4>{{_ "will"}}</h4>
+        <input type="range"  min="0" max="5" value="0" step="0.5"  id="will">
+        <div class="rateit bigstars" data-rateit-starwidth="32" data-rateit-starheight="32" data-rateit-backingfld="#will" data-rateit-resetable="false"
+           data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <h4>{{_ "selfControl"}}</h4>
+        <input type="range"  min="0" max="5" value="0" step="0.5"  id="selfControl">
+        <div class="rateit bigstars" data-rateit-starwidth="32" data-rateit-starheight="32" data-rateit-backingfld="#selfControl" data-rateit-resetable="false"
+           data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
+        </div>
       </div>
 
     </fieldset>
@@ -48,15 +84,15 @@
         {{> afQuickField id="professionalExpectations" name="professionalExpectations"}}
       </div>
 
-      <div class="col-lg-3">
+      <div class="col-lg-6">
         {{> afQuickField id="economicExpectations" name="economicExpectations"}}
       </div>
 
-      <div class="col-lg-3">
+      <div class="col-lg-6">
       {{> afQuickField id="qualitiesDefects" name="qualitiesDefects"}}
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         {{> afQuickField id="secretDream" name="secretDream"}}
       </div>
 

@@ -2,6 +2,11 @@
   "welcome-message": "Benvenuto/a nella prima fase del Recruiting del Il Gruppo Digitale. Le ricordiamo che accettiamo candidature di età compresa tra i 17 e i 35 anni; oltre ai 35 anni saranno prese in considerazione esclusivamente candidature con esperienza nella fotografia in villaggi turistici oppure con esperienza sempre in villaggi ma in altro settore.",
 
   "General Info": "Anagrafica",
+  "Studies": "Formazione",
+  "Work": "Esperienze",
+  "Other Info": "Altre Info",
+  "Self Assessment": "Conosciamoci",
+  "Privacy": "Privacy",
 
   "next-button": "avanti",
   "back-button": "indietro",
@@ -26,6 +31,15 @@
   "How you know us": "Come ci conosci",
 
   "Self-assessment": "Autovalutazione",
+  "salesSkills": "Capacità di vendita",
+  "publicRelations": "Pubbliche relazioni",
+  "dynamism": "Dinamicità",
+  "workOrganization": "Organizzazione del lavoro",
+  "inventive": "Inventiva",
+  "adaption": "Spirito di adattamento",
+  "ambition": "Ambizione",
+  "will": "Volontà",
+  "selfControl": "Autocontrollo",
   "Expectations and more":"Aspettative e altro",
 
   "schemas": {
@@ -278,45 +292,17 @@
     },
 
     "self-assessment": {
-      "salesSkills": {
-        "label": "Current employment status"
-      },
-      "publicRelations": {
-        "label": "Availability from",
-        "placeholder": "dd/MM/yyyy"
-      },
-      "dynamism": {
-        "label": "Availability of departure abroad"
-      },
-      "workOrganization": {
-        "label": "Hobbies"
-      },
-      "inventive": {
-        "label": "Tattoos"
-      },
-      "adaption": {
-        "label": "Where"
-      },
-      "ambition": {
-        "label": "Ski Downhill"
-      },
-      "will": {
-        "label": "Snowboard"
-      },
-      "selfControl": {
-        "label": "Knowledge of SLR cameras"
-      },
       "professionalExpectations": {
-        "label": "How did you learn of our recruitment"
+        "label": "Aspettative professionali"
       },
       "economicExpectations": {
-        "label": "Miscellaneous notes"
+        "label": "Aspettative economiche"
       },
       "qualitiesDefects": {
-        "label": "How did you learn of our recruitment"
+        "label": "Qualità e difetti"
       },
       "secretDream": {
-        "label": "Miscellaneous notes"
+        "label": "Sogno nel cassetto"
       }
     }
   }

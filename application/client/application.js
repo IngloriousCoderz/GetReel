@@ -12,35 +12,45 @@ Template.application.helpers({
       },
       {
         id: 'studies',
-        title: 'Studies',
+        title: function() {
+          return TAPi18n.__('Studies');
+        },
         schema: StudiesSchema,
         template: 'studiesStep',
         form: 'studies-form',
       },
       {
         id: 'work',
-        title: 'Work',
+        title: function() {
+          return TAPi18n.__('Work');
+        },
         schema: WorkSchema,
         template: 'workStep',
         form: 'work-form',
       },
       {
         id: 'other-info',
-        title: 'Other Info',
+        title: function() {
+          return TAPi18n.__('Other Info');
+        },
         schema: OtherInfoSchema,
         template: 'otherInfoStep',
         form: 'other-info-form',
       },
       {
         id: 'self-assessment',
-        title: 'Self-assessment',
+        title: function() {
+          return TAPi18n.__('Self Assessment');
+        },
         schema: SelfAssessmentSchema,
-        template: 'self-assessmentStep',
+        template: 'selfAssessmentStep',
         form: 'self-assessment-form',
       },
       {
         id: 'final-step',
-        title: 'Final Step',
+        title: function() {
+          return TAPi18n.__('Privacy');
+        },
         onSubmit: function(data, wizard) {
           data.createdAt = new Date();
           data.reusme = Session.get('resume');
