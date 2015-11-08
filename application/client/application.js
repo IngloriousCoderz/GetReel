@@ -3,39 +3,54 @@ Template.application.helpers({
     return [
       {
         id: 'general-info',
-        title: 'General Info',
+        title: function() {
+          return TAPi18n.__('General Info');
+        },
         schema: GeneralInfoSchema,
         template: 'generalInfoStep',
         form: 'general-info-form',
       },
       {
         id: 'studies',
-        title: 'Studies',
+        title: function() {
+          return TAPi18n.__('Studies');
+        },
         schema: StudiesSchema,
         template: 'studiesStep',
         form: 'studies-form',
       },
       {
         id: 'work',
-        title: 'Work',
+        title: function() {
+          return TAPi18n.__('Work');
+        },
         schema: WorkSchema,
         template: 'workStep',
         form: 'work-form',
-        // onSubmit: function(data, wizard) {
-        //   console.log('subit ok');
       },
       {
         id: 'other-info',
-        title: 'Other Info',
+        title: function() {
+          return TAPi18n.__('Other Info');
+        },
         schema: OtherInfoSchema,
         template: 'otherInfoStep',
         form: 'other-info-form',
-        // onSubmit: function(data, wizard) {
-        //   console.log('subit ok');
+      },
+      {
+        id: 'self-assessment',
+        title: function() {
+          return TAPi18n.__('Self Assessment');
+        },
+        schema: SelfAssessmentSchema,
+        template: 'selfAssessmentStep',
+        form: 'self-assessment-form',
       },
       {
         id: 'final-step',
-        title: 'Final Step',
+        title: function() {
+          return TAPi18n.__('Privacy');
+        },
         onSubmit: function(data, wizard) {
           data.createdAt = new Date();
           data.reusme = Session.get('resume');
@@ -54,7 +69,7 @@ Template.application.helpers({
   },
 
   confirmButtonLabel: function() {
-    TAPi18n.__('confirm-button');
+    return TAPi18n.__('confirm-button');
   },
 });
 

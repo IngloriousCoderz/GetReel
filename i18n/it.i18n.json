@@ -1,13 +1,16 @@
 {
   "welcome-message": "Benvenuto/a nella prima fase del Recruiting del Il Gruppo Digitale. Le ricordiamo che accettiamo candidature di età compresa tra i 17 e i 35 anni; oltre ai 35 anni saranno prese in considerazione esclusivamente candidature con esperienza nella fotografia in villaggi turistici oppure con esperienza sempre in villaggi ma in altro settore.",
 
+  "General Info": "Anagrafica",
+  "Studies": "Formazione",
+  "Work": "Esperienze",
+  "Other Info": "Altre Info",
+  "Self Assessment": "Conosciamoci",
+  "Privacy": "Privacy",
+
   "next-button": "avanti",
   "back-button": "indietro",
   "confirm-button": "conferma",
-
-
-
-  "General Info": "Anagrafica",
 
   "Personal Info": "Informazioni personali",
   "Permanent Address": "Residenza",
@@ -26,6 +29,18 @@
   "Current Employment": "Lavoro attuale",
   "Hobbies and other": "Hobby e altro",
   "How you know us": "Come ci conosci",
+
+  "Self-assessment": "Autovalutazione",
+  "salesSkills": "Capacità di vendita",
+  "publicRelations": "Pubbliche relazioni",
+  "dynamism": "Dinamicità",
+  "workOrganization": "Organizzazione del lavoro",
+  "inventive": "Inventiva",
+  "adaption": "Spirito di adattamento",
+  "ambition": "Ambizione",
+  "will": "Volontà",
+  "selfControl": "Autocontrollo",
+  "Expectations and more":"Aspettative e altro",
 
   "schemas": {
     "general-info": {
@@ -273,6 +288,21 @@
       },
       "miscellaneous": {
         "label": "Note varie"
+      }
+    },
+
+    "self-assessment": {
+      "professionalExpectations": {
+        "label": "Aspettative professionali"
+      },
+      "economicExpectations": {
+        "label": "Aspettative economiche"
+      },
+      "qualitiesDefects": {
+        "label": "Qualità e difetti"
+      },
+      "secretDream": {
+        "label": "Sogno nel cassetto"
       }
     }
   }
