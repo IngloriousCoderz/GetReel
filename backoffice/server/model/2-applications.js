@@ -35,7 +35,7 @@ Meteor.startup(function() {
     };
     fakeApplication.status.current = [0, 1, 2, 3][Math.floor(Math.random() * 4)];
     if (fakeApplication.status.current > 0) {
-      fakeApplication.status.outcome = ActivityOutcomes.findOne({id: Math.floor(Math.random() * 5) + 1});
+      fakeApplication.status.outcome = Math.floor(Math.random() * 5) + 1;
       //fakeApplication.status.recruiter = 'recruiter';
       fakeApplication.status.recruiter = Meteor.users.findOne({
         roles: 'recruiter',

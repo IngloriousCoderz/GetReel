@@ -20,11 +20,12 @@ function howDoYouKnowUs(query) {
     });
     i++;
   });
+
   currentChart = new Chart(chart.getContext('2d')).Pie(data);
 }
 
 Template.analysis.onRendered(function() {
-  currentChart = new Chart(chart.getContext('2d')).Pie();
+  howDoYouKnowUs({});
 });
 
 Template.analysis.events({
