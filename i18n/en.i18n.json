@@ -1,11 +1,11 @@
 {
   "welcome-message": "Welcome to the first phase of the Recruiting of Il Gruppo Digitale. We remind you that we accept candidates aged between 17 and 35 years old; over 35 years will be considered only candidates with experience in photography in resorts or experienced still in villages but in another area",
 
+  "General Info": "General Info",
+
   "next-button": "next",
   "back-button": "back",
   "confirm-button": "confirm",
-
-
 
   "Personal Info": "Personal Info",
   "Permanent Address": "Permanent Address",
@@ -25,11 +25,11 @@
   "Hobbies and other": "Hobbies and other",
   "How you know us": "How you know us",
 
+  "Self-assessment": "Self-assessment",
+  "Expectations and more":"Expectations and more",
+
   "schemas": {
     "general-info": {
-      "GeneralInfo": {
-        "label": "General Info"
-      },
       "firstname": {
         "label": "Firstname",
         "placeholder": "e.g. John"
@@ -272,6 +272,49 @@
         "label": "How did you learn of our recruitment"
       },
       "miscellaneous": {
+        "label": "Miscellaneous notes"
+      }
+    },
+
+    "self-assessment": {
+      "salesSkills": {
+        "label": "Current employment status"
+      },
+      "publicRelations": {
+        "label": "Availability from",
+        "placeholder": "dd/MM/yyyy"
+      },
+      "dynamism": {
+        "label": "Availability of departure abroad"
+      },
+      "workOrganization": {
+        "label": "Hobbies"
+      },
+      "inventive": {
+        "label": "Tattoos"
+      },
+      "adaption": {
+        "label": "Where"
+      },
+      "ambition": {
+        "label": "Ski Downhill"
+      },
+      "will": {
+        "label": "Snowboard"
+      },
+      "selfControl": {
+        "label": "Knowledge of SLR cameras"
+      },
+      "professionalExpectations": {
+        "label": "How did you learn of our recruitment"
+      },
+      "economicExpectations": {
+        "label": "Miscellaneous notes"
+      },
+      "qualitiesDefects": {
+        "label": "How did you learn of our recruitment"
+      },
+      "secretDream": {
         "label": "Miscellaneous notes"
       }
     }

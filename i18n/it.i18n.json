@@ -1,13 +1,11 @@
 {
   "welcome-message": "Benvenuto/a nella prima fase del Recruiting del Il Gruppo Digitale. Le ricordiamo che accettiamo candidature di età compresa tra i 17 e i 35 anni; oltre ai 35 anni saranno prese in considerazione esclusivamente candidature con esperienza nella fotografia in villaggi turistici oppure con esperienza sempre in villaggi ma in altro settore.",
 
+  "General Info": "Anagrafica",
+
   "next-button": "avanti",
   "back-button": "indietro",
   "confirm-button": "conferma",
-
-
-
-  "General Info": "Anagrafica",
 
   "Personal Info": "Informazioni personali",
   "Permanent Address": "Residenza",
@@ -26,6 +24,9 @@
   "Current Employment": "Lavoro attuale",
   "Hobbies and other": "Hobby e altro",
   "How you know us": "Come ci conosci",
+
+  "Self-assessment": "Autovalutazione",
+  "Expectations and more":"Aspettative e altro",
 
   "schemas": {
     "general-info": {
@@ -273,6 +274,49 @@
       },
       "miscellaneous": {
         "label": "Note varie"
+      }
+    },
+
+    "self-assessment": {
+      "salesSkills": {
+        "label": "Current employment status"
+      },
+      "publicRelations": {
+        "label": "Availability from",
+        "placeholder": "dd/MM/yyyy"
+      },
+      "dynamism": {
+        "label": "Availability of departure abroad"
+      },
+      "workOrganization": {
+        "label": "Hobbies"
+      },
+      "inventive": {
+        "label": "Tattoos"
+      },
+      "adaption": {
+        "label": "Where"
+      },
+      "ambition": {
+        "label": "Ski Downhill"
+      },
+      "will": {
+        "label": "Snowboard"
+      },
+      "selfControl": {
+        "label": "Knowledge of SLR cameras"
+      },
+      "professionalExpectations": {
+        "label": "How did you learn of our recruitment"
+      },
+      "economicExpectations": {
+        "label": "Miscellaneous notes"
+      },
+      "qualitiesDefects": {
+        "label": "How did you learn of our recruitment"
+      },
+      "secretDream": {
+        "label": "Miscellaneous notes"
       }
     }
   }

@@ -3,7 +3,9 @@ Template.application.helpers({
     return [
       {
         id: 'general-info',
-        title: 'General Info',
+        title: function() {
+          return TAPi18n.__('General Info');
+        },
         schema: GeneralInfoSchema,
         template: 'generalInfoStep',
         form: 'general-info-form',
@@ -21,8 +23,6 @@ Template.application.helpers({
         schema: WorkSchema,
         template: 'workStep',
         form: 'work-form',
-        // onSubmit: function(data, wizard) {
-        //   console.log('subit ok');
       },
       {
         id: 'other-info',
@@ -30,8 +30,13 @@ Template.application.helpers({
         schema: OtherInfoSchema,
         template: 'otherInfoStep',
         form: 'other-info-form',
-        // onSubmit: function(data, wizard) {
-        //   console.log('subit ok');
+      },
+      {
+        id: 'self-assessment',
+        title: 'Self-assessment',
+        schema: SelfAssessmentSchema,
+        template: 'self-assessmentStep',
+        form: 'self-assessment-form',
       },
       {
         id: 'final-step',
@@ -54,7 +59,7 @@ Template.application.helpers({
   },
 
   confirmButtonLabel: function() {
-    TAPi18n.__('confirm-button');
+    return TAPi18n.__('confirm-button');
   },
 });
 
