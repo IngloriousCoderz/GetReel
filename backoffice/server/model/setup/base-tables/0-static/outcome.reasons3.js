@@ -3,11 +3,11 @@ Meteor.startup(function() {
 
   if (OutcomeReasons3.find().count() === 0) {
     var reasons = [
-        {id:  1, name: 'POSITIVO'},
-        {id:  2, name: 'NEGATIVO'},
-        {id:  3, name: 'RISERVA'},
-        {id:  4, name: 'POSITIVO RINUNCIA'},
-        {id:  4, name: 'BLACKLIST'},
+      {id: 1, name: 'POSITIVO'},
+      {id: 2, name: 'NEGATIVO'},
+      {id: 3, name: 'RISERVA'},
+      {id: 4, name: 'POSITIVO RINUNCIA'},
+      {id: 5, name: 'BLACKLIST'},
     ];
 
     reasons.forEach(function(reason) {
