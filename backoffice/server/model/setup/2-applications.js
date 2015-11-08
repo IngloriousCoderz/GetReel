@@ -5,6 +5,10 @@ Meteor.startup(function() {
   console.log('regenerating', maxFakeApplications, 'fake applications...');
 
   var referrers = Referrers.find().fetch();
+  var activityOutcomes = ActivityOutcomes.find().fetch();
+  var outcomeReasons = OutcomeReasons.find().fetch();
+  var outcomeReasons2 = OutcomeReasons2.find().fetch();
+  var outcomeReasons3 = OutcomeReasons3.find().fetch();
 
   for (var i = 0; i < maxFakeApplications; i++) {
     var createdAt = new Date();
@@ -33,7 +37,7 @@ Meteor.startup(function() {
       experienceAsOther: false,
       referrer: referrers[Math.floor(Math.random() * referrers.length)].name,
     };
-    fakeApplication.phases.current = [0, 1, 2, 3][Math.floor(Math.random() * 4)];
+    fakeApplication.phases.current = [0, 1, 2, 3, 4][Math.floor(Math.random() * 4)];
     if (fakeApplication.phases.current > 0) {
       //fakeApplication.status.recruiter = 'recruiter';
       fakeApplication.phases.recruiter = Meteor.users.findOne({
@@ -44,6 +48,29 @@ Meteor.startup(function() {
           username: 1,
         },
       });
+
+      fakeApplication.phases.list = [];
+      for (var phasen = 1; phasen < fakeApplication.phases.current; phasen++) {
+          fakeApplication.phases.list[phasen] = {
+              phase: i,
+              outcome: Math.floor(Math.random() * activityOutcomes.length),
+              outcomeReason: (function(current){
+                  var reasons;
+                  switch(current) {
+                      case 1:
+                          reasons = outcomeReasons;
+                      break;
+                      case 2:
+                          reasons = outcomeReasons2;
+                      break;
+                      case 3:
+                          reasons = outcomeReasons3;
+                      break;
+                  }
+                  return reasons[Math.floor(Math.random() * reasons.length];
+              })(fakeApplication.phases.current),
+          }
+      }
     }
 
     fakeApplication.email = fakeApplication.firstname + '.' + fakeApplication.lastname + '@getreel.test';
