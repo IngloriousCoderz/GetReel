@@ -8,9 +8,7 @@ Meteor.startup(function() {
 
 	var referrers = Referrers.find().fetch();
 	var activityOutcomes = ActivityOutcomes.find().fetch();
-	var outcomeReasons = OutcomeReasons.find().fetch();
-	var outcomeReasons2 = OutcomeReasons2.find().fetch();
-	var outcomeReasons3 = OutcomeReasons3.find().fetch();
+	var outcomeReasons = OutcomeReasons.find();//.fetch();
 
 	for (var i = 0; i < maxFakeApplications; i++) {
 		var createdAt = new Date();
@@ -60,20 +58,8 @@ Meteor.startup(function() {
 					outcome: {
 						id: activityOutcomes[Math.floor(Math.random() * activityOutcomes.length)].id,
 						reasonId: (function(current) {
-							var reasons;
-							switch (current) {
-								case 1:
-									reasons = outcomeReasons;
-									break;
-								case 2:
-									reasons = outcomeReasons2;
-									break;
-								case 3:
-									reasons = outcomeReasons3;
-									break;
-							}
-							var reason = reasons[Math.floor(Math.random() * reasons.length)];
-							return reason.id;
+							var reasons = OutcomeReasons.find({phase:current}).fetch();
+							return reasons[Math.floor(Math.random() * reasons.length)].id;
 						})(fakeApplication.phases.current),
 						notes: 'blablabla',
 					}
