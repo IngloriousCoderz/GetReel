@@ -88,7 +88,18 @@ Template.applications.helpers({
         {key: 'experienceAsPhotographer', label: 'experience as a photographer'},
         {key: 'experienceAsOther', label: 'experience as other'},
         {key: 'photo', label: 'photo'},
-        {key: 'phases.recruiter.username', label: 'recruiter'},
+        // {key: 'phases.recruiter.username', label: 'recruiter'},
+        // {key: 'phases.list.recruiter.username', label: 'recruiter'},
+        {
+            key: 'phases.current',
+            label: 'recruiter',
+            fn: function(value, object) {
+                if(object.phases.current===0) {
+                    return null;
+                }
+                return object.phases.list[object.phases.current].recruiter.username;
+            }
+        },
       ],
       showColumnToggles: true,
       noDataTmpl: Template.noDataTemplate,
