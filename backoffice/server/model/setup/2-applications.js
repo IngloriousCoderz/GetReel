@@ -67,7 +67,7 @@ Meteor.startup(function() {
                           reasons = outcomeReasons3;
                       break;
                   }
-                  return reasons[Math.floor(Math.random() * reasons.length];
+                  return reasons[Math.floor(Math.random() * reasons.length)];
               })(fakeApplication.phases.current),
           }
       }
