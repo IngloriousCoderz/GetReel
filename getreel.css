@@ -2,8 +2,29 @@ body {
   padding-top: 80px;
  }
 
-#login-buttons {
-  padding: 18px;
+.wizard-next-button{
+  padding: 8px;
+  border-radius: 10px;
+  background: hsla(206,100%,29%,1);
+  color: #fff;
+  width: 150px;
+  margin: 15px 15px 15px 0;
+}
+.wizard-back-button{
+  padding: 8px;
+  border-radius: 10px;
+  background: hsla(206,100%,29%,1);
+  color: #fff;
+  width: 150px;
+  margin: 15px 15px 15px 0;
+}
+.wizard-submit-button{
+  padding: 8px;
+  border-radius: 10px;
+  background: green;
+  color: #fff;
+  width: 150px;
+  margin: 15px 15px 15px 0;
 }
 
 .application {

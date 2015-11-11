@@ -42,6 +42,9 @@
   "selfControl": "Autocontrollo",
   "Expectations and more":"Aspettative e altro",
 
+  "InfoPrivacy": "Informativa ai sensi dell'art. 13 del D.Lgs. 196/2003 e consenso al trattamento dei dati personali",
+  "confirm": "Clicca Confirm per completare il questionario. Se il caricamento è andato a buon fine riceverà una email di conferma",
+
   "schemas": {
     "general-info": {
       "firstname": {
@@ -303,6 +306,12 @@
       },
       "secretDream": {
         "label": "Sogno nel cassetto"
+      }
+    },
+
+    "privacy": {
+      "privacyPolicy": {
+        "label": "Autorizzo la società COLORPOINT srl al trattamento e alla comunicazione dei miei dati personali, qui riportati compresi eventuali sensibili, ai sensi della legge 196/2003 ai soli fini del processo di ricerca e selezione dell'azienda."
       }
     }
   }

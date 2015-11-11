@@ -1,13 +1,13 @@
 Template.application.helpers({
   buttonClasses: 'btn btn-default',
   backButton: function() {
-    return TAPi18n.__('back-button');
+    return TAPi18n.__('wizard-back-button');
   },
   nextButton: function() {
-    return TAPi18n.__('next-button');
+    return TAPi18n.__('wizard-next-button');
   },
   confirmButton: function() {
-    return TAPi18n.__('confirm-button');
+    return TAPi18n.__('wizard-submit-button');
   },
   steps: function() {
     return [

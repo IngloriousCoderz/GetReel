@@ -42,6 +42,9 @@
   "selfControl": "Self-control",
   "Expectations and more":"Expectations and more",
 
+  "InfoPrivacy": "Information about the article. 13 of Legislative Decree no. 196/2003 and consent to the processing of personal data",
+  "confirm": "Click Confirm to complete the questionnaire. If the upload is successful you will receive a confirmation email",
+
   "schemas": {
     "general-info": {
       "firstname": {
@@ -302,6 +305,12 @@
       },
       "secretDream": {
         "label": "Secret dream"
+      }
+    },
+
+    "privacy": {
+      "privacyPolicy": {
+        "label": "I authorize COLORPOINT srl to collect and process my personal data, including any sensitive herein, pursuant to Law 196/2003 for the sole purpose of the process of search and selection company."
       }
     }
   }

@@ -1,7 +1,14 @@
 <template name="privacyStep">
   {{#autoForm id="privacy-form" doc=step.data schema=step.schema}}
     <fieldset>
-      
+      <legend>{{_ "InfoPrivacy"}}</legend>
+      <div class="col-lg-12">
+        {{> afQuickField id="privacyPolicy" name="privacyPolicy" class="js-switch"}}
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>{{_ "confirm"}}</legend>
     </fieldset>
 
     <div class="col-lg-12">
