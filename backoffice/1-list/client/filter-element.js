@@ -27,7 +27,7 @@ Template.filterElement.helpers({
 Template.filterElement.events({
   'change :checkbox.not': function(e) {
     var $values = $(e.target).parents('.options').siblings('.values');
-    $values.children('input').change();
+    $values.children(':visible').find('input').change();
   },
 
   'change select.filter': function(e) {
