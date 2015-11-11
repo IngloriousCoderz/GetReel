@@ -4,6 +4,10 @@ Meteor.subscribe('recruiters');
 
 Session.setDefault('mongo-filter', {});
 
+Template.filter.onRendered(function() {
+  this.$(':checkbox#more-options').change();
+});
+
 Template.filter.helpers({
   statuses: function() {
     return Statuses.find();
@@ -23,7 +27,7 @@ Template.filter.events({
     var moreOptions = $(e.target).prop('checked');
     $('.options').toggleClass('hidden', !moreOptions);
     if (!moreOptions) {
-      $('select.filter').val('eq').change();
+      $('select.filter').val('eq').trigger('change:all');
     }
   },
 

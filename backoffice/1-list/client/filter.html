@@ -8,7 +8,7 @@
 
     {{> filterElement label="creation date" name="createdAt" type="date"}}
 
-    {{> filterElement label="recruiter" name="status.recruiter._id" type="select" options=recruiters valueField="_id" descriptionField="username"}}
+    {{> filterElement label="recruiter" name="recruiter" attrName="status.recruiter._id" type="select" options=recruiters valueField="_id" descriptionField="username"}}
 
     {{> filterElement label="firstname" name="firstname"}}
 
@@ -18,7 +18,7 @@
 
     {{> filterElement label="mobile phone" name="mobile"}}
 
-    {{> filterElement label="status" name="status.current" type="select" options=statuses valueField="id" descriptionField="name"}}
+    {{> filterElement label="status" name="status" attrName="status.current" type="select" options=statuses valueField="id" descriptionField="name"}}
 
     {{> filterElement label="region" name="region" type="select" options=regions valueField="id" descriptionField="name"}}
   </form>

@@ -1,13 +1,10 @@
 Template.filterElement.onRendered(function() {
-  var name = this.$('.value :input').attr('id');
-  this.filter = new ReactiveTable.Filter(name, [name]);
+  var name = this.data.name;
+  var attrName = this.data.attrName;
+  this.filter = new ReactiveTable.Filter(name, [attrName || name]);
   this.$('input[type="date"]').each(function(i, item) {
     $(item).attr('type', 'text').datepicker({format: 'dd/mm/yyyy'});
   });
-});
-
-Template.filter.onRendered(function() {
-  this.$('select.filter').change();
 });
 
 Template.filterElement.helpers({
@@ -45,31 +42,16 @@ Template.filterElement.events({
     $values.children(':visible').find(':input').change();
   },
 
+  'change:all select.filter': function(e) {
+    var op = e.target.value;
+    var $values = $(e.target).parents('.options').siblings('.values');
+    toggleValues(op, $values, true);
+  },
+
   'change select.filter': function(e) {
     var op = e.target.value;
     var $values = $(e.target).parents('.options').siblings('.values');
-
-    switch (op) {
-      case 'empty':
-        $values.hide();
-        $values.find(':input').val('').change();
-        break;
-      case 'eq':
-      case 'contains':
-      case 'startswith':
-      case 'endswith':
-      case 'gt':
-      case 'lt':
-        $values.show();
-        $values.children('.value').show().find(':input').change();
-        $values.children('.range').hide().find(':input').val('');
-        break;
-      case 'between':
-        $values.show();
-        $values.children('.value').hide().find(':input').val('');
-        $values.children('.range').show().find(':input').change();
-        break;
-    }
+    toggleValues(op, $values);
   },
 
   'keyup .value input, change .value :input': function(event, template) {
@@ -85,7 +67,7 @@ Template.filterElement.events({
           var dayAfter = new Date(value);
           dayAfter.setDate(value.getDate() + 1);
           value = {$gte: value, $lt: dayAfter};
-        } else {//} if (this.type !== 'select') {
+        } else {
           value = {$eq: value};
         }
       } else if (op === 'contains') {
@@ -127,6 +109,35 @@ Template.filterElement.events({
     template.filter.set(value);
   },
 });
+
+var toggleValues = function(op, $values, massive) {
+  switch (op) {
+    case 'empty':
+      $values.hide();
+      $values.find(':input').val('').change();
+      break;
+    case 'eq':
+    case 'contains':
+    case 'startswith':
+    case 'endswith':
+    case 'gt':
+    case 'lt':
+      $values.show();
+      $values.children('.value').show();
+      if (!massive) {
+          $values.children('.value').find(':input').change();
+      }
+      $values.children('.range').hide().find(':input').val('');
+      break;
+    case 'between':
+      $values.show();
+      $values.children('.value').hide().find(':input').val('');
+      if (!massive) {
+        $values.children('.range').show().find(':input').change();
+      }
+      break;
+  }
+};
 
 var cleanInput = function(value, type) {
   if (type === 'select') {
