@@ -65,6 +65,48 @@ Template.filterElement.events({
       template.filter.set(value);
     }
   },
+
+  'keyup .from input, input .from input': function(event, template) {
+    var value = $(event.target).val();
+    if (this.type === 'number') {
+      value = parseInt(value, 10);
+      if (!_.isNaN(value)) {
+        template.filter.set({$gte: value});
+      } else {
+        template.filter.set('');
+      }
+    } else if (this.type === 'date') {
+      value = new Date(value);
+      if (!_.isNaN(value.getTime())) {
+        template.filter.set({$gte: value});
+      } else {
+        template.filter.set('');
+      }
+    } else {
+      template.filter.set(value);
+    }
+  },
+
+  'keyup .to input, input .to input': function(event, template) {
+    var value = $(event.target).val();
+    if (this.type === 'number') {
+      value = parseInt(value, 10);
+      if (!_.isNaN(value)) {
+        template.filter.set({$lt: value});
+      } else {
+        template.filter.set('');
+      }
+    } else if (this.type === 'date') {
+      value = new Date(value);
+      if (!_.isNaN(value.getTime())) {
+        template.filter.set({$lt: value});
+      } else {
+        template.filter.set('');
+      }
+    } else {
+      template.filter.set(value);
+    }
+  },
 });
 
 Template.filter.onRendered(function() {
