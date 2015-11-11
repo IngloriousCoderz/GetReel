@@ -1,5 +1,5 @@
 Template.filterElement.onRendered(function() {
-  var name = this.$('.value input').attr('id');
+  var name = this.$('.value :input').attr('id');
   this.filter = new ReactiveTable.Filter(name, [name]);
   this.$('input[type="date"]').each(function(i, item) {
     $(item).attr('type', 'text').datepicker({format: 'dd/mm/yyyy'});
@@ -11,6 +11,21 @@ Template.filter.onRendered(function() {
 });
 
 Template.filterElement.helpers({
+  isSelect: function() {
+    return this.type === 'select';
+  },
+
+  buildOptions: function() {
+    var $options, options;
+    $options = $('<div>');
+    options = _.isArray(this.options) ? this.options : this.options.fetch();
+    for (var i = 0; i < options.length; i++) {
+      var option = options[i];
+      $options.append('<option value="' + option[this.valueField] + '">' + option[this.descriptionField] + '</option>');
+    }
+    return Spacebars.SafeString($options.html());
+  },
+
   isDate: function() {
     return this.type === 'date';
   },
@@ -27,7 +42,7 @@ Template.filterElement.helpers({
 Template.filterElement.events({
   'change :checkbox.not': function(e) {
     var $values = $(e.target).parents('.options').siblings('.values');
-    $values.children(':visible').find('input').change();
+    $values.children(':visible').find(':input').change();
   },
 
   'change select.filter': function(e) {
@@ -37,7 +52,7 @@ Template.filterElement.events({
     switch (op) {
       case 'empty':
         $values.hide();
-        $values.find('input').val('').change();
+        $values.find(':input').val('').change();
         break;
       case 'eq':
       case 'contains':
@@ -46,18 +61,18 @@ Template.filterElement.events({
       case 'gt':
       case 'lt':
         $values.show();
-        $values.children('.value').show().find('input').change();
-        $values.children('.range').hide().find('input').val('');
+        $values.children('.value').show().find(':input').change();
+        $values.children('.range').hide().find(':input').val('');
         break;
       case 'between':
         $values.show();
-        $values.children('.value').hide().find('input').val('');
-        $values.children('.range').show().find('input').change();
+        $values.children('.value').hide().find(':input').val('');
+        $values.children('.range').show().find(':input').change();
         break;
     }
   },
 
-  'keyup .value input, change .value input': function(event, template) {
+  'keyup .value input, change .value :input': function(event, template) {
     var value = cleanInput($(event.target).val(), this.type);
     var op = $('#' + this.name + '-op').val();
     var not = $('#' + this.name + '-not').prop('checked');
@@ -70,7 +85,7 @@ Template.filterElement.events({
           var dayAfter = new Date(value);
           dayAfter.setDate(value.getDate() + 1);
           value = {$gte: value, $lt: dayAfter};
-        } else {
+        } else {//} if (this.type !== 'select') {
           value = {$eq: value};
         }
       } else if (op === 'contains') {
@@ -96,11 +111,11 @@ Template.filterElement.events({
   },
 
   'keyup .range input, change .range input': function(event, template) {
+    var value = '';
     var from = cleanInput($('#' + this.name + '-from').val(), this.type);
     var to = cleanInput($('#' + this.name + '-to').val(), this.type);
     var not = $('#' + this.name + '-not').prop('checked');
 
-    var value = '';
     if (from !== '' && to !== '') {
       value = {$gte: from, $lt: to};
     }
@@ -114,7 +129,12 @@ Template.filterElement.events({
 });
 
 var cleanInput = function(value, type) {
-  if (type === 'number') {
+  if (type === 'select') {
+    intValue = parseInt(value, 10);
+    if (!_.isNaN(intValue)) {
+      value = intValue;
+    }
+  } else if (type === 'number') {
     value = parseInt(value, 10);
     if (_.isNaN(value)) {
       value = '';

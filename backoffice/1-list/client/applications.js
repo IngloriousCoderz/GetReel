@@ -17,13 +17,13 @@ Template.applications.helpers({
       class: 'table table-striped table-hover table-condensed col-sm-12',
       filters: [
         'createdAt',
-        'status.recruiter',
+        'status.recruiter._id',
         'firstname',
         'lastname',
         'age',
         'mobile',
         'status.current',
-        'region.name',
+        'region',
       ],
       fields: [
         {
