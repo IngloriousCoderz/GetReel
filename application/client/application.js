@@ -70,3 +70,26 @@ Template.applicationSteps.helpers({
     return 'disabled';
   },
 });
+
+Wizard.useRouter('iron:router');
+
+Router.route('/application/:step?', {
+  name: 'application',
+  onBeforeAction: function() {
+    if (!this.params.step) {
+      this.redirect('application', {
+        step: 'general-info',
+      });
+    } else {
+      this.next();
+    }
+  },
+});
+
+Router.route('/orders/:_id', {
+  name: 'viewOrder',
+  template: 'viewOrder',
+  data: function() {
+    return Orders.findOne(this.params._id);
+  },
+});
