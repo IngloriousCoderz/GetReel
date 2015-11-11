@@ -1,9 +1,20 @@
 Template.filterElement.onRendered(function() {
   var name = this.$('.value input').attr('id');
   this.filter = new ReactiveTable.Filter(name, [name]);
+  this.$('input[type="date"]').each(function(i, item) {
+    $(item).attr('type', 'text').datepicker({format: 'dd/mm/yyyy'});
+  });
+});
+
+Template.filter.onRendered(function() {
+  this.$('select.filter').change();
 });
 
 Template.filterElement.helpers({
+  isDate: function() {
+    return this.type === 'date';
+  },
+
   isString: function() {
     return typeof this.type === 'undefined' || this.type === 'text';
   },
@@ -14,6 +25,11 @@ Template.filterElement.helpers({
 });
 
 Template.filterElement.events({
+  'change :checkbox.not': function(e) {
+    var $values = $(e.target).parents('.options').siblings('.values');
+    $values.children('input').change();
+  },
+
   'change select.filter': function(e) {
     var op = e.target.value;
     var $values = $(e.target).parents('.options').siblings('.values');
@@ -21,7 +37,7 @@ Template.filterElement.events({
     switch (op) {
       case 'empty':
         $values.hide();
-        $values.find('input').val('');
+        $values.find('input').val('').change();
         break;
       case 'eq':
       case 'contains':
@@ -30,85 +46,85 @@ Template.filterElement.events({
       case 'gt':
       case 'lt':
         $values.show();
-        $values.children('.value').show();
-        $values.children('.from').hide().children('input').val('');
-        $values.children('.to').hide().children('input').val('');
+        $values.children('.value').show().find('input').change();
+        $values.children('.range').hide().find('input').val('');
         break;
       case 'between':
         $values.show();
-        $values.children('.value').hide().children('input').val('');
-        $values.children('.from').show();
-        $values.children('.to').show();
+        $values.children('.value').hide().find('input').val('');
+        $values.children('.range').show().find('input').change();
         break;
     }
   },
 
-  'keyup .value input, input .value input': function(event, template) {
-    var value = $(event.target).val();
-    if (this.type === 'number') {
-      value = parseInt(value, 10);
-      if (!_.isNaN(value)) {
-        template.filter.set({$eq: value});
+  'keyup .value input, change .value input': function(event, template) {
+    var value = cleanInput($(event.target).val(), this.type);
+    var op = $('#' + this.name + '-op').val();
+    var not = $('#' + this.name + '-not').prop('checked');
+
+    if (value !== '') {
+      if (op === 'empty') {
+        value = {$exists: false};
+      } else if (op === 'eq') {
+        if (this.type === 'date') {
+          var dayAfter = new Date(value);
+          dayAfter.setDate(value.getDate() + 1);
+          value = {$gte: value, $lt: dayAfter};
+        } else {
+          value = {$eq: value};
+        }
+      } else if (op === 'contains') {
+        value = {$regex: value, $options: 'i'};
+      } else if (op === 'startswith') {
+        value = {$regex: '^' + value, $options: 'i'};
+      } else if (op === 'endswith') {
+        value = {$regex: value + '$', $options: 'i'};
+      } else if (op === 'lt') {
+        value = {$lt: value};
+      } else if (op === 'gt') {
+        value = {$gt: value};
       } else {
-        template.filter.set('');
+        value = '';
       }
-    } else if (this.type === 'date') {
-      value = new Date(value);
-      if (!_.isNaN(value.getTime())) {
-        var dayAfter = new Date();
-        dayAfter.setDate(value.getDate() + 1);
-        template.filter.set({$gte: value, $lt: dayAfter});
-      } else {
-        template.filter.set('');
-      }
-    } else {
-      template.filter.set(value);
     }
+
+    if (value !== '' && not) {
+      value = {$not: value};
+    }
+
+    template.filter.set(value);
   },
 
-  'keyup .from input, input .from input': function(event, template) {
-    var value = $(event.target).val();
-    if (this.type === 'number') {
-      value = parseInt(value, 10);
-      if (!_.isNaN(value)) {
-        template.filter.set({$gte: value});
-      } else {
-        template.filter.set('');
-      }
-    } else if (this.type === 'date') {
-      value = new Date(value);
-      if (!_.isNaN(value.getTime())) {
-        template.filter.set({$gte: value});
-      } else {
-        template.filter.set('');
-      }
-    } else {
-      template.filter.set(value);
-    }
-  },
+  'keyup .range input, change .range input': function(event, template) {
+    var from = cleanInput($('#' + this.name + '-from').val(), this.type);
+    var to = cleanInput($('#' + this.name + '-to').val(), this.type);
+    var not = $('#' + this.name + '-not').prop('checked');
 
-  'keyup .to input, input .to input': function(event, template) {
-    var value = $(event.target).val();
-    if (this.type === 'number') {
-      value = parseInt(value, 10);
-      if (!_.isNaN(value)) {
-        template.filter.set({$lt: value});
-      } else {
-        template.filter.set('');
-      }
-    } else if (this.type === 'date') {
-      value = new Date(value);
-      if (!_.isNaN(value.getTime())) {
-        template.filter.set({$lt: value});
-      } else {
-        template.filter.set('');
-      }
-    } else {
-      template.filter.set(value);
+    var value = '';
+    if (from !== '' && to !== '') {
+      value = {$gte: from, $lt: to};
     }
+
+    if (value !== '' && not) {
+      value = {$not: value};
+    }
+
+    template.filter.set(value);
   },
 });
 
-Template.filter.onRendered(function() {
-  this.$('select.filter').change();
-});
+var cleanInput = function(value, type) {
+  if (type === 'number') {
+    value = parseInt(value, 10);
+    if (_.isNaN(value)) {
+      value = '';
+    }
+  } else if (type === 'date') {
+    value = value.split('/');
+    value = new Date(value[2] + '/' + value[1] + '/' + value[0]);
+    if (_.isNaN(value.getTime())) {
+      value = '';
+    }
+  }
+  return value;
+};
