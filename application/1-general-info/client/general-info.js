@@ -4,12 +4,15 @@ Template.generalInfoStep.onRendered(function() {
   loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
 
   var data = this.data.step.data();
-  var hasPermit, hasSameAddress, hasPassport;
+  var hasPermit;
+  var hasSameAddress;
+  var hasPassport;
   if (typeof data !== 'undefined') {
     hasPermit = data.permit;
     hasSameAddress = data.sameAddress;
     hasPassport = data.passport;
   }
+
   $(permit).prop('checked', typeof hasPermit !== 'undefined' ? hasPermit : true);
   $(sameAddress).prop('checked', typeof hasSameAddress !== 'undefined' ? hasSameAddress : true);
   $(passport).prop('checked', typeof hasPassport !== 'undefined' ? hasPassport : true);
@@ -32,8 +35,7 @@ Template.generalInfoStep.events({
     var hasPermit = $(e.target).prop('checked');
     if (hasPermit === false) {
       $(permitKind).val('').attr('disabled', !hasPermit);
-    }
-    else {
+    } else {
       $(permitKind).attr('disabled', !hasPermit);
     }
   },

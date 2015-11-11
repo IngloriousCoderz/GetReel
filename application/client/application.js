@@ -1,3 +1,4 @@
+
 Template.application.helpers({
   steps: function() {
     return [
@@ -21,8 +22,6 @@ Template.application.helpers({
         schema: WorkSchema,
         template: 'workStep',
         form: 'work-form',
-        // onSubmit: function(data, wizard) {
-        //   console.log('subit ok');
       },
       {
         id: 'other-info',
@@ -30,8 +29,6 @@ Template.application.helpers({
         schema: OtherInfoSchema,
         template: 'otherInfoStep',
         form: 'other-info-form',
-        // onSubmit: function(data, wizard) {
-        //   console.log('subit ok');
       },
       {
         id: 'final-step',
@@ -40,13 +37,11 @@ Template.application.helpers({
           data.createdAt = new Date();
           data.resume = Session.get('resume');
           data.videofile = Session.get('videofile');
-          //alla fine del salvataggio ripulire il localStorage
-          localStorage.clear();
         },
       },
     ];
   },
-
+  /*
   nextButtonLabel: function() {
     return TAPi18n.__('next-button');
   },
@@ -57,7 +52,7 @@ Template.application.helpers({
 
   confirmButtonLabel: function() {
     TAPi18n.__('confirm-button');
-  },
+  },*/
 });
 
 Template.applicationSteps.helpers({
