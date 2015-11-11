@@ -7,7 +7,7 @@ Template.applications.helpers({
     console.log('Template.applications.helpers:applications:filter', JSON.stringify(mongoFilter));
 
     return {
-      collection: 'filterableApplications',//Applications.find(mongoFilter),
+      collection: 'filterableApplications',
       rowsPerPage: 20,
       showFilter: false,
       showRowCount: true,
