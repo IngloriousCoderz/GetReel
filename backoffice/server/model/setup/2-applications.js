@@ -4,10 +4,10 @@ Meteor.startup(function() {
 	});
 
 	if (Meteor.settings.development.generateFakeApplications) {
-		var maxFakeApplications = Meteor.settings.development.generateFakeApplications.maxFakeApplications;
-		console.log('regenerating', maxFakeApplications, 'fake applications...');
+		var maxApplications = Meteor.settings.development.generateFakeApplications.maxApplications;
+		console.log('regenerating', maxApplications, 'fake applications...');
 	} else {
-		var maxFakeApplications = 0;
+		var maxApplications = 0;
 		console.log('WARNING : NOT regenerating fake applications');
 		return;
 	}
@@ -16,11 +16,11 @@ Meteor.startup(function() {
 	var activityOutcomes = ActivityOutcomes.find().fetch();
 	var outcomeReasons = OutcomeReasons.find();//.fetch();
 
-	for (var i = 0; i < maxFakeApplications; i++) {
+	for (var i = 0; i < maxApplications; i++) {
 		var createdAt = new Date();
 
 		// console.log("createdAt", createdAt);
-		createdAt.setDate(createdAt.getDate() + Math.random() * maxFakeApplications);
+		createdAt.setDate(createdAt.getDate() + Math.random() * maxApplications);
 
 		// console.log("createdAt", createdAt);
 		var fakeApplication = {

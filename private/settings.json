@@ -2,13 +2,16 @@
 	"activeEnvironment": "development",
 	"development": {
 		"generateFakeApplications": {
-			"maxFakeApplications": 1000
+			"maxApplications": 1000
 		},
 		"generateFakeUsers": {
 			"recruiter": true,
 			"admin": true
 		},
-		"generateFakeActivities": {},
+		"generateFakeActivities": {
+			"maxActivities" : 100,
+			"maxApplications" : 100
+		},
 		"generateFakeEvents": {}
 	}
 }
