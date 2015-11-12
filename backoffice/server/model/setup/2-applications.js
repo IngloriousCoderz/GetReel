@@ -3,7 +3,9 @@ Meteor.startup(function() {
 		fake: true
 	});
 
-	var maxFakeApplications = 1000;
+	// var maxFakeApplications = 1000;
+	console.log('Meteor.settings.maxFakeApplications', Meteor.settings.maxFakeApplications);
+	var maxFakeApplications = Meteor.settings.maxFakeApplications;
 	console.log('regenerating', maxFakeApplications, 'fake applications...');
 
 	var referrers = Referrers.find().fetch();
