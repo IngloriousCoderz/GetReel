@@ -3,9 +3,6 @@ Meteor.subscribe('applications');
 
 Template.applications.helpers({
   settings: function() {
-    var mongoFilter = Session.get('mongo-filter');
-    console.log('Template.applications.helpers:applications:filter', JSON.stringify(mongoFilter));
-
     return {
       collection: 'filterableApplications',
       rowsPerPage: 20,
@@ -29,6 +26,8 @@ Template.applications.helpers({
         {
           key: 'edit',
           sortable: false,
+          headerClass: 'text-center',
+          cellClass: 'text-center',
           label: function(value) {
             return Spacebars.SafeString('<div class="glyphicon glyphicon-pencil"></div>');
           },
@@ -40,8 +39,8 @@ Template.applications.helpers({
         {
           key: 'select',
           sortable: false,
+          headerClass: 'text-center',
           cellClass: 'text-center',
-
           label: function(value) {
             return Spacebars.SafeString('<input id="select-all" type="checkbox" />');
           },
@@ -53,8 +52,10 @@ Template.applications.helpers({
         {
           key: 'activities',
           sortable: false,
+          headerClass: 'text-center',
+          // cellClass: 'text-center',
           label: function(value) {
-            return Spacebars.SafeString('<div class="glyphicon glyphicon-list-alt"></div>');
+            return Spacebars.SafeString('<div class="glyphicon glyphicon-list"></div>');
           },
 
           fn: function(value) {
@@ -63,7 +64,13 @@ Template.applications.helpers({
         },
         {
           key: 'email',
-          label: 'mail',
+          sortable: false,
+          headerClass: 'text-center',
+          // cellClass: 'text-center',
+          label: function(value) {
+            return Spacebars.SafeString('<div class="glyphicon glyphicon-envelope"></div>');
+          },
+
           fn: function(value) {
             if (typeof value === 'undefined' || value === null || value === '') {
               return null;
@@ -75,6 +82,8 @@ Template.applications.helpers({
         {
           key: 'createdAt',
           label: 'creation date',
+          headerClass: 'text-center',
+          cellClass: 'text-center',
           fn: function(value) {
             if (typeof value === 'undefined' || value === null || value === '') {
               return null;
@@ -85,7 +94,7 @@ Template.applications.helpers({
         },
         {key: 'firstname', label: 'firstname'},
         {key: 'lastname', label: 'lastname'},
-        {key: 'age', label: 'age'},
+        {key: 'age', label: 'age', cellClass: 'text-right'},
         {key: 'city', label: 'city'},
         {key: 'province', label: 'province'},
         {
@@ -100,8 +109,30 @@ Template.applications.helpers({
           },
         },
         {key: 'mobile', label: 'mobile'},
-        {key: 'experienceAsPhotographer', label: 'experience as a photographer'},
-        {key: 'experienceAsOther', label: 'experience as other'},
+        {
+          key: 'experienceAsPhotographer',
+          label: 'experience as a photographer',
+          cellClass: 'text-center',
+          fn: function(value, object) {
+            var glyphicon = 'glyphicon glyphicon-remove';
+            if (value) {
+              glyphicon = 'glyphicon glyphicon-ok';
+            }
+            return Spacebars.SafeString('<div class="' + glyphicon + '"></div>');
+          },
+        },
+        {
+          key: 'experienceAsOther',
+          label: 'experience as other',
+          cellClass: 'text-center',
+          fn: function(value, object) {
+            var glyphicon = 'glyphicon glyphicon-remove';
+            if (value) {
+              glyphicon = 'glyphicon glyphicon-ok';
+            }
+            return Spacebars.SafeString('<div class="' + glyphicon + '"></div>');
+          }
+        },
         {key: 'photo', label: 'photo'},
         {key: 'status.recruiter.username', label: 'recruiter'},
       ],
