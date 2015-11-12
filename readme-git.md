@@ -15,3 +15,10 @@
 
 **CLI** : `git push -u origin {{nome branch}}`
 	aggiunge il branch locale in remoto e aggiorna il tracking
+
+**CLI** : `git push origin --delete {{nome branch}}`
+	elimina il branch remoto
+
+**CLI** : `git fetch --all --prune`
+	elimina i branch orfani locali
+
