@@ -39,8 +39,8 @@ Meteor.startup(function() {
 			phases: {},
 			createdAt: createdAt,
 			region: [1, 12, 15][Math.floor(Math.random() * 3)],
-			experienceAsPhotographer: true,
-			experienceAsOther: false,
+			experienceAsPhotographer: Math.random() >= 0.5,
+			experienceAsOther: Math.random() >= 0.5,
 			referrer: referrers[Math.floor(Math.random() * referrers.length)].name,
 		};
 

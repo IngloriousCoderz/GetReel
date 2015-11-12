@@ -111,10 +111,13 @@ Template.applications.helpers({
         {key: 'mobile', label: 'mobile'},
         {
           key: 'experienceAsPhotographer',
-          label: 'experience as a photographer',
           headerClass: 'text-center',
           cellClass: 'text-center',
-          fn: function(value, object) {
+          label: function() {
+            return Spacebars.SafeString('experience as<br>a photographer');
+          },
+
+          fn: function(value) {
             var glyphicon = 'glyphicon glyphicon-remove';
             if (value) {
               glyphicon = 'glyphicon glyphicon-ok';
@@ -125,10 +128,13 @@ Template.applications.helpers({
         },
         {
           key: 'experienceAsOther',
-          label: 'experience as other',
           headerClass: 'text-center',
           cellClass: 'text-center',
-          fn: function(value, object) {
+          label: function() {
+            return Spacebars.SafeString('experience<br>as other');
+          },
+
+          fn: function(value) {
             var glyphicon = 'glyphicon glyphicon-remove';
             if (value) {
               glyphicon = 'glyphicon glyphicon-ok';
