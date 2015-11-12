@@ -67,42 +67,6 @@ Meteor.startup(function() {
 				}
 			}
 		}
-=======
-    // console.log("createdAt", createdAt);
-    var fakeApplication = {
-      fake: true,
-      firstname: ['Palmer', 'Andersen', 'Antony', 'Roby', 'Federica'][Math.floor(Math.random() * 4)],
-      lastname: ['Eldritch', 'Bianchi', 'Rossi', 'Verdi'][Math.floor(Math.random() * 3)],
-      socialSecurityNumber: 'ABCD12345' + i,
-      // gaussian random date from epoch to 30 years later
-      dateOfBirth: new Date(Math.floor(gaussianRandom() * new Date(2000, 11, 31, 23, 59, 59).getTime())),
-      permitKind: 'kinda',
-      city: 'comune',
-      province: 'prov',
-      residentialCap: 10100,
-      phone: '11223344' + i,
-      mobile: '33344455' + i,
-      status: {},
-      createdAt: createdAt,
-      region: [1, 12, 15][Math.floor(Math.random() * 3)],
-      experienceAsPhotographer: true,
-      experienceAsOther: false,
-      referrer: referrers[Math.floor(Math.random() * referrers.length)].name,
-    };
-    fakeApplication.status.current = [0, 1, 2, 3][Math.floor(Math.random() * 4)];
-    if (fakeApplication.status.current > 0) {
-      fakeApplication.status.outcome = Math.floor(Math.random() * 5) + 1;
-      //fakeApplication.status.recruiter = 'recruiter';
-      fakeApplication.status.recruiter = Meteor.users.findOne({
-        roles: 'recruiter',
-      }, {
-        fields: {
-          _id: 1,
-          username: 1,
-        },
-      });
-    }
->>>>>>> development
 
 		fakeApplication.email = fakeApplication.firstname + '.' + fakeApplication.lastname + '@getreel.test';
 		var birthdate = fakeApplication.dateOfBirth;
