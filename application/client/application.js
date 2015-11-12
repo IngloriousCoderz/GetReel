@@ -85,11 +85,3 @@ Router.route('/application/:step?', {
     }
   },
 });
-
-Router.route('/orders/:_id', {
-  name: 'viewOrder',
-  template: 'viewOrder',
-  data: function() {
-    return Orders.findOne(this.params._id);
-  },
-});
