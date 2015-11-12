@@ -2,7 +2,9 @@
 Meteor.startup(function() {
 
 
-
+    if(!Meteor.settings.development.generateFakeActivities) {
+        console.log("WARNING: fake activities generation aborted");
+    }
     var locations = Locations.find().fetch();
 
 	Events.remove({});
