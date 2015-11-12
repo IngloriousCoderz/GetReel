@@ -1,26 +1,29 @@
 //TODO: consider mass import from existing data
 Meteor.startup(function() {
 
-
     if(!Meteor.settings.development.generateFakeActivities) {
         console.log("WARNING: fake activities generation aborted");
         return;
     }
 
-    var locations = Locations.find().fetch();
+    var contactTypes = ContactTypes.find().fetch();
+    var activityOutcomes = ActivityOutcomes.find().fetch();
+
 	Activities.remove({});
 
 	if (Activities.find().count() === 0) {
 		var activities = [{
+			surname: 'import',
 			name: 'import',
-			description: 'import',
-			startsAtDay: new Date(),
-			endsAtDay: new Date(),
-			startsAtTime: new Date(),
-			endsAtTime: new Date(),
-			location: 'reference to locations',
+			createdBy: 'reference to users',
+			taxCode: 'import',
 			phase: 'reference to phases?', // 1,2,3, assunto
-			phaseParticipants: [],
+			contactType: 'reference to contactTypes',
+			activityOutcome: 'reference to activity outcomes',
+			notes: 'import',
+			deadline: new Date(),
+			createdAt: new Date(),
+			editedAt: new Date(),
 		}, ];
 
 		activities.forEach(function(activity) {
