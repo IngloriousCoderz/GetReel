@@ -4,13 +4,14 @@ Meteor.startup(function() {
 
     if(!Meteor.settings.development.generateFakeActivities) {
         console.log("WARNING: fake activities generation aborted");
+        return;
     }
-    var locations = Locations.find().fetch();
 
-	Events.remove({});
+    var locations = Locations.find().fetch();
+	Activities.remove({});
 
 	if (Activities.find().count() === 0) {
-		var events = [{
+		var activities = [{
 			name: 'import',
 			description: 'import',
 			startsAtDay: new Date(),
@@ -22,10 +23,10 @@ Meteor.startup(function() {
 			phaseParticipants: [],
 		}, ];
 
-		events.forEach(function(event) {
-			Events.insert(event);
+		activities.forEach(function(activity) {
+			Activities.insert(activity);
 		});
 
-		console.log('added', Events.find().count(), 'events.');
+		console.log('added', Activities.find().count(), 'activities.');
 	}
 });
