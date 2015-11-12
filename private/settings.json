@@ -1,3 +1,5 @@
 {
-	"maxFakeApplications" : 1000
+	"development" : {
+						"maxFakeApplications" : 1000
+					}
 }

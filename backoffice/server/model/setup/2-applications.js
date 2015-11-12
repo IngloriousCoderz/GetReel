@@ -4,9 +4,14 @@ Meteor.startup(function() {
 	});
 
 	// var maxFakeApplications = 1000;
-	console.log('Meteor.settings.maxFakeApplications', Meteor.settings.maxFakeApplications);
-	var maxFakeApplications = Meteor.settings.maxFakeApplications;
-	console.log('regenerating', maxFakeApplications, 'fake applications...');
+	// console.log('Meteor.settings.maxFakeApplications', Meteor.settings.maxFakeApplications);
+	try {
+		var maxFakeApplications = Meteor.settings.development.maxFakeApplications;
+		console.log('regenerating', maxFakeApplications, 'fake applications...');
+	} catch (e) {
+		var maxFakeApplications = 0;
+		console.log('WARNING : NOT regenerating fake applications');
+	}
 
 	var referrers = Referrers.find().fetch();
 	var activityOutcomes = ActivityOutcomes.find().fetch();
