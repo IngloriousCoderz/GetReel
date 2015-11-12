@@ -1,5 +1,12 @@
 {
-	"development" : {
-						"maxFakeApplications" : 1000
-					}
+	"activeEnvironment": "development",
+	"development": {
+		"generateFakeApplications": {
+			"maxFakeApplications": 1000
+		},
+		"generateFakeUsers": {
+			"recruiter": true,
+			"admin": true
+		}
+	}
 }
