@@ -12,6 +12,6 @@ ReactiveTable.publish('filterableApplications', Applications, {}, {
     experienceAsPhotographer: 1,
     experienceAsOther: 1,
     photo: 1,
-    'status.recruiter.username': 1,
+    status: 1,
   }
 });
