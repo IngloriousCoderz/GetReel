@@ -1,47 +1,65 @@
 <template name="filterElement">
-  <fieldset>
-    <legend>{{label}}</legend>
+  <div class="form-group">
+    <label for="{{name}}">{{label}}</label>
 
-    <div class="form-group">
-      <div class="options hidden">
-        <div class="col-xs-3">
-          <div class="checkbox">
-            <label>
-              <input id="{{name}}-not" type="checkbox" name="{{name}}-not" /> not
-            </label>
-          </div>
-        </div>
-        <div class="col-xs-9">
-          <select id="{{name}}-criterion" name="{{name}}-criterion" class="form-control input-sm filter">
-            <option value="eq">equals</option>
-            {{#if isString}}
-            <option value="contains">contains</option>
-            <option value="startswith">starts with</option>
-            <option value="endswith">ends with</option>
-            {{/if}}
-            {{#if comparable}}
-            <option value="gt">more than</option>
-            <option value="lt">less than</option>
-            <option value="between">between</option>
-            {{/if}}
-            <option value="empty">empty</option>
-          </select>
-        </div>
+    <div class="input-group hidden options">
+      <div class="input-group-addon checkbox">
+        <label>
+          <input id="{{name}}-not" type="checkbox" name="{{name}}-not" class="not" /> not
+        </label>
       </div>
-      <div class="values">
-        <div class="col-xs-12 value">
-          <input type="{{type}}" id="{{name}}" name="{{name}}" class="form-control input-sm" min="{{min}}" max="{{max}}" />
-        </div>
-        {{#if comparable}}
-        <div class="col-xs-12 from">
-          <input type="{{type}}" id="{{name}}-from" name="{{name}}-from" class="form-control input-sm" min="{{min}}" max="{{max}}" />
-        </div>
-        <div class="col-xs-12 to">
-          <label for="{{name}}-to">and</label>
-          <input type="{{type}}" id="{{name}}-to" name="{{name}}-to" class="form-control input-sm" min="{{min}}" max="{{max}}" />
-        </div>
-      {{/if}}
-      </div>
+      <select id="{{name}}-op" name="{{name}}-op" class="form-control filter">
+        <option value="eq">equals</option>
+        {{#if isString}}
+        <option value="contains">contains</option>
+        <option value="startswith">starts with</option>
+        <option value="endswith">ends with</option>
+        {{/if}}
+        {{#if isComparable}}
+        <option value="lt">less than</option>
+        <option value="gt">more than</option>
+        <option value="between">between</option>
+        {{/if}}
+        <option value="empty">empty</option>
+      </select>
     </div>
-  </fieldset>
+
+    <div class="values">
+      <div class="value">
+        {{#if isSelect}}
+        <select id="{{name}}" name="{{name}}" class="form-control">
+          <option value="">Please choose one...</option>
+          {{buildOptions}}
+        </select>
+        {{else}}{{#if isDate}}
+        <div class="input-group">
+          <input type="{{type}}" id="{{name}}" name="{{name}}" class="form-control" min="{{min}}" max="{{max}}" />
+          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+        </div>
+        {{else}}
+        <input type="{{type}}" id="{{name}}" name="{{name}}" class="form-control" min="{{min}}" max="{{max}}" />
+        {{/if}}
+        {{/if}}
+      </div>
+      {{#if isComparable}}
+      <div class="range">
+        <div class="input-group">
+          {{#if isDate}}
+          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          {{/if}}
+          <input type="{{type}}" id="{{name}}-from" name="{{name}}-from" class="form-control" min="{{min}}" max="{{max}}" />
+          <span class="input-group-addon">to</span>
+          <input type="{{type}}" id="{{name}}-to" name="{{name}}-to" class="form-control" min="{{min}}" max="{{max}}" />
+          {{#if isDate}}
+          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          {{/if}}
+        </div>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+</template>
+
+<template name="option">
+  <option value="{{getValue .}}">{{getDescription .}}</option>
 </template>

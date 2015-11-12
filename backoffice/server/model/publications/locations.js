@@ -1,5 +1,3 @@
-Meteor.startup(function() {
-  Meteor.publish('locations', function() {
-    return Locations.find();
-  });
+Meteor.publish('locations', function() {
+  return Locations.find();
 });

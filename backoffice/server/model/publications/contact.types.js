@@ -1,5 +1,3 @@
-Meteor.startup(function() {
-  Meteor.publish('contactTypes', function() {
-    return ContactTypes.find();
-  });
+Meteor.publish('contactTypes', function() {
+  return ContactTypes.find();
 });
