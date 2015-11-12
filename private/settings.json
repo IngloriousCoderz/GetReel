@@ -9,8 +9,8 @@
 			"admin": true
 		},
 		"generateFakeActivities": {
-			"maxActivities" : 100,
-			"maxApplications" : 100
+			"maxApplications" : 100,
+			"maxActivitiesPerApplication" : 5
 		},
 		"generateFakeEvents": {}
 	}
