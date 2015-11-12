@@ -43,40 +43,39 @@ Meteor.startup(function() {
 			experienceAsOther: false,
 			referrer: referrers[Math.floor(Math.random() * referrers.length)].name,
 		};
+
 		fakeApplication.phases.current = [0, 1, 2, 3, 4][Math.floor(Math.random() * 4)];
-		if (fakeApplication.phases.current > 0) {
-			fakeApplication.phases.list = [{
-				phase: 0,
-				description: "recruiting",
-			}];
-			for (var phasen = 1; phasen <= fakeApplication.phases.current; phasen++) {
-				fakeApplication.phases.list[phasen] = {
-					phase: phasen,
-					description: "Fase " + phasen,
-					recruiter: Meteor.users.findOne({
-						roles: 'recruiter',
-					}, {
-						fields: {
-							_id: 1,
-							username: 1,
-						},
-					}),
-					outcome: {
-						id: activityOutcomes[Math.floor(Math.random() * activityOutcomes.length)].id,
-						reasonId: (function(current) {
-							var reasons = OutcomeReasons.find({phase:current}).fetch();
-							return reasons[Math.floor(Math.random() * reasons.length)].id;
-						})(fakeApplication.phases.current),
-						notes: 'blablabla',
-					}
+		fakeApplication.phases.list = [{
+			phase: 0,
+			description: "recruiting",
+		}];
+
+		for (var phasen = 1; phasen <= fakeApplication.phases.current; phasen++) {
+			fakeApplication.phases.list[phasen] = {
+				phase: phasen,
+				description: "Fase " + phasen,
+				recruiter: Meteor.users.findOne({
+					username: 'recruiter' + (Math.floor(Math.random() * Meteor.settings.development.generateFakeUsers.maxRecruiters) + 1),
+					roles: 'recruiter',
+				}, {
+					fields: {
+						_id: 1,
+						username: 1,
+					},
+				}),
+				outcome: {
+					id: activityOutcomes[Math.floor(Math.random() * activityOutcomes.length)].id,
+					reasonId: (function(current) {
+						var reasons = OutcomeReasons.find({phase:current}).fetch();
+						return reasons[Math.floor(Math.random() * reasons.length)].id;
+					})(fakeApplication.phases.current),
+					notes: 'blablabla',
 				}
 			}
 		}
 
 		fakeApplication.email = fakeApplication.firstname + '.' + fakeApplication.lastname + '@getreel.test';
-		var birthdate = fakeApplication.dateOfBirth;
-		var cur = new Date();
-		var diff = cur - birthdate;
+		var diff = new Date() - fakeApplication.dateOfBirth;
 		var age = Math.floor(diff / 31536000000);
 		fakeApplication.age = age;
 

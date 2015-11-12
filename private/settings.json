@@ -5,7 +5,7 @@
 			"maxApplications": 1000
 		},
 		"generateFakeUsers": {
-			"recruiter": true,
+			"maxRecruiters": 2,
 			"admin": true
 		},
 		"generateFakeActivities": {
