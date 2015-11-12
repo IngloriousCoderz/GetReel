@@ -7,15 +7,19 @@ WorkSchema = new SimpleSchema({
   },
   company: {
     type: String,
+    optional: true,
   },
   period: {
     type: String,
+    optional: true,
   },
   typeOfWork: {
     type: String,
+    optional: true,
   },
   reasonTerminationEmployment: {
     type: String,
+    optional: true,
   },
 });
 

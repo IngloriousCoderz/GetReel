@@ -3,13 +3,15 @@ StudiesSchema = new SimpleSchema({
     type: String,
   },
   year: {
-    type: Number,
+    type: String,
   },
   subjectsOfStudy: {
     type: String,
+    optional: true,
   },
   otherStudy: {
       type: String,
+      optional: true,
     },
 
   motherTongue: {
@@ -17,6 +19,7 @@ StudiesSchema = new SimpleSchema({
   },
   otherLanguages: {
     type: String,
+    optional: true,
   },
   english: {
     type: String,

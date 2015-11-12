@@ -4,6 +4,7 @@ OtherInfoSchema = new SimpleSchema({
   },
   availabilityFrom: {
     type: Date,
+    optional: true,
     autoform: {
       type: 'bootstrap-datepicker',
     },
@@ -13,6 +14,7 @@ OtherInfoSchema = new SimpleSchema({
   },
   hobbies: {
     type: String,
+    optional: true,
   },
   tattoos: {
     type: Boolean,
@@ -67,6 +69,7 @@ OtherInfoSchema = new SimpleSchema({
   },
   miscellaneous: {
     type: String,
+    optional: true,
   },
 
 });

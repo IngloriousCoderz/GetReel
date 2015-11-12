@@ -1,41 +1,69 @@
 Template.application.helpers({
+  buttonClasses: 'btn btn-default',
+  backButton: function() {
+    return TAPi18n.__('wizard-back-button');
+  },
+  nextButton: function() {
+    return TAPi18n.__('wizard-next-button');
+  },
+  confirmButton: function() {
+    return TAPi18n.__('wizard-submit-button');
+  },
   steps: function() {
     return [
       {
         id: 'general-info',
-        title: 'General Info',
+        title: function() {
+          return TAPi18n.__('General Info');
+        },
         schema: GeneralInfoSchema,
         template: 'generalInfoStep',
         form: 'general-info-form',
       },
       {
         id: 'studies',
-        title: 'Studies',
+        title: function() {
+          return TAPi18n.__('Studies');
+        },
         schema: StudiesSchema,
         template: 'studiesStep',
         form: 'studies-form',
       },
       {
         id: 'work',
-        title: 'Work',
+        title: function() {
+          return TAPi18n.__('Work');
+        },
         schema: WorkSchema,
         template: 'workStep',
         form: 'work-form',
-        // onSubmit: function(data, wizard) {
-        //   console.log('subit ok');
       },
       {
         id: 'other-info',
-        title: 'Other Info',
+        title: function() {
+          return TAPi18n.__('Other Info');
+        },
         schema: OtherInfoSchema,
         template: 'otherInfoStep',
         form: 'other-info-form',
-        // onSubmit: function(data, wizard) {
-        //   console.log('subit ok');
       },
       {
-        id: 'final-step',
-        title: 'Final Step',
+        id: 'self-assessment',
+        title: function() {
+          return TAPi18n.__('Self Assessment');
+        },
+        schema: SelfAssessmentSchema,
+        template: 'selfAssessmentStep',
+        form: 'self-assessment-form',
+      },
+      {
+        id: 'privacy',
+        title: function() {
+          return TAPi18n.__('Privacy');
+        },
+        schema: PrivacySchema,
+        template: 'privacyStep',
+        form: 'privacy-form',
         onSubmit: function(data, wizard) {
           data.createdAt = new Date();
           data.reusme = Session.get('resume');
@@ -43,18 +71,6 @@ Template.application.helpers({
         },
       },
     ];
-  },
-
-  nextButtonLabel: function() {
-    return TAPi18n.__('next-button');
-  },
-
-  backButtonLabel: function() {
-    return TAPi18n.__('back-button');
-  },
-
-  confirmButtonLabel: function() {
-    TAPi18n.__('confirm-button');
   },
 });
 
