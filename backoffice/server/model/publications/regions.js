@@ -1,5 +1,3 @@
-Meteor.startup(function() {
-  Meteor.publish('regions', function() {
-    return Regions.find();
-  });
+Meteor.publish('regions', function() {
+  return Regions.find();
 });

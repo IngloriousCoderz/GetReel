@@ -1,5 +1,3 @@
-Meteor.startup(function() {
-  Meteor.publish('companies', function() {
-    return Companies.find();
-  });
+Meteor.publish('companies', function() {
+  return Companies.find();
 });

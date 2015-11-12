@@ -1,6 +1,3 @@
-Meteor.startup(function() {
-  Meteor.publish('referrers', function() {
-    return Referrers.find();
-  });
+Meteor.publish('referrers', function() {
+  return Referrers.find();
 });
-

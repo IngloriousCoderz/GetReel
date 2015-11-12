@@ -1,5 +1,3 @@
-Meteor.startup(function() {
-  Meteor.publish('availableJobs', function() {
-    return Jobs.find();
-  });
+Meteor.publish('availableJobs', function() {
+  return Jobs.find();
 });
