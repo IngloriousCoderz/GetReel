@@ -16,7 +16,6 @@ Meteor.startup(function() {
 		// console.log("createdAt", createdAt);
 		createdAt.setDate(createdAt.getDate() + Math.random() * maxFakeApplications);
 
-<<<<<<< HEAD
 		// console.log("createdAt", createdAt);
 		var fakeApplication = {
 			fake: true,
