@@ -1,14 +1,19 @@
+
 Template.application.helpers({
   buttonClasses: 'btn btn-default',
+
   backButton: function() {
     return TAPi18n.__('wizard-back-button');
   },
+
   nextButton: function() {
     return TAPi18n.__('wizard-next-button');
   },
+
   confirmButton: function() {
     return TAPi18n.__('wizard-submit-button');
   },
+
   steps: function() {
     return [
       {
@@ -18,7 +23,6 @@ Template.application.helpers({
         },
         schema: GeneralInfoSchema,
         template: 'generalInfoStep',
-        form: 'general-info-form',
       },
       {
         id: 'studies',
@@ -27,7 +31,6 @@ Template.application.helpers({
         },
         schema: StudiesSchema,
         template: 'studiesStep',
-        form: 'studies-form',
       },
       {
         id: 'work',
@@ -36,7 +39,6 @@ Template.application.helpers({
         },
         schema: WorkSchema,
         template: 'workStep',
-        form: 'work-form',
       },
       {
         id: 'other-info',
@@ -45,7 +47,6 @@ Template.application.helpers({
         },
         schema: OtherInfoSchema,
         template: 'otherInfoStep',
-        form: 'other-info-form',
       },
       {
         id: 'self-assessment',
@@ -54,7 +55,6 @@ Template.application.helpers({
         },
         schema: SelfAssessmentSchema,
         template: 'selfAssessmentStep',
-        form: 'self-assessment-form',
       },
       {
         id: 'privacy',
@@ -63,10 +63,9 @@ Template.application.helpers({
         },
         schema: PrivacySchema,
         template: 'privacyStep',
-        form: 'privacy-form',
         onSubmit: function(data, wizard) {
           data.createdAt = new Date();
-          data.reusme = Session.get('resume');
+          data.resume = Session.get('resume');
           data.videofile = Session.get('videofile');
         },
       },
@@ -87,5 +86,20 @@ Template.applicationSteps.helpers({
     }
 
     return 'disabled';
+  },
+});
+
+Wizard.useRouter('iron:router');
+
+Router.route('/application/:step?', {
+  name: 'application',
+  onBeforeAction: function() {
+    if (!this.params.step) {
+      this.redirect('application', {
+        step: 'general-info',
+      });
+    } else {
+      this.next();
+    }
   },
 });
