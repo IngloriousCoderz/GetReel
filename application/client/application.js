@@ -29,10 +29,6 @@ Template.application.helpers({
         schema: OtherInfoSchema,
         template: 'otherInfoStep',
         form: 'other-info-form',
-      },
-      {
-        id: 'final-step',
-        title: 'Final Step',
         onSubmit: function(data, wizard) {
           data.createdAt = new Date();
           data.resume = Session.get('resume');
