@@ -34,7 +34,7 @@
         {{else}}{{#if isDate}}
         <div class="input-group">
           <input type="{{type}}" id="{{name}}" name="{{name}}" class="form-control" min="{{min}}" max="{{max}}" />
-          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          <span id="{{name}}-btn" class="input-group-addon btn"><i class="glyphicon glyphicon-calendar"></i></span>
         </div>
         {{else}}
         <input type="{{type}}" id="{{name}}" name="{{name}}" class="form-control" min="{{min}}" max="{{max}}" />
@@ -45,13 +45,13 @@
       <div class="range">
         <div class="input-group">
           {{#if isDate}}
-          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          <span id="{{name}}-from-btn" class="input-group-addon btn"><i class="glyphicon glyphicon-calendar"></i></span>
           {{/if}}
           <input type="{{type}}" id="{{name}}-from" name="{{name}}-from" class="form-control" min="{{min}}" max="{{max}}" />
           <span class="input-group-addon">to</span>
           <input type="{{type}}" id="{{name}}-to" name="{{name}}-to" class="form-control" min="{{min}}" max="{{max}}" />
           {{#if isDate}}
-          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          <span id="{{name}}-to-btn" class="input-group-addon btn"><i class="glyphicon glyphicon-calendar"></i></span>
           {{/if}}
         </div>
       </div>
