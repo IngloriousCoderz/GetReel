@@ -14,15 +14,14 @@ Meteor.startup(function() {
 
 	var referrers = Referrers.find().fetch();
 	var activityOutcomes = ActivityOutcomes.find().fetch();
-	var outcomeReasons = OutcomeReasons.find();//.fetch();
+	var outcomeReasons = OutcomeReasons.find();
 
 	for (var i = 0; i < maxApplications; i++) {
 		var createdAt = new Date();
+		createdAt.setFullYear(createdAt.getFullYear() - 9);
 
-		// console.log("createdAt", createdAt);
-		createdAt.setDate(createdAt.getDate() + Math.random() * maxApplications);
+		createdAt.setTime(createdAt.getTime() + Math.random() * 10*12*30*24*60*60*1000);
 
-		// console.log("createdAt", createdAt);
 		var fakeApplication = {
 			fake: true,
 			firstname: ['Palmer', 'Andersen', 'Antony', 'Roby', 'Federica'][Math.floor(Math.random() * 4)],
