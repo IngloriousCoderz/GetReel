@@ -73,6 +73,7 @@ Meteor.startup(function() {
 				}
 			}
 		}
+		fakeApplication.phases.current = fakeApplication.phases.list[fakeApplication.phases.current];
 
 		fakeApplication.email = fakeApplication.firstname + '.' + fakeApplication.lastname + '@getreel.test';
 		var diff = new Date() - fakeApplication.dateOfBirth;

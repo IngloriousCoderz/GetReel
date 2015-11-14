@@ -148,11 +148,11 @@ Template.applications.helpers({
           key: 'phases.current',
           label: 'recruiter',
           fn: function(value, object) {
-            if (object.phases.current === 0) {
+            if (object.phases.current.phase === 0) {
               return null;
             }
 
-            return object.phases.list[object.phases.current].recruiter.username;
+            return object.phases.current.recruiter.username;
           },
         },
       ],

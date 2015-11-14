@@ -39,10 +39,10 @@ Template.analysis.events({
         howDoYouKnowUs({});
         break;
       case 1:
-        howDoYouKnowUs({'status.current': {$gt: 0}, 'status.outcome': 1});
+        howDoYouKnowUs({'phases.current.phase': {$gt: 0}, 'phases.current.outcome.id': 1});
         break;
       case 2:
-        howDoYouKnowUs({'status.current': {$gt: 0}, 'status.outcome': 2});
+        howDoYouKnowUs({'phases.current.phase': {$gt: 0}, 'phases.current.outcome.id': 3});
         break;
         // chartType = 'Pie';
         // cursor = Referrers.find();
