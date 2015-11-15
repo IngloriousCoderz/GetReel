@@ -3,14 +3,14 @@ Meteor.startup(function() {
 
   if (ApplicationRoles.find().count() === 0) {
     var roles = [
-      {title: 'Riserve'},
-      {title: 'Fotografi'},
-      {title: 'Responsabile'},
-      {title: 'Supervisore'},
-      {title: 'Fotografi non disponibili'},
-      {title: 'Responsabili non disponibili'},
-      {title: 'Fotografi & Responsabili Disp. Limitata'},
-      {title: 'Fotografi Blacklist'},
+      {name: 'Riserve'},
+      {name: 'Fotografi'},
+      {name: 'Responsabile'},
+      {name: 'Supervisore'},
+      {name: 'Fotografi non disponibili'},
+      {name: 'Responsabili non disponibili'},
+      {name: 'Fotografi & Responsabili Disp. Limitata'},
+      {name: 'Fotografi Blacklist'},
     ];
 
     roles.forEach(function(role) {
