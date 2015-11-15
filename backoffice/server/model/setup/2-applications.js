@@ -12,10 +12,6 @@ Meteor.startup(function() {
 		return;
 	}
 
-	var referrers = Referrers.find().fetch();
-	var activityOutcomes = ActivityOutcomes.find().fetch();
-	var outcomeReasons = OutcomeReasons.find();
-
 	for (var i = 0; i < maxApplications; i++) {
 		var createdAt = new Date();
 		createdAt.setFullYear(createdAt.getFullYear() - 9);
@@ -40,7 +36,7 @@ Meteor.startup(function() {
 			region: [1, 12, 15][Math.floor(Math.random() * 3)],
 			experienceAsPhotographer: Math.random() >= 0.5,
 			experienceAsOther: Math.random() >= 0.5,
-			referrer: referrers[Math.floor(Math.random() * referrers.length)].name,
+			referrer: randomCollectionElement(Referrers).name,
 		};
 
 		fakeApplication.phases.current = [0, 1, 2, 3, 4][Math.floor(Math.random() * 4)];
@@ -63,10 +59,10 @@ Meteor.startup(function() {
 					},
 				}),
 				outcome: {
-					id: activityOutcomes[Math.floor(Math.random() * activityOutcomes.length)].id,
+					id: randomCollectionElement(ActivityOutcomes).id,
 					reasonId: (function(current) {
 						var reasons = OutcomeReasons.find({phase:current}).fetch();
-						return reasons[Math.floor(Math.random() * reasons.length)].id;
+						return randomCollectionElement(OutcomeReasons).id;
 					})(fakeApplication.phases.current),
 					notes: 'blablabla',
 				}

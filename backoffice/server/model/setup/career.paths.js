@@ -12,11 +12,6 @@ Meteor.startup(function() {
 	}
 
     var applications = Applications.find({}, {limit:maxApplications}).fetch();
-    // var applicationRoles = ApplicationRoles.find().fetch();
-    // var seasons = Seasons.find().fetch();
-    // var companies = Companies.find().fetch();
-    // var countries = Countries.find().fetch();
-    // var roleEvaluations = RoleEvaluations.find().fetch();
 
 	CareerPaths.remove({});
 
@@ -46,23 +41,6 @@ Meteor.startup(function() {
                 CareerPaths.insert(path);
             }
         });
-		// var paths = [{
-		// 	surname: 'import',
-		// 	name: 'import',
-		// 	createdAt: new Date(),
-		// 	role: 'reference to application.roles',
-		// 	season: 'reference to seasons',
-		// 	village: 'import',
-		// 	company: 'reference to companies',
-		// 	nation: 'reference to countries',
-		// 	roleEvaluation: 'reference to role.evaluations',
-		// 	periodFrom: 'import',
-		// 	description: 'import',
-		// }, ];
-        //
-		// paths.forEach(function(path) {
-		// 	CareerPaths.insert(path);
-		// });
 
 		console.log('added', CareerPaths.find().count(), 'career paths.');
 	}

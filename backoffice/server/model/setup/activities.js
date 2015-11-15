@@ -12,8 +12,6 @@ Meteor.startup(function() {
 	}
 
     var applications = Applications.find({}, {limit:maxApplications}).fetch();
-    var contactTypes = ContactTypes.find().fetch();
-    var activityOutcomes = ActivityOutcomes.find().fetch();
     var recruiter = Meteor.users.findOne({
             roles: 'recruiter',
         }, {
@@ -39,8 +37,8 @@ Meteor.startup(function() {
                         phase: application.phases.current,
                     },
                     createdBy: recruiter.username,
-                    contactType: contactTypes[Math.floor(Math.random() * contactTypes.length)].name,
-                    activityOutcome: activityOutcomes[Math.floor(Math.random() * activityOutcomes.length)].name,
+                    contactType: randomCollectionElement(ContactTypes).name,
+                    activityOutcome: randomCollectionElement(ActivityOutcomes).name,
                     notes: "blablabla",
                 	deadline: new Date(),
         			createdAt: new Date(),
@@ -50,23 +48,6 @@ Meteor.startup(function() {
                 Activities.insert(activity);
             }
         });
-		// var activities = [{
-		// 	surname: 'import',
-		// 	name: 'import',
-		// 	createdBy: 'reference to users',
-		// 	taxCode: 'import',
-		// 	phase: 'reference to phases?', // 1,2,3, assunto
-		// 	contactType: 'reference to contactTypes',
-		// 	activityOutcome: 'reference to activity outcomes',
-		// 	notes: 'import',
-		// 	deadline: new Date(),
-		// 	createdAt: new Date(),
-		// 	editedAt: new Date(),
-		// }, ];
-        //
-		// activities.forEach(function(activity) {
-		// 	Activities.insert(activity);
-		// });
 
 		console.log('added', Activities.find().count(), 'activities.');
 	}
