@@ -3,7 +3,11 @@ Template.filterElement.onRendered(function() {
   var attrName = this.data.attrName;
   this.filter = new ReactiveTable.Filter(name, [attrName || name]);
   this.$('input[type="date"]').each(function(i, item) {
-    $(item).attr('type', 'text').datepicker({format: 'dd/mm/yyyy'});
+    var $input = $(item);
+    $input.attr('type', 'text').datepicker({format: 'dd/mm/yyyy'});
+    $input.siblings('#' + $input.attr('id') + '-btn').on('click', function() {
+      $input.datepicker('show');
+    });
   });
 });
 

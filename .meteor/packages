@@ -22,7 +22,6 @@ alanning:roles
 iron:router
 natestrauser:filepicker-plus
 twbs:bootstrap
-jt6562:bootstrap-3-switch
 rajit:bootstrap3-datepicker
 aldeed:autoform
 forwarder:autoform-wizard
@@ -37,3 +36,5 @@ abpetkov:switchery
 chart:chart
 rcy:chromajs
 dandv:jquery-rateit
+gwendall:simple-schema-i18n
+forwarder:autoform-wizard-iron-router

@@ -10,7 +10,7 @@
     </div>
     <div class="row">
       <div class="col-xs-12 application">
-        {{> wizard id="application-wizard" steps=steps stepsTemplate="applicationSteps"}}
+        {{> wizard id="application-wizard" route="application" steps=steps stepsTemplate="applicationSteps"}}
     </div>
     </div>
   </div>
@@ -19,7 +19,13 @@
 <template name="applicationSteps">
   <ul id="steps" class="nav nav-pills nav-justified">
     {{#each wizard.steps}}
-    <li class="{{stepClass id}}"><a href="#">{{title}}</a></li>
+    <li class="{{stepClass id}}">
+      {{#if wizard.route}}
+      <a href="{{pathForStep id}}">{{title}}</a>
+      {{else}}
+      <span>{{title}}</span>
+      {{/if}}
+    </li>
     {{/each}}
   </ul>
 </template>

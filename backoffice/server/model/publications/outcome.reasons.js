@@ -1,3 +1,3 @@
-Meteor.publish('activityOutcomes', function() {
-  return ActivityOutcomes.find();
+Meteor.publish('outcomeReasons', function() {
+  return OutcomeReasons.find();
 });

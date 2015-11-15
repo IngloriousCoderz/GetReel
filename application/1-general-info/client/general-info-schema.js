@@ -1,3 +1,4 @@
+
 GeneralInfoSchema = new SimpleSchema({
   firstname: {
     type: String,
@@ -25,7 +26,6 @@ GeneralInfoSchema = new SimpleSchema({
   permit: {
     type: Boolean,
     optional: true,
-    defaultValue: true,
   },
   permitKind: {
     type: String,
@@ -74,7 +74,6 @@ GeneralInfoSchema = new SimpleSchema({
   sameAddress: {
     type: Boolean,
     optional: true,
-    defaultValue: false,
   },
   currentCity: {
     type: String,
@@ -180,7 +179,6 @@ GeneralInfoSchema = new SimpleSchema({
   passport: {
     type: Boolean,
     optional: true,
-    defaultValue: true,
   },
   passportNumber: {
     type: String,

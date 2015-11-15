@@ -53,7 +53,7 @@ Template.applications.helpers({
           key: 'activities',
           sortable: false,
           headerClass: 'text-center',
-          // cellClass: 'text-center',
+          cellClass: 'text-center',
           label: function(value) {
             return Spacebars.SafeString('<div class="glyphicon glyphicon-list"></div>');
           },
@@ -66,7 +66,7 @@ Template.applications.helpers({
           key: 'email',
           sortable: false,
           headerClass: 'text-center',
-          // cellClass: 'text-center',
+          cellClass: 'text-center',
           label: function(value) {
             return Spacebars.SafeString('<div class="glyphicon glyphicon-envelope"></div>');
           },
@@ -111,40 +111,49 @@ Template.applications.helpers({
         {key: 'mobile', label: 'mobile'},
         {
           key: 'experienceAsPhotographer',
-          label: 'experience as a photographer',
+          headerClass: 'text-center',
           cellClass: 'text-center',
-          fn: function(value, object) {
+          label: function() {
+            return Spacebars.SafeString('experience as<br>a photographer');
+          },
+
+          fn: function(value) {
             var glyphicon = 'glyphicon glyphicon-remove';
             if (value) {
               glyphicon = 'glyphicon glyphicon-ok';
             }
+
             return Spacebars.SafeString('<div class="' + glyphicon + '"></div>');
           },
         },
         {
           key: 'experienceAsOther',
-          label: 'experience as other',
+          headerClass: 'text-center',
           cellClass: 'text-center',
-          fn: function(value, object) {
+          label: function() {
+            return Spacebars.SafeString('experience<br>as other');
+          },
+
+          fn: function(value) {
             var glyphicon = 'glyphicon glyphicon-remove';
             if (value) {
               glyphicon = 'glyphicon glyphicon-ok';
             }
+
             return Spacebars.SafeString('<div class="' + glyphicon + '"></div>');
-          }
+          },
         },
         {key: 'photo', label: 'photo'},
-        // {key: 'phases.recruiter.username', label: 'recruiter'},
-        // {key: 'phases.list.recruiter.username', label: 'recruiter'},
         {
-            key: 'phases.current',
-            label: 'recruiter',
-            fn: function(value, object) {
-                if(object.phases.current===0) {
-                    return null;
-                }
-                return object.phases.list[object.phases.current].recruiter.username;
+          key: 'phases.current',
+          label: 'recruiter',
+          fn: function(value, object) {
+            if (object.phases.current.phase === 0) {
+              return null;
             }
+
+            return object.phases.current.recruiter.username;
+          },
         },
       ],
     };
