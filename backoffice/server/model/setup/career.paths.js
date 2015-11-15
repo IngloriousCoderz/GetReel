@@ -8,6 +8,7 @@ Meteor.startup(function() {
     var roleEvaluations = RoleEvaluations.find().fetch();
 
 	CareerPaths.remove({});
+
     
 
 	if (CareerPaths.find().count() === 0) {
