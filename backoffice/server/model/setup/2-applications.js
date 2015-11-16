@@ -74,6 +74,9 @@ Meteor.startup(function() {
 		var diff = new Date() - fakeApplication.dateOfBirth;
 		var age = Math.floor(diff / 31536000000);
 		fakeApplication.age = age;
+		fakeApplication.events = [];
+		fakeApplication.activities = [];
+		fakeApplication.careerSteps = [];
 
 		Applications.insert(fakeApplication);
 	}

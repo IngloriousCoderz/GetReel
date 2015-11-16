@@ -16,6 +16,9 @@
 			"maxApplications" : 100,
 			"maxCareersPerApplication" : 5
 		},
-		"generateFakeEvents": {}
+		"generateFakeEvents": {
+		"maxApplications" : 100,
+		"maxEvents" : 5
+		}
 	}
 }

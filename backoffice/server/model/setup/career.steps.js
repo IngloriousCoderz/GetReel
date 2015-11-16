@@ -6,21 +6,23 @@ Meteor.startup(function() {
 		var maxCareersPerApplication = Meteor.settings.development.generateFakeCareers.maxCareersPerApplication;
 		console.log('regenerating max %d fake careers for %d applications...', maxCareersPerApplication, maxApplications);
 	} else {
-		var maxActivities = 0;
-		console.log('WARNING : NOT regenerating fake activities');
+		var maxCareersPerApplication = 0;
+		console.log('WARNING : NOT regenerating fake careers');
 		return;
 	}
 
-    var applications = Applications.find({}, {limit:maxApplications}).fetch();
+    var applications = Applications.find({}, {limit:maxApplications});
 
-	CareerPaths.remove({});
+    var seasonsCursor = Seasons.find();
+    var seasonsArray = seasonsCursor.fetch();
 
-	if (CareerPaths.find().count() === 0) {
-        var path = {};
+	CareerSteps.remove({});
 
+	if (CareerSteps.find().count() === 0) {
+        var step = {};
         applications.forEach(function(application) {
             for(i= 0; i < Math.floor(Math.random()* maxCareersPerApplication);i++) {
-                path = {
+                step = {
                     application : {
                         _id: application._id,
                         firstname : application.firstname,
@@ -38,10 +40,11 @@ Meteor.startup(function() {
         			periodFrom: 'import',
         			description: 'import',
                 }
-                CareerPaths.insert(path);
+                step._id = CareerSteps.insert(step);
+                Applications.update({_id:application._id}, {$push: {careerSteps:step._id}});
             }
         });
 
-		console.log('added', CareerPaths.find().count(), 'career paths.');
+		console.log('added', CareerSteps.find().count(), 'career steps.');
 	}
 });

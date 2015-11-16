@@ -11,7 +11,7 @@ Meteor.startup(function() {
 		return;
 	}
 
-    var applications = Applications.find({}, {limit:maxApplications}).fetch();
+    var applications = Applications.find({}, {limit:maxApplications});
     var recruiter = Meteor.users.findOne({
             roles: 'recruiter',
         }, {
@@ -45,7 +45,8 @@ Meteor.startup(function() {
         			editedAt: new Date(),
                 };
 
-                Activities.insert(activity);
+                activity._id = Activities.insert(activity);
+                Applications.update({_id:application._id}, {$push: {activities:activity._id}});
             }
         });
 
