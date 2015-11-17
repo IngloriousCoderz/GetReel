@@ -9,7 +9,7 @@ Meteor.startup(function() {
     return;
   }
 
-  var applications = Applications.find({}, {limit: maxApplications});
+  var applications = Applications.find({'phases.current.phase': {$gt: 0}}, {limit: maxApplications});
   var recruiter = Meteor.users.findOne({
     roles: 'recruiter',
   }, {
@@ -37,7 +37,7 @@ Meteor.startup(function() {
           createdBy: recruiter.username,
           contactType: randomCollectionElement(ContactTypes).name,
           outcome: randomCollectionElement(ActivityOutcomes).name,
-          notes: 'blablabla',
+          notes: Math.random() >= 0.5 ? 'blablabla' : '',
           deadline: new Date(),
           createdAt: new Date(),
           editedAt: new Date(),
