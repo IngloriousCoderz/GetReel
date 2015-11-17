@@ -1,4 +1,4 @@
-ReactiveTable.publish('filterableApplications', Applications, {}, {
+ReactiveTable.publish('reactiveApplications', Applications, {}, {
   fields: {
     email: 1,
     createdAt: 1,
@@ -12,6 +12,8 @@ ReactiveTable.publish('filterableApplications', Applications, {}, {
     experienceAsPhotographer: 1,
     experienceAsOther: 1,
     photo: 1,
-    phases: 1,
+    'phases.current': 1,
+    activities: 1,
+    events: 1,
   }
 });

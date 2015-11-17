@@ -1,17 +1,14 @@
-Meteor.subscribe('regions');
-Meteor.subscribe('applications');
-
 Template.applications.helpers({
   settings: function() {
     return {
-      collection: 'filterableApplications',
+      collection: 'reactiveApplications',
       rowsPerPage: 20,
       showFilter: false,
       showRowCount: true,
       showNavigationRowsPerPage: true,
       showColumnToggles: false,
       noDataTmpl: Template.noDataTemplate,
-      class: 'table table-striped table-hover table-condensed col-sm-12',
+      class: 'table table-striped table-hover table-condensed',
       filters: [
         'createdAt',
         'recruiter',
@@ -33,7 +30,7 @@ Template.applications.helpers({
           },
 
           fn: function(value) {
-            return Spacebars.SafeString('<a href="#">edit</a>');
+            return Spacebars.SafeString('<a href="#" role="button">edit</a>');
           },
         },
         {
@@ -59,7 +56,7 @@ Template.applications.helpers({
           },
 
           fn: function(value) {
-            return Spacebars.SafeString('<a href="#">activities</a>');
+            return Spacebars.SafeString('<a href="#" role="button">activities</a>');
           },
         },
         {
@@ -97,17 +94,7 @@ Template.applications.helpers({
         {key: 'age', label: 'age', cellClass: 'text-right'},
         {key: 'city', label: 'city'},
         {key: 'province', label: 'province'},
-        {
-          key: 'region',
-          label: 'region',
-          fn: function(value, object) {
-            if (typeof value === 'undefined' || value === null || value === '') {
-              return null;
-            }
-
-            return Regions.findOne({id: value}).name;
-          },
-        },
+        {key: 'region.name', label: 'region'},
         {key: 'mobile', label: 'mobile'},
         {
           key: 'experienceAsPhotographer',
@@ -144,17 +131,7 @@ Template.applications.helpers({
           },
         },
         {key: 'photo', label: 'photo'},
-        {
-          key: 'phases.current',
-          label: 'recruiter',
-          fn: function(value, object) {
-            if (object.phases.current.phase === 0) {
-              return null;
-            }
-
-            return object.phases.current.recruiter.username;
-          },
-        },
+        {key: 'phases.current.recruiter.username', label: 'recruiter'},
       ],
     };
   },

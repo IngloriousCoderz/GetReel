@@ -33,20 +33,20 @@ Meteor.startup(function() {
 			mobile: '33344455' + i,
 			phases: {},
 			createdAt: createdAt,
-			region: [1, 12, 15][Math.floor(Math.random() * 3)],
+			region: Regions.findOne({id: Math.floor(Math.random() * 20) + 1}),
 			experienceAsPhotographer: Math.random() >= 0.5,
 			experienceAsOther: Math.random() >= 0.5,
 			referrer: randomCollectionElement(Referrers).name,
 		};
 
 		fakeApplication.phases.current = [0, 1, 2, 3, 4][Math.floor(Math.random() * 4)];
-		fakeApplication.phases.list = [{
+		fakeApplication.phases.history = [{
 			phase: 0,
 			description: "recruiting",
 		}];
 
 		for (var phasen = 1; phasen <= fakeApplication.phases.current; phasen++) {
-			fakeApplication.phases.list[phasen] = {
+			fakeApplication.phases.history[phasen] = {
 				phase: phasen,
 				description: "Fase " + phasen,
 				recruiter: Meteor.users.findOne({
@@ -68,7 +68,7 @@ Meteor.startup(function() {
 				}
 			}
 		}
-		fakeApplication.phases.current = fakeApplication.phases.list[fakeApplication.phases.current];
+		fakeApplication.phases.current = fakeApplication.phases.history[fakeApplication.phases.current];
 
 		fakeApplication.email = fakeApplication.firstname + '.' + fakeApplication.lastname + '@getreel.test';
 		var diff = new Date() - fakeApplication.dateOfBirth;

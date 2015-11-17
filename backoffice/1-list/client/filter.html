@@ -18,8 +18,8 @@
 
     {{> filterElement label="mobile phone" name="mobile"}}
 
-    {{> filterElement label="status" name="status" attrName="status.current" type="select" options=statuses valueField="id" descriptionField="name"}}
+    {{> filterElement label="status" name="status" attrName="status" type="select" options=statuses valueField="id" descriptionField="name"}}
 
-    {{> filterElement label="region" name="region" type="select" options=regions valueField="id" descriptionField="name"}}
+    {{> filterElement label="region" name="region" attrName="region.id" type="select" options=regions valueField="id" descriptionField="name"}}
   </form>
 </template>

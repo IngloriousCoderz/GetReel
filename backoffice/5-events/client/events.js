@@ -1,7 +1,7 @@
-Template.activities.helpers({
+Template.eventz.helpers({
   settings: function() {
     return {
-      collection: 'reactiveActivities',
+      collection: 'reactiveEvents',
       rowsPerPage: 20,
       showFilter: false,
       showRowCount: true,
@@ -24,19 +24,19 @@ Template.activities.helpers({
             return Spacebars.SafeString('<a href="#" role="button">edit</a>');
           },
         },
-        // {
-        //   key: 'editInline',
-        //   sortable: false,
-        //   headerClass: 'text-center',
-        //   cellClass: 'text-center',
-        //   label: function(value) {
-        //     return Spacebars.SafeString('<div class="glyphicon glyphicon-pencil"></div>');
-        //   },
-        //
-        //   fn: function(value) {
-        //     return Spacebars.SafeString('<a href="#">edit<br>inline</a>');
-        //   },
-        // },
+        {
+          key: 'details',
+          sortable: false,
+          headerClass: 'text-center',
+          cellClass: 'text-center',
+          label: function(value) {
+            return Spacebars.SafeString('<div class="glyphicon glyphicon-search"></div>');
+          },
+
+          fn: function(value) {
+            return Spacebars.SafeString('<a href="#" role="button">details</a>');
+          },
+        },
         {
           key: 'select',
           sortable: false,
@@ -50,16 +50,10 @@ Template.activities.helpers({
             return Spacebars.SafeString('<input class="select" type="checkbox" />');
           },
         },
-        {key: 'application.lastname', label: 'lastname'},
-        {key: 'application.firstname', label: 'firstname'},
-        {key: 'createdBy', label: 'created by'},
-        {key: 'application.phase', label: 'phase', cellClass: 'text-right'},
-        {key: 'contactType', label: 'contact type'},
-        {key: 'outcome', label: 'outcome'},
-        {key: 'notes', label: 'notes'},
+        {key: 'name', label: 'event name'},
         {
-          key: 'deadline',
-          label: 'deadline',
+          key: 'from',
+          label: 'from',
           headerClass: 'text-center',
           cellClass: 'text-center',
           fn: function(value) {
@@ -67,12 +61,12 @@ Template.activities.helpers({
               return null;
             }
 
-            return value.getDate() + '/' + (value.getMonth() + 1) + '/' + value.getFullYear();
+            return value.getDate() + '/' + (value.getMonth() + 1) + '/' + value.getFullYear() + ' ' + value.getHours() + ':' + value.getMinutes();
           },
         },
         {
-          key: 'createdAt',
-          label: 'creation date',
+          key: 'to',
+          label: 'to',
           headerClass: 'text-center',
           cellClass: 'text-center',
           fn: function(value) {
@@ -80,15 +74,17 @@ Template.activities.helpers({
               return null;
             }
 
-            return value.getDate() + '/' + (value.getMonth() + 1) + '/' + value.getFullYear();
+            return value.getDate() + '/' + (value.getMonth() + 1) + '/' + value.getFullYear() + ' ' + value.getHours() + ':' + value.getMinutes();
           },
         },
+        {key: 'location', label: 'location'},
+        {key: 'phase', label: 'phase', cellClass: 'text-right'},
       ],
     };
   },
 });
 
-Template.activities.events({
+Template.eventz.events({
   'change #select-all': function(e) {
     $('.select').prop('checked', $(e.target).prop('checked'));
   },
