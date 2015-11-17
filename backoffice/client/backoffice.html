@@ -35,7 +35,7 @@
           Settings
         </div>
         <div class="tab-pane" id="tab4">
-          Activities
+          {{> activities}}
         </div>
         <div class="tab-pane" id="tab5">
           Events
@@ -43,4 +43,8 @@
       </div>
     </div>
 </div>
+</template>
+
+<template name="noDataTemplate">
+  Sorry, no data found. Please try to broaden your search criteria.
 </template>
