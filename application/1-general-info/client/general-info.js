@@ -2,6 +2,7 @@ Meteor.subscribe('availableJobs');
 
 Template.generalInfoStep.onRendered(function() {
 
+
   $('input[type=\'filepicker-dragdrop\']').each(function(i, e) {
     if ($(e).css('display') != 'none') {
       filepicker.constructWidget(e);
