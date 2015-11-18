@@ -1,3 +1,8 @@
+<template name="list">
+  {{> filter}}
+  {{> applications}}
+</template>
+
 <template name="filter">
   <form id="filter-form" class="col-lg-2">
     <div class="checkbox">
@@ -22,4 +27,10 @@
 
     {{> filterElement label="region" name="region" attrName="region.id" type="select" options=regions valueField="id" descriptionField="name"}}
   </form>
+</template>
+
+<template name="applications">
+  <div id="applications" class="col-lg-10">
+    {{> reactiveTable settings=settings}}
+  </div>
 </template>
