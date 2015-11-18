@@ -1,7 +1,12 @@
 Meteor.subscribe('availableJobs');
 
 Template.generalInfoStep.onRendered(function() {
-  loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
+
+  $('input[type=\'filepicker-dragdrop\']').each(function(i, e) {
+    if ($(e).css('display') != 'none') {
+      filepicker.constructWidget(e);
+    }
+  });
 
   var data = this.data.step.data();
   var hasPermit;
@@ -22,6 +27,8 @@ Template.generalInfoStep.onRendered(function() {
   });
 
   $(':checkbox').change();
+
+
 });
 
 Template.generalInfoStep.helpers({
