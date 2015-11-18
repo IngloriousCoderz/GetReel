@@ -27,8 +27,6 @@ Template.generalInfoStep.onRendered(function() {
   });
 
   $(':checkbox').change();
-
-
 });
 
 Template.generalInfoStep.helpers({
