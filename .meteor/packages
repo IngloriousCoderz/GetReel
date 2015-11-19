@@ -38,3 +38,5 @@ rcy:chromajs
 dandv:jquery-rateit
 gwendall:simple-schema-i18n
 forwarder:autoform-wizard-iron-router
+jeremy:geocomplete
+dburles:google-maps

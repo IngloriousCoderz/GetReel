@@ -1,11 +1,11 @@
 Meteor.subscribe('availableJobs');
 
 Template.generalInfoStep.onRendered(function() {
-
-
-  $('input[type=\'filepicker-dragdrop\']').each(function(i, e) {
-    if ($(e).css('display') != 'none') {
-      filepicker.constructWidget(e);
+  this.autorun(function() {
+    if (GoogleMaps.loaded()) {
+      $('#address').geocomplete({
+        details: 'form',
+      });
     }
   });
 
@@ -28,6 +28,11 @@ Template.generalInfoStep.onRendered(function() {
   });
 
   $(':checkbox').change();
+  $('input[type=\'filepicker-dragdrop\']').each(function(i, e) {
+    if ($(e).css('display') != 'none') {
+      filepicker.constructWidget(e);
+    }
+  });
 });
 
 Template.generalInfoStep.helpers({
