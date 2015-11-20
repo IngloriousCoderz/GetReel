@@ -33,29 +33,32 @@
 
     <fieldset>
     <legend>{{_ "Permanent Address"}}</legend>
+    <div class="col-lg-12">
+      {{> afQuickField id="findAddress" name="findAddress"}}
+    </div>
       <form>
       <div class="col-lg-2">
-        {{> afQuickField id="civic" name="civic"}}
+        {{> afQuickField id="street_number" name="street_number"}}
       </div>
 
       <div class="col-lg-3">
-        {{> afQuickField id="address" name="address"}}
+        {{> afQuickField id="route" name="route"}}
       </div>
 
       <div class="col-lg-2">
-        {{> afQuickField id="zip" name="zip"}}
+        {{> afQuickField id="postal_code" name="postal_code"}}
       </div>
 
       <div class="col-lg-3">
-        {{> afQuickField id="city" name="city"}}
+        {{> afQuickField id="locality" name="locality"}}
       </div>
 
       <div class="col-lg-2">
-        {{> afQuickField id="province" name="province"}}
+        {{> afQuickField id="administrative_area_level_2" name="administrative_area_level_2"}}
       </div>
 
       <div class="col-lg-6">
-        {{> afQuickField id="region" name="region"}}
+        {{> afQuickField id="administrative_area_level_1" name="administrative_area_level_1"}}
       </div>
 
       <div class="col-lg-6">

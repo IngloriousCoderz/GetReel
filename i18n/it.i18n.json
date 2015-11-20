@@ -76,27 +76,32 @@
         "placeholder": "es. Visto per vacanza-lavoro"
       },
 
-      "civic": {
+      "findAddress": {
+        "label": "Trova il tuo indirizzo",
+        "placeholder": "Inserisci qui il tuo indirizzo"
+      },
+
+      "street_number": {
         "label": "Numero civico",
         "placeholder": "es. 127"
       },
-      "address": {
+      "route": {
         "label": "Indirizzo",
         "placeholder": "es. Via Roma"
       },
-      "zip": {
+      "postal_code": {
         "label": "CAP",
         "placeholder": "es. 00100"
       },
-      "city": {
+      "locality": {
         "label": "Città",
         "placeholder": "es. Torino"
       },
-      "province": {
+      "administrative_area_level_2": {
         "label": "Provincia",
         "firstOption": "Scegli una provincia..."
       },
-      "region": {
+      "administrative_area_level_1": {
         "label": "Regione",
         "firstOption": "Scegli una regione..."
       },

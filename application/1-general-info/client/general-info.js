@@ -1,9 +1,27 @@
 Meteor.subscribe('availableJobs');
 
+Template.generalInfoStep.onCreated(function() {
+  console.log('Loading');
+  loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
+  GoogleMaps.load({
+    key: 'AIzaSyAwmYRqqPG0EH9nZ_NIasHUxD3k8LKPbtU',
+    libraries: 'places',
+  });
+});
+
 Template.generalInfoStep.onRendered(function() {
+
+  if ($('input[type=\'filepicker-dragdrop\']')) {
+    $('input[type=\'filepicker-dragdrop\']').each(function(i, e) {
+      if ($(e).css('display') != 'none') {
+        filepicker.constructWidget(e);
+      }
+    });
+  };
+
   this.autorun(function() {
     if (GoogleMaps.loaded()) {
-      $('#address').geocomplete({
+      $('#findAddress').geocomplete({
         details: 'form',
       });
     }
@@ -28,11 +46,12 @@ Template.generalInfoStep.onRendered(function() {
   });
 
   $(':checkbox').change();
+  /*
   $('input[type=\'filepicker-dragdrop\']').each(function(i, e) {
     if ($(e).css('display') != 'none') {
       filepicker.constructWidget(e);
     }
-  });
+  });*/
 });
 
 Template.generalInfoStep.helpers({

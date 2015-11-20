@@ -36,37 +36,40 @@ GeneralInfoSchema = new SimpleSchema({
       };
     },
   },
-  city: {
+  findAddress: {
     type: String,
   },
-  province: {
+  locality: {
     type: String,
-    autoform: {
+  },
+  'administrative_area_level_2': {
+    type: String,
+    /*autoform: {
       options: {
         Winchestershire: 'Winchestershire',
         Coltshire: 'Coltshire',
         Berettashire: 'Berettashire',
       },
-    },
+    },*/
   },
-  zip: {
+  'postal_code': {
     type: String,
   },
-  address: {
+  route: {
     type: String,
   },
-  civic: {
+  'street_number': {
     type: String,
   },
-  region: {
+  'administrative_area_level_1': {
     type: String,
-    autoform: {
+    /*autoform: {
       options: {
         NORTH: 'NORTH',
         WEST: 'WEST',
         SOUTH: 'SOUTH',
       },
-    },
+    },*/
   },
   country: {
     type: String,

@@ -74,29 +74,32 @@
         "label": "Permit kind",
         "placeholder": "e.g. Working holiday visa"
       },
-
-      "civic": {
-        "label": "Civic number",
+      "findAddress": {
+        "label": "Find your address",
+        "placeholder": "Type here your address"
+      },
+      "street_number": {
+        "label": "Street number",
         "placeholder": "e.g. 127"
       },
-      "address": {
+      "route": {
         "label": "Address",
         "placeholder": "e.g. Abbey Road"
       },
-      "zip": {
+      "postal_code": {
         "label": "Zip Code",
         "placeholder": "e.g. 00100"
       },
-      "city": {
+      "locality": {
         "label": "City",
         "placeholder": "e.g. London"
       },
-      "province": {
+      "administrative_area_level_2": {
         "label": "Province",
         "firstOption": "Choose a province..."
       },
-      "region": {
-        "label": "Region",
+      "administrative_area_level_1": {
+        "label": "state",
         "placeholder": "Choose a region..."
       },
       "country": {
