@@ -64,6 +64,7 @@ function regions(query) {
   var i = 0;
   cursor.forEach(function(region) {
     var color = chroma(colors[i]);
+    query['region.id'] = region.id;
     data.push({
       value: Applications.find(query).count(),
       label: region.name,
@@ -162,37 +163,46 @@ function renderChart() {
 
   switch (chartType) {
     case 0:
-      howDoYouKnowUs(_.extend({}, query));
+      howDoYouKnowUs(query);
       break;
     case 1:
-      howDoYouKnowUs(_.extend({'phases.current.phase': {$gt: 0}, 'phases.current.outcome.id': 1}, query));
+      query['phases.current.phase'] = {$gt: 0};
+      query['phases.current.outcome.id'] = 1;
+      howDoYouKnowUs(query);
       break;
     case 2:
-      howDoYouKnowUs(_.extend({'phases.current.phase': {$gt: 0}, 'phases.current.outcome.id': 3}, query));
+      query['phases.current.phase'] = {$gt: 0};
+      query['phases.current.outcome.id'] = 3;
+      howDoYouKnowUs(query);
       break;
     case 3:
-      ages(_.extend({}, query));
+      ages(query);
       break;
     case 4:
-      regions(_.extend({}, query));
+      regions(query);
       break;
     case 5:
-      applicationsPerDay(_.extend({}, query));
+      applicationsPerDay(query);
       break;
     case 6:
-      regions(_.extend({'phases.current.phase': 0}, query));
+      query['phases.current.phase'] = 0;
+      regions(query);
       break;
     case 7:
-      regions(_.extend({'phases.current.phase': 1}, query));
+      query['phases.current.phase'] = 1;
+      regions(query);
       break;
     case 8:
-      regions(_.extend({'phases.current.phase': 2}, query));
+      query['phases.current.phase'] = 2;
+      regions(query);
       break;
     case 9:
-      regions(_.extend({'phases.current.phase': 3}, query));
+      query['phases.current.phase'] = 3;
+      regions(query);
       break;
     case 10:
-      regions(_.extend({'phases.current.outcome.id': 3}, query));
+      query['phases.current.outcome.id'] = 3;
+      regions(query);
       break;
   }
 }
