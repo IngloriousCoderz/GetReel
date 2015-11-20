@@ -77,26 +77,26 @@ function regions(query) {
 }
 
 function applicationsPerDay(query) {
-  var minDate = Applications.findOne({}, {sort: {createdAt: 1}}).createdAt;
-  var maxDate = Applications.findOne({}, {sort: {createdAt: -1}}).createdAt;
+  var minDate = Applications.findOne(query, {sort: {createdAt: 1}}).createdAt;
+  var maxDate = Applications.findOne(query, {sort: {createdAt: -1}}).createdAt;
   var dates = [];
   var span = null;
-  if (maxDate - minDate < 30*24*60*60*1000) {
+  if (maxDate - minDate <= 31*24*60*60*1000) {
     span = 'month';
     for (var i = 0; i < 30; i++) {
       dates.push(minDate.getDate() + i);
     }
-  } else if (maxDate - minDate < 12*30*24*60*60*1000) {
+  } else if (maxDate - minDate <= 366*24*60*60*1000) {
     span = 'year';
     for (var i = 0; i < 12; i++) {
       dates.push(monthNames[minDate.getMonth() + i]);
     }
-  } else if (maxDate - minDate < 10*12*30*24*60*60*1000) {
+  } else if (maxDate - minDate <= 10*366*24*60*60*1000) {
     span = 'decade';
     for (var i = 0; i < 10; i++) {
       dates.push(minDate.getFullYear() + i);
     }
-  } else if (maxDate - minDate < 10*10*12*30*24*60*60*1000) {
+  } else if (maxDate - minDate <= 10*10*366*24*60*60*1000) {
     span = 'century';
     for (var i = 0; i < 10; i++) {
       dates.push(minDate.getFullYear() + i * 10);
@@ -145,51 +145,86 @@ function applicationsPerDay(query) {
   currentChart = new Chart(chart.getContext('2d')).Line(data);
 }
 
+function renderChart() {
+  var query = {};
+
+  if (typeof currentChart !== 'undefined') {
+    currentChart.destroy();
+  }
+
+  var chartType = Session.get('analysis-chart-type');
+  var year = Session.get('analysis-year');
+  if (year !== '' && !isNaN(year)) {
+    year = parseInt(year, 10);
+    nextYear = year + 1;
+    query = {createdAt: {$gte: new Date(year + '/01/01'), $lt: new Date(nextYear + '/01/01')}};
+  }
+
+  switch (chartType) {
+    case 0:
+      howDoYouKnowUs(_.extend({}, query));
+      break;
+    case 1:
+      howDoYouKnowUs(_.extend({'phases.current.phase': {$gt: 0}, 'phases.current.outcome.id': 1}, query));
+      break;
+    case 2:
+      howDoYouKnowUs(_.extend({'phases.current.phase': {$gt: 0}, 'phases.current.outcome.id': 3}, query));
+      break;
+    case 3:
+      ages(_.extend({}, query));
+      break;
+    case 4:
+      regions(_.extend({}, query));
+      break;
+    case 5:
+      applicationsPerDay(_.extend({}, query));
+      break;
+    case 6:
+      regions(_.extend({'phases.current.phase': 0}, query));
+      break;
+    case 7:
+      regions(_.extend({'phases.current.phase': 1}, query));
+      break;
+    case 8:
+      regions(_.extend({'phases.current.phase': 2}, query));
+      break;
+    case 9:
+      regions(_.extend({'phases.current.phase': 3}, query));
+      break;
+    case 10:
+      regions(_.extend({'phases.current.outcome.id': 3}, query));
+      break;
+  }
+}
+
 Template.analysis.onRendered(function() {
-  howDoYouKnowUs({});
+  Session.set('analysis-chart-type', 0);
+  Session.set('analysis-year', '');
+  renderChart();
+});
+
+Template.analysis.helpers({
+  chartType: function() {
+    return Session.get('analysis-chart-type');
+  },
+
+  year: function() {
+    return Session.get('analysis-year');
+  },
 });
 
 Template.analysis.events({
   'change #chart-type': function(e) {
-    var chartType, cursor, data = [];
+    Session.set('analysis-chart-type', parseInt(e.target.value));
+    renderChart();
+  },
 
-    currentChart.destroy();
+  'change #year': function(e) {
+    Session.set('analysis-year', e.target.value);
+    renderChart();
+  },
 
-    switch (parseInt(e.target.value)) {
-      case 0:
-        howDoYouKnowUs({});
-        break;
-      case 1:
-        howDoYouKnowUs({'phases.current.phase': {$gt: 0}, 'phases.current.outcome.id': 1});
-        break;
-      case 2:
-        howDoYouKnowUs({'phases.current.phase': {$gt: 0}, 'phases.current.outcome.id': 3});
-        break;
-      case 3:
-        ages({});
-        break;
-      case 4:
-        regions({});
-        break;
-      case 5:
-        applicationsPerDay({});
-        break;
-      case 6:
-        regions({'phases.current.phase': 0});
-        break;
-      case 7:
-        regions({'phases.current.phase': 1});
-        break;
-      case 8:
-        regions({'phases.current.phase': 2});
-        break;
-      case 9:
-        regions({'phases.current.phase': 3});
-        break;
-      case 10:
-        regions({'phases.current.outcome.id': 3});
-        break;
-    }
-
+  'submit #analysis-form': function(e) {
+    e.preventDefault();
   },
 });
