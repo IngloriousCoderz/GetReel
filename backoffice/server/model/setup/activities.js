@@ -35,7 +35,7 @@ Meteor.startup(function() {
           // application: {
           //   _id: application._id,
           // },
-          contactType: randomCollectionElement(ContactTypes).name,
+          contactType: randomCollectionElement(ContactTypes)._id,
           outcome: randomCollectionElement(ActivityOutcomes).id,
           notes: Math.random() >= 0.5 ? 'blablabla' : '',
           deadline: new Date(),

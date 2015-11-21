@@ -3,11 +3,15 @@
 
   <div id="activities" class="col-lg-12">
     <div class="btn-group">
-      {{#afModal class="btn btn-default" collection="Activities" schema=schema operation="insert"}}
+      {{#afModal class="btn btn-default" collection="Activities" operation="insert" title="Add a new activity"}}
       add new
       {{/afModal}}
       <button class="btn btn-default">delete selected</button>
     </div>
     {{> reactiveTable settings=settings}}
   </div>
+</template>
+
+<template name="editActivity">
+  {{#afModal collection="Activities" operation="update" doc=_id title="Update activity"}}edit{{/afModal}}
 </template>

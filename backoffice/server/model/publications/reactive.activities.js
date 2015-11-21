@@ -1,7 +1,9 @@
 ReactiveTable.publish('reactiveActivities', Activities, {}, {
   fields: {
-    application: 1,
+    lastname: 1,
+    firstname: 1,
     createdBy: 1,
+    phase: 1,
     contactType: 1,
     outcome: 1,
     notes: 1,
