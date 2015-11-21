@@ -121,4 +121,24 @@ Template.activities.events({
   'change #select-all': function(e) {
     $('.select').prop('checked', $(e.target).prop('checked'));
   },
+
+  'click #delete-selected': function(e) {
+    BootstrapModalPrompt.prompt({
+      title: 'Warning',
+      content: 'Are you sure you want to delete these items?',
+    }, function (result) {
+      if (result) {
+        $('.reactive-table tr').each(function(i, item) {
+          $item = $(item);
+          if ($item.find('.select').prop('checked')) {
+            $item.trigger('activity:delete');
+          }
+        });
+      }
+    });
+  },
+
+  'activity:delete .reactive-table tr': function(e) {
+    Activities.remove({_id: this._id});
+  }
 });
