@@ -1,4 +1,8 @@
 Template.activities.helpers({
+  schema: function() {
+    return ActivitySchema;
+  },
+
   settings: function() {
     return {
       collection: 'reactiveActivities',

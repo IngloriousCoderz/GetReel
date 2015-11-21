@@ -1,4 +1,3 @@
-
 GeneralInfoSchema = new SimpleSchema({
   firstname: {
     type: String,

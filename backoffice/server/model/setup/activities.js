@@ -27,16 +27,16 @@ Meteor.startup(function() {
       var maxActivities = Math.floor(Math.random() * maxActivitiesPerApplication);
       for (i = 0; i < maxActivities; i++) {
         activity = {
-          application: {
-            _id: application._id,
-            firstname: application.firstname,
-            lastname: application.lastname,
-            socialSecurityNumber: application.socialSecurityNumber,
-            phase: application.phases.current.phase,
-          },
+          lastname: application.lastname,
+          firstname: application.firstname,
           createdBy: recruiter.username,
+          ssn: application.socialSecurityNumber,
+          phase: application.phases.current.phase,
+          // application: {
+          //   _id: application._id,
+          // },
           contactType: randomCollectionElement(ContactTypes).name,
-          outcome: randomCollectionElement(ActivityOutcomes).name,
+          outcome: randomCollectionElement(ActivityOutcomes).id,
           notes: Math.random() >= 0.5 ? 'blablabla' : '',
           deadline: new Date(),
           createdAt: new Date(),
