@@ -1,3 +1,6 @@
+Meteor.subscribe('events');
+Meteor.subscribe('locations');
+
 Template.eventz.helpers({
   settings: function() {
     return {
@@ -20,9 +23,7 @@ Template.eventz.helpers({
             return Spacebars.SafeString('<div class="glyphicon glyphicon-pencil"></div>');
           },
 
-          fn: function(value) {
-            return Spacebars.SafeString('<a href="#" role="button">edit</a>');
-          },
+          tmpl: Template.editEvent,
         },
         {
           key: 'details',
@@ -61,7 +62,7 @@ Template.eventz.helpers({
               return null;
             }
 
-            return value.getDate() + '/' + (value.getMonth() + 1) + '/' + value.getFullYear() + ' ' + value.getHours() + ':' + value.getMinutes();
+            return moment(value).format('L LT');
           },
         },
         {
@@ -74,10 +75,20 @@ Template.eventz.helpers({
               return null;
             }
 
-            return value.getDate() + '/' + (value.getMonth() + 1) + '/' + value.getFullYear() + ' ' + value.getHours() + ':' + value.getMinutes();
+            return moment(value).format('L LT');
           },
         },
-        {key: 'location', label: 'location'},
+        {
+          key: 'location',
+          label: 'location',
+          fn: function(value) {
+            if (typeof value === 'undefined' || value === null || value === '') {
+              return null;
+            }
+
+            return Locations.findOne({_id: value}).name;
+          },
+        },
         {key: 'phase', label: 'phase', cellClass: 'text-right'},
       ],
     };
@@ -88,4 +99,24 @@ Template.eventz.events({
   'change #select-all': function(e) {
     $('.select').prop('checked', $(e.target).prop('checked'));
   },
+
+  'click #delete-selected': function(e) {
+    BootstrapModalPrompt.prompt({
+      title: 'Warning',
+      content: 'Are you sure you want to delete these items?',
+    }, function (result) {
+      if (result) {
+        $('.reactive-table tr').each(function(i, item) {
+          $item = $(item);
+          if ($item.find('.select').prop('checked')) {
+            $item.trigger('event:delete');
+          }
+        });
+      }
+    });
+  },
+
+  'event:delete .reactive-table tr': function(e) {
+    Events.remove({_id: this._id});
+  }
 });

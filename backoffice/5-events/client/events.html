@@ -1,9 +1,18 @@
 <template name="eventz">
+  {{> autoformModals}}
+
   <div id="events" class="col-lg-12">
     <div class="btn-group">
-      <button class="btn btn-default">add new</button>
+      {{#afModal class="btn btn-default" collection="Events" operation="insert" title="Add a new activity"}}
+      add new
+      {{/afModal}}
       <button class="btn btn-default">delete selected</button>
     </div>
     {{> reactiveTable settings=settings}}
   </div>
+</template>
+
+
+<template name="editEvent">
+  {{#afModal collection="Events" operation="update" doc=_id title="Update event"}}edit{{/afModal}}
 </template>

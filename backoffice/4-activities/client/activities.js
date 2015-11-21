@@ -3,10 +3,6 @@ Meteor.subscribe('contactTypes');
 Meteor.subscribe('activityOutcomes');
 
 Template.activities.helpers({
-  schema: function() {
-    return ActivitySchema;
-  },
-
   settings: function() {
     return {
       collection: 'reactiveActivities',
@@ -96,7 +92,7 @@ Template.activities.helpers({
               return null;
             }
 
-            return value.getDate() + '/' + (value.getMonth() + 1) + '/' + value.getFullYear();
+            return moment(value).format('L');
           },
         },
         {
@@ -109,7 +105,7 @@ Template.activities.helpers({
               return null;
             }
 
-            return value.getDate() + '/' + (value.getMonth() + 1) + '/' + value.getFullYear();
+            return moment(value).format('L');
           },
         },
       ],

@@ -25,9 +25,10 @@ Meteor.startup(function() {
         description: 'import',
         from: new Date(),
         to: new Date(),
-        location: randomCollectionElement(Locations).name,
+        location: randomCollectionElement(Locations)._id,
         phase2: [],
         phase3: [],
+        phase: 2,
       };
       applicationsPhase2.forEach(function(application) {
         event.phase2.push(application._id);
