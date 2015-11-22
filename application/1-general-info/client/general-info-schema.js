@@ -15,13 +15,13 @@ GeneralInfoSchema = new SimpleSchema({
   },
   nationality: {
     type: String,
-    autoform: {
+    /*autoform: {
       options: {
         USA: 'USA',
         UK: 'UK',
         Italy: 'Italy',
       },
-    },
+    },*/
   },
   permit: {
     type: Boolean,
@@ -39,37 +39,30 @@ GeneralInfoSchema = new SimpleSchema({
   findAddress: {
     type: String,
   },
-  locality: {
+  civic: {
     type: String,
   },
-  'administrative_area_level_2': {
+  address: {
     type: String,
-    /*autoform: {
-      options: {
-        Winchestershire: 'Winchestershire',
-        Coltshire: 'Coltshire',
-        Berettashire: 'Berettashire',
+  },
+  zip: {
+    type: String,
+  },
+  city: {
+    type: String,
+  },
+  province: {
+    type: String,
+  },
+  region: {
+    type: String,
+    autoform: {
+      options: function() {
+        return Regions.find().map(function(item) {
+          return {label: item.name, value: item.id};
+        });
       },
-    },*/
-  },
-  'postal_code': {
-    type: String,
-  },
-  route: {
-    type: String,
-  },
-  'street_number': {
-    type: String,
-  },
-  'administrative_area_level_1': {
-    type: String,
-    /*autoform: {
-      options: {
-        NORTH: 'NORTH',
-        WEST: 'WEST',
-        SOUTH: 'SOUTH',
-      },
-    },*/
+    },
   },
   country: {
     type: String,

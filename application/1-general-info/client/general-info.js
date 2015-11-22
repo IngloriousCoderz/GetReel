@@ -1,15 +1,7 @@
 Meteor.subscribe('availableJobs');
 
-Template.generalInfoStep.onCreated(function() {
-  console.log('Loading');
-  loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
-  GoogleMaps.load({
-    key: 'AIzaSyAwmYRqqPG0EH9nZ_NIasHUxD3k8LKPbtU',
-    libraries: 'places',
-  });
-});
-
 Template.generalInfoStep.onRendered(function() {
+  loadFilePicker('ASOqF4I2hQ5O6FgWUBsHLz');
 
   if ($('input[type=\'filepicker-dragdrop\']')) {
     $('input[type=\'filepicker-dragdrop\']').each(function(i, e) {
@@ -18,14 +10,27 @@ Template.generalInfoStep.onRendered(function() {
       }
     });
   };
-
+/*
   this.autorun(function() {
     if (GoogleMaps.loaded()) {
-      $('#findAddress').geocomplete({
+      $('findAddress').geocomplete({
         details: 'form',
       });
     }
   });
+*/
+this.autorun(function() {
+  if (GoogleMaps.loaded()) {
+    $(findAddress).geocomplete({
+      details: '.address',
+    });
+  }
+});
+
+
+
+
+
 
   var data = this.data.step.data();
   var hasPermit;
@@ -46,12 +51,6 @@ Template.generalInfoStep.onRendered(function() {
   });
 
   $(':checkbox').change();
-  /*
-  $('input[type=\'filepicker-dragdrop\']').each(function(i, e) {
-    if ($(e).css('display') != 'none') {
-      filepicker.constructWidget(e);
-    }
-  });*/
 });
 
 Template.generalInfoStep.helpers({

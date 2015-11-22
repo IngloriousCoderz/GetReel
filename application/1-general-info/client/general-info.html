@@ -31,34 +31,33 @@
       </div>
     </fieldset>
 
-    <fieldset>
-    <legend>{{_ "Permanent Address"}}</legend>
-    <div class="col-lg-12">
-      {{> afQuickField id="findAddress" name="findAddress"}}
-    </div>
-      <form>
+    <fieldset class="address">
+      <legend>{{_ "Permanent Address"}}</legend>
+      <div class="col-lg-12">
+        {{> afQuickField id="findAddress" name="findAddress"}}
+      </div>
       <div class="col-lg-2">
-        {{> afQuickField id="street_number" name="street_number"}}
+        {{> afQuickField id="civic" name="street_number"}}
       </div>
 
       <div class="col-lg-3">
-        {{> afQuickField id="route" name="route"}}
+        {{> afQuickField id="address" name="route"}}
       </div>
 
       <div class="col-lg-2">
-        {{> afQuickField id="postal_code" name="postal_code"}}
+        {{> afQuickField id="zip" name="postal_code"}}
       </div>
 
       <div class="col-lg-3">
-        {{> afQuickField id="locality" name="locality"}}
+        {{> afQuickField id="city" name="locality"}}
       </div>
 
       <div class="col-lg-2">
-        {{> afQuickField id="administrative_area_level_2" name="administrative_area_level_2"}}
+        {{> afQuickField id="province" name="administrative_area_level_2"}}
       </div>
 
       <div class="col-lg-6">
-        {{> afQuickField id="administrative_area_level_1" name="administrative_area_level_1"}}
+        {{> afQuickField id="region" name="administrative_area_level_1"}}
       </div>
 
       <div class="col-lg-6">
@@ -68,12 +67,14 @@
       <div class="col-lg-12">
         {{> afQuickField id="sameAddress" name="sameAddress" class="js-switch"}}
       </div>
-      </form>
     </fieldset>
 
     <fieldset id="currentAddressFieldset">
       <legend>{{_ "Current Address"}}</legend>
-
+      <div class="col-lg-12">
+        {{> afQuickField id="findCurrent" name="findCurrent"}}
+      </div>
+        <div class="details">
       <div class="col-lg-2">
         {{> afQuickField id="currentCivic" name="currentCivic"}}
       </div>
@@ -100,6 +101,7 @@
 
       <div class="col-lg-6">
         {{> afQuickField id="currentCountry" name="currentCountry"}}
+      </div>
       </div>
     </fieldset>
 
