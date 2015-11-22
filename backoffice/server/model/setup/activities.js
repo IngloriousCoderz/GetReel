@@ -9,7 +9,7 @@ Meteor.startup(function() {
     return;
   }
 
-  var applications = Applications.find({'phases.current.phase': {$gt: 0}}, {limit: maxApplications});
+  var applications = Applications.find({'phases.current.id': {$gt: 0}}, {limit: maxApplications});
   var recruiter = Meteor.users.findOne({
     roles: 'recruiter',
   }, {
@@ -31,10 +31,7 @@ Meteor.startup(function() {
           firstname: application.firstname,
           createdBy: recruiter.username,
           ssn: application.socialSecurityNumber,
-          phase: application.phases.current.phase,
-          // application: {
-          //   _id: application._id,
-          // },
+          phase: application.phases.current.id,
           contactType: randomCollectionElement(ContactTypes)._id,
           outcome: randomCollectionElement(ActivityOutcomes).id,
           notes: Math.random() >= 0.5 ? 'blablabla' : '',
@@ -44,7 +41,7 @@ Meteor.startup(function() {
         };
 
         activity._id = Activities.insert(activity);
-        Applications.update({_id:application._id}, {$push: {activities: activity._id}});
+        Applications.update({_id: application._id}, {$push: {activities: activity._id}});
       }
     });
 

@@ -166,12 +166,12 @@ function renderChart() {
       howDoYouKnowUs(query);
       break;
     case 1:
-      query['phases.current.phase'] = {$gt: 0};
+      query['phases.current.id'] = 2;
       query['phases.current.outcome.id'] = 1;
       howDoYouKnowUs(query);
       break;
     case 2:
-      query['phases.current.phase'] = {$gt: 0};
+      query['phases.current.id'] = 2;
       query['phases.current.outcome.id'] = 3;
       howDoYouKnowUs(query);
       break;
@@ -185,23 +185,23 @@ function renderChart() {
       applicationsPerDay(query);
       break;
     case 6:
-      query['phases.current.phase'] = 0;
+      query['phases.current.id'] = 0;
       regions(query);
       break;
     case 7:
-      query['phases.current.phase'] = 1;
+      query['phases.current.id'] = 1;
       regions(query);
       break;
     case 8:
-      query['phases.current.phase'] = 2;
+      query['phases.current.id'] = 2;
       regions(query);
       break;
     case 9:
-      query['phases.current.phase'] = 3;
+      query['phases.current.id'] = 3;
       regions(query);
       break;
     case 10:
-      query['phases.current.outcome.id'] = 3;
+      query['phases.current.id'] = 4;
       regions(query);
       break;
   }
