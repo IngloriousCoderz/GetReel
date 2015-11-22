@@ -37,31 +37,31 @@
         {{> afQuickField id="findAddress" name="findAddress"}}
       </div>
       <div class="col-lg-2">
-        {{> afQuickField id="civic" name="street_number"}}
+        {{> afQuickField id="civic" name="civic" data-geo="street_number"}}
       </div>
 
       <div class="col-lg-3">
-        {{> afQuickField id="address" name="route"}}
+        {{> afQuickField id="address" name="address" data-geo="route"}}
       </div>
 
       <div class="col-lg-2">
-        {{> afQuickField id="zip" name="postal_code"}}
+        {{> afQuickField id="zip" name="zip" data-geo="postal_code"}}
       </div>
 
       <div class="col-lg-3">
-        {{> afQuickField id="city" name="locality"}}
+        {{> afQuickField id="city" name="city" data-geo="locality"}}
       </div>
 
       <div class="col-lg-2">
-        {{> afQuickField id="province" name="administrative_area_level_2"}}
+        {{> afQuickField id="province" name="province" data-geo="administrative_area_level_2_short"}}
       </div>
 
       <div class="col-lg-6">
-        {{> afQuickField id="region" name="administrative_area_level_1"}}
+        {{> afQuickField id="region" name="region"}}
       </div>
 
       <div class="col-lg-6">
-        {{> afQuickField id="country" name="country"}}
+        {{> afQuickField id="country" name="country" data-geo="country"}}
       </div>
 
       <div class="col-lg-12">
@@ -69,38 +69,38 @@
       </div>
     </fieldset>
 
-    <fieldset id="currentAddressFieldset">
+    <fieldset id="currentAddressFieldset" class="currentAddress">
       <legend>{{_ "Current Address"}}</legend>
       <div class="col-lg-12">
         {{> afQuickField id="findCurrent" name="findCurrent"}}
       </div>
         <div class="details">
       <div class="col-lg-2">
-        {{> afQuickField id="currentCivic" name="currentCivic"}}
+        {{> afQuickField id="currentCivic" name="currentCivic" data-geo="street_number"}}
       </div>
 
       <div class="col-lg-3">
-        {{> afQuickField id="currentAddress" name="currentAddress"}}
+        {{> afQuickField id="currentAddress" name="currentAddress" data-geo="route"}}
       </div>
 
       <div class="col-lg-2">
-        {{> afQuickField id="currentZip" name="currentZip"}}
+        {{> afQuickField id="currentZip" name="currentZip" data-geo="postal_code"}}
       </div>
 
       <div class="col-lg-3">
-        {{> afQuickField id="currentCity" name="currentCity"}}
+        {{> afQuickField id="currentCity" name="currentCity" data-geo="locality"}}
       </div>
 
       <div class="col-lg-2">
-        {{> afQuickField id="currentProvince" name="currentProvince"}}
+        {{> afQuickField id="currentProvince" name="currentProvince" data-geo="administrative_area_level_2_short"}}
       </div>
 
       <div class="col-lg-6">
-        {{> afQuickField id="currentRegion" name="currentRegion"}}
+        {{> afQuickField id="currentRegion" name="currentRegion" data-geo="administrative_area_level_1"}}
       </div>
 
       <div class="col-lg-6">
-        {{> afQuickField id="currentCountry" name="currentCountry"}}
+        {{> afQuickField id="currentCountry" name="currentCountry" data-geo="country"}}
       </div>
       </div>
     </fieldset>

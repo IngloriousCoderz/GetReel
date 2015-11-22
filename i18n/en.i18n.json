@@ -78,39 +78,41 @@
         "label": "Find your address",
         "placeholder": "Type here your address"
       },
-      "street_number": {
+      "civic": {
         "label": "Street number",
         "placeholder": "e.g. 127"
       },
-      "route": {
+      "address": {
         "label": "Address",
         "placeholder": "e.g. Abbey Road"
       },
-      "postal_code": {
+      "zip": {
         "label": "Zip Code",
         "placeholder": "e.g. 00100"
       },
-      "locality": {
+      "city": {
         "label": "City",
         "placeholder": "e.g. London"
       },
-      "administrative_area_level_2": {
+      "province": {
         "label": "Province",
         "firstOption": "Choose a province..."
       },
-      "administrative_area_level_1": {
-        "label": "state",
+      "region": {
+        "label": "Region",
         "placeholder": "Choose a region..."
       },
       "country": {
         "label": "Country",
         "placeholder": "e.g. United Kingdom"
       },
-
       "sameAddress": {
         "label": "Current address same as permanent"
       },
-
+      "findCurrent": {
+        "label": "Find your current address",
+        "placeholder": "Type here your current address"
+      },
       "currentCivic": {
         "label": "Civic number",
         "placeholder": "e.g. 127"

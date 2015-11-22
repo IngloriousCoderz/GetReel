@@ -1,9 +1,17 @@
 <template name="activities">
+  {{> autoformModals}}
+
   <div id="activities" class="col-lg-12">
     <div class="btn-group">
-      <button class="btn btn-default">add new</button>
-      <button class="btn btn-default">delete selected</button>
+      {{#afModal class="btn btn-default" collection="Activities" operation="insert" title="Add a new activity"}}
+      add new
+      {{/afModal}}
+      <button id="delete-selected" class="btn btn-default">delete selected</button>
     </div>
     {{> reactiveTable settings=settings}}
   </div>
+</template>
+
+<template name="editActivity">
+  {{#afModal collection="Activities" operation="update" doc=_id title="Update activity"}}edit{{/afModal}}
 </template>

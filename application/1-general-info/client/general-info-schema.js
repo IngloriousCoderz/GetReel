@@ -1,4 +1,3 @@
-
 GeneralInfoSchema = new SimpleSchema({
   firstname: {
     type: String,
@@ -38,6 +37,7 @@ GeneralInfoSchema = new SimpleSchema({
   },
   findAddress: {
     type: String,
+    optional: true,
   },
   civic: {
     type: String,
@@ -71,6 +71,10 @@ GeneralInfoSchema = new SimpleSchema({
     type: Boolean,
     optional: true,
   },
+  findCurrent: {
+    type: String,
+    optional: true,
+  },
   currentCity: {
     type: String,
     optional: true,
@@ -83,13 +87,6 @@ GeneralInfoSchema = new SimpleSchema({
   currentProvince: {
     type: String,
     optional: true,
-    autoform: {
-      options: {
-        Winchestershire: 'Winchestershire',
-        Coltshire: 'Coltshire',
-        Berettashire: 'Berettashire',
-      },
-    },
     custom: function() {
       if (!(this.field('sameAddress').value) && !this.isSet && ((typeof (this.value) == 'undefined') || (this.value === null || this.value === ''))) {
         return 'required';
@@ -127,10 +124,10 @@ GeneralInfoSchema = new SimpleSchema({
     type: String,
     optional: true,
     autoform: {
-      options: {
-        NORTH: 'NORTH',
-        WEST: 'WEST',
-        SOUTH: 'SOUTH',
+      options: function() {
+        return Regions.find().map(function(item) {
+          return {label: item.name, value: item.id};
+        });
       },
     },
     custom: function() {

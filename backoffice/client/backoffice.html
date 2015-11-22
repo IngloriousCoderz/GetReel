@@ -1,48 +1,65 @@
 <template name="backoffice">
-  <div class="container-fluid">
+  <div id="backoffice" class="container-fluid">
     <div class="row">
-      <ul id="steps" class="nav nav-tabs">
-        <li class="active">
-          <a href="#tab1" data-toggle="tab">List</a>
-          <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            List <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="#tab1" data-toggle="tab">New</a></li>
-            <li><a href="#tab1" data-toggle="tab">Step 1</a></li>
-            <li><a href="#tab1" data-toggle="tab">Step 2</a></li>
-            <li><a href="#tab1" data-toggle="tab">Step 3</a></li>
-            <li><a href="#tab1" data-toggle="tab">Approved</a></li>
-            <li><a href="#tab1" data-toggle="tab">Rejected</a></li>
-            <li><a href="#tab1" data-toggle="tab">All</a></li>
-          </ul>-->
+      <ul class="nav nav-tabs">
+        <li class="{{active 'list'}}">
+          <a href="/backoffice/list">List</a>
         </li>
-        <li><a href="#tab2" data-toggle="tab">Analysis</a></li>
-        <li><a href="#tab3" data-toggle="tab">Settings</a></li>
-        <li><a href="#tab4" data-toggle="tab">Activities</a></li>
-        <li><a href="#tab5" data-toggle="tab">Events</a></li>
+        <li class="{{active 'analysis'}}">
+          <a href="/backoffice/analysis">Analysis</a>
+        </li>
+        <li class="{{active 'settings'}}">
+          <a href="/backoffice/settings">Settings</a>
+        </li>
+        <li class="{{active 'activities'}}">
+          <a href="/backoffice/activities">Activities</a>
+        </li>
+        <li class="{{active 'events'}}">
+          <a href="/backoffice/events">Events</a>
+        </li>
       </ul>
 
       <div class="tab-content responsive">
-        <div class="tab-pane active" id="tab1">
-          {{> filter}}
-          {{> applications}}
+        {{#if isActiveTab 'list'}}
+        <div class="tab-pane {{active 'list'}}" id="list">
+          {{> list}}
         </div>
-        <div class="tab-pane" id="tab2">
+        {{/if}}
+        {{#if isActiveTab 'analysis'}}
+        <div class="tab-pane {{active 'analysis'}}" id="analysis">
           {{> analysis}}
         </div>
-        <div class="tab-pane" id="tab3">
+        {{/if}}
+        {{#if isActiveTab 'settings'}}
+        <div class="tab-pane {{active 'settings'}}" id="settings">
           Settings
         </div>
-        <div class="tab-pane" id="tab4">
+        {{/if}}
+        {{#if isActiveTab 'activities'}}
+        <div class="tab-pane {{active 'activities'}}" id="activities">
           {{> activities}}
         </div>
-        <div class="tab-pane" id="tab5">
+        {{/if}}
+        {{#if isActiveTab 'events'}}
+        <div class="tab-pane {{active 'events'}}" id="events">
           {{> eventz}}
         </div>
+        {{/if}}
       </div>
+      <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        List <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="#tab1">New</a></li>
+        <li><a href="#tab1">Step 1</a></li>
+        <li><a href="#tab1">Step 2</a></li>
+        <li><a href="#tab1">Step 3</a></li>
+        <li><a href="#tab1">Approved</a></li>
+        <li><a href="#tab1">Rejected</a></li>
+        <li><a href="#tab1">All</a></li>
+      </ul>-->
     </div>
-</div>
+  </div>
 </template>
 
 <template name="noDataTemplate">

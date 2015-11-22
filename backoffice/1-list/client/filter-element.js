@@ -145,19 +145,18 @@ var toggleValues = function(op, $values, massive) {
 
 var cleanInput = function(value, type) {
   if (type === 'select') {
-    intValue = parseInt(value, 10);
-    if (!_.isNaN(intValue)) {
-      value = intValue;
+    if (value !== '' && !isNaN(value)) {
+      value = parseInt(value, 10);
     }
   } else if (type === 'number') {
     value = parseInt(value, 10);
-    if (_.isNaN(value)) {
+    if (isNaN(value)) {
       value = '';
     }
   } else if (type === 'date') {
     value = value.split('/');
     value = new Date(value[2] + '/' + value[1] + '/' + value[0]);
-    if (_.isNaN(value.getTime())) {
+    if (isNaN(value.getTime())) {
       value = '';
     }
   }

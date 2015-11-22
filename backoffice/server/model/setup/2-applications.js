@@ -13,10 +13,9 @@ Meteor.startup(function() {
 	}
 
 	for (var i = 0; i < maxApplications; i++) {
-		var createdAt = new Date();
-		createdAt.setFullYear(createdAt.getFullYear() - 9);
-
-		createdAt.setTime(createdAt.getTime() + Math.random() * 10*12*30*24*60*60*1000);
+		var createdAt = moment().subtract(9, 'years').startOf('year');
+		createdAt.add(Math.random() * 10*12*30*24*60*60*1000, 'milliseconds');
+		createdAt = createdAt.toDate();
 
 		var fakeApplication = {
 			fake: true,

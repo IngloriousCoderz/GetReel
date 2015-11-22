@@ -1,3 +1,4 @@
+Meteor.subscribe('regions');
 Meteor.subscribe('availableJobs');
 
 Template.generalInfoStep.onRendered(function() {
@@ -23,6 +24,15 @@ this.autorun(function() {
   if (GoogleMaps.loaded()) {
     $(findAddress).geocomplete({
       details: '.address',
+      detailsAttribute: 'data-geo',
+    }).bind("geocode:result", function(event, result) {
+      $(region).val(Regions.findOne({name: result.address_components[5].short_name}).id);
+    });
+    $(findCurrent).geocomplete({
+      details: '.currentAddress',
+      detailsAttribute: 'data-geo',
+    }).bind("geocode:result", function(event, result) {
+      $(currentRegion).val(Regions.findOne({name: result.address_components[5].short_name}).id);
     });
   }
 });

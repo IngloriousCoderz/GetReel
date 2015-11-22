@@ -64,6 +64,7 @@ function regions(query) {
   var i = 0;
   cursor.forEach(function(region) {
     var color = chroma(colors[i]);
+    query['region.id'] = region.id;
     data.push({
       value: Applications.find(query).count(),
       label: region.name,
@@ -77,26 +78,26 @@ function regions(query) {
 }
 
 function applicationsPerDay(query) {
-  var minDate = Applications.findOne({}, {sort: {createdAt: 1}}).createdAt;
-  var maxDate = Applications.findOne({}, {sort: {createdAt: -1}}).createdAt;
+  var minDate = Applications.findOne(query, {sort: {createdAt: 1}}).createdAt;
+  var maxDate = Applications.findOne(query, {sort: {createdAt: -1}}).createdAt;
   var dates = [];
   var span = null;
-  if (maxDate - minDate < 30*24*60*60*1000) {
+  if (maxDate - minDate <= 31*24*60*60*1000) {
     span = 'month';
     for (var i = 0; i < 30; i++) {
       dates.push(minDate.getDate() + i);
     }
-  } else if (maxDate - minDate < 12*30*24*60*60*1000) {
+  } else if (maxDate - minDate <= 366*24*60*60*1000) {
     span = 'year';
     for (var i = 0; i < 12; i++) {
       dates.push(monthNames[minDate.getMonth() + i]);
     }
-  } else if (maxDate - minDate < 10*12*30*24*60*60*1000) {
+  } else if (maxDate - minDate <= 10*366*24*60*60*1000) {
     span = 'decade';
     for (var i = 0; i < 10; i++) {
       dates.push(minDate.getFullYear() + i);
     }
-  } else if (maxDate - minDate < 10*10*12*30*24*60*60*1000) {
+  } else if (maxDate - minDate <= 10*10*366*24*60*60*1000) {
     span = 'century';
     for (var i = 0; i < 10; i++) {
       dates.push(minDate.getFullYear() + i * 10);
@@ -145,51 +146,95 @@ function applicationsPerDay(query) {
   currentChart = new Chart(chart.getContext('2d')).Line(data);
 }
 
+function renderChart() {
+  var query = {};
+
+  if (typeof currentChart !== 'undefined') {
+    currentChart.destroy();
+  }
+
+  var chartType = Session.get('analysis-chart-type');
+  var year = Session.get('analysis-year');
+  if (year !== '' && !isNaN(year)) {
+    year = parseInt(year, 10);
+    nextYear = year + 1;
+    query = {createdAt: {$gte: new Date(year + '/01/01'), $lt: new Date(nextYear + '/01/01')}};
+  }
+
+  switch (chartType) {
+    case 0:
+      howDoYouKnowUs(query);
+      break;
+    case 1:
+      query['phases.current.phase'] = {$gt: 0};
+      query['phases.current.outcome.id'] = 1;
+      howDoYouKnowUs(query);
+      break;
+    case 2:
+      query['phases.current.phase'] = {$gt: 0};
+      query['phases.current.outcome.id'] = 3;
+      howDoYouKnowUs(query);
+      break;
+    case 3:
+      ages(query);
+      break;
+    case 4:
+      regions(query);
+      break;
+    case 5:
+      applicationsPerDay(query);
+      break;
+    case 6:
+      query['phases.current.phase'] = 0;
+      regions(query);
+      break;
+    case 7:
+      query['phases.current.phase'] = 1;
+      regions(query);
+      break;
+    case 8:
+      query['phases.current.phase'] = 2;
+      regions(query);
+      break;
+    case 9:
+      query['phases.current.phase'] = 3;
+      regions(query);
+      break;
+    case 10:
+      query['phases.current.outcome.id'] = 3;
+      regions(query);
+      break;
+  }
+}
+
 Template.analysis.onRendered(function() {
-  howDoYouKnowUs({});
+  Session.set('analysis-chart-type', 0);
+  Session.set('analysis-year', '');
+  renderChart();
+});
+
+Template.analysis.helpers({
+  chartType: function() {
+    return Session.get('analysis-chart-type');
+  },
+
+  year: function() {
+    return Session.get('analysis-year');
+  },
 });
 
 Template.analysis.events({
   'change #chart-type': function(e) {
-    var chartType, cursor, data = [];
+    Session.set('analysis-chart-type', parseInt(e.target.value));
+    renderChart();
+  },
 
-    currentChart.destroy();
+  'change #year': function(e) {
+    Session.set('analysis-year', e.target.value);
+    renderChart();
+  },
 
-    switch (parseInt(e.target.value)) {
-      case 0:
-        howDoYouKnowUs({});
-        break;
-      case 1:
-        howDoYouKnowUs({'phases.current.phase': {$gt: 0}, 'phases.current.outcome.id': 1});
-        break;
-      case 2:
-        howDoYouKnowUs({'phases.current.phase': {$gt: 0}, 'phases.current.outcome.id': 3});
-        break;
-      case 3:
-        ages({});
-        break;
-      case 4:
-        regions({});
-        break;
-      case 5:
-        applicationsPerDay({});
-        break;
-      case 6:
-        regions({'phases.current.phase': 0});
-        break;
-      case 7:
-        regions({'phases.current.phase': 1});
-        break;
-      case 8:
-        regions({'phases.current.phase': 2});
-        break;
-      case 9:
-        regions({'phases.current.phase': 3});
-        break;
-      case 10:
-        regions({'phases.current.outcome.id': 3});
-        break;
-    }
-
+  'submit #analysis-form': function(e) {
+    e.preventDefault();
   },
 });

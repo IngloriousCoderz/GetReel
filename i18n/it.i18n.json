@@ -81,27 +81,27 @@
         "placeholder": "Inserisci qui il tuo indirizzo"
       },
 
-      "street_number": {
+      "civic": {
         "label": "Numero civico",
         "placeholder": "es. 127"
       },
-      "route": {
+      "address": {
         "label": "Indirizzo",
         "placeholder": "es. Via Roma"
       },
-      "postal_code": {
+      "zip": {
         "label": "CAP",
         "placeholder": "es. 00100"
       },
-      "locality": {
+      "city": {
         "label": "Città",
         "placeholder": "es. Torino"
       },
-      "administrative_area_level_2": {
+      "province": {
         "label": "Provincia",
         "firstOption": "Scegli una provincia..."
       },
-      "administrative_area_level_1": {
+      "region": {
         "label": "Regione",
         "firstOption": "Scegli una regione..."
       },
@@ -113,7 +113,10 @@
       "sameAddress": {
         "label": "Indirizzo di domicilio uguale a quello di residenza"
       },
-
+      "findCurrent": {
+        "label": "Trova il tuo domicilio",
+        "placeholder": "Inserisci qui il tuo domicilio"
+      },
       "currentCivic": {
         "label": "Numero civico",
         "placeholder": "es. 127"
