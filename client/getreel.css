@@ -1,0 +1,28 @@
+body {
+  font-size: 12px;
+  padding-top: 80px;
+}
+
+.navbar-nav {
+  margin-top: 8px;
+}
+
+legend {
+  font-size: 18px;
+}
+
+label {
+  font-size: 12px;
+}
+
+.form-control {
+  font-size: 12px;
+}
+
+.btn {
+  font-size: 12px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  margin: 2px 0 0;
+}
