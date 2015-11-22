@@ -1,0 +1,19 @@
+#backoffice .tab-content {
+  padding-top: 10px;
+}
+
+/* filter elements */
+#backoffice label {
+  display: inline; /* overrides Bootstrap's inline-block, does it break anything? */
+}
+
+#backoffice .input-group.options * {
+  border-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#backoffice .input-group.options:not(.hidden) + .values * {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

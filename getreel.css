@@ -2,6 +2,10 @@ body {
   padding-top: 80px;
  }
 
+.navbar-nav {
+  margin-top: 8px;
+}
+
 .wizard-next-button{
   padding: 8px;
   border-radius: 10px;
