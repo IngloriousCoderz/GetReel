@@ -55,7 +55,7 @@ GeneralInfoSchema = new SimpleSchema({
     type: String,
   },
   region: {
-    type: String,
+    type: Number,
     autoform: {
       options: function() {
         return Regions.find().map(function(item) {
@@ -121,7 +121,7 @@ GeneralInfoSchema = new SimpleSchema({
     },
   },
   currentRegion: {
-    type: String,
+    type: Number,
     optional: true,
     autoform: {
       options: function() {
