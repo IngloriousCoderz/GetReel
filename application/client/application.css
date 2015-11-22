@@ -128,6 +128,9 @@
 #application .nav-pills > li.active > a:after, .nav-pills > li.active > a:focus:after, .nav-pills > li.active > a:hover:after {
   border-left-color: hsla(206, 100%, 29%, 1) !important;
 }
+#application [data-required] label:after {
+  content: '*';
+}
 #application div.bigstars div.rateit-range {
   background: url(/img/star-white32.png);
   height: 32px;

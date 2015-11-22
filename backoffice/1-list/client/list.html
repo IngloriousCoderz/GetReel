@@ -6,6 +6,7 @@
 <template name="filter">
   <div class="col-lg-12">
     <div class="btn-group">
+      {{> phaseFilter}}
       <button id="delete-selected" class="btn btn-default">delete selected</button>
     </div>
   </div>
@@ -28,10 +29,25 @@
 
     {{> filterElement label="mobile phone" name="mobile"}}
 
-    {{> filterElement label="status" name="status" attrName="status" type="select" options=statuses valueField="id" descriptionField="name"}}
+    {{> filterElement label="outcome" name="outcome" attrName="phases.current.id" type="select" options=phases valueField="id" descriptionField="name"}}
 
-    {{> filterElement label="region" name="region" attrName="region.id" type="select" options=regions valueField="id" descriptionField="name"}}
+    {{> filterElement label="region" name="region" attrName="region" type="select" options=regions valueField="id" descriptionField="name"}}
   </form>
+</template>
+
+<template name="phaseFilter">
+  <button class="btn btn-default" data-toggle="dropdown">
+    <span data-bind="label">new</span> <span class="caret"></span>
+  </button>
+  <ul id="phase-filter" class="dropdown-menu">
+    <li><a data-phase="0" href="#">new</a></li>
+    <li><a data-phase="1" href="#">phase 1</a></li>
+    <li><a data-phase="2" href="#">phase 2</a></li>
+    <li><a data-phase="3" href="#">phase 3</a></li>
+    <li><a data-phase="4" href="#">rejected</a></li>
+    <li><a data-phase="5" href="#">approved</a></li>
+    <li><a data-phase="" href="#">all</a></li>
+  </ul>
 </template>
 
 <template name="applications">

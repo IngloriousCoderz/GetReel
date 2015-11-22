@@ -38,29 +38,33 @@ Meteor.startup(function() {
 			referrer: randomCollectionElement(Referrers)._id,
 		};
 
-		fakeApplication.phases.current = [0, 1, 2, 3, 4][Math.floor(Math.random() * 4)];
-		fakeApplication.phases.history = [{
-			phase: 0,
-			description: "recruiting",
-		}];
+		fakeApplication.phases.current = [0, 1, 2, 3, 4, 5][Math.floor(Math.random() * 6)];
+		fakeApplication.phases.history = [Phases.findOne({id: 0})];
 
 		for (var phasen = 1; phasen <= fakeApplication.phases.current; phasen++) {
-			fakeApplication.phases.history[phasen] = {
-				phase: phasen,
-				description: "Fase " + phasen,
-				recruiter: Meteor.users.findOne({
-					username: 'recruiter' + (Math.floor(Math.random() * Meteor.settings.development.generateFakeUsers.maxRecruiters) + 1),
-					roles: 'recruiter',
-				}, {fields: {_id: 1}})._id,
-				outcome: {
-					id: randomCollectionElement(ActivityOutcomes).id,
-					reasonId: (function(current) {
-						var reasons = OutcomeReasons.find({phase:current}).fetch();
-						return randomCollectionElement(OutcomeReasons).id;
-					})(fakeApplication.phases.current),
-					notes: 'blablabla',
-				}
-			}
+			var phase = Phases.findOne({id: phasen});
+			phase.recruiter =  Meteor.users.findOne({
+				username: 'recruiter' + (Math.floor(Math.random() * Meteor.settings.development.generateFakeUsers.maxRecruiters) + 1),
+				roles: 'recruiter',
+			}, {fields: {_id: 1}})._id;
+			fakeApplication.phases.history.push(phase);
+			// fakeApplication.phases.history[phasen] = {
+			// 	phase: phasen,
+			// 	description: "Fase " + phasen,
+			// 	recruiter: Meteor.users.findOne({
+			// 		username: 'recruiter' + (Math.floor(Math.random() * Meteor.settings.development.generateFakeUsers.maxRecruiters) + 1),
+			// 		roles: 'recruiter',
+			// 	}, {fields: {_id: 1}})._id,
+			// 	outcome: randomCollectionElement(RecruitingOutcomes).id,
+			// 	// outcome: {
+			// 	// 	id: randomCollectionElement(RecruitingOutcomes).id,
+			// 	// 	reasonId: (function(current) {
+			// 	// 		var reasons = OutcomeReasons.find({phase: current}).fetch();
+			// 	// 		return randomCollectionElement(OutcomeReasons).id;
+			// 	// 	})(fakeApplication.phases.current),
+			// 		// notes: 'blablabla',
+			// 	// }
+			// }
 		}
 		fakeApplication.phases.current = fakeApplication.phases.history[fakeApplication.phases.current];
 

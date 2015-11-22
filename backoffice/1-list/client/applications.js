@@ -13,13 +13,14 @@ Template.applications.helpers({
       noDataTmpl: Template.noDataTemplate,
       class: 'table table-striped table-hover table-condensed',
       filters: [
+        'phase',
         'createdAt',
         'recruiter',
         'firstname',
         'lastname',
         'age',
         'mobile',
-        'status',
+        'outcome',
         'region',
       ],
       fields: [
