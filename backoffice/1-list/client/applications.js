@@ -1,3 +1,6 @@
+Meteor.subscribe('applications');
+Meteor.subscribe('regions');
+
 Template.applications.helpers({
   settings: function() {
     return {
@@ -86,7 +89,7 @@ Template.applications.helpers({
               return null;
             }
 
-            return value.getDate() + '/' + (value.getMonth() + 1) + '/' + value.getFullYear();
+            return moment(value).format('L');
           },
         },
         {key: 'firstname', label: 'firstname'},
@@ -94,7 +97,17 @@ Template.applications.helpers({
         {key: 'age', label: 'age', cellClass: 'text-right'},
         {key: 'city', label: 'city'},
         {key: 'province', label: 'province'},
-        {key: 'region.name', label: 'region'},
+        {
+          key: 'region',
+          label: 'region',
+          fn: function(value) {
+            if (typeof value === 'undefined' || value === null || value === '') {
+              return null;
+            }
+
+            return Regions.findOne({id: value}).name;
+          },
+        },
         {key: 'mobile', label: 'mobile'},
         {
           key: 'experienceAsPhotographer',
@@ -131,7 +144,17 @@ Template.applications.helpers({
           },
         },
         {key: 'photo', label: 'photo'},
-        {key: 'phases.current.recruiter.username', label: 'recruiter'},
+        {
+          key: 'phases.current.recruiter',
+          label: 'recruiter',
+          fn: function(value) {
+            if (typeof value === 'undefined' || value === null || value === '') {
+              return null;
+            }
+
+            return Meteor.users.findOne({_id: value}, {fields: {username: 1}}).username;
+          },
+        },
       ],
     };
   },
@@ -141,4 +164,8 @@ Template.applications.events({
   'change #select-all': function(e) {
     $('.select').prop('checked', $(e.target).prop('checked'));
   },
+
+  'application:delete .reactive-table tr': function(e) {
+    Applications.remove({_id: this._id});
+  }
 });

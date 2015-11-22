@@ -32,10 +32,10 @@ Meteor.startup(function() {
 			mobile: '33344455' + i,
 			phases: {},
 			createdAt: createdAt,
-			region: Regions.findOne({id: Math.floor(Math.random() * 20) + 1}),
+			region: Regions.findOne({id: Math.floor(Math.random() * 20) + 1}).id,
 			experienceAsPhotographer: Math.random() >= 0.5,
 			experienceAsOther: Math.random() >= 0.5,
-			referrer: randomCollectionElement(Referrers).name,
+			referrer: randomCollectionElement(Referrers)._id,
 		};
 
 		fakeApplication.phases.current = [0, 1, 2, 3, 4][Math.floor(Math.random() * 4)];
@@ -51,12 +51,7 @@ Meteor.startup(function() {
 				recruiter: Meteor.users.findOne({
 					username: 'recruiter' + (Math.floor(Math.random() * Meteor.settings.development.generateFakeUsers.maxRecruiters) + 1),
 					roles: 'recruiter',
-				}, {
-					fields: {
-						_id: 1,
-						username: 1,
-					},
-				}),
+				}, {fields: {_id: 1}})._id,
 				outcome: {
 					id: randomCollectionElement(ActivityOutcomes).id,
 					reasonId: (function(current) {

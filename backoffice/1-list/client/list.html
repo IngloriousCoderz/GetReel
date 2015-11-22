@@ -4,6 +4,11 @@
 </template>
 
 <template name="filter">
+  <div class="col-lg-12">
+    <div class="btn-group">
+      <button id="delete-selected" class="btn btn-default">delete selected</button>
+    </div>
+  </div>
   <form id="filter-form" class="col-lg-2">
     <div class="checkbox">
       <label>
@@ -13,7 +18,7 @@
 
     {{> filterElement label="creation date" name="createdAt" type="date"}}
 
-    {{> filterElement label="recruiter" name="recruiter" attrName="phases.current.recruiter._id" type="select" options=recruiters valueField="_id" descriptionField="username"}}
+    {{> filterElement label="recruiter" name="recruiter" attrName="phases.current.recruiter" type="select" options=recruiters valueField="_id" descriptionField="username"}}
 
     {{> filterElement label="firstname" name="firstname"}}
 

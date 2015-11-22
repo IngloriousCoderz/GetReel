@@ -12,7 +12,7 @@ function howDoYouKnowUs(query) {
   var i = 0;
   cursor.forEach(function(referrer) {
     var color = chroma(colors[i]);
-    query.referrer = referrer.name;
+    query.referrer = referrer._id;
     data.push({
       value: Applications.find(query).count(),
       label: referrer.name,
@@ -64,7 +64,7 @@ function regions(query) {
   var i = 0;
   cursor.forEach(function(region) {
     var color = chroma(colors[i]);
-    query['region.id'] = region.id;
+    query.region = region.id;
     data.push({
       value: Applications.find(query).count(),
       label: region.name,
