@@ -11,7 +11,8 @@ Router.onBeforeAction(function() {
             this.next();
         } else {
             console.log("GLOBAL::onBeforeAction:NOTlogged:", currentRoute);
-            //this.render("login");
+            console.log("should render login");
+            // this.render("login");
             this.next();
         }
     },
