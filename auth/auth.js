@@ -37,4 +37,13 @@ if (Meteor.isClient) {
 			});
 		}
 	});
+
+	Template.logout.events({
+		'click .logout' : function(event) {
+			event.preventDefault();
+			console.log('logout');
+			Meteor.logout();
+			Router.go('login');
+		}
+	});
 }

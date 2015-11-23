@@ -11,9 +11,9 @@ Router.onBeforeAction(function() {
             this.next();
         } else {
             console.log("GLOBAL::onBeforeAction:NOTlogged:", currentRoute);
-            console.log("should render login");
-            // this.render("login");
-            this.next();
+            // console.log("should render login");
+            this.render("login");
+            //this.next();
         }
     },
     {
@@ -26,6 +26,10 @@ Router.onBeforeAction(function() {
         only: ['backoffice.tab']
     }
 );
+
+Router.route('/register');
+Router.route('/login');
+Router.route('/logout');
 
 
 Router.route('/', {

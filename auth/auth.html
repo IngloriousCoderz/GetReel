@@ -15,3 +15,12 @@
         <p>email <input type="submit" value="login" ></p>
     </form>
 </template>
+
+<template name="logout">
+    {{#if currentUser}}
+        <li><a href="#" class="logout">Logout</a></li>
+    {{else}}
+        <h2>not logged in</h2>
+        {{>login}}
+    {{/if}}
+</template>
