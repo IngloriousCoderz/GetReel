@@ -17,13 +17,13 @@ Router.onBeforeAction(function() {
         }
     },
     {
-        except: [
-                    'home',
-                    'register',
-                    'login',
-                    'application'
-                ]
-        // only: ['backoffice']
+        // except: [
+        //             'home',
+        //             'register',
+        //             'login',
+        //             'application'
+        //         ]
+        only: ['backoffice.tab']
     }
 );
 
@@ -47,5 +47,8 @@ Router.route('/backoffice/:tab', function() {
                 return {activeTab: this.params.tab};
             },
         });
+    },
+    {
+        name: 'backoffice.tab'
     }
 );

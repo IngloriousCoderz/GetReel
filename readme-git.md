@@ -22,3 +22,6 @@
 **CLI** : `git fetch --all --prune`
 	elimina i branch orfani locali
 
+**CLI** : `git checkout HEAD -- my-file.txt`
+	resetta un singolo file locale (working copy)
+
