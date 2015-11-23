@@ -17,13 +17,13 @@ Router.onBeforeAction(function() {
         }
     },
     {
-        // except: [
-        //             'home',
-        //             'register',
-        //             'login',
-        //             'application'
-        //         ]
-        only: ['backoffice']
+        except: [
+                    'home',
+                    'register',
+                    'login',
+                    'application'
+                ]
+        // only: ['backoffice']
     }
 );
 
