@@ -1,7 +1,7 @@
 <template name="application">
   <div id="application" class="container">
     <div class="row">
-      <div class="col-md-12 col-xs-12">
+      <div class="col-xs-12">
         <img  src="/img/lavora.png" class="img-responsive center-block">
         <div class="well">
           <p>{{_ "welcome-message"}}</p>
@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12 application">
+      <div class="col-xs-12 wizard-wrapper">
         {{> wizard id="application-wizard" route="application" steps=steps stepsTemplate="applicationSteps"}}
     </div>
     </div>

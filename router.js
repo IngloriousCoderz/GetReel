@@ -17,7 +17,6 @@ Router.onBeforeAction(function() {
   only: ['backoffice.tab']
 });
 
-Router.route('/register');
 Router.route('/login');
 Router.route('/logout');
 

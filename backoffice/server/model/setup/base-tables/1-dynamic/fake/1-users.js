@@ -10,12 +10,12 @@ Meteor.startup(function() {
     if (Roles.getUsersInRole('admin').count() === 0) {
       console.log('regenerating fake admin');
       var admin = Accounts.createUser({
-        username: 'administrator',
-        email: 'administrator@getreel.com',
-        password: 'password',
+        username: 'admin',
+        email: 'admin@getreel.com',
+        password: 'admin',
         profile: {
-          first_name: 'fake',
-          last_name: 'administrator',
+          first_name: 'Fake',
+          last_name: 'Admin',
           company: 'Inglorious Coderz',
         },
       });
