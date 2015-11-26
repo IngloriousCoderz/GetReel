@@ -3,7 +3,11 @@ body {
   padding-top: 80px;
 }
 
-.navbar-nav {
+.navbar-text {
+  margin-top: 17px;
+}
+
+.tap-i18n-dropdown > select {
   margin-top: 8px;
 }
 

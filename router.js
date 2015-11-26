@@ -2,6 +2,24 @@ Router.configure({
   layoutTemplate: 'layout',
 });
 
+Router.onBeforeAction(function() {
+  var currentUser = Meteor.userId();
+  var currentRoute = Router.current().route.getName();
+
+  if (currentUser) {
+    console.log('GLOBAL::onBeforeAction:logged:', currentRoute);
+    this.next();
+  } else {
+    console.log('GLOBAL::onBeforeAction:NOTlogged:', currentRoute);
+    this.render('login');
+  }
+}, {
+  only: ['backoffice.tab']
+});
+
+Router.route('/login');
+Router.route('/logout');
+
 Router.route('/', {
   name: 'home'
 });
@@ -35,4 +53,6 @@ Router.route('/backoffice/:tab', function() {
       };
     },
   });
+}, {
+  name: 'backoffice.tab'
 });

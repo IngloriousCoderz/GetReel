@@ -20,18 +20,18 @@
         </div>
         <div class="navbar-right navbar-collapse collapse"  id="navbar-collapse">
           <ul class="nav navbar-nav">
-            {{> i18n_dropdown}}
-            <!-- {{> loginButtons}} -->
-            <!-- <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                Lingua <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Italiano</a></li>
-                <li><a href="#">English</a></li>
-                <li><a href="#">French</a></li>
-              </ul>
-            </li> -->
+            {{#if currentUser}}
+            <li>
+              <p class="navbar-text">
+                hi {{currentUser.profile.first_name}}!
+                &nbsp;
+                <a href="{{pathFor 'logout'}}" class="navbar-link">logout</a>
+              </p>
+            </li>
+            {{/if}}
+            <li>
+              {{> i18n_dropdown}}
+            </li>
           </ul>
         </div>
       </div>
@@ -43,7 +43,7 @@
   <footer class="container text-center">
     <small>
       Made with &lt;3 in 2015 by
-      <a href="http://www.ingloriouscoderz.com" target="_blank">IngloriousCoderz</a>
+      <a href="http://www.ingloriouscoderz.com" target="_blank">Inglorious Coderz</a>
     </small>
   </footer>
 </template>

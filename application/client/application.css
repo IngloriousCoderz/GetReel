@@ -22,7 +22,7 @@
   width: 150px;
   margin: 15px 15px 15px 0;
 }
-#application .application {
+#application .wizard-wrapper {
   background: url("/img/grid.png");
   border-radius: 5px;
   border: 7px solid #F28700;
