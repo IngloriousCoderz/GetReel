@@ -1,5 +1,5 @@
 Meteor.subscribe('referrers');
-Meteor.subscribe('applications');
+Meteor.subscribe('recruitments');
 Meteor.subscribe('regions');
 
 var currentChart;
@@ -14,7 +14,7 @@ function howDoYouKnowUs(query) {
     var color = chroma(colors[i]);
     query.referrer = referrer._id;
     data.push({
-      value: Applications.find(query).count(),
+      value: Recruitments.find(query).count(),
       label: referrer.name,
       color: color,
       highlight: color.brighten(),
@@ -26,8 +26,8 @@ function howDoYouKnowUs(query) {
 }
 
 function ages(query) {
-  var minAge = Applications.findOne({}, {sort: {age: 1}}).age;
-  var maxAge = Applications.findOne({}, {sort: {age: -1}}).age;
+  var minAge = Recruitments.findOne({}, {sort: {age: 1}}).age;
+  var maxAge = Recruitments.findOne({}, {sort: {age: -1}}).age;
 
   var ages = [];
   for (var i = minAge; i <= maxAge; i++) {
@@ -49,7 +49,7 @@ function ages(query) {
 
   for (var i = 0; i < ages.length; i++) {
     query.age = ages[i];
-    data.datasets[0].data.push(Applications.find(query).count());
+    data.datasets[0].data.push(Recruitments.find(query).count());
   }
 
   currentChart = new Chart(chart.getContext('2d')).Bar(data);
@@ -66,7 +66,7 @@ function regions(query) {
     var color = chroma(colors[i]);
     query.region = region.id;
     data.push({
-      value: Applications.find(query).count(),
+      value: Recruitments.find(query).count(),
       label: region.name,
       color: color,
       highlight: color.brighten(),
@@ -77,9 +77,9 @@ function regions(query) {
   currentChart = new Chart(chart.getContext('2d')).Doughnut(data);
 }
 
-function applicationsPerDay(query) {
-  var minDate = Applications.findOne(query, {sort: {createdAt: 1}}).createdAt;
-  var maxDate = Applications.findOne(query, {sort: {createdAt: -1}}).createdAt;
+function recruitmentsPerDay(query) {
+  var minDate = Recruitments.findOne(query, {sort: {createdAt: 1}}).createdAt;
+  var maxDate = Recruitments.findOne(query, {sort: {createdAt: -1}}).createdAt;
   var dates = [];
   var span = null;
   if (maxDate - minDate <= 31*24*60*60*1000) {
@@ -139,7 +139,7 @@ function applicationsPerDay(query) {
         break;
     }
     query.createdAt = {$gte: date, $lt: newDate};
-    data.datasets[0].data.push(Applications.find(query).count());
+    data.datasets[0].data.push(Recruitments.find(query).count());
     date = newDate;
   }
 
@@ -182,7 +182,7 @@ function renderChart() {
       regions(query);
       break;
     case 5:
-      applicationsPerDay(query);
+      recruitmentsPerDay(query);
       break;
     case 6:
       query['stages.current.id'] = 0;

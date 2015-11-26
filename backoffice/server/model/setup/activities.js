@@ -1,15 +1,15 @@
 //TODO: consider mass import from existing data
 Meteor.startup(function() {
   if (Meteor.settings.development.generateFakeActivities) {
-    var maxApplications = Meteor.settings.development.generateFakeActivities.maxApplications;
-    var maxActivitiesPerApplication = Meteor.settings.development.generateFakeActivities.maxActivitiesPerApplication;
-    console.log('regenerating max %d fake activities for %d applications...', maxActivitiesPerApplication, maxApplications);
+    var maxRecruitments = Meteor.settings.development.generateFakeActivities.maxRecruitments;
+    var maxActivitiesPerRecruitment = Meteor.settings.development.generateFakeActivities.maxActivitiesPerRecruitment;
+    console.log('regenerating max %d fake activities for %d recruitments...', maxActivitiesPerRecruitment, maxRecruitments);
   } else {
     console.log('WARNING : NOT regenerating fake activities');
     return;
   }
 
-  var applications = Applications.find({'stages.current.id': {$gt: 0}}, {limit: maxApplications});
+  var recruitments = Recruitments.find({'stages.current.id': {$gt: 0}}, {limit: maxRecruitments});
   var recruiter = Meteor.users.findOne({
     roles: 'recruiter',
   }, {
@@ -23,15 +23,15 @@ Meteor.startup(function() {
 
   if (Activities.find().count() === 0) {
     var activity = {};
-    applications.forEach(function(application) {
-      var maxActivities = Math.floor(Math.random() * maxActivitiesPerApplication);
+    recruitments.forEach(function(recruitment) {
+      var maxActivities = Math.floor(Math.random() * maxActivitiesPerRecruitment);
       for (i = 0; i < maxActivities; i++) {
         activity = {
-          lastname: application.lastname,
-          firstname: application.firstname,
+          lastname: recruitment.lastname,
+          firstname: recruitment.firstname,
           createdBy: recruiter.username,
-          ssn: application.socialSecurityNumber,
-          stage: application.stages.current.id,
+          ssn: recruitment.socialSecurityNumber,
+          stage: recruitment.stages.current.id,
           contactType: randomCollectionElement(ContactTypes)._id,
           outcome: randomCollectionElement(ActivityOutcomes).id,
           notes: Math.random() >= 0.5 ? 'blablabla' : '',
@@ -41,7 +41,7 @@ Meteor.startup(function() {
         };
 
         activity._id = Activities.insert(activity);
-        Applications.update({_id: application._id}, {$push: {activities: activity._id}});
+        Recruitments.update({_id: recruitment._id}, {$push: {activities: activity._id}});
       }
     });
 

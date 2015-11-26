@@ -2,16 +2,16 @@
 Meteor.startup(function() {
   var maxEvents = 0;
   if (Meteor.settings.development.generateFakeEvents) {
-    var maxApplications = Meteor.settings.development.generateFakeEvents.maxApplications;
+    var maxRecruitments = Meteor.settings.development.generateFakeEvents.maxRecruitments;
     maxEvents = Meteor.settings.development.generateFakeEvents.maxEvents;
-    console.log('regenerating max %d fake events for %d applications...', maxEvents, maxApplications);
+    console.log('regenerating max %d fake events for %d recruitments...', maxEvents, maxRecruitments);
   } else {
     console.log('WARNING : NOT regenerating fake activities');
     return;
   }
 
-  var applicationsStage2 = Applications.find({'stages.current.id': 2}, {limit: maxApplications});
-  var applicationsStage3 = Applications.find({'stages.current.id': 3}, {limit: maxApplications});
+  var recruitmentsStage2 = Recruitments.find({'stages.current.id': 2}, {limit: maxRecruitments});
+  var recruitmentsStage3 = Recruitments.find({'stages.current.id': 3}, {limit: maxRecruitments});
 
   // var locations = Locations.find().fetch();
   Events.remove({});
@@ -30,21 +30,21 @@ Meteor.startup(function() {
         stage3: [],
         stage: 2,
       };
-      applicationsStage2.forEach(function(application) {
-        event.stage2.push(application._id);
+      recruitmentsStage2.forEach(function(recruitment) {
+        event.stage2.push(recruitment._id);
       });
 
-      applicationsStage3.forEach(function(application) {
-        event.stage3.push(application._id);
+      recruitmentsStage3.forEach(function(recruitment) {
+        event.stage3.push(recruitment._id);
       });
 
       //
-      // se serve assegnare a random un evento ad una application
+      // se serve assegnare a random un evento ad una recruitment
       // e' necessario prima salvare l'evento per avere l'id
       //
       event._id = Events.insert(event);
-      Applications.update({'stages.current.id': 2}, {$push: {events: event}}, {multi: true});
-      Applications.update({'stages.current.id': 3}, {$push: {events: event}}, {multi: true});
+      Recruitments.update({'stages.current.id': 2}, {$push: {events: event}}, {multi: true});
+      Recruitments.update({'stages.current.id': 3}, {$push: {events: event}}, {multi: true});
     }
 
     console.log('added', Events.find().count(), 'activities.');

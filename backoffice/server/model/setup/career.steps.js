@@ -2,16 +2,16 @@
 Meteor.startup(function() {
 
     if (Meteor.settings.development.generateFakeCareers) {
-		var maxApplications = Meteor.settings.development.generateFakeCareers.maxApplications;
-		var maxCareersPerApplication = Meteor.settings.development.generateFakeCareers.maxCareersPerApplication;
-		console.log('regenerating max %d fake careers for %d applications...', maxCareersPerApplication, maxApplications);
+		var maxRecruitments = Meteor.settings.development.generateFakeCareers.maxRecruitments;
+		var maxCareersPerRecruitment = Meteor.settings.development.generateFakeCareers.maxCareersPerRecruitment;
+		console.log('regenerating max %d fake careers for %d recruitments...', maxCareersPerRecruitment, maxRecruitments);
 	} else {
-		var maxCareersPerApplication = 0;
+		var maxCareersPerRecruitment = 0;
 		console.log('WARNING : NOT regenerating fake careers');
 		return;
 	}
 
-    var applications = Applications.find({}, {limit:maxApplications});
+    var recruitments = Recruitments.find({}, {limit:maxRecruitments});
 
     var seasonsCursor = Seasons.find();
     var seasonsArray = seasonsCursor.fetch();
@@ -20,15 +20,15 @@ Meteor.startup(function() {
 
 	if (CareerSteps.find().count() === 0) {
         var step = {};
-        applications.forEach(function(application) {
-            for(i= 0; i < Math.floor(Math.random()* maxCareersPerApplication);i++) {
+        recruitments.forEach(function(recruitment) {
+            for(i= 0; i < Math.floor(Math.random()* maxCareersPerRecruitment);i++) {
                 step = {
-                    application : {
-                        _id: application._id,
-                        firstname : application.firstname,
-                        lastname: application.lastname,
-                        //socialSecurityNumber: application.socialSecurityNumber,
-                        //stage: application.stages.current,
+                    recruitment : {
+                        _id: recruitment._id,
+                        firstname : recruitment.firstname,
+                        lastname: recruitment.lastname,
+                        //socialSecurityNumber: recruitment.socialSecurityNumber,
+                        //stage: recruitment.stages.current,
                     },
                     createdAt: new Date(),
         			role: randomCollectionElement(ApplicationRoles).name,
@@ -41,7 +41,7 @@ Meteor.startup(function() {
         			description: 'import',
                 }
                 step._id = CareerSteps.insert(step);
-                Applications.update({_id:application._id}, {$push: {careerSteps:step._id}});
+                Recruitments.update({_id:recruitment._id}, {$push: {careerSteps:step._id}});
             }
         });
 

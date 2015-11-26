@@ -1,4 +1,4 @@
-ReactiveTable.publish('reactiveApplications', Applications, {}, {
+ReactiveTable.publish('reactiveRecruitments', Recruitments, {}, {
   fields: {
     email: 1,
     createdAt: 1,

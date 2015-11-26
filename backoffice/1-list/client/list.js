@@ -8,7 +8,7 @@ Template.list.events({
         $('.reactive-table tr').each(function(i, item) {
           $item = $(item);
           if ($item.find('.select').prop('checked')) {
-            $item.trigger('application:delete');
+            $item.trigger('recruitment:delete');
           }
         });
       }

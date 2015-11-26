@@ -1,23 +1,23 @@
 Meteor.startup(function() {
-	Applications.remove({
+	Recruitments.remove({
 		fake: true
 	});
 
-	if (Meteor.settings.development.generateFakeApplications) {
-		var maxApplications = Meteor.settings.development.generateFakeApplications.maxApplications;
-		console.log('regenerating', maxApplications, 'fake applications...');
+	if (Meteor.settings.development.generateFakeRecruitments) {
+		var maxRecruitments = Meteor.settings.development.generateFakeRecruitments.maxRecruitments;
+		console.log('regenerating', maxRecruitments, 'fake recruitments...');
 	} else {
-		var maxApplications = 0;
-		console.log('WARNING : NOT regenerating fake applications');
+		var maxRecruitments = 0;
+		console.log('WARNING : NOT regenerating fake recruitments');
 		return;
 	}
 
-	for (var i = 0; i < maxApplications; i++) {
+	for (var i = 0; i < maxRecruitments; i++) {
 		var createdAt = moment().subtract(9, 'years').startOf('year');
 		createdAt.add(Math.random() * 10*12*30*24*60*60*1000, 'milliseconds');
 		createdAt = createdAt.toDate();
 
-		var fakeApplication = {
+		var fakeRecruitment = {
 			fake: true,
 			firstname: ['Palmer', 'Andersen', 'Antony', 'Roby', 'Federica'][Math.floor(Math.random() * 4)],
 			lastname: ['Eldritch', 'Bianchi', 'Rossi', 'Verdi'][Math.floor(Math.random() * 3)],
@@ -38,17 +38,17 @@ Meteor.startup(function() {
 			referrer: randomCollectionElement(Referrers)._id,
 		};
 
-		fakeApplication.stages.current = [0, 1, 2, 3, 4, 5][Math.floor(Math.random() * 6)];
-		fakeApplication.stages.history = [Stages.findOne({id: 0})];
+		fakeRecruitment.stages.current = [0, 1, 2, 3, 4, 5][Math.floor(Math.random() * 6)];
+		fakeRecruitment.stages.history = [Stages.findOne({id: 0})];
 
-		for (var stagen = 1; stagen <= fakeApplication.stages.current; stagen++) {
+		for (var stagen = 1; stagen <= fakeRecruitment.stages.current; stagen++) {
 			var stage = Stages.findOne({id: stagen});
 			stage.recruiter =  Meteor.users.findOne({
 				username: 'recruiter' + (Math.floor(Math.random() * Meteor.settings.development.generateFakeUsers.maxRecruiters) + 1),
 				roles: 'recruiter',
 			}, {fields: {_id: 1}})._id;
-			fakeApplication.stages.history.push(stage);
-			// fakeApplication.stages.history[stagen] = {
+			fakeRecruitment.stages.history.push(stage);
+			// fakeRecruitment.stages.history[stagen] = {
 			// 	stage: stagen,
 			// 	description: "Fase " + stagen,
 			// 	recruiter: Meteor.users.findOne({
@@ -61,21 +61,21 @@ Meteor.startup(function() {
 			// 	// 	reasonId: (function(current) {
 			// 	// 		var reasons = OutcomeReasons.find({stage: current}).fetch();
 			// 	// 		return randomCollectionElement(OutcomeReasons).id;
-			// 	// 	})(fakeApplication.stages.current),
+			// 	// 	})(fakeRecruitment.stages.current),
 			// 		// notes: 'blablabla',
 			// 	// }
 			// }
 		}
-		fakeApplication.stages.current = fakeApplication.stages.history[fakeApplication.stages.current];
+		fakeRecruitment.stages.current = fakeRecruitment.stages.history[fakeRecruitment.stages.current];
 
-		fakeApplication.email = fakeApplication.firstname + '.' + fakeApplication.lastname + '@getreel.test';
-		var diff = new Date() - fakeApplication.dateOfBirth;
+		fakeRecruitment.email = fakeRecruitment.firstname + '.' + fakeRecruitment.lastname + '@getreel.test';
+		var diff = new Date() - fakeRecruitment.dateOfBirth;
 		var age = Math.floor(diff / 31536000000);
-		fakeApplication.age = age;
-		fakeApplication.events = [];
-		fakeApplication.activities = [];
-		fakeApplication.careerSteps = [];
+		fakeRecruitment.age = age;
+		fakeRecruitment.events = [];
+		fakeRecruitment.activities = [];
+		fakeRecruitment.careerSteps = [];
 
-		Applications.insert(fakeApplication);
+		Recruitments.insert(fakeRecruitment);
 	}
 });

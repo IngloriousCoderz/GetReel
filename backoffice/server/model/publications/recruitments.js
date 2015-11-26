@@ -1,8 +1,8 @@
-Meteor.publish('applications', function() {
+Meteor.publish('recruitments', function() {
   //
   // ELIMINARE!
   //
-  return Applications.find();
+  return Recruitments.find();
 
   //
   // ELIMINARE!
@@ -17,11 +17,11 @@ Meteor.publish('applications', function() {
   });
 
   if (Roles.userIsInRole(this.userId, ['admin'])) {
-    return Applications.find();
+    return Recruitments.find();
   }
 
   if (Roles.userIsInRole(this.userId, ['recruiter'])) {
-    return Applications.find({
+    return Recruitments.find({
       $or: [
         {
           'status.current': 'unassigned',

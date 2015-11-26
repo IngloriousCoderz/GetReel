@@ -1,24 +1,24 @@
 {
-	"activeEnvironment": "development",
-	"development": {
-		"generateFakeApplications": {
-			"maxApplications": 40
-		},
-		"generateFakeUsers": {
-			"maxRecruiters": 2,
-			"admin": true
-		},
-		"generateFakeActivities": {
-			"maxApplications" : 10,
-			"maxActivitiesPerApplication" : 5
-		},
-		"generateFakeCareers": {
-			"maxApplications" : 10,
-			"maxCareersPerApplication" : 5
-		},
-		"generateFakeEvents": {
-		"maxApplications" : 10,
-		"maxEvents" : 5
-		}
-	}
+  "activeEnvironment": "development",
+  "development": {
+    "generateFakeRecruitments": {
+      "maxRecruitments": 40
+    },
+    "generateFakeUsers": {
+      "maxRecruiters": 2,
+      "admin": true
+    },
+    "generateFakeActivities": {
+      "maxRecruitments": 10,
+      "maxActivitiesPerRecruitment": 5
+    },
+    "generateFakeCareers": {
+      "maxRecruitments": 10,
+      "maxCareersPerRecruitment": 5
+    },
+    "generateFakeEvents": {
+      "maxRecruitments": 10,
+      "maxEvents": 5
+    }
+  }
 }

@@ -6,8 +6,8 @@ Router.route('/', {
     name: 'home'
 });
 
-Router.route('/application/success', {
-    name: 'application.success'
+Router.route('/recruitment/success', {
+    name: 'recruitment.success'
 });
 
 Router.route('/backoffice', function() {

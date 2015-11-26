@@ -1,10 +1,10 @@
-Meteor.subscribe('applications');
+Meteor.subscribe('recruitments');
 Meteor.subscribe('regions');
 
-Template.applications.helpers({
+Template.recruitments.helpers({
   settings: function() {
     return {
-      collection: 'reactiveApplications',
+      collection: 'reactiveRecruitments',
       rowsPerPage: 20,
       showFilter: false,
       showRowCount: true,
@@ -161,12 +161,12 @@ Template.applications.helpers({
   },
 });
 
-Template.applications.events({
+Template.recruitments.events({
   'change #select-all': function(e) {
     $('.select').prop('checked', $(e.target).prop('checked'));
   },
 
-  'application:delete .reactive-table tr': function(e) {
-    Applications.remove({_id: this._id});
+  'recruitment:delete .reactive-table tr': function(e) {
+    Recruitments.remove({_id: this._id});
   }
 });

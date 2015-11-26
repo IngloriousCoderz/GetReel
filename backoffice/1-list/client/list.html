@@ -1,6 +1,6 @@
 <template name="list">
   {{> filter}}
-  {{> applications}}
+  {{> recruitments}}
 </template>
 
 <template name="filter">
@@ -50,8 +50,8 @@
   </ul>
 </template>
 
-<template name="applications">
-  <div id="applications" class="col-lg-10">
+<template name="recruitments">
+  <div id="recruitments" class="col-lg-10">
     {{> reactiveTable settings=settings}}
   </div>
 </template>
