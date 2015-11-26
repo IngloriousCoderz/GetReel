@@ -16,19 +16,19 @@ Template.list.events({
   },
 });
 
-Template.phaseFilter.onRendered(function() {
-  this.filter = new ReactiveTable.Filter('phase', ['phases.current.id']);
-  $('#phase-filter li > a:first').click();
+Template.stageFilter.onRendered(function() {
+  this.filter = new ReactiveTable.Filter('stage', ['stages.current.id']);
+  $('#stage-filter li > a:first').click();
 });
 
-Template.phaseFilter.events({
-  'click #phase-filter li > a': function(event, template) {
+Template.stageFilter.events({
+  'click #stage-filter li > a': function(event, template) {
     event.preventDefault();
 
     var $target = $(event.currentTarget);
     $target.closest('.btn-group').find('[data-bind="label"]').text($target.text());
 
-    var value = $target.data('phase');
+    var value = $target.data('stage');
     if (value !== '' && value <= 5) {
       value = {$eq: value};
     } else {

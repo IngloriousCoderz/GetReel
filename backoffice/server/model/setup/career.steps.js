@@ -28,7 +28,7 @@ Meteor.startup(function() {
                         firstname : application.firstname,
                         lastname: application.lastname,
                         //socialSecurityNumber: application.socialSecurityNumber,
-                        //phase: application.phases.current,
+                        //stage: application.stages.current,
                     },
                     createdAt: new Date(),
         			role: randomCollectionElement(ApplicationRoles).name,

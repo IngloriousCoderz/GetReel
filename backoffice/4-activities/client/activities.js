@@ -58,7 +58,7 @@ Template.activities.helpers({
         {key: 'lastname', label: 'lastname'},
         {key: 'firstname', label: 'firstname'},
         {key: 'createdBy', label: 'created by'},
-        {key: 'phase', label: 'phase', cellClass: 'text-right'},
+        {key: 'stage', label: 'stage', cellClass: 'text-right'},
         {
           key: 'contactType',
           label: 'contact type',

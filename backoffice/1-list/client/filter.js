@@ -1,5 +1,5 @@
 Meteor.subscribe('recruiters');
-Meteor.subscribe('phases');
+Meteor.subscribe('stages');
 Meteor.subscribe('regions');
 
 Template.filter.onRendered(function() {
@@ -11,8 +11,8 @@ Template.filter.helpers({
     return Meteor.users.find({roles: 'recruiter'});
   },
 
-  phases: function() {
-    return Phases.find();
+  stages: function() {
+    return Stages.find();
   },
 
   regions: function() {

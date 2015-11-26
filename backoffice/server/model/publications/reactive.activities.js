@@ -3,7 +3,7 @@ ReactiveTable.publish('reactiveActivities', Activities, {}, {
     lastname: 1,
     firstname: 1,
     createdBy: 1,
-    phase: 1,
+    stage: 1,
     contactType: 1,
     outcome: 1,
     notes: 1,

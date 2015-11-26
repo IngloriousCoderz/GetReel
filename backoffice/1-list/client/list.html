@@ -6,7 +6,7 @@
 <template name="filter">
   <div class="col-lg-12">
     <div class="btn-group">
-      {{> phaseFilter}}
+      {{> stageFilter}}
       <button id="delete-selected" class="btn btn-default">delete selected</button>
     </div>
   </div>
@@ -19,7 +19,7 @@
 
     {{> filterElement label="creation date" name="createdAt" type="date"}}
 
-    {{> filterElement label="recruiter" name="recruiter" attrName="phases.current.recruiter" type="select" options=recruiters valueField="_id" descriptionField="username"}}
+    {{> filterElement label="recruiter" name="recruiter" attrName="stages.current.recruiter" type="select" options=recruiters valueField="_id" descriptionField="username"}}
 
     {{> filterElement label="firstname" name="firstname"}}
 
@@ -29,24 +29,24 @@
 
     {{> filterElement label="mobile phone" name="mobile"}}
 
-    {{> filterElement label="outcome" name="outcome" attrName="phases.current.id" type="select" options=phases valueField="id" descriptionField="name"}}
+    {{> filterElement label="outcome" name="outcome" attrName="stages.current.id" type="select" options=stages valueField="id" descriptionField="name"}}
 
     {{> filterElement label="region" name="region" attrName="region" type="select" options=regions valueField="id" descriptionField="name"}}
   </form>
 </template>
 
-<template name="phaseFilter">
+<template name="stageFilter">
   <button class="btn btn-default" data-toggle="dropdown">
     <span data-bind="label">new</span> <span class="caret"></span>
   </button>
-  <ul id="phase-filter" class="dropdown-menu">
-    <li><a data-phase="0" href="#">new</a></li>
-    <li><a data-phase="1" href="#">phase 1</a></li>
-    <li><a data-phase="2" href="#">phase 2</a></li>
-    <li><a data-phase="3" href="#">phase 3</a></li>
-    <li><a data-phase="4" href="#">rejected</a></li>
-    <li><a data-phase="5" href="#">approved</a></li>
-    <li><a data-phase="" href="#">all</a></li>
+  <ul id="stage-filter" class="dropdown-menu">
+    <li><a data-stage="0" href="#">new</a></li>
+    <li><a data-stage="1" href="#">stage 1</a></li>
+    <li><a data-stage="2" href="#">stage 2</a></li>
+    <li><a data-stage="3" href="#">stage 3</a></li>
+    <li><a data-stage="4" href="#">rejected</a></li>
+    <li><a data-stage="5" href="#">approved</a></li>
+    <li><a data-stage="" href="#">all</a></li>
   </ul>
 </template>
 

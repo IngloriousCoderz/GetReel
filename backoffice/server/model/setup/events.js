@@ -10,8 +10,8 @@ Meteor.startup(function() {
     return;
   }
 
-  var applicationsPhase2 = Applications.find({'phases.current.id': 2}, {limit: maxApplications});
-  var applicationsPhase3 = Applications.find({'phases.current.id': 3}, {limit: maxApplications});
+  var applicationsStage2 = Applications.find({'stages.current.id': 2}, {limit: maxApplications});
+  var applicationsStage3 = Applications.find({'stages.current.id': 3}, {limit: maxApplications});
 
   // var locations = Locations.find().fetch();
   Events.remove({});
@@ -26,16 +26,16 @@ Meteor.startup(function() {
         from: new Date(),
         to: new Date(),
         location: randomCollectionElement(Locations)._id,
-        phase2: [],
-        phase3: [],
-        phase: 2,
+        stage2: [],
+        stage3: [],
+        stage: 2,
       };
-      applicationsPhase2.forEach(function(application) {
-        event.phase2.push(application._id);
+      applicationsStage2.forEach(function(application) {
+        event.stage2.push(application._id);
       });
 
-      applicationsPhase3.forEach(function(application) {
-        event.phase3.push(application._id);
+      applicationsStage3.forEach(function(application) {
+        event.stage3.push(application._id);
       });
 
       //
@@ -43,8 +43,8 @@ Meteor.startup(function() {
       // e' necessario prima salvare l'evento per avere l'id
       //
       event._id = Events.insert(event);
-      Applications.update({'phases.current.id': 2}, {$push: {events: event}}, {multi: true});
-      Applications.update({'phases.current.id': 3}, {$push: {events: event}}, {multi: true});
+      Applications.update({'stages.current.id': 2}, {$push: {events: event}}, {multi: true});
+      Applications.update({'stages.current.id': 3}, {$push: {events: event}}, {multi: true});
     }
 
     console.log('added', Events.find().count(), 'activities.');

@@ -13,7 +13,7 @@ Template.applications.helpers({
       noDataTmpl: Template.noDataTemplate,
       class: 'table table-striped table-hover table-condensed',
       filters: [
-        'phase',
+        'stage',
         'createdAt',
         'recruiter',
         'firstname',
@@ -146,7 +146,7 @@ Template.applications.helpers({
         },
         {key: 'photo', label: 'photo'},
         {
-          key: 'phases.current.recruiter',
+          key: 'stages.current.recruiter',
           label: 'recruiter',
           fn: function(value) {
             if (typeof value === 'undefined' || value === null || value === '') {

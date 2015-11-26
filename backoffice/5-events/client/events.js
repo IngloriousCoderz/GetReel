@@ -89,7 +89,7 @@ Template.eventz.helpers({
             return Locations.findOne({_id: value}).name;
           },
         },
-        {key: 'phase', label: 'phase', cellClass: 'text-right'},
+        {key: 'stage', label: 'stage', cellClass: 'text-right'},
       ],
     };
   },

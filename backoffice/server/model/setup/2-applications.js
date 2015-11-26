@@ -30,7 +30,7 @@ Meteor.startup(function() {
 			residentialCap: 10100,
 			phone: '11223344' + i,
 			mobile: '33344455' + i,
-			phases: {},
+			stages: {},
 			createdAt: createdAt,
 			region: Regions.findOne({id: Math.floor(Math.random() * 20) + 1}).id,
 			experienceAsPhotographer: Math.random() >= 0.5,
@@ -38,19 +38,19 @@ Meteor.startup(function() {
 			referrer: randomCollectionElement(Referrers)._id,
 		};
 
-		fakeApplication.phases.current = [0, 1, 2, 3, 4, 5][Math.floor(Math.random() * 6)];
-		fakeApplication.phases.history = [Phases.findOne({id: 0})];
+		fakeApplication.stages.current = [0, 1, 2, 3, 4, 5][Math.floor(Math.random() * 6)];
+		fakeApplication.stages.history = [Stages.findOne({id: 0})];
 
-		for (var phasen = 1; phasen <= fakeApplication.phases.current; phasen++) {
-			var phase = Phases.findOne({id: phasen});
-			phase.recruiter =  Meteor.users.findOne({
+		for (var stagen = 1; stagen <= fakeApplication.stages.current; stagen++) {
+			var stage = Stages.findOne({id: stagen});
+			stage.recruiter =  Meteor.users.findOne({
 				username: 'recruiter' + (Math.floor(Math.random() * Meteor.settings.development.generateFakeUsers.maxRecruiters) + 1),
 				roles: 'recruiter',
 			}, {fields: {_id: 1}})._id;
-			fakeApplication.phases.history.push(phase);
-			// fakeApplication.phases.history[phasen] = {
-			// 	phase: phasen,
-			// 	description: "Fase " + phasen,
+			fakeApplication.stages.history.push(stage);
+			// fakeApplication.stages.history[stagen] = {
+			// 	stage: stagen,
+			// 	description: "Fase " + stagen,
 			// 	recruiter: Meteor.users.findOne({
 			// 		username: 'recruiter' + (Math.floor(Math.random() * Meteor.settings.development.generateFakeUsers.maxRecruiters) + 1),
 			// 		roles: 'recruiter',
@@ -59,14 +59,14 @@ Meteor.startup(function() {
 			// 	// outcome: {
 			// 	// 	id: randomCollectionElement(RecruitingOutcomes).id,
 			// 	// 	reasonId: (function(current) {
-			// 	// 		var reasons = OutcomeReasons.find({phase: current}).fetch();
+			// 	// 		var reasons = OutcomeReasons.find({stage: current}).fetch();
 			// 	// 		return randomCollectionElement(OutcomeReasons).id;
-			// 	// 	})(fakeApplication.phases.current),
+			// 	// 	})(fakeApplication.stages.current),
 			// 		// notes: 'blablabla',
 			// 	// }
 			// }
 		}
-		fakeApplication.phases.current = fakeApplication.phases.history[fakeApplication.phases.current];
+		fakeApplication.stages.current = fakeApplication.stages.history[fakeApplication.stages.current];
 
 		fakeApplication.email = fakeApplication.firstname + '.' + fakeApplication.lastname + '@getreel.test';
 		var diff = new Date() - fakeApplication.dateOfBirth;

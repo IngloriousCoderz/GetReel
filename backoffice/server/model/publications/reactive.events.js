@@ -4,6 +4,6 @@ ReactiveTable.publish('reactiveEvents', Events, {}, {
     from: 1,
     to: 1,
     location: 1,
-    phase: 1,
+    stage: 1,
   }
 });

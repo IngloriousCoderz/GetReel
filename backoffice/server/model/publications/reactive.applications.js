@@ -12,7 +12,7 @@ ReactiveTable.publish('reactiveApplications', Applications, {}, {
     experienceAsPhotographer: 1,
     experienceAsOther: 1,
     photo: 1,
-    'phases.current': 1,
+    'stages.current': 1,
     activities: 1,
     events: 1,
   }
