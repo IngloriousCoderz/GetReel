@@ -12,7 +12,7 @@ function howDoYouKnowUs(query) {
   var i = 0;
   cursor.forEach(function(referrer) {
     var color = chroma(colors[i]);
-    query.referrer = referrer._id;
+    query['application.referrer'] = referrer._id;
     data.push({
       value: Recruitments.find(query).count(),
       label: referrer.name,
@@ -26,8 +26,8 @@ function howDoYouKnowUs(query) {
 }
 
 function ages(query) {
-  var minAge = Recruitments.findOne({}, {sort: {age: 1}}).age;
-  var maxAge = Recruitments.findOne({}, {sort: {age: -1}}).age;
+  var minAge = Recruitments.findOne({}, {sort: {'application.age': 1}}).application.age;
+  var maxAge = Recruitments.findOne({}, {sort: {'application.age': -1}}).application.age;
 
   var ages = [];
   for (var i = minAge; i <= maxAge; i++) {
@@ -48,7 +48,7 @@ function ages(query) {
   };
 
   for (var i = 0; i < ages.length; i++) {
-    query.age = ages[i];
+    query['application.age'] = ages[i];
     data.datasets[0].data.push(Recruitments.find(query).count());
   }
 
@@ -64,7 +64,7 @@ function regions(query) {
   var i = 0;
   cursor.forEach(function(region) {
     var color = chroma(colors[i]);
-    query.region = region.id;
+    query['application.region'] = region.id;
     data.push({
       value: Recruitments.find(query).count(),
       label: region.name,
