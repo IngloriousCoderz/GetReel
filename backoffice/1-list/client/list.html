@@ -21,17 +21,17 @@
 
     {{> filterElement label="recruiter" name="recruiter" attrName="stages.current.recruiter" type="select" options=recruiters valueField="_id" descriptionField="username"}}
 
-    {{> filterElement label="firstname" name="firstname"}}
+    {{> filterElement label="firstname" name="firstname" attrName="application.firstname"}}
 
-    {{> filterElement label="lastname" name="lastname"}}
+    {{> filterElement label="lastname" name="lastname" attrName="application.lastname"}}
 
-    {{> filterElement label="age" name="age" type="number" min=0}}
+    {{> filterElement label="age" name="age" attrName="application.age" type="number" min=0}}
 
-    {{> filterElement label="mobile phone" name="mobile"}}
+    {{> filterElement label="mobile phone" name="mobile" attrName="application.mobile"}}
 
     {{> filterElement label="outcome" name="outcome" attrName="stages.current.id" type="select" options=stages valueField="id" descriptionField="name"}}
 
-    {{> filterElement label="region" name="region" attrName="region" type="select" options=regions valueField="id" descriptionField="name"}}
+    {{> filterElement label="region" name="region" attrName="application.region" type="select" options=regions valueField="id" descriptionField="name"}}
   </form>
 </template>
 

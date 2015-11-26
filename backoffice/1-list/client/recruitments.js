@@ -64,7 +64,7 @@ Template.recruitments.helpers({
           },
         },
         {
-          key: 'email',
+          key: 'application.email',
           sortable: false,
           headerClass: 'text-center',
           cellClass: 'text-center',
@@ -93,13 +93,13 @@ Template.recruitments.helpers({
             return moment(value).format('L');
           },
         },
-        {key: 'firstname', label: 'firstname'},
-        {key: 'lastname', label: 'lastname'},
-        {key: 'age', label: 'age', cellClass: 'text-right'},
-        {key: 'city', label: 'city'},
-        {key: 'province', label: 'province'},
+        {key: 'application.firstname', label: 'firstname'},
+        {key: 'application.lastname', label: 'lastname'},
+        {key: 'application.age', label: 'age', cellClass: 'text-right'},
+        {key: 'application.city', label: 'city'},
+        {key: 'application.province', label: 'province'},
         {
-          key: 'region',
+          key: 'application.region',
           label: 'region',
           fn: function(value) {
             if (typeof value === 'undefined' || value === null || value === '') {
@@ -109,9 +109,9 @@ Template.recruitments.helpers({
             return Regions.findOne({id: value}).name;
           },
         },
-        {key: 'mobile', label: 'mobile'},
+        {key: 'application.mobile', label: 'mobile'},
         {
-          key: 'experienceAsPhotographer',
+          key: 'application.experienceAsPhotographer',
           headerClass: 'text-center',
           cellClass: 'text-center',
           label: function() {
@@ -128,7 +128,7 @@ Template.recruitments.helpers({
           },
         },
         {
-          key: 'experienceAsOther',
+          key: 'application.experienceAsOther',
           headerClass: 'text-center',
           cellClass: 'text-center',
           label: function() {
@@ -144,7 +144,7 @@ Template.recruitments.helpers({
             return Spacebars.SafeString('<div class="' + glyphicon + '"></div>');
           },
         },
-        {key: 'photo', label: 'photo'},
+        {key: 'application.photo', label: 'photo'},
         {
           key: 'stages.current.recruiter',
           label: 'recruiter',

@@ -1,13 +1,13 @@
 //TODO: consider mass import from existing data
 Meteor.startup(function() {
-  if (Meteor.settings.development.generateFakeActivities) {
-    var maxRecruitments = Meteor.settings.development.generateFakeActivities.maxRecruitments;
-    var maxActivitiesPerRecruitment = Meteor.settings.development.generateFakeActivities.maxActivitiesPerRecruitment;
-    console.log('regenerating max %d fake activities for %d recruitments...', maxActivitiesPerRecruitment, maxRecruitments);
-  } else {
-    console.log('WARNING : NOT regenerating fake activities');
+  if (!Meteor.settings.development.generateFakeActivities) {
+    console.log('WARNING: NOT regenerating fake activities');
     return;
   }
+
+  var maxRecruitments = Meteor.settings.development.generateFakeActivities.maxRecruitments;
+  var maxActivitiesPerRecruitment = Meteor.settings.development.generateFakeActivities.maxActivitiesPerRecruitment;
+  console.log('regenerating max %d fake activities for %d recruitments...', maxActivitiesPerRecruitment, maxRecruitments);
 
   var recruitments = Recruitments.find({'stages.current.id': {$gt: 0}}, {limit: maxRecruitments});
   var recruiter = Meteor.users.findOne({
@@ -27,10 +27,10 @@ Meteor.startup(function() {
       var maxActivities = Math.floor(Math.random() * maxActivitiesPerRecruitment);
       for (i = 0; i < maxActivities; i++) {
         activity = {
-          lastname: recruitment.lastname,
-          firstname: recruitment.firstname,
+          lastname: recruitment.application.lastname,
+          firstname: recruitment.application.firstname,
           createdBy: recruiter.username,
-          ssn: recruitment.socialSecurityNumber,
+          ssn: recruitment.application.socialSecurityNumber,
           stage: recruitment.stages.current.id,
           contactType: randomCollectionElement(ContactTypes)._id,
           outcome: randomCollectionElement(ActivityOutcomes).id,
