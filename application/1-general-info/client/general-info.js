@@ -21,10 +21,30 @@ Template.generalInfoStep.onRendered(function() {
     var switchery = new Switchery(html, {size: 'small', color: '#337ab7'});
   });
 
-  $(':checkbox').change();
+  this.$(':checkbox').change();
+
+  // mean age between 17 and 35
+  var defaultDateOfBirth = moment().subtract(28, 'years');
+  this.$('#dateOfBirth').data({
+    defaultViewDate: {
+      year: defaultDateOfBirth.year(),
+      month: defaultDateOfBirth.month(),
+      day: defaultDateOfBirth.day(),
+    },
+  });
 });
 
 Template.generalInfoStep.helpers({
+  defaultDateOfBirth: function() {
+    // mean age between 17 and 35
+    var date = moment().subtract(28, 'years');
+    return {
+      year: date.year(),
+      month: date.month(),
+      day: date.day(),
+    };
+  },
+
   availableJobs: function() {
     return Jobs.find();
   },

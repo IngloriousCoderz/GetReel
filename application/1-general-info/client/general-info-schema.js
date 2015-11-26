@@ -10,7 +10,6 @@ GeneralInfoSchema = new SimpleSchema({
   },
   dateOfBirth: {
     type: Date,
-    optional: true,
   },
   nationality: {
     type: String,
@@ -25,6 +24,7 @@ GeneralInfoSchema = new SimpleSchema({
   permit: {
     type: Boolean,
     optional: true,
+    defaultValue: false,
   },
   permitKind: {
     type: String,
@@ -178,6 +178,7 @@ GeneralInfoSchema = new SimpleSchema({
   passport: {
     type: Boolean,
     optional: true,
+    defaultValue: false,
   },
   passportNumber: {
     type: String,
