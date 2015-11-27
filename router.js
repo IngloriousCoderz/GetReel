@@ -2,18 +2,20 @@ Router.configure({
   layoutTemplate: 'layout',
 });
 
-Router.onBeforeAction(function() {
-  var currentUser = Meteor.userId();
-  var currentRoute = Router.current().route.getName();
-
-  if (currentUser) {
-    console.log('GLOBAL::onBeforeAction:logged:', currentRoute);
-    this.next();
-  } else {
-    console.log('GLOBAL::onBeforeAction:NOTlogged:', currentRoute);
-    this.render('login');
-  }
-}, {
+Router.onBeforeAction(
+//         function() {
+//   var currentUser = Meteor.userId();
+//   var currentRoute = Router.current().route.getName();
+//
+//   if (currentUser) {
+//     console.log('GLOBAL::onBeforeAction:logged:', currentRoute);
+//     this.next();
+//   } else {
+//     console.log('GLOBAL::onBeforeAction:NOTlogged:', currentRoute);
+//     this.render('login');
+//   }
+// }
+requireLogin, {
   only: ['backoffice.tab']
 });
 
@@ -56,3 +58,4 @@ Router.route('/backoffice/:tab', function() {
 }, {
   name: 'backoffice.tab'
 });
+
